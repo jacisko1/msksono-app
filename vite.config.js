@@ -6,7 +6,13 @@ export default defineConfig({
         react(),
         VitePWA({
             registerType: "autoUpdate",
-            includeAssets: ["icons/logo.png", "icons/icon-192.svg", "icons/icon-512.svg", "icons/icon-maskable.svg"],
+            includeAssets: [
+                "icons/logo.png",
+                "icons/icon-192.png",
+                "icons/icon-512.png",
+                "icons/icon-maskable.png",
+                "apple-touch-icon.png"
+            ],
             manifest: {
                 name: "MSK Ultrasound Academy",
                 short_name: "MSK US",
@@ -14,22 +20,24 @@ export default defineConfig({
                 theme_color: "#00626c",
                 background_color: "#ffffff",
                 display: "standalone",
+                id: "/",
+                scope: "/",
                 start_url: "/",
                 icons: [
                     {
-                        src: "icons/icon-192.svg",
+                        src: "icons/icon-192.png",
                         sizes: "192x192",
-                        type: "image/svg+xml"
+                        type: "image/png"
                     },
                     {
-                        src: "icons/icon-512.svg",
+                        src: "icons/icon-512.png",
                         sizes: "512x512",
-                        type: "image/svg+xml"
+                        type: "image/png"
                     },
                     {
-                        src: "icons/icon-maskable.svg",
+                        src: "icons/icon-maskable.png",
                         sizes: "512x512",
-                        type: "image/svg+xml",
+                        type: "image/png",
                         purpose: "maskable"
                     }
                 ]
