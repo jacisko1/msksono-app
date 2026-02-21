@@ -32,6 +32,14 @@ const translations = {
     cs: "Aplikace běží bez připojení. Dříve načtené sekce zůstávají dostupné.",
     en: "The app is running offline. Previously loaded sections remain available."
   },
+  installIosHint: {
+    cs: "V iPhone Safari otevřete Sdílet a zvolte Přidat na plochu.",
+    en: "In iPhone Safari, open Share and choose Add to Home Screen."
+  },
+  installUnavailableHint: {
+    cs: "Instalace není teď v prohlížeči dostupná. Otevřete aplikaci přes HTTPS a zkuste to znovu.",
+    en: "Install is not available in this browser right now. Open the app over HTTPS and try again."
+  },
   loading: { cs: "Načítám...", en: "Loading..." },
   goToSection: { cs: "Přejít do sekce", en: "Go to section" }
 } as const;

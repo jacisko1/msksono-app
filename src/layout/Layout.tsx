@@ -42,12 +42,20 @@ export function Layout() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!installPrompt) {
+    if (installPrompt) {
+      await installPrompt.prompt();
+      await installPrompt.userChoice;
+      setInstallPrompt(null);
       return;
     }
-    await installPrompt.prompt();
-    await installPrompt.userChoice;
-    setInstallPrompt(null);
+
+    const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+    if (isIos) {
+      window.alert(t("installIosHint"));
+      return;
+    }
+
+    window.alert(t("installUnavailableHint"));
   };
 
   return (
@@ -75,7 +83,7 @@ export function Layout() {
                 EN
               </button>
             </div>
-            {!isInstalled && installPrompt ? (
+            {!isInstalled ? (
               <button className={styles.installButton} type="button" onClick={handleInstallClick}>
                 {t("installApp")}
               </button>
