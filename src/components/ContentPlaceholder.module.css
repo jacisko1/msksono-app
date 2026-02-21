@@ -1,17 +1,18 @@
 .box {
-  background: var(--surface);
+  background: linear-gradient(180deg, #ffffff, #f9fcfd);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  padding: clamp(1rem, 3.4vw, 1.6rem);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.1rem, 3.4vw, 1.7rem);
 }
 
 .box h2 {
   margin-top: 0;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.01em;
 }
 
 .box p {
   margin: 0;
   color: var(--text-soft);
 }
-

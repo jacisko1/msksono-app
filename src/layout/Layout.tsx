@@ -1,6 +1,6 @@
 import { type CSSProperties, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import logoMark from "../assets/logo-mark.svg";
+import logoMark from "../assets/logo.png";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { useLanguage } from "../data/language";
 import { getThemeColor, localize, navigationTree } from "../data/navigation";
@@ -49,9 +49,22 @@ export function Layout() {
       return;
     }
 
+    if (!window.isSecureContext) {
+      window.alert(t("installSecureHint"));
+      return;
+    }
+
+    const userAgent = window.navigator.userAgent;
+    const isAndroid = /android/i.test(userAgent);
     const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+
     if (isIos) {
       window.alert(t("installIosHint"));
+      return;
+    }
+
+    if (isAndroid) {
+      window.alert(t("installAndroidHint"));
       return;
     }
 
@@ -63,8 +76,8 @@ export function Layout() {
       <header className={styles.topBar}>
         <div className={styles.brandWrap}>
           <Link className={styles.brand} to="/" onClick={() => setMobileOpen(false)}>
-            <img src={logoMark} alt="" />
-            <span>MSK Ultrasound Academy</span>
+            <img src={logoMark} alt="MSK Sono logo" />
+            <span>msksono.org</span>
           </Link>
           <div className={styles.actions}>
             <div className={styles.langSwitch} role="group" aria-label="Language">
@@ -137,4 +150,3 @@ export function Layout() {
     </div>
   );
 }
-

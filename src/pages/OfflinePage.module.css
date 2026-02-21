@@ -1,11 +1,12 @@
 .box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.3rem;
+  background: linear-gradient(180deg, #ffffff, #f8fbfc);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
 }
 
 .box h1 {
   margin-top: 0;
+  letter-spacing: -0.02em;
 }
-

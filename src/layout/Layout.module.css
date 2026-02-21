@@ -6,15 +6,16 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px) saturate(130%);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(7, 38, 45, 0.06);
 }
 
 .brandWrap {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,13 +24,21 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .brand img {
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 12px 24px rgba(0, 98, 108, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .actions {
@@ -41,55 +50,68 @@
 .langSwitch {
   display: inline-flex;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-sm);
 }
 
 .langBtn {
   border: 0;
   background: transparent;
   min-height: 42px;
-  padding: 0 0.7rem;
+  padding: 0 0.8rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .langBtnActive {
-  background: #e6f2f3;
+  background: #dff0f2;
   color: #004950;
 }
 
 .installButton {
   border: 1px solid #00626c;
-  background: #00626c;
+  background: linear-gradient(140deg, #00717d, #005760);
   color: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
   min-height: 42px;
-  padding: 0 0.9rem;
+  padding: 0 1rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 98, 108, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .installButton:hover {
-  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(0, 98, 108, 0.3);
+  filter: brightness(1.06);
 }
 
 .menuToggle {
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
   min-width: 42px;
   min-height: 42px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menuToggle:hover {
+  transform: translateY(-1px);
+  background: #fff;
 }
 
 .nav {
   display: none;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 1rem 1rem;
+  padding: 0 1rem 1.05rem;
 }
 
 .navOpen {
@@ -97,28 +119,30 @@
 }
 
 .link {
-  padding: 0.55rem 0.75rem;
-  border-radius: 10px;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
   font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .homeActive {
-  background: #e6f2f3;
+  background: #dff0f2;
+  color: #004a52;
 }
 
 .active {
-  background: color-mix(in srgb, var(--active-color) 16%, white);
-  color: color-mix(in srgb, var(--active-color) 68%, black);
+  background: color-mix(in srgb, var(--active-color) 18%, white);
+  color: color-mix(in srgb, var(--active-color) 62%, black);
 }
 
 .main {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.1rem 1rem 1.4rem;
 }
 
 .crumbWrap {
-  margin: 0.2rem 0 1rem;
+  margin: 0.3rem 0 1rem;
 }
 
 .page {
@@ -145,6 +169,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 1rem 0.75rem;
+    padding: 0 1rem 0.9rem;
   }
 }

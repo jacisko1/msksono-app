@@ -2,18 +2,22 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.94rem;
+  gap: 0.4rem;
+  font-size: 0.92rem;
   color: var(--text-soft);
+  padding: 0.15rem 0;
 }
 
 .crumb {
   display: inline-flex;
-  gap: 0.35rem;
+  gap: 0.4rem;
   align-items: center;
+}
+
+.nav a:hover {
+  color: #005f69;
 }
 
 .nav strong {
   color: var(--text);
 }
-

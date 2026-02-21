@@ -6,7 +6,7 @@ export default defineConfig({
         react(),
         VitePWA({
             registerType: "autoUpdate",
-            includeAssets: ["icons/icon-192.svg", "icons/icon-512.svg"],
+            includeAssets: ["icons/logo.png", "icons/icon-192.svg", "icons/icon-512.svg", "icons/icon-maskable.svg"],
             manifest: {
                 name: "MSK Ultrasound Academy",
                 short_name: "MSK US",

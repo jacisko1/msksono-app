@@ -36,8 +36,16 @@ const translations = {
     cs: "V iPhone Safari otevřete Sdílet a zvolte Přidat na plochu.",
     en: "In iPhone Safari, open Share and choose Add to Home Screen."
   },
+  installAndroidHint: {
+    cs: "V Android Chrome otevřete menu prohlížeče (tři tečky) a zvolte Přidat na plochu nebo Instalovat aplikaci.",
+    en: "In Android Chrome, open the browser menu (three dots) and choose Add to Home screen or Install app."
+  },
+  installSecureHint: {
+    cs: "Instalace PWA vyžaduje zabezpečené připojení HTTPS. Otevřete aplikaci přes HTTPS URL a zkuste to znovu.",
+    en: "PWA installation requires a secure HTTPS connection. Open the app via an HTTPS URL and try again."
+  },
   installUnavailableHint: {
-    cs: "Instalace není teď v prohlížeči dostupná. Otevřete aplikaci přes HTTPS a zkuste to znovu.",
+    cs: "Instalace není v tomto prohlížeči právě dostupná. Zkuste nabídku prohlížeče: Přidat na plochu.",
     en: "Install is not available in this browser right now. Open the app over HTTPS and try again."
   },
   loading: { cs: "Načítám...", en: "Loading..." },
