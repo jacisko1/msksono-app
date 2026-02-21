@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.94rem;
+  color: var(--text-soft);
+}
+
+.crumb {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.nav strong {
+  color: var(--text);
+}
+

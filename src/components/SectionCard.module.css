@@ -1,0 +1,22 @@
+.card {
+  display: grid;
+  align-items: end;
+  min-height: 180px;
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  color: #fff;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  filter: saturate(1.05);
+  box-shadow: 0 16px 42px rgba(9, 37, 44, 0.2);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+}
+

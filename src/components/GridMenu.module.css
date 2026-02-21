@@ -1,0 +1,32 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(12, 43, 49, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(12, 43, 49, 0.12);
+}
+
+.card h3 {
+  margin: 0;
+}
+
+.card span {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+

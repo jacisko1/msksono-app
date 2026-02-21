@@ -1,0 +1,108 @@
+.app {
+  min-height: 100vh;
+}
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.brandWrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+}
+
+.brand img {
+  width: 30px;
+  height: 30px;
+}
+
+.menuToggle {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  min-width: 42px;
+  min-height: 42px;
+}
+
+.nav {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+.navOpen {
+  display: flex;
+}
+
+.link {
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.homeActive {
+  background: #e6f2f3;
+}
+
+.active {
+  background: color-mix(in srgb, var(--active-color) 16%, white);
+  color: color-mix(in srgb, var(--active-color) 68%, black);
+}
+
+.main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.crumbWrap {
+  margin: 0.2rem 0 1rem;
+}
+
+.page {
+  animation: fade 220ms ease;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 860px) {
+  .menuToggle {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 1rem 0.75rem;
+  }
+}
+
