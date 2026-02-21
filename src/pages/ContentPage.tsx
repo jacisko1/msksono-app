@@ -1,6 +1,7 @@
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
-import { findNavItem } from "../data/navigation";
+import { useLanguage } from "../data/language";
+import { findNavItem, localize } from "../data/navigation";
 import styles from "./SharedPages.module.css";
 
 interface ContentPageProps {
@@ -8,15 +9,16 @@ interface ContentPageProps {
 }
 
 export default function ContentPage({ path }: ContentPageProps) {
+  const { lang, t } = useLanguage();
   const node = findNavItem(path);
 
   if (!node) {
-    return <ContentPlaceholder title="Page not found" />;
+    return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
   return (
     <section className={styles.stack}>
-      <PageHeader title={node.title} color={node.color} />
+      <PageHeader title={localize(node.title, lang)} color={node.color} />
       <ContentPlaceholder />
     </section>
   );

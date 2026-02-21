@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import logoMark from "../assets/logo-mark.svg";
 import { Breadcrumbs } from "../components/Breadcrumbs";
-import { getThemeColor, navigationTree } from "../data/navigation";
+import { useLanguage } from "../data/language";
+import { getThemeColor, localize, navigationTree } from "../data/navigation";
 import styles from "./Layout.module.css";
 
 const isSectionActive = (pathname: string, sectionPath: string) =>
@@ -10,8 +11,44 @@ const isSectionActive = (pathname: string, sectionPath: string) =>
 
 export function Layout() {
   const location = useLocation();
+  const { lang, setLang, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
   const activeColor = getThemeColor(location.pathname);
+
+  useEffect(() => {
+    const inStandalone =
+      window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    setIsInstalled(inStandalone);
+
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event as BeforeInstallPromptEvent);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true);
+      setInstallPrompt(null);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!installPrompt) {
+      return;
+    }
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    setInstallPrompt(null);
+  };
 
   return (
     <div className={styles.app}>
@@ -21,15 +58,38 @@ export function Layout() {
             <img src={logoMark} alt="" />
             <span>MSK Ultrasound Academy</span>
           </Link>
-          <button
-            className={styles.menuToggle}
-            type="button"
-            aria-expanded={mobileOpen}
-            aria-label="Přepnout menu"
-            onClick={() => setMobileOpen((prev) => !prev)}
-          >
-            ☰
-          </button>
+          <div className={styles.actions}>
+            <div className={styles.langSwitch} role="group" aria-label="Language">
+              <button
+                type="button"
+                className={`${styles.langBtn} ${lang === "cs" ? styles.langBtnActive : ""}`}
+                onClick={() => setLang("cs")}
+              >
+                CZ
+              </button>
+              <button
+                type="button"
+                className={`${styles.langBtn} ${lang === "en" ? styles.langBtnActive : ""}`}
+                onClick={() => setLang("en")}
+              >
+                EN
+              </button>
+            </div>
+            {!isInstalled && installPrompt ? (
+              <button className={styles.installButton} type="button" onClick={handleInstallClick}>
+                {t("installApp")}
+              </button>
+            ) : null}
+            <button
+              className={styles.menuToggle}
+              type="button"
+              aria-expanded={mobileOpen}
+              aria-label={t("toggleMenu")}
+              onClick={() => setMobileOpen((prev) => !prev)}
+            >
+              ☰
+            </button>
+          </div>
         </div>
 
         <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ""}`} aria-label="Main navigation">
@@ -38,7 +98,7 @@ export function Layout() {
             className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
             onClick={() => setMobileOpen(false)}
           >
-            Home
+            {t("home")}
           </NavLink>
           {navigationTree.map((section) => (
             <NavLink
@@ -47,12 +107,12 @@ export function Layout() {
               className={`${styles.link} ${isSectionActive(location.pathname, section.path) ? styles.active : ""}`}
               style={
                 isSectionActive(location.pathname, section.path)
-                  ? ({ "--active-color": section.color } as React.CSSProperties)
+                  ? ({ "--active-color": section.color } as CSSProperties)
                   : undefined
               }
               onClick={() => setMobileOpen(false)}
             >
-              {section.title}
+              {localize(section.title, lang)}
             </NavLink>
           ))}
         </nav>
@@ -62,7 +122,7 @@ export function Layout() {
         <div className={styles.crumbWrap}>
           <Breadcrumbs />
         </div>
-        <div className={styles.page} style={{ "--section-color": activeColor } as React.CSSProperties}>
+        <div className={styles.page} style={{ "--section-color": activeColor } as CSSProperties}>
           <Outlet />
         </div>
       </main>

@@ -32,6 +32,49 @@
   height: 30px;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.langSwitch {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.langBtn {
+  border: 0;
+  background: transparent;
+  min-height: 42px;
+  padding: 0 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.langBtnActive {
+  background: #e6f2f3;
+  color: #004950;
+}
+
+.installButton {
+  border: 1px solid #00626c;
+  background: #00626c;
+  color: #fff;
+  border-radius: 10px;
+  min-height: 42px;
+  padding: 0 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.installButton:hover {
+  filter: brightness(1.05);
+}
+
 .menuToggle {
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -105,4 +148,3 @@
     padding: 0 1rem 0.75rem;
   }
 }
-

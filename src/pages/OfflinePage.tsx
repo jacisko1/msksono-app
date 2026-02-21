@@ -1,10 +1,13 @@
+import { useLanguage } from "../data/language";
 import styles from "./OfflinePage.module.css";
 
 export default function OfflinePage() {
+  const { t } = useLanguage();
+
   return (
     <section className={styles.box}>
-      <h1>Offline režim</h1>
-      <p>Aplikace běží bez připojení. Dříve načtené sekce zůstávají dostupné.</p>
+      <h1>{t("offlineTitle")}</h1>
+      <p>{t("offlineMessage")}</p>
     </section>
   );
 }

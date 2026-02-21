@@ -1,7 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "../layout/Layout";
+import { useLanguage } from "../data/language";
 import { flatNavigation, findNavItem } from "../data/navigation";
+import { Layout } from "../layout/Layout";
 
 const HomePage = lazy(() => import("../pages/HomePage"));
 const SectionPage = lazy(() => import("../pages/SectionPage"));
@@ -10,7 +11,8 @@ const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const OfflinePage = lazy(() => import("../pages/OfflinePage"));
 
 function LoadingFallback() {
-  return <p>Loading...</p>;
+  const { t } = useLanguage();
+  return <p>{t("loading")}</p>;
 }
 
 function RoutedPage({ path }: { path: string }) {
@@ -41,3 +43,4 @@ export function AppRouter() {
     </Suspense>
   );
 }
+

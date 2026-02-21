@@ -1,7 +1,8 @@
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { GridMenu } from "../components/GridMenu";
 import { PageHeader } from "../components/PageHeader";
-import { findNavItem } from "../data/navigation";
+import { useLanguage } from "../data/language";
+import { findNavItem, localize } from "../data/navigation";
 import styles from "./SharedPages.module.css";
 
 interface SectionPageProps {
@@ -9,18 +10,19 @@ interface SectionPageProps {
 }
 
 export default function SectionPage({ path }: SectionPageProps) {
+  const { lang, t } = useLanguage();
   const node = findNavItem(path);
 
   if (!node) {
-    return <ContentPlaceholder title="Section not found" />;
+    return <ContentPlaceholder title={t("sectionNotFound")} />;
   }
 
   return (
     <section className={styles.stack}>
       <PageHeader
-        title={node.title}
+        title={localize(node.title, lang)}
         color={node.color}
-        description="Vyberte podsekci pro detailní studium. Struktura je plně připravená pro rozšíření obsahu."
+        description={t("sectionHeaderDescription")}
       />
       {node.children?.length ? <GridMenu items={node.children} color={node.color} /> : null}
       <ContentPlaceholder />
