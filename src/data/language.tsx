@@ -13,17 +13,16 @@ const translations = {
     cs: "Praktická výuka muskuloskeletální ultrasonografie v jasně strukturovaných modulech.",
     en: "Practical musculoskeletal ultrasound education in clearly structured modules."
   },
-  openSection: { cs: "Otevřít sekci", en: "Open section" },
   contentComingSoon: { cs: "Obsah se připravuje", en: "Content coming soon" },
   contentPlaceholderBody: {
-    cs: "Tato sekce je připravena pro doplnění výukového obsahu, videí a klinických poznámek.",
-    en: "This section is ready for educational content, videos, and clinical notes."
+    cs: "Obsah bude doplněn.",
+    en: "Content will be added."
   },
   sectionNotFound: { cs: "Sekce nenalezena", en: "Section not found" },
   pageNotFound: { cs: "Stránka nenalezena", en: "Page not found" },
   sectionHeaderDescription: {
-    cs: "Vyberte podsekci pro detailní studium. Struktura je připravena pro rozšiřování obsahu.",
-    en: "Choose a subsection for detailed study. The structure is ready for future content expansion."
+    cs: "Vyberte podsekci pro detailní studium.",
+    en: "Choose a subsection for detailed study."
   },
   notFoundMessage: { cs: "Požadovaná stránka nebyla nalezena.", en: "Requested page was not found." },
   backHome: { cs: "Zpět na úvod", en: "Back to home" },
