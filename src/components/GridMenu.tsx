@@ -66,7 +66,7 @@ export function GridMenu({ items, color }: GridMenuProps) {
             {image ? (
               <picture className={styles.imageWrap} aria-hidden="true">
                 <source media="(max-width: 640px)" srcSet={image.phone} />
-                <source media="(max-width: 1024px)" srcSet={image.tablet} />
+                <source media="(max-width: 1024px)" srcSet={`${image.tablet} 1x, ${image.pc} 2x`} />
                 <img className={styles.image} src={image.pc} alt="" loading="lazy" />
               </picture>
             ) : null}
