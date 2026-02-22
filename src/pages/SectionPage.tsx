@@ -25,8 +25,6 @@ export default function SectionPage({ path }: SectionPageProps) {
         description={t("sectionHeaderDescription")}
       />
       {node.children?.length ? <GridMenu items={node.children} color={node.color} /> : null}
-      <ContentPlaceholder />
     </section>
   );
 }
-

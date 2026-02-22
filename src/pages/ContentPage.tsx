@@ -283,7 +283,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   return (
     <section className={styles.stack}>
       <PageHeader title={localize(node.title, lang)} color={node.color} />
-      <ContentPlaceholder />
+      <section className={styles.emptyBox} />
     </section>
   );
 }

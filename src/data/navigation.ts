@@ -38,8 +38,7 @@ export const navigationTree: NavItem[] = [
     children: withSection("basics", "#209069", [
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
       { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
-      { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
-      { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty" }
+      { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" }
     ])
   },
   {
