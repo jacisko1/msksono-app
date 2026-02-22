@@ -32,7 +32,7 @@
 }
 
 .cardWithImage {
-  grid-template-columns: minmax(132px, 40%) 1fr;
+  grid-template-columns: 168px 1fr;
 }
 
 .imageWrap {
@@ -48,6 +48,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  transform: translateZ(0);
 }
 
 .content {
@@ -63,6 +64,12 @@
 
 @media (max-width: 540px) {
   .cardWithImage {
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 120px 1fr;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 541px) {
+  .cardWithImage {
+    grid-template-columns: 152px 1fr;
   }
 }
