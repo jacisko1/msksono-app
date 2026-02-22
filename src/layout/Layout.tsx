@@ -80,17 +80,7 @@ export function Layout() {
             <span>msksono.org</span>
           </Link>
 
-          <button
-            className={styles.menuToggle}
-            type="button"
-            aria-expanded={mobileOpen}
-            aria-label={t("toggleMenu")}
-            onClick={() => setMobileOpen((prev) => !prev)}
-          >
-            {"\u2630"}
-          </button>
-
-          <div className={styles.controls}>
+          <div className={styles.topControls}>
             <div className={styles.langSwitch} role="group" aria-label="Language">
               <button
                 type="button"
@@ -107,13 +97,25 @@ export function Layout() {
                 EN
               </button>
             </div>
+          </div>
 
-            {!isInstalled ? (
+          <button
+            className={styles.menuToggle}
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-label={t("toggleMenu")}
+            onClick={() => setMobileOpen((prev) => !prev)}
+          >
+            {"\u2630"}
+          </button>
+
+          {!isInstalled ? (
+            <div className={styles.installRow}>
               <button className={styles.installButton} type="button" onClick={handleInstallClick}>
                 {t("installApp")}
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
 
         <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ""}`} aria-label="Main navigation">

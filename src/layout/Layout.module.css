@@ -17,10 +17,10 @@
   margin: 0 auto;
   padding: 0.9rem 1rem;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   grid-template-areas:
-    "brand menu"
-    "controls controls";
+    "brand lang menu"
+    "install install install";
   gap: 0.6rem;
   align-items: center;
 }
@@ -47,12 +47,17 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-.controls {
-  grid-area: controls;
+.topControls {
+  grid-area: lang;
+  justify-self: end;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+}
+
+.installRow {
+  grid-area: install;
+  display: flex;
+  align-items: center;
 }
 
 .langSwitch {
@@ -177,9 +182,12 @@
     gap: 0;
   }
 
-  .controls {
+  .topControls {
     margin-left: auto;
-    flex-wrap: nowrap;
+  }
+
+  .installRow {
+    margin-left: 0.6rem;
   }
 
   .menuToggle {
