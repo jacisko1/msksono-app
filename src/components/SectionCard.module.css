@@ -3,9 +3,9 @@
   isolation: isolate;
   display: grid;
   align-items: end;
-  min-height: 205px;
+  min-height: 160px;
   border-radius: var(--radius-lg);
-  padding: 1.45rem;
+  padding: 1.15rem;
   color: #fff;
   box-shadow: 0 20px 36px rgba(9, 37, 44, 0.22);
   transition: transform 0.24s ease, filter 0.24s ease, box-shadow 0.24s ease;
@@ -32,4 +32,11 @@
   margin: 0;
   font-size: clamp(1.2rem, 2.7vw, 1.5rem);
   letter-spacing: -0.01em;
+}
+
+@media (max-width: 740px) {
+  .card {
+    min-height: 138px;
+    padding: 1rem;
+  }
 }
