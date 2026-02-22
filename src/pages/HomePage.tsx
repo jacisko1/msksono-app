@@ -9,7 +9,6 @@ export default function HomePage() {
   return (
     <section className={styles.wrap}>
       <header className={styles.header}>
-        <h1>MSK Ultrasound Academy</h1>
         <p>{t("homeIntro")}</p>
       </header>
 
@@ -21,4 +20,3 @@ export default function HomePage() {
     </section>
   );
 }
-

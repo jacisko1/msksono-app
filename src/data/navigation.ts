@@ -48,7 +48,18 @@ export const navigationTree: NavItem[] = [
     section: "klouby",
     color: "#00626c",
     children: withSection("klouby", "#00626c", [
-      { title: { cs: "Rameno", en: "Shoulder" }, path: "/klouby/rameno" },
+      {
+        title: { cs: "Rameno", en: "Shoulder" },
+        path: "/klouby/rameno",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
+          {
+            title: { cs: "Vyšetřovací protokol", en: "Examination protocol" },
+            path: "/klouby/rameno/vysetrovaci-protokol"
+          }
+        ]
+      },
       { title: { cs: "Loket", en: "Elbow" }, path: "/klouby/loket" },
       { title: { cs: "Zápěstí", en: "Wrist" }, path: "/klouby/zapesti" },
       { title: { cs: "Ruka", en: "Hand" }, path: "/klouby/ruka" },
@@ -59,7 +70,7 @@ export const navigationTree: NavItem[] = [
     ])
   },
   {
-    title: { cs: "Periferní nervy", en: "Peripheral nerves" },
+    title: { cs: "Nervy", en: "Nerves" },
     path: "/periferni-nervy",
     section: "periferni-nervy",
     color: "#d2be00",
@@ -141,3 +152,4 @@ export const getBreadcrumbItems = (path: string): NavItem[] => {
 
   return crumbs;
 };
+
