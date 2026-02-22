@@ -151,6 +151,41 @@ const knobologyItems = [
   "Zoom"
 ];
 
+const shoulderUltrasoundImages = [
+  {
+    key: "01_anterior_view_transverse_plane",
+    title: { cs: "Predni pohled - transversalni rovina", en: "Anterior view - transverse plane" }
+  },
+  {
+    key: "02_anterior_view_transverse_plane_2",
+    title: { cs: "Predni pohled - transversalni rovina 2", en: "Anterior view - transverse plane 2" }
+  },
+  {
+    key: "03_anterior_view_longitudinal_plane",
+    title: { cs: "Predni pohled - longitudinalni rovina", en: "Anterior view - longitudinal plane" }
+  },
+  {
+    key: "04_anterior_view_longitudinal_plane_2",
+    title: { cs: "Predni pohled - longitudinalni rovina 2", en: "Anterior view - longitudinal plane 2" }
+  },
+  {
+    key: "05_lateral_view_transverse_plane",
+    title: { cs: "Lateralni pohled - transversalni rovina", en: "Lateral view - transverse plane" }
+  },
+  {
+    key: "06_lateral_view_longitudinal_plane",
+    title: { cs: "Lateralni pohled - longitudinalni rovina", en: "Lateral view - longitudinal plane" }
+  },
+  {
+    key: "07_posterior_view_transverse_plane",
+    title: { cs: "Posteriorni pohled - transversalni rovina", en: "Posterior view - transverse plane" }
+  },
+  {
+    key: "08_posterior_view_transverse_plane_2",
+    title: { cs: "Posteriorni pohled - transversalni rovina 2", en: "Posterior view - transverse plane 2" }
+  }
+];
+
 function ResponsiveImage({ image, alt }: { image: ResponsiveImageSet; alt: string }) {
   return (
     <picture className={styles.inlineImageWrap}>
@@ -165,6 +200,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
   const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
+  const isShoulderUltrasoundPage = path === "/klouby/rameno/ultrazvukove-obrazky";
   const isShoulderEmpty =
     path === "/klouby/rameno/uvod" || path === "/klouby/rameno/vysetrovaci-protokol";
   const isProbesPage = path === "/basics/sondy";
@@ -263,6 +299,24 @@ export default function ContentPage({ path }: ContentPageProps) {
             {knobologyItems.map((item) => (
               <article key={item} className={styles.knobologyCard}>
                 <ResponsiveImage image={makeResponsiveImage("Knobology", item)} alt={item} />
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (isShoulderUltrasoundPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Ultrazvukove obrazky ramene" : "Shoulder ultrasound images"}</h2>
+          <div className={styles.knobologyGrid}>
+            {shoulderUltrasoundImages.map((item) => (
+              <article key={item.key} className={styles.knobologyCard}>
+                <ResponsiveImage image={makeResponsiveImage("shoulder", item.key)} alt={item.title[lang]} />
               </article>
             ))}
           </div>
