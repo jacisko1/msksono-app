@@ -44,3 +44,81 @@
   border: 1px dashed var(--border);
   background: linear-gradient(180deg, #ffffff, #f8fcfd);
 }
+
+.articleBox {
+  background: linear-gradient(180deg, #ffffff, #f8fcfd);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(0.9rem, 2.6vw, 1.1rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.articleBox h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+}
+
+.articleBox > p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.articleGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.articleCard {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: minmax(120px, 30%) 1fr;
+  align-items: start;
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, white);
+  background: #fff;
+}
+
+.articleBody h3 {
+  margin: 0 0 0.4rem;
+}
+
+.articleBody p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.inlineImageWrap {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--border) 74%, white);
+  background: #fff;
+  overflow: hidden;
+}
+
+.inlineImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.knobologyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.85rem;
+}
+
+.knobologyCard {
+  border: 1px solid color-mix(in srgb, var(--border) 70%, white);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: 0.5rem;
+}
+
+@media (max-width: 740px) {
+  .articleCard {
+    grid-template-columns: 1fr;
+  }
+}
