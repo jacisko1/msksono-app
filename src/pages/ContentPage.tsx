@@ -327,10 +327,14 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Ultrazvukove obrazky ramene" : "Shoulder ultrasound images"}</h2>
-          <div className={styles.knobologyGrid}>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {shoulderUltrasoundImages.map((item) => (
-              <article key={item.key} className={styles.knobologyCard}>
-                <ResponsiveImage image={makeResponsiveImage("shoulder", item.key)} alt={item.title[lang]} />
+              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+                <ResponsiveImage
+                  image={makeResponsiveImage("shoulder", item.key)}
+                  alt={item.title[lang]}
+                  wrapClassName={styles.shoulderUltrasoundImageWrap}
+                />
               </article>
             ))}
           </div>
