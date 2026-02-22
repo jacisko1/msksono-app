@@ -61,12 +61,10 @@ export const navigationTree: NavItem[] = [
         ]
       },
       { title: { cs: "Loket", en: "Elbow" }, path: "/klouby/loket" },
-      { title: { cs: "Zápěstí", en: "Wrist" }, path: "/klouby/zapesti" },
-      { title: { cs: "Ruka", en: "Hand" }, path: "/klouby/ruka" },
+      { title: { cs: "Zápěstí a ruka", en: "Wrist and hand" }, path: "/klouby/zapesti" },
       { title: { cs: "Kyčel", en: "Hip" }, path: "/klouby/kycel" },
       { title: { cs: "Koleno", en: "Knee" }, path: "/klouby/koleno" },
-      { title: { cs: "Kotník", en: "Ankle" }, path: "/klouby/kotnik" },
-      { title: { cs: "Noha", en: "Foot" }, path: "/klouby/noha" }
+      { title: { cs: "Kotník a noha", en: "Ankle and foot" }, path: "/klouby/kotnik" }
     ])
   },
   {
@@ -152,4 +150,3 @@ export const getBreadcrumbItems = (path: string): NavItem[] => {
 
   return crumbs;
 };
-
