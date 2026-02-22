@@ -41,6 +41,18 @@ body {
   text-justify: inter-word;
 }
 
+p {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 740px) {
+  p {
+    text-wrap: pretty;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;

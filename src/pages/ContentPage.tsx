@@ -186,9 +186,19 @@ const shoulderUltrasoundImages = [
   }
 ];
 
-function ResponsiveImage({ image, alt }: { image: ResponsiveImageSet; alt: string }) {
+function ResponsiveImage({
+  image,
+  alt,
+  wrapClassName
+}: {
+  image: ResponsiveImageSet;
+  alt: string;
+  wrapClassName?: string;
+}) {
+  const wrapClass = wrapClassName ? `${styles.inlineImageWrap} ${wrapClassName}` : styles.inlineImageWrap;
+
   return (
-    <picture className={styles.inlineImageWrap}>
+    <picture className={wrapClass}>
       <source media="(max-width: 640px)" srcSet={image.mobile} />
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
       <img className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
@@ -254,7 +264,11 @@ export default function ContentPage({ path }: ContentPageProps) {
           <div className={styles.articleGrid}>
             {probes.map((probe) => (
               <article key={probe.title.en} className={styles.articleCard}>
-                <ResponsiveImage image={probe.image} alt={probe.title[lang]} />
+                <ResponsiveImage
+                  image={probe.image}
+                  alt={probe.title[lang]}
+                  wrapClassName={styles.probeImageWrap}
+                />
                 <div className={styles.articleBody}>
                   <h3>{probe.title[lang]}</h3>
                   <p>{probe.body[lang]}</p>
