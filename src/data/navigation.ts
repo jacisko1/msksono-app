@@ -52,14 +52,17 @@ export const navigationTree: NavItem[] = [
         path: "/klouby/rameno",
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/rameno/anatomie" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
           {
             title: { cs: "Vyšetřovací protokol", en: "Examination protocol" },
-            path: "/klouby/rameno/vysetrovaci-protokol"
-          },
-          {
-            title: { cs: "\u0055ltrazvukov\u00e9 obr\u00e1zky", en: "Ultrasound images" },
-            path: "/klouby/rameno/ultrazvukove-obrazky"
+            path: "/klouby/rameno/vysetrovaci-protokol",
+            children: [
+              {
+                title: { cs: "\u0055ltrazvukov\u00e9 obr\u00e1zky", en: "Ultrasound images" },
+                path: "/klouby/rameno/vysetrovaci-protokol/ultrazvukove-obrazky"
+              }
+            ]
           }
         ]
       },

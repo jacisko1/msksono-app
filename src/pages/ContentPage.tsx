@@ -210,9 +210,11 @@ export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
   const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
-  const isShoulderUltrasoundPage = path === "/klouby/rameno/ultrazvukove-obrazky";
+  const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol/ultrazvukove-obrazky";
   const isShoulderEmpty =
-    path === "/klouby/rameno/uvod" || path === "/klouby/rameno/vysetrovaci-protokol";
+    path === "/klouby/rameno/uvod" ||
+    path === "/klouby/rameno/anatomie" ||
+    path === "/klouby/rameno/vysetrovaci-protokol";
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
@@ -222,8 +224,6 @@ export default function ContentPage({ path }: ContentPageProps) {
   }
 
   if (isShoulderVideo) {
-    const openLabel = lang === "cs" ? "Otevřít na YouTube" : "Open on YouTube";
-
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
@@ -237,14 +237,6 @@ export default function ContentPage({ path }: ContentPageProps) {
               allowFullScreen
             />
           </div>
-          <a
-            className={styles.videoLink}
-            href="https://youtu.be/TCpKWtJ9g9A?si=dNeZ-vvJKZIh6E1b"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {openLabel}
-          </a>
         </section>
       </section>
     );
