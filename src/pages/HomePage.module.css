@@ -3,29 +3,6 @@
   gap: 1.35rem;
 }
 
-.header {
-  background:
-    radial-gradient(circle at top right, rgba(0, 98, 108, 0.08), transparent 38%),
-    linear-gradient(180deg, #ffffff, #f9fcfd);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.2rem, 3vw, 1.7rem);
-  box-shadow: var(--shadow);
-}
-
-.header h1 {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.35rem);
-  letter-spacing: -0.02em;
-}
-
-.header p {
-  margin: 0;
-  max-width: 68ch;
-  color: var(--text-soft);
-  font-size: 1.02rem;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
