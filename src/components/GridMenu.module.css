@@ -32,7 +32,7 @@
 }
 
 .cardWithImage {
-  grid-template-columns: 132px 1fr;
+  grid-template-columns: 84px 1fr;
 }
 
 .imageWrap {
@@ -46,7 +46,7 @@
 .image {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 72px;
   object-fit: cover;
 }
 
@@ -63,12 +63,20 @@
 
 @media (max-width: 540px) {
   .cardWithImage {
-    grid-template-columns: 104px 1fr;
+    grid-template-columns: 74px 1fr;
+  }
+
+  .image {
+    height: 64px;
   }
 }
 
 @media (max-width: 1024px) and (min-width: 541px) {
   .cardWithImage {
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 80px 1fr;
+  }
+
+  .image {
+    height: 68px;
   }
 }
