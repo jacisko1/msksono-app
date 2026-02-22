@@ -37,6 +37,8 @@ body {
     linear-gradient(160deg, var(--bg) 0%, var(--bg-alt) 100%);
   color: var(--text);
   line-height: 1.45;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 a {

@@ -19,11 +19,7 @@ export default function SectionPage({ path }: SectionPageProps) {
 
   return (
     <section className={styles.stack}>
-      <PageHeader
-        title={localize(node.title, lang)}
-        color={node.color}
-        description={t("sectionHeaderDescription")}
-      />
+      <PageHeader title={localize(node.title, lang)} color={node.color} />
       {node.children?.length ? <GridMenu items={node.children} color={node.color} /> : null}
     </section>
   );

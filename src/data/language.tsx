@@ -20,10 +20,6 @@ const translations = {
   },
   sectionNotFound: { cs: "Sekce nenalezena", en: "Section not found" },
   pageNotFound: { cs: "Stránka nenalezena", en: "Page not found" },
-  sectionHeaderDescription: {
-    cs: "Vyberte podsekci pro detailní studium.",
-    en: "Choose a subsection for detailed study."
-  },
   notFoundMessage: { cs: "Požadovaná stránka nebyla nalezena.", en: "Requested page was not found." },
   backHome: { cs: "Zpět na úvod", en: "Back to home" },
   offlineTitle: { cs: "Offline režim", en: "Offline mode" },
@@ -96,3 +92,5 @@ export function useLanguage() {
   }
   return context;
 }
+
+
