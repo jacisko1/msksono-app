@@ -56,13 +56,7 @@ export const navigationTree: NavItem[] = [
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
           {
             title: { cs: "Vyšetřovací protokol", en: "Examination protocol" },
-            path: "/klouby/rameno/vysetrovaci-protokol",
-            children: [
-              {
-                title: { cs: "\u0055ltrazvukov\u00e9 obr\u00e1zky", en: "Ultrasound images" },
-                path: "/klouby/rameno/vysetrovaci-protokol/ultrazvukove-obrazky"
-              }
-            ]
+            path: "/klouby/rameno/vysetrovaci-protokol"
           }
         ]
       },

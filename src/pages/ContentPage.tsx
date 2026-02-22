@@ -210,11 +210,10 @@ export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
   const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
-  const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol/ultrazvukove-obrazky";
+  const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderEmpty =
     path === "/klouby/rameno/uvod" ||
-    path === "/klouby/rameno/anatomie" ||
-    path === "/klouby/rameno/vysetrovaci-protokol";
+    path === "/klouby/rameno/anatomie";
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
