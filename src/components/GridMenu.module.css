@@ -80,3 +80,13 @@
     height: 68px;
   }
 }
+
+@media (min-width: 1025px) {
+  .cardWithImage {
+    grid-template-columns: 132px 1fr;
+  }
+
+  .image {
+    height: 112px;
+  }
+}
