@@ -79,7 +79,18 @@ export function Layout() {
             <img src={logoMark} alt="MSK Sono logo" />
             <span>msksono.org</span>
           </Link>
-          <div className={styles.actions}>
+
+          <button
+            className={styles.menuToggle}
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-label={t("toggleMenu")}
+            onClick={() => setMobileOpen((prev) => !prev)}
+          >
+            {"\u2630"}
+          </button>
+
+          <div className={styles.controls}>
             <div className={styles.langSwitch} role="group" aria-label="Language">
               <button
                 type="button"
@@ -96,20 +107,12 @@ export function Layout() {
                 EN
               </button>
             </div>
+
             {!isInstalled ? (
               <button className={styles.installButton} type="button" onClick={handleInstallClick}>
                 {t("installApp")}
               </button>
             ) : null}
-            <button
-              className={styles.menuToggle}
-              type="button"
-              aria-expanded={mobileOpen}
-              aria-label={t("toggleMenu")}
-              onClick={() => setMobileOpen((prev) => !prev)}
-            >
-              ☰
-            </button>
           </div>
         </div>
 
