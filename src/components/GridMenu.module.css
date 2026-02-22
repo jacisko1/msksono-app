@@ -40,7 +40,7 @@
   width: 100%;
   border-radius: calc(var(--radius-sm) - 2px);
   overflow: hidden;
-  background: #f0f6f8;
+  background: #ffffff;
 }
 
 .image {
