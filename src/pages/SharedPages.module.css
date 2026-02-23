@@ -90,6 +90,14 @@
   color: var(--text-soft);
 }
 
+.compactList {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--text-soft);
+  display: grid;
+  gap: 0.25rem;
+}
+
 .inlineImageWrap {
   width: 100%;
   height: 100%;
@@ -123,9 +131,23 @@
 }
 
 .knobologyCard {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.7rem;
   border-radius: var(--radius-sm);
-  background: transparent;
-  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, white);
+  background: #fff;
+}
+
+.knobologyImageWrap {
+  min-height: 120px;
+  height: 120px;
+  background: #fff;
+}
+
+.knobologyCard h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
 }
 
 .shoulderUltrasoundGrid {
@@ -167,6 +189,11 @@
   .probeImageWrap {
     min-height: 130px;
     height: 130px;
+  }
+
+  .knobologyImageWrap {
+    min-height: 96px;
+    height: 96px;
   }
 }
 

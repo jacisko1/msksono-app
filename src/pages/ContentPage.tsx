@@ -17,12 +17,18 @@ interface ResponsiveImageSet {
 interface ProbeSection {
   title: { cs: string; en: string };
   image: ResponsiveImageSet;
-  body: { cs: string; en: string };
+  body: { cs: string[]; en: string[] };
 }
 
 interface MovementSection {
   title: { cs: string; en: string };
   image: ResponsiveImageSet;
+  body: { cs: string[]; en: string[] };
+}
+
+interface KnobologySection {
+  key: string;
+  title: { cs: string; en: string };
   body: { cs: string; en: string };
 }
 
@@ -40,24 +46,48 @@ const probes: ProbeSection[] = [
     title: { cs: "Vysokofrekvenční sonda", en: "High-frequency probe" },
     image: makeResponsiveImage("Probes", "hockey stick probe"),
     body: {
-      cs: "Vysokofrekvenční sonda představuje variantu lineární sondy pracující s velmi vysokými frekvencemi, což umožňuje mimořádně detailní zobrazení povrchově uložených struktur. V MSK sonografii je využívána především k hodnocení drobných šlach, vazů, nervů, kožních a podkožních struktur nebo malých kloubů. Její hlavní nevýhodou je velmi omezená hloubková penetrace, která neumožňuje spolehlivé zobrazení hlubších anatomických struktur.",
-      en: "A high-frequency probe is a linear variant working with very high frequencies, enabling highly detailed imaging of superficial structures. In MSK ultrasound, it is mainly used for small tendons, ligaments, nerves, skin and subcutaneous tissues, and small joints. Its main limitation is low penetration depth for deeper structures."
+      cs: [
+        "Varianta lineární sondy s velmi vysokou frekvencí.",
+        "Pro detail povrchových struktur: drobné šlachy, vazy, nervy, kůže a malé klouby.",
+        "Nevýhoda: velmi omezená hloubková penetrace."
+      ],
+      en: [
+        "Linear-variant probe with very high frequency.",
+        "Best for superficial detail in small tendons, ligaments, nerves, skin, and small joints.",
+        "Limitation: very low depth penetration."
+      ]
     }
   },
   {
     title: { cs: "Lineární sonda", en: "Linear probe" },
     image: makeResponsiveImage("Probes", "linear probe"),
     body: {
-      cs: "Lineární sonda je nejčastěji používaným typem sondy v muskuloskeletální sonografii díky vysokému rozlišení v povrchových vrstvách. Pracuje s vysokými frekvencemi, které umožňují detailní zobrazení šlach, vazů, nervů, svalů a kloubních pouzder v mělké hloubce. Její hlavní výhodou je výborná prostorová a kontrastní rozlišovací schopnost, nevýhodou naopak omezená penetrační schopnost do větší hloubky, což může ztížit vyšetření hluboko uložených struktur u obézních pacientů nebo v oblasti kyčle. V MSK sonografii je lineární sonda základním nástrojem pro rutinní diagnostiku povrchových měkkotkáňových struktur a dynamické vyšetření.",
-      en: "The linear probe is the most commonly used transducer in musculoskeletal ultrasound due to high superficial resolution. It uses high frequencies to visualize tendons, ligaments, nerves, muscles, and joint capsules in shallow depth. Its advantage is excellent spatial and contrast resolution; its limitation is reduced penetration for deeper structures."
+      cs: [
+        "Nejčastější sonda v muskuloskeletální sonografii.",
+        "Vysoké rozlišení v povrchových vrstvách: šlachy, vazy, nervy, svaly a kloubní pouzdra.",
+        "Nevýhoda: slabší zobrazení hluboko uložených struktur."
+      ],
+      en: [
+        "Most commonly used probe in MSK ultrasound.",
+        "High superficial resolution for tendons, ligaments, nerves, muscles, and capsules.",
+        "Limitation: weaker penetration of deep structures."
+      ]
     }
   },
   {
     title: { cs: "Konvexní sonda", en: "Convex probe" },
     image: makeResponsiveImage("Probes", "konex probe"),
     body: {
-      cs: "Konvexní sonda se vyznačuje zakřiveným tvarem a širším zorným polem v hloubce, což umožňuje lepší přehled o hlubších anatomických strukturách. V muskuloskeletální sonografii nachází uplatnění zejména při orientačním zobrazení hluboko uložených oblastí a při vyšetření objemnějších kloubů nebo svalových skupin. Její nevýhodou je nižší prostorové rozlišení oproti lineární sondě, zejména v povrchových vrstvách, což omezuje detailní hodnocení jemných šlachových a ligamentózních struktur.",
-      en: "The convex probe has a curved footprint and wider deep field of view, making it useful for deeper anatomy in MSK scanning. It is mainly used for deeper regions and larger joints or muscle groups. The tradeoff is lower spatial resolution than a linear probe, especially superficially."
+      cs: [
+        "Zakřivený tvar a širší zorné pole v hloubce.",
+        "Vhodná pro hlubší oblasti, objemnější klouby a svalové skupiny.",
+        "Nevýhoda: nižší rozlišení povrchových jemných struktur."
+      ],
+      en: [
+        "Curved footprint and wider deep field of view.",
+        "Useful for deeper regions, larger joints, and muscle groups.",
+        "Limitation: lower superficial spatial resolution."
+      ]
     }
   }
 ];
@@ -67,88 +97,285 @@ const movements: MovementSection[] = [
     title: { cs: "Sliding (klouzání)", en: "Sliding" },
     image: makeResponsiveImage("Probe movements", "01_slide"),
     body: {
-      cs: "Sliding (klouzání) je pohyb sondy v její dlouhé ose, při kterém dochází k plynulému posunu sondy po kůži bez změny její orientace nebo náklonu. Ultrazvukový paprsek zůstává veden ve stejné rovině, což umožňuje kontinuální sledování anatomických struktur. Tento pohyb je zásadní pro orientaci v terénu a pochopení prostorových vztahů. V muskuloskeletálním ultrazvuku se sliding využívá zejména k trasování nervů, šlach, svalů a cév, ke sledování jejich průběhu v celé délce a k vyhledávání fokálních změn, ruptur nebo ztluštění.",
-      en: "Sliding is probe motion along its long axis without changing tilt or orientation. The beam stays in one plane and supports continuous tracking of structures."
+      cs: [
+        "Posun sondy v dlouhé ose bez změny orientace a náklonu.",
+        "Paprsek zůstává ve stejné rovině.",
+        "Použití: trasování nervů, šlach, svalů a cév."
+      ],
+      en: [
+        "Probe translation along the long axis without changing tilt or orientation.",
+        "The beam stays in one plane.",
+        "Used for continuous tracking of structures."
+      ]
     }
   },
   {
     title: { cs: "Rocking (heel-toe)", en: "Rocking (heel-toe)" },
     image: makeResponsiveImage("Probe movements", "02_rock"),
     body: {
-      cs: "Rocking (heel-toe) je pohyb sondy v její dlouhé ose, při kterém se sonda naklání střídavě na jednu a druhou hranu, aniž by se posouvala po kůži. Tím se mění úhel dopadu ultrazvukového paprsku na vyšetřovanou strukturu. Tento manévr je klíčový zejména pro potlačení anizotropie šlach a vazů, které se při nekolmém dopadu paprsku mohou jevit falešně hypoechogenní. Jemným rockingem lze zvýraznit fibrilární strukturu a odlišit artefakt od skutečné patologie.",
-      en: "Rocking tilts the probe on alternating edges without skin translation. It is key for reducing tendon and ligament anisotropy."
+      cs: [
+        "Naklánění na jednu a druhou hranu bez posunu po kůži.",
+        "Mění úhel dopadu paprsku.",
+        "Klíčové pro potlačení anizotropie šlach a vazů."
+      ],
+      en: [
+        "Tilting on alternating probe edges without skin translation.",
+        "Changes the incidence angle.",
+        "Key for reducing tendon and ligament anisotropy."
+      ]
     }
   },
   {
-    title: { cs: "Sweeping (přeskenování)", en: "Sweeping" },
+    title: { cs: "Sweeping (zametání)", en: "Sweeping" },
     image: makeResponsiveImage("Probe movements", "03_sweep"),
     body: {
-      cs: "Sweeping (přeskenování) je pohyb sondy v krátké ose, při kterém se sonda posouvá kolmo ke své dlouhé ose bez změny náklonu či orientace. Dochází tak k postupnému zobrazení vyšetřované oblasti v sérii sousedních řezů. Tento pohyb umožňuje systematické vyhledávání patologií, které by mohly být při statickém zobrazení přehlédnuty. V muskuloskeletálním ultrazvuku se sweeping používá k hodnocení šlach, svalů, nervů i tekutinových kolekcí a k porovnání symetrických oblastí.",
-      en: "Sweeping moves the probe in short-axis translation, creating adjacent slices to systematically search for pathology."
+      cs: [
+        "Posun sondy v krátké ose kolmo k její dlouhé ose.",
+        "Vzniká série sousedních řezů vyšetřované oblasti.",
+        "Použití: systematické hledání patologií a porovnání symetrických oblastí."
+      ],
+      en: [
+        "Short-axis probe translation perpendicular to the long axis.",
+        "Creates adjacent slices through the region.",
+        "Used for systematic pathology search."
+      ]
     }
   },
   {
-    title: { cs: "Faning (vějířování)", en: "Faning" },
+    title: { cs: "Fanning (vějířovitý pohyb)", en: "Fanning" },
     image: makeResponsiveImage("Probe movements", "04_fan"),
     body: {
-      cs: "Faning (vějířování) je naklánění sondy v krátké ose, při kterém zůstává místo kontaktu se kůží zachováno, ale mění se úhel insonace ze strany na stranu. Tento manévr umožňuje optimalizovat dopad ultrazvukového paprsku na struktury náchylné k anizotropii, zejména šlachy a vazy. Faning pomáhá vyrušit falešnou hypoechogenitu, zpřesnit posouzení kontinuity vláken a lépe zobrazit okraje šlach a jejich úpony.",
-      en: "Faning changes insonation angle around a fixed skin contact point and helps optimize tendon and ligament visualization."
+      cs: [
+        "Naklánění v krátké ose při zachování místa kontaktu s kůží.",
+        "Mění úhel insonace ze strany na stranu.",
+        "Pomáhá potlačit anizotropii a zvýraznit kontinuitu vláken."
+      ],
+      en: [
+        "Short-axis tilting while keeping skin contact fixed.",
+        "Changes insonation angle side to side.",
+        "Helps reduce anisotropy."
+      ]
     }
   },
   {
     title: { cs: "Komprese", en: "Compression" },
     image: makeResponsiveImage("Probe movements", "05_compression"),
     body: {
-      cs: "Komprese je pohyb sondy v ose Z, při kterém je na tkáně vyvíjen řízený tlak kolmo do hloubky. Tento manévr slouží k hodnocení kompresibility struktur a k rozlišení tekutinových a solidních útvarů. Komprese je užitečná při vyšetření burzitid, hematomů, cyst i ruptur šlach. Specifickým využitím je sonopalpace, kdy tlakem sondy vyvoláme bolest odpovídající pacientovým obtížím, případně sono-Tinelův příznak při vyšetření nervů.",
-      en: "Compression is controlled pressure in the Z-axis, useful for assessing compressibility and differentiating fluid from solid findings."
+      cs: [
+        "Řízený tlak sondou v ose Z kolmo do hloubky.",
+        "Hodnocení kompresibility a odlišení tekutinových a solidních útvarů.",
+        "Užitečné u burzitid, hematomů, cyst a ruptur šlach."
+      ],
+      en: [
+        "Controlled pressure in the Z-axis.",
+        "Assesses compressibility and differentiates fluid from solid findings.",
+        "Useful for bursitis, hematomas, cysts, and tendon tears."
+      ]
     }
   },
   {
     title: { cs: "Dekomprese", en: "Decompression" },
     image: makeResponsiveImage("Probe movements", "06_decompression"),
     body: {
-      cs: "Dekomprese je opačný pohyb sondy v ose Z, při kterém dochází k uvolnění tlaku vyvíjeného na vyšetřovanou oblast. Tento manévr je zásadní zejména při hodnocení cév, protože nadměrná komprese může vést k jejich kolapsu. Po uvolnění tlaku se cévy znovu rozepnou, což je důležité pro správné zobrazení v Dopplerovských režimech. Dekomprese rovněž zvyšuje detekovatelnost tekutinových kolekcí, které se po uvolnění tlaku lépe redistribuují.",
-      en: "Decompression releases pressure and is essential in vascular and Doppler assessment where overcompression may collapse vessels."
+      cs: [
+        "Uvolnění tlaku sondy v ose Z.",
+        "Důležité při hodnocení cév a Doppleru (prevence kolapsu cév).",
+        "Zlepšuje detekci tekutinových kolekcí."
+      ],
+      en: [
+        "Releasing pressure in the Z-axis.",
+        "Important for vascular and Doppler assessment.",
+        "Improves fluid collection detection."
+      ]
     }
   },
   {
     title: { cs: "Rotace (helikoptéra)", en: "Rotation (helicopter)" },
     image: makeResponsiveImage("Probe movements", "07_helicopter"),
     body: {
-      cs: "Rotace (helikoptéra) je pohyb sondy, při kterém se sonda otáčí kolem svého středu bez posunu po kůži. Tento manévr umožňuje plynulou změnu roviny zobrazení, typicky z příčné do podélné a naopak, přičemž sledovaná struktura zůstává ve středu obrazu. Rotace je klíčová pro sledování kontinuity šlach, nervů a cév, pro ověření anatomických vztahů a pro správnou prostorovou orientaci při vyšetření.",
-      en: "Rotation turns the probe around its center to switch between transverse and longitudinal planes while keeping the structure centered."
+      cs: [
+        "Otáčení sondy kolem středu bez posunu po kůži.",
+        "Plynulá změna roviny zobrazení (příčná/podélná).",
+        "Sledovaná struktura zůstává ve středu obrazu."
+      ],
+      en: [
+        "Probe rotation around its center without skin translation.",
+        "Switches between transverse and longitudinal planes.",
+        "Keeps the target structure centered."
+      ]
     }
   },
   {
     title: { cs: "Wiper (stěrače, kružítko)", en: "Wiper" },
     image: makeResponsiveImage("Probe movements", "08_wiper"),
     body: {
-      cs: "Wiper (stěrače, kružítko) je rotační pohyb sondy, při kterém zůstává jedna její strana fixována na místě, zatímco opačná strana opisuje oblouk nebo kruhový pohyb. Tento manévr umožňuje měnit úhel insonace při zachování kontaktu s důležitým anatomickým orientačním bodem. Je velmi užitečný při vyšetření vějířovitě uspořádaných svalů a šlach nebo oblastí s komplexní anatomií, kde umožňuje systematické hodnocení bez ztráty orientace.",
-      en: "Wiper keeps one probe edge fixed while the other sweeps in an arc, preserving orientation in complex anatomy."
+      cs: [
+        "Jedna hrana sondy je fixovaná, druhá opisuje oblouk.",
+        "Mění úhel insonace při zachování orientačního bodu.",
+        "Vhodné pro oblasti s komplexní anatomií."
+      ],
+      en: [
+        "One probe edge stays fixed while the other moves in an arc.",
+        "Changes insonation angle while preserving orientation.",
+        "Useful in complex anatomy."
+      ]
     }
   }
 ];
 
-const knobologyItems = [
-  "ABC",
-  "CD",
-  "Clip",
-  "Depth",
-  "Double screen",
-  "Focus",
-  "Freeze",
-  "Frequency",
-  "Gain",
-  "Measure",
-  "PD",
-  "Pictogram",
-  "Power",
-  "Print",
-  "Probes",
-  "Single screen",
-  "Store",
-  "SWE",
-  "Zoom"
+const knobologyItems: KnobologySection[] = [
+  {
+    key: "Power",
+    title: { cs: "POWER", en: "POWER" },
+    body: {
+      cs: "Zapnutí, vypnutí nebo stand-by režim přístroje.",
+      en: "Turns the system on/off or enters standby mode."
+    }
+  },
+  {
+    key: "Freeze",
+    title: { cs: "FREEZE", en: "FREEZE" },
+    body: {
+      cs: "Zmrazí živý obraz pro analýzu, měření a dokumentaci.",
+      en: "Freezes live image for analysis, measurements, and documentation."
+    }
+  },
+  {
+    key: "Probes",
+    title: { cs: "PROBES", en: "PROBES" },
+    body: {
+      cs: "Výběr a přepínání mezi připojenými sondami.",
+      en: "Selects and switches connected probes."
+    }
+  },
+  {
+    key: "Store",
+    title: { cs: "STORE", en: "STORE" },
+    body: {
+      cs: "Uloží aktuální zmrazený obraz do paměti přístroje.",
+      en: "Saves the current frozen image to system memory."
+    }
+  },
+  {
+    key: "Print",
+    title: { cs: "PRINT", en: "PRINT" },
+    body: {
+      cs: "Okamžitý tisk snímku nebo celé obrazovky.",
+      en: "Prints the current image or entire screen."
+    }
+  },
+  {
+    key: "Clip",
+    title: { cs: "CLIP", en: "CLIP" },
+    body: {
+      cs: "Záznam krátké dynamické sekvence z živého obrazu.",
+      en: "Records a short dynamic clip from live imaging."
+    }
+  },
+  {
+    key: "Gain",
+    title: { cs: "GAIN", en: "GAIN" },
+    body: {
+      cs: "Nastavení celkového zesílení signálu (jas a kontrast).",
+      en: "Adjusts overall signal amplification (brightness and contrast)."
+    }
+  },
+  {
+    key: "Focus",
+    title: { cs: "FOCUS", en: "FOCUS" },
+    body: {
+      cs: "Nastavení ohniska do požadované hloubky.",
+      en: "Sets the focal zone at the desired depth."
+    }
+  },
+  {
+    key: "Frequency",
+    title: { cs: "FREQUENCY", en: "FREQUENCY" },
+    body: {
+      cs: "Volba frekvence: vyšší detail vs. větší hloubkový dosah.",
+      en: "Frequency choice: higher detail vs deeper penetration."
+    }
+  },
+  {
+    key: "Measure",
+    title: { cs: "MEASURE", en: "MEASURE" },
+    body: {
+      cs: "Měření vzdáleností, ploch a úhlů na zmrazeném obraze.",
+      en: "Measures distances, areas, and angles on frozen image."
+    }
+  },
+  {
+    key: "Pictogram",
+    title: { cs: "PICTOGRAMS", en: "PICTOGRAMS" },
+    body: {
+      cs: "Vkládání schématických piktogramů vyšetřované oblasti.",
+      en: "Adds body/region pictograms to documentation."
+    }
+  },
+  {
+    key: "Depth",
+    title: { cs: "DEPTH", en: "DEPTH" },
+    body: {
+      cs: "Nastavení hloubky zobrazeného pole.",
+      en: "Adjusts the imaging depth."
+    }
+  },
+  {
+    key: "Zoom",
+    title: { cs: "ZOOM", en: "ZOOM" },
+    body: {
+      cs: "Zvětšení vybrané části obrazu pro detailní posouzení.",
+      en: "Magnifies selected image region for detailed assessment."
+    }
+  },
+  {
+    key: "Single screen",
+    title: { cs: "SINGLE SCREEN", en: "SINGLE SCREEN" },
+    body: {
+      cs: "Zobrazení jednoho obrazu přes celou obrazovku.",
+      en: "Shows one image on the full screen."
+    }
+  },
+  {
+    key: "Double screen",
+    title: { cs: "DOUBLE SCREEN", en: "DOUBLE SCREEN" },
+    body: {
+      cs: "Rozdělení obrazovky na dvě zobrazovací pole.",
+      en: "Splits the screen into two display panes."
+    }
+  },
+  {
+    key: "PD",
+    title: { cs: "POWER DOPPLER", en: "POWER DOPPLER" },
+    body: {
+      cs: "Citlivé zobrazení intenzity průtoku bez informace o směru.",
+      en: "Sensitive display of flow intensity without direction information."
+    }
+  },
+  {
+    key: "CD",
+    title: { cs: "COLOUR DOPPLER", en: "COLOUR DOPPLER" },
+    body: {
+      cs: "Barevné zobrazení směru a rychlosti krevního toku.",
+      en: "Color display of blood flow direction and velocity."
+    }
+  },
+  {
+    key: "SWE",
+    title: { cs: "SHEAR WAVE ELASTOGRAPHY", en: "SHEAR WAVE ELASTOGRAPHY" },
+    body: {
+      cs: "Kvantitativní hodnocení tuhosti tkání pomocí smykových vln.",
+      en: "Quantitative tissue stiffness assessment using shear waves."
+    }
+  },
+  {
+    key: "ABC",
+    title: { cs: "ABC", en: "ABC" },
+    body: {
+      cs: "Vkládání textových poznámek přímo do obrazu.",
+      en: "Inserts text annotations directly into the image."
+    }
+  }
 ];
 
 const shoulderUltrasoundImages = [
@@ -211,9 +438,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const node = findNavItem(path);
   const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
-  const isShoulderEmpty =
-    path === "/klouby/rameno/uvod" ||
-    path === "/klouby/rameno/anatomie";
+  const isShoulderEmpty = path === "/klouby/rameno/uvod" || path === "/klouby/rameno/anatomie";
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
@@ -249,20 +474,20 @@ export default function ContentPage({ path }: ContentPageProps) {
           <h2>{lang === "cs" ? "0.1 Ultrazvukové sondy" : "0.1 Ultrasound probes"}</h2>
           <p>
             {lang === "cs"
-              ? "Před zahájením ultrazvukového vyšetření je důležité krátce se seznámit s typy ultrazvukových sond, protože jejich volba zásadně ovlivňuje kvalitu zobrazení a správnou interpretaci nálezu. V muskuloskeletální sonografii se používají základní typy sond: lineární, konvexní a vysokofrekvenční. Každá z nich má odlišné technické vlastnosti a zobrazovací charakteristiky, které je nutné znát již na začátku výuky, aby vyšetření bylo systematické, reprodukovatelné a diagnosticky přínosné."
-              : "Before starting an ultrasound examination, it is important to understand probe types, since probe selection strongly affects image quality and interpretation. In musculoskeletal ultrasound, the key probe types are linear, convex, and high-frequency."}
+              ? "V muskuloskeletální sonografii se používají tři základní typy sond: lineární, konvexní a vysokofrekvenční. Volba sondy přímo ovlivňuje kvalitu obrazu i správnou interpretaci nálezu."
+              : "In musculoskeletal ultrasound, three core probe types are used: linear, convex, and high-frequency. Probe choice directly affects image quality and interpretation."}
           </p>
           <div className={styles.articleGrid}>
             {probes.map((probe) => (
               <article key={probe.title.en} className={styles.articleCard}>
-                <ResponsiveImage
-                  image={probe.image}
-                  alt={probe.title[lang]}
-                  wrapClassName={styles.probeImageWrap}
-                />
+                <ResponsiveImage image={probe.image} alt={probe.title[lang]} wrapClassName={styles.probeImageWrap} />
                 <div className={styles.articleBody}>
                   <h3>{probe.title[lang]}</h3>
-                  <p>{probe.body[lang]}</p>
+                  <ul className={styles.compactList}>
+                    {probe.body[lang].map((line) => (
+                      <li key={line}>{line}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
@@ -284,7 +509,11 @@ export default function ContentPage({ path }: ContentPageProps) {
                 <ResponsiveImage image={movement.image} alt={movement.title[lang]} />
                 <div className={styles.articleBody}>
                   <h3>{movement.title[lang]}</h3>
-                  <p>{movement.body[lang]}</p>
+                  <ul className={styles.compactList}>
+                    {movement.body[lang].map((line) => (
+                      <li key={line}>{line}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
@@ -299,11 +528,24 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Knobologie" : "Knobology"}</h2>
+          <h2>{lang === "cs" ? "0.3 Knobologie" : "0.3 Knobology"}</h2>
+          <p>
+            {lang === "cs"
+              ? "Správná knobologie je základ kvalitního obrazu. Ovládací prvky jsou seřazené podle pořadí v textu a každý je přiřazen k odpovídajícímu obrázku."
+              : "Proper knobology is essential for image quality. Controls are ordered to match the learning text and paired with the corresponding image."}
+          </p>
           <div className={styles.knobologyGrid}>
             {knobologyItems.map((item) => (
-              <article key={item} className={styles.knobologyCard}>
-                <ResponsiveImage image={makeResponsiveImage("Knobology", item)} alt={item} />
+              <article key={item.key} className={styles.knobologyCard}>
+                <ResponsiveImage
+                  image={makeResponsiveImage("Knobology", item.key)}
+                  alt={item.title[lang]}
+                  wrapClassName={styles.knobologyImageWrap}
+                />
+                <div className={styles.articleBody}>
+                  <h3>{item.title[lang]}</h3>
+                  <p>{item.body[lang]}</p>
+                </div>
               </article>
             ))}
           </div>
