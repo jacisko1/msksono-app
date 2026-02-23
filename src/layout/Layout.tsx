@@ -1,6 +1,6 @@
 import { type CSSProperties, useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import logoMark from "../assets/logo.png";
+import logoMark from "../assets/logo-mark.svg";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { useLanguage } from "../data/language";
 import { getThemeColor, localize, navigationTree } from "../data/navigation";

@@ -127,7 +127,7 @@
 .knobologyGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 0.85rem;
+  gap: 0.9rem;
 }
 
 .knobologyCard {
@@ -140,14 +140,25 @@
 }
 
 .knobologyImageWrap {
-  min-height: 120px;
-  height: 120px;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 4 / 3;
   background: #fff;
 }
 
 .knobologyCard h3 {
   margin: 0 0 0.35rem;
   font-size: 0.92rem;
+}
+
+.knobologyCard p {
+  margin: 0;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.knobologyImageWrap .inlineImage {
+  height: 100%;
 }
 
 .shoulderUltrasoundGrid {
@@ -191,9 +202,18 @@
     height: 130px;
   }
 
+  .knobologyGrid {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  }
+
   .knobologyImageWrap {
-    min-height: 96px;
-    height: 96px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (min-width: 1025px) {
+  .knobologyGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 

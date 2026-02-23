@@ -532,7 +532,7 @@ export default function ContentPage({ path }: ContentPageProps) {
           <p>
             {lang === "cs"
               ? "Správná knobologie je základ kvalitního obrazu. Ovládací prvky jsou seřazené podle pořadí v textu a každý je přiřazen k odpovídajícímu obrázku."
-              : "Proper knobology is essential for image quality. Controls are ordered to match the learning text and paired with the corresponding image."}
+              : "Proper knobology is essential for image quality. Controls are ordered to match the learning text and paired with the corresponding image. Each card includes a brief practical note on when and why to use the setting."}
           </p>
           <div className={styles.knobologyGrid}>
             {knobologyItems.map((item) => (
