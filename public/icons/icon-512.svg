@@ -10,8 +10,8 @@
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#bg)"/>
   <g fill="#ffffff" filter="url(#glow)" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    <text x="32" y="23" font-size="12.5" font-weight="600" letter-spacing="0.4">msk</text>
+    <text x="32" y="22" font-size="13.5" font-weight="600" letter-spacing="0.4">msk</text>
     <rect x="17" y="28" width="30" height="3.2" rx="1.6" fill="#ffffff"/>
-    <text x="32" y="48" font-size="19" font-weight="800" letter-spacing="1.0">US</text>
+    <text x="32" y="49" font-size="20" font-weight="800" letter-spacing="1.0">US</text>
   </g>
 </svg>
