@@ -471,7 +471,6 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "0.1 Ultrazvukové sondy" : "0.1 Ultrasound probes"}</h2>
           <p>
             {lang === "cs"
               ? "V muskuloskeletální sonografii se používají tři základní typy sond: lineární, konvexní a vysokofrekvenční. Volba sondy přímo ovlivňuje kvalitu obrazu i správnou interpretaci nálezu."
@@ -502,7 +501,6 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "0.2 Pohyby sondou" : "0.2 Probe movements"}</h2>
           <div className={styles.articleGrid}>
             {movements.map((movement) => (
               <article key={movement.title.en} className={styles.articleCard}>
@@ -528,7 +526,6 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "0.3 Knobologie" : "0.3 Knobology"}</h2>
           <p>
             {lang === "cs"
               ? "Správná knobologie je základ kvalitního obrazu. Ovládací prvky jsou seřazené podle pořadí v textu a každý je přiřazen k odpovídajícímu obrázku."
@@ -559,7 +556,6 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Ultrazvukove obrazky ramene" : "Shoulder ultrasound images"}</h2>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {shoulderUltrasoundImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
