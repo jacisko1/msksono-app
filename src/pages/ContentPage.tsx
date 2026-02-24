@@ -32,6 +32,12 @@ interface KnobologySection {
   body: { cs: string; en: string };
 }
 
+interface ShoulderUltrasoundImage {
+  key: string;
+  title: { cs: string; en: string };
+  caption: { cs: { heading: string; bullets: string[] }; en: { heading: string; bullets: string[] } };
+}
+
 const assetPath = (folder: string, file: string) =>
   `/assets/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
 
@@ -378,40 +384,202 @@ const knobologyItems: KnobologySection[] = [
   }
 ];
 
-const shoulderUltrasoundImages = [
+const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
   {
     key: "01_anterior_view_transverse_plane",
-    title: { cs: "Predni pohled - transversalni rovina", en: "Anterior view - transverse plane" }
+    title: { cs: "Predni pohled - transversalni rovina", en: "Anterior view - transverse plane" },
+    caption: {
+      cs: {
+        heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
+        bullets: [
+          "b: šlacha dlouhé hlavy bicepsu, TM: tuberculum majus, tm: tuberculum minus.",
+          "TM a tm jsou hlavní palpační orientační body; mezi nimi je šlacha dlouhé hlavy bicepsu v intertuberkulárním (bicipitálním) sulku.",
+          "Při zvýšeném množství tekutiny je nutné odlišit fyziologické množství od synovitidy či jiné patologie.",
+          "Viditelná je i šlacha m. subscapularis a povrchová vrstva m. deltoideus jako orientační body přední části ramene."
+        ]
+      },
+      en: { heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: [] }
+    }
   },
   {
     key: "02_anterior_view_transverse_plane_2",
-    title: { cs: "Predni pohled - transversalni rovina 2", en: "Anterior view - transverse plane 2" }
+    title: { cs: "Predni pohled - transversalni rovina 2", en: "Anterior view - transverse plane 2" },
+    caption: {
+      cs: {
+        heading: "Obrázek 2. Ventrální pohled, transverzální rovina",
+        bullets: [
+          "LHBB: dlouhá hlava bicepsu, SHBB: krátká hlava bicepsu.",
+          "Distální posun sondy podél přední strany paže umožňuje zhodnocení svalového bříška m. biceps brachii (caput breve i caput longum).",
+          "Projekce je vhodná pro posouzení struktury a symetrie svalového bříška a detekci ruptur, hematomů či atrofie."
+        ]
+      },
+      en: { heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: [] }
+    }
   },
   {
     key: "03_anterior_view_longitudinal_plane",
-    title: { cs: "Predni pohled - longitudinalni rovina", en: "Anterior view - longitudinal plane" }
+    title: { cs: "Predni pohled - longitudinalni rovina", en: "Anterior view - longitudinal plane" },
+    caption: {
+      cs: {
+        heading: "Obrázek 3. Ventrální pohled, sagitální rovina",
+        bullets: [
+          "b: šlacha dlouhé hlavy bicepsu.",
+          "Přední úsek ramene v podélné rovině po natočení sondy o 90°; LHBB probíhá v intertuberkulárním (bicipitálním) sulku.",
+          "Šlacha má lineární fibrilární („špagetovitý“) vzor odpovídající zdravé a neporušené šlaše.",
+          "Projekce je vhodná pro hodnocení kontinuity a integrity šlachy a detekci tekutiny, tenosynovitidy nebo parciálních ruptur."
+        ]
+      },
+      en: { heading: "Obrázek 3. Ventrální pohled, sagitální rovina", bullets: [] }
+    }
   },
   {
     key: "04_anterior_view_longitudinal_plane_2",
-    title: { cs: "Predni pohled - longitudinalni rovina 2", en: "Anterior view - longitudinal plane 2" }
+    title: { cs: "Predni pohled - longitudinalni rovina 2", en: "Anterior view - longitudinal plane 2" },
+    caption: {
+      cs: {
+        heading: "Obrázek 4. Ventrální pohled, sagitální rovina",
+        bullets: [
+          "LHBB: myotendinózní junkce dlouhé hlavy bicepsu brachii.",
+          "Sonda je umístěna distálněji na přední straně paže pro zobrazení myotendinózního přechodu, častého místa poranění.",
+          "Šlacha přechází z jasné fibrilární struktury do hypoechogenní svalové tkáně.",
+          "Oblast je významná pro identifikaci parciálních ruptur, tendinopatie nebo svalového přepětí."
+        ]
+      },
+      en: { heading: "Obrázek 4. Ventrální pohled, sagitální rovina", bullets: [] }
+    }
   },
   {
     key: "05_lateral_view_transverse_plane",
-    title: { cs: "Lateralni pohled - transversalni rovina", en: "Lateral view - transverse plane" }
+    title: { cs: "Lateralni pohled - transversalni rovina", en: "Lateral view - transverse plane" },
+    caption: {
+      cs: {
+        heading: "Obrázek 5. Laterální pohled, transverzální rovina",
+        bullets: [
+          "Krátká osa šlachy rotátorové manžety („obraz pneumatiky“).",
+          "Integrita šlachy se hodnotí mírným tlakem sondou: zdravá šlacha odolává kompresi a zachovává zaoblený tvar.",
+          "Ruptura je měkká a snadno kompresibilní („vyfouklá pneumatika“).",
+          "Je nutné zobrazit šlachu v celém průběhu, protože ruptury nebo kalcifikace mohou být fokální."
+        ]
+      },
+      en: { heading: "Obrázek 5. Laterální pohled, transverzální rovina", bullets: [] }
+    }
   },
   {
     key: "06_lateral_view_longitudinal_plane",
-    title: { cs: "Lateralni pohled - longitudinalni rovina", en: "Lateral view - longitudinal plane" }
+    title: { cs: "Lateralni pohled - longitudinalni rovina", en: "Lateral view - longitudinal plane" },
+    caption: {
+      cs: {
+        heading: "Obrázek 6. Laterální pohled, frontální rovina",
+        bullets: [
+          "Akromion a velký hrbolek humeru jsou klíčové kostní orientační body.",
+          "V dlouhé ose je zobrazena šlacha m. supraspinatus s tvarem „ptačího zobáku“; pro kompletní vyšetření je nutný anteroposteriorní pohyb sondy.",
+          "Subakromiálně-subdeltoidní burza nad šlachou může být při zvětšení patrná (burzitida nebo jiné zánětlivé stavy).",
+          "Zobrazení je zásadní pro hodnocení tendinopatie, parciálních i full-thickness ruptur a subakromiálního impingementu."
+        ]
+      },
+      en: { heading: "Obrázek 6. Laterální pohled, frontální rovina", bullets: [] }
+    }
   },
   {
     key: "07_posterior_view_transverse_plane",
-    title: { cs: "Posteriorni pohled - transversalni rovina", en: "Posterior view - transverse plane" }
+    title: { cs: "Posteriorni pohled - transversalni rovina", en: "Posterior view - transverse plane" },
+    caption: {
+      cs: {
+        heading: "Obrázek 7. Dorzální pohled, transverzální rovina",
+        bullets: [
+          "L: labrum glenoidale.",
+          "Dorzální pohled se sondou pod hřebenem lopatky; hlavní orientační body jsou hlavice humeru a glenoid.",
+          "V horní části glenoidu je trojúhelníkovitá hyperechogenní struktura odpovídající glenoidálnímu labru.",
+          "Při zvýšeném množství tekutiny může být tekutina v okolí labra, detekce se zvýrazňuje při zevní rotaci."
+        ]
+      },
+      en: { heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: [] }
+    }
   },
   {
     key: "08_posterior_view_transverse_plane_2",
-    title: { cs: "Posteriorni pohled - transversalni rovina 2", en: "Posterior view - transverse plane 2" }
+    title: { cs: "Posteriorni pohled - transversalni rovina 2", en: "Posterior view - transverse plane 2" },
+    caption: {
+      cs: {
+        heading: "Obrázek 8. Dorzální pohled, transverzální rovina",
+        bullets: [
+          "Laterální posun sondy zobrazuje šlachu m. infraspinatus jako fibrilární strukturu překrývající zadní aspekt hlavice humeru.",
+          "Zobrazení je důležité pro hodnocení integrity šlachy při podezření na rupturu rotátorové manžety.",
+          "Při kaudálním posunu se zobrazuje šlacha m. teres minor uložená pod šlachou m. infraspinatus.",
+          "Správná identifikace obou struktur je nutná pro odlišení izolovaných šlachových lézí od kombinované patologie."
+        ]
+      },
+      en: { heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: [] }
+    }
   }
 ];
+
+const shoulderProtocolSteps = {
+  cs: [
+    {
+      view: "Ventrální pohled",
+      planes: ["Transverzální rovina", "Sagitální rovina"]
+    },
+    {
+      view: "Laterální pohled",
+      planes: ["Transverzální rovina", "Frontální rovina"]
+    },
+    {
+      view: "Dorzální pohled",
+      planes: ["Transverzální rovina"]
+    }
+  ],
+  en: [
+    {
+      view: "Ventral view",
+      planes: ["Transverse plane", "Sagittal plane"]
+    },
+    {
+      view: "Lateral view",
+      planes: ["Transverse plane", "Frontal plane"]
+    },
+    {
+      view: "Dorsal view",
+      planes: ["Transverse plane"]
+    }
+  ]
+};
+
+const shoulderIntroPoints = {
+  cs: [
+    "Ultrazvuk ramene je praktická metoda pro detailní hodnocení měkkých tkání v reálném čase.",
+    "Při správné technice přesně hodnotí šlachy rotátorové manžety, dlouhou hlavu bicepsu, burzy a svaly.",
+    "Výhodou je okamžitá korelace obrazu s bolestí, funkční manévry a porovnání s kontralaterální stranou.",
+    "Kvalitu vyšetření podporuje standardizovaná poloha pacienta a systematický postup od kostních orientačních bodů.",
+    "Skenování má probíhat v podélné i příčné rovině s aktivní prací sondou (sliding, rocking, fanning) kvůli kolmé incidenci a minimalizaci anizotropie.",
+    "Nedílnou součástí je dynamické vyšetření a komprese/dekomprese při hodnocení tekutinových kolekcí.",
+    "Zásadní je správné nastavení přístroje (hloubka, fokus, gain), použití vysokofrekvenční lineární sondy a průběžná úprava podle oblasti."
+  ],
+  en: [
+    "Shoulder ultrasound is a practical real-time method for detailed evaluation of soft tissues.",
+    "With proper technique, it accurately assesses rotator cuff tendons, the long head of the biceps, bursae, and muscles.",
+    "Key advantages are immediate pain-image correlation, dynamic maneuvers, and comparison with the contralateral side.",
+    "High-quality examination requires standardized patient positioning and a systematic approach from clear bony landmarks.",
+    "Scanning should be done in both longitudinal and transverse planes with active probe handling (sliding, rocking, fanning) to reduce anisotropy.",
+    "Dynamic assessment and probe compression/decompression are integral when evaluating fluid collections.",
+    "Correct machine settings (depth, focus, gain), a high-frequency linear probe, and continuous optimization are essential."
+  ]
+};
+
+const shoulderPathologyPoints = {
+  cs: [
+    "Nejčastěji se nachází postižení rotátorové manžety: tendinopatie m. supraspinatus, parciální i kompletní ruptury.",
+    "Časté je postižení šlachy dlouhé hlavy bicepsu včetně tenosynovitidy, subluxace a ruptury.",
+    "Velmi běžným nálezem je subakromiálně-subdeltoidní burzitida, často spolu s impingement syndromem.",
+    "Další nálezy zahrnují kalcifikující tendinitidu, synovitidu, kloubní výpotek a u chronických potíží degenerativní změny, entezopatie, atrofii či tukovou infiltraci svalů."
+  ],
+  en: [
+    "Most common findings involve rotator cuff disease: supraspinatus tendinopathy and partial or full-thickness tears.",
+    "Pathology of the long head of the biceps is also frequent, including tenosynovitis, subluxation, and rupture.",
+    "Subacromial-subdeltoid bursitis is very common, often combined with impingement syndrome.",
+    "Other findings include calcific tendinitis, synovitis, joint effusion, and in chronic cases degenerative changes, enthesopathy, muscle atrophy, or fatty infiltration."
+  ]
+};
 
 function ResponsiveImage({
   image,
@@ -438,7 +606,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const node = findNavItem(path);
   const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
-  const isShoulderEmpty = path === "/klouby/rameno/uvod" || path === "/klouby/rameno/anatomie";
+  const isShoulderIntroPage = path === "/klouby/rameno/uvod";
+  const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
@@ -528,8 +697,8 @@ export default function ContentPage({ path }: ContentPageProps) {
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
-              ? "Správná knobologie je základ kvalitního obrazu. Ovládací prvky jsou seřazené podle pořadí v textu a každý je přiřazen k odpovídajícímu obrázku."
-              : "Proper knobology is essential for image quality. Controls are ordered to match the learning text and paired with the corresponding image. Each card includes a brief practical note on when and why to use the setting."}
+              ? "Správná knobologie je základ kvalitního obrazu."
+              : "Proper knobology is essential for image quality. Each card includes a brief practical note on when and why to use the setting."}
           </p>
           <div className={styles.knobologyGrid}>
             {knobologyItems.map((item) => (
@@ -556,6 +725,19 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
+          <ol className={styles.compactList}>
+            {shoulderProtocolSteps[lang].map((step) => (
+              <li key={step.view}>
+                {step.view}
+                <ol type="A" className={styles.compactList}>
+                  {step.planes.map((plane) => (
+                    <li key={plane}>{plane}</li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ol>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {shoulderUltrasoundImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
@@ -564,6 +746,16 @@ export default function ContentPage({ path }: ContentPageProps) {
                   alt={item.title[lang]}
                   wrapClassName={styles.shoulderUltrasoundImageWrap}
                 />
+                <div className={styles.articleBody}>
+                  <h3>{item.caption[lang].heading}</h3>
+                  {item.caption[lang].bullets.length > 0 && (
+                    <ul className={styles.compactList}>
+                      {item.caption[lang].bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </article>
             ))}
           </div>
@@ -572,7 +764,29 @@ export default function ContentPage({ path }: ContentPageProps) {
     );
   }
 
-  if (isShoulderEmpty) {
+  if (isShoulderIntroPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Úvod" : "Introduction"}</h2>
+          <ul className={styles.compactList}>
+            {shoulderIntroPoints[lang].map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+          <h2>{lang === "cs" ? "Nejčastější patologie" : "Most common pathologies"}</h2>
+          <ul className={styles.compactList}>
+            {shoulderPathologyPoints[lang].map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </section>
+      </section>
+    );
+  }
+
+  if (isShoulderAnatomyPage) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />

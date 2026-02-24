@@ -55,7 +55,7 @@ export const navigationTree: NavItem[] = [
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/rameno/anatomie" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
           {
-            title: { cs: "Protokol", en: "Examination protocol" },
+            title: { cs: "Protokol", en: "Protocol" },
             path: "/klouby/rameno/vysetrovaci-protokol"
           }
         ]
