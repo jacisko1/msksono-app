@@ -169,6 +169,7 @@
   padding: 0;
   border: 0;
   background: transparent;
+  width: 100%;
 }
 
 .shoulderUltrasoundImageWrap {
@@ -176,10 +177,14 @@
   height: auto;
   border-radius: 18px;
   background: transparent;
+  display: block;
+  width: 100%;
 }
 
 .shoulderUltrasoundImageWrap .inlineImage {
   height: auto;
+  width: 100%;
+  max-height: none;
   object-fit: contain;
   border-radius: inherit;
 }
