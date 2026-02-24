@@ -60,11 +60,56 @@ export const navigationTree: NavItem[] = [
           }
         ]
       },
-      { title: { cs: "Loket", en: "Elbow" }, path: "/klouby/loket" },
-      { title: { cs: "Zápěstí a ruka", en: "Wrist and hand" }, path: "/klouby/zapesti" },
-      { title: { cs: "Kyčel", en: "Hip" }, path: "/klouby/kycel" },
-      { title: { cs: "Koleno", en: "Knee" }, path: "/klouby/koleno" },
-      { title: { cs: "Kotník a noha", en: "Ankle and foot" }, path: "/klouby/kotnik" }
+      {
+        title: { cs: "Loket", en: "Elbow" },
+        path: "/klouby/loket",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/loket/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/loket/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/loket/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/loket/vysetrovaci-protokol" }
+        ]
+      },
+      {
+        title: { cs: "Zápěstí a ruka", en: "Wrist and hand" },
+        path: "/klouby/zapesti",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/zapesti/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/zapesti/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/zapesti/vysetrovaci-protokol" }
+        ]
+      },
+      {
+        title: { cs: "Kyčel", en: "Hip" },
+        path: "/klouby/kycel",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kycel/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kycel/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kycel/vysetrovaci-protokol" }
+        ]
+      },
+      {
+        title: { cs: "Koleno", en: "Knee" },
+        path: "/klouby/koleno",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/koleno/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/koleno/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/koleno/vysetrovaci-protokol" }
+        ]
+      },
+      {
+        title: { cs: "Kotník a noha", en: "Ankle and foot" },
+        path: "/klouby/kotnik",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kotnik/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kotnik/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kotnik/vysetrovaci-protokol" }
+        ]
+      }
     ])
   },
   {

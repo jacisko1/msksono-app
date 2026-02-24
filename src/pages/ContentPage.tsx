@@ -39,13 +39,84 @@ interface ShoulderUltrasoundImage {
 }
 
 const assetPath = (folder: string, file: string) =>
-  `/assets/${encodeURIComponent(folder)}/${encodeURIComponent(file)}`;
+  `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
 
 const makeResponsiveImage = (folder: string, baseName: string): ResponsiveImageSet => ({
   mobile: assetPath(folder, `${baseName}_mobile.webp`),
   tablet: assetPath(folder, `${baseName}_tablet.webp`),
   pc: assetPath(folder, `${baseName}_pc.webp`)
 });
+
+const makeResponsiveImagePhone = (folder: string, baseName: string): ResponsiveImageSet => ({
+  mobile: assetPath(folder, `${baseName}_phone.webp`),
+  tablet: assetPath(folder, `${baseName}_tablet.webp`),
+  pc: assetPath(folder, `${baseName}_pc.webp`)
+});
+
+const jointProtocolImages: Record<string, { folder: string; keys: string[] }> = {
+  loket: {
+    folder: "02_Elbow/protokol",
+    keys: ["01_01", "01_05", "02_02", "02_06", "03_03", "04_04"]
+  },
+  zapesti: {
+    folder: "03_Wrist/protokol",
+    keys: [
+      "01_Obrzek1_v2",
+      "02_Obrzek2",
+      "03_Obrzek3",
+      "04_Obrzek4",
+      "05_Obrzek5",
+      "06_Obrzek6",
+      "07_Obrzek7",
+      "08_Obrzek8"
+    ]
+  },
+  kycel: {
+    folder: "04_Hip/protokol",
+    keys: [
+      "01_Obrzek1",
+      "02_Obrzek10",
+      "03_Obrzek11",
+      "04_Obrzek12",
+      "05_Obrzek13",
+      "06_Obrzek2",
+      "07_Obrzek3",
+      "08_Obrzek4",
+      "09_Obrzek5",
+      "10_Obrzek6",
+      "11_Obrzek7",
+      "12_Obrzek8",
+      "13_Obrzek9"
+    ]
+  },
+  koleno: {
+    folder: "05_Knee/protokol",
+    keys: [
+      "01_Obrzek1",
+      "02_Obrzek2",
+      "03_Obrzek3",
+      "04_Obrzek4",
+      "05_Obrzek5",
+      "06_Obrzek6",
+      "07_Obrzek7",
+      "08_Obrzek8",
+      "09_Obrzek9"
+    ]
+  },
+  kotnik: {
+    folder: "06_Ankle/protokol",
+    keys: [
+      "01_Obrzek1",
+      "02_Obrzek2",
+      "03_Obrzek3",
+      "04_Obrzek4",
+      "05_Obrzek5",
+      "06_Obrzek6",
+      "07_Obrzek7",
+      "08_Obrzek8"
+    ]
+  }
+};
 
 const probes: ProbeSection[] = [
   {
@@ -608,6 +679,9 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
+  const jointProtocolMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
+  const jointKey = jointProtocolMatch?.[1];
+  const jointProtocol = jointKey ? jointProtocolImages[jointKey] : undefined;
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
@@ -756,6 +830,28 @@ export default function ContentPage({ path }: ContentPageProps) {
                     </ul>
                   )}
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (jointProtocol) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
+            {jointProtocol.keys.map((key) => (
+              <article key={key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+                <ResponsiveImage
+                  image={makeResponsiveImagePhone(jointProtocol.folder, key)}
+                  alt={`${localize(node.title, lang)} ${key}`}
+                  wrapClassName={styles.shoulderUltrasoundImageWrap}
+                />
               </article>
             ))}
           </div>
