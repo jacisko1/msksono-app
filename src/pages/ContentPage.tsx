@@ -269,6 +269,191 @@ const jointContentBySlug: Record<string, JointContent> = {
   }
 };
 
+const jointProtocolExtraBullets: Record<string, Record<string, string[]>> = {
+  loket: {
+    "01_01": [
+      "Přední příčný řez loktem ukazuje distální epifýzu humeru s vrstvou kloubní chrupavky.",
+      "V projekci jsou současně dobře patrné neurovaskulární struktury a okolní svalové skupiny."
+    ],
+    "02_02": [
+      "Podélná radiální projekce zobrazuje radiohumerální skloubení, radiální jamku a přední recesus.",
+      "Je vhodná pro detekci kloubní tekutiny a synovitických změn."
+    ],
+    "03_03": [
+      "Podélná ulnární projekce zobrazuje humeroulnární skloubení, fossa coronoidea a přední synoviální recesus.",
+      "Doplňuje ventrální hodnocení o ulnární část kloubu."
+    ],
+    "04_04": [
+      "Sonda je vedena v dlouhé ose flexorově-pronátorové skupiny nad mediálním epikondylem.",
+      "Klíčový pohled pro mediální epikondylitidu, úponové změny a hodnocení MCL."
+    ],
+    "01_05": [
+      "Sonda sleduje extenzorový aparát v dlouhé ose od laterálního epikondylu.",
+      "Projekce je zásadní pro diagnostiku laterální epikondylitidy a poranění CET."
+    ],
+    "02_06": [
+      "Zadní podélná projekce přes olecranon a tricepsovou šlachu hodnotí zadní recesus.",
+      "Vhodná pro výpotek, burzitidu i poranění šlachy m. triceps brachii."
+    ]
+  },
+  zapesti: {
+    "01_Obrzek1_v2": [
+      "Klíčové orientační body tvoří os pisiforme (ulnárně) a os scaphoideum (radiálně).",
+      "Projekce je zásadní pro kompresi nervů, tenosynovitidu a gangliové cysty."
+    ],
+    "02_Obrzek2": [
+      "Nerv je sledován proximálně z karpálního tunelu do distálního předloktí mezi FDS a FDP.",
+      "V této úrovni má typický fascikulární („voštinový“) vzor."
+    ],
+    "03_Obrzek3": [
+      "Podélně je n. medianus patrný jako pruhovitá struktura s paralelními echogenními liniemi.",
+      "Hodnotí se kontinuita a změny průběhu při vstupu do karpálního tunelu."
+    ],
+    "04_Obrzek4": [
+      "Na úrovni distálního radia lze zobrazit všech šest extenzorových kompartmentů.",
+      "Pohled je důležitý pro tenosynovitidy, subluxace a degenerativní změny šlach."
+    ],
+    "05_Obrzek5": [
+      "Druhý extenzorový kompartment leží laterálně od Listerova hrbolku.",
+      "Obsahuje ECRL a ECRB a je častým místem přetížení."
+    ],
+    "06_Obrzek6": [
+      "První extenzorový kompartment obsahuje APL a EPB ve společné pochvě.",
+      "Typická projekce pro De Quervainovu tenosynovitidu."
+    ],
+    "07_Obrzek7": [
+      "Šestý extenzorový kompartment nad ulnou obsahuje šlachu ECU.",
+      "Vhodné pro hodnocení tenosynovitidy, instability a subluxace ECU."
+    ],
+    "08_Obrzek8": [
+      "Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub.",
+      "Umožní detekovat výpotek, zánět i poruchu kontinuity šlach."
+    ]
+  },
+  kycel: {
+    "01_Obrzek1": [
+      "Povrchově je patrný m. sartorius, pod ním m. rectus femoris s centrální šlachou.",
+      "Vhodné pro hodnocení myotendinózního přechodu a přetížení m. rectus femoris."
+    ],
+    "07_Obrzek3": [
+      "Jde o mapování popisu obrázku 2 na další použitý snímek podle požadovaného posunu.",
+      "Hodnotí se úpon přímé šlachy na SIAI a možné avulzní/apofyzeální léze."
+    ],
+    "08_Obrzek4": [
+      "Šikmá ventrální projekce zobrazuje femoroacetabulární kloub a acetabulární labrum.",
+      "Důležitá pro výpotek, degeneraci labra a impingement."
+    ],
+    "09_Obrzek5": [
+      "Distálnější šikmý řez přes přední pouzdro a recesus kyčle.",
+      "Vhodný pro synovitidu, výpotek a hodnocení iliofemorálního vazu."
+    ],
+    "10_Obrzek6": [
+      "Distální laterální referenční řez přes m. vastus lateralis a kortikalis femuru.",
+      "Slouží k orientaci před proximálním posunem k velkému trochanteru."
+    ],
+    "11_Obrzek7": [
+      "Při proximálním posunu se tvar kosti mění na trojúhelníkový znak oblasti trochanteru.",
+      "Pomáhá správně lokalizovat trochanterickou oblast."
+    ],
+    "12_Obrzek8": [
+      "Šikmá laterální projekce na přední fasetu velkého trochanteru.",
+      "Hodnotí šlachu m. gluteus minimus a změny typu tendinopatie."
+    ],
+    "13_Obrzek9": [
+      "Detail trochanterické oblasti vhodný pro gluteální šlachy a okolní měkké tkáně.",
+      "Užitečný při laterální bolesti kyčle."
+    ],
+    "02_Obrzek10": [
+      "Příčný dorzální řez se „windmill sign“ pro lokalizaci n. ischiadicus.",
+      "Nerv je hodnocen mezi hamstringy s dnem tvořeným m. adductor magnus."
+    ],
+    "03_Obrzek11": [
+      "Proximálnější řez přes tuber ischiadicum a společný úpon hamstringů.",
+      "Důležitý pro tendinopatii, parciální ruptury a avulzní poranění."
+    ],
+    "04_Obrzek12": [
+      "Podélná projekce sedacího nervu s fascikulární strukturou mezi svaly zadního stehna.",
+      "Vhodná pro kontinuity nervu a patologické změny."
+    ],
+    "05_Obrzek13": [
+      "Podélný pohled na úpon hamstringů na tuber ischiadicum.",
+      "Klíčový pro detekci tendinopatie, parciálních ruptur i kompletních avulzí."
+    ]
+  },
+  koleno: {
+    "01_Obrzek1": [
+      "Příčný suprapatelární řez kvadricepsem nad femurem slouží jako orientační start vyšetření.",
+      "Vhodný pro hodnocení svalové struktury a poranění."
+    ],
+    "02_Obrzek2": [
+      "Podélný suprapatelární řez přes šlachu kvadricepsu a suprapatelární recesus.",
+      "Klíčový pro výpotek, synoviální hypertrofii a zánětlivé změny."
+    ],
+    "03_Obrzek3": [
+      "Příčný infrapatelární řez patelární šlachou a Hoffovým tukovým tělesem.",
+      "Důležitý pro patelární tendinopatii a impingement tukového tělesa."
+    ],
+    "04_Obrzek4": [
+      "Podélný infrapatelární řez ligamentum patellae mezi patelou a tibií.",
+      "Vhodný pro parciální ruptury, entezopatii a úponové změny."
+    ],
+    "05_Obrzek5": [
+      "Mediální frontální projekce hodnotí MCL, mediální meniskus a mediální recesus.",
+      "Důležitá pro extruzi menisku a kapsulární změny."
+    ],
+    "06_Obrzek6": [
+      "Laterální frontální projekce zobrazuje LCL od femuru k hlavičce fibuly.",
+      "Klíčová pro poranění LCL a fibulárního úponu."
+    ],
+    "07_Obrzek7": [
+      "Dorzální příčný řez se znakem „cherry on top“ pro orientaci semitendinosu.",
+      "Usnadňuje navazující skenování mediálních hamstringů."
+    ],
+    "08_Obrzek8": [
+      "Dorzální distální řez mezi SM a mediální hlavou gastrocnemia.",
+      "Typická lokalizace Bakerovy cysty a tekutinových kolekcí."
+    ],
+    "09_Obrzek9": [
+      "Dorzální laterální řez v oblasti fossa poplitea pro tibiální a společný peroneální nerv.",
+      "Důležitý pro útlakové a traumatické neuropatie."
+    ]
+  },
+  kotnik: {
+    "01_Obrzek1": [
+      "Podélná ventrální projekce přes EHL, přední recesus a chrupavku talu.",
+      "Vhodná pro výpotek, synoviální hypertrofii i hodnocení chrupavky."
+    ],
+    "02_Obrzek2": [
+      "Příčný ventrální řez zobrazuje TA, EHL a EDL nad klenbou talu.",
+      "Klíčový pohled pro tenosynovitidy a tendinopatie extenzorů."
+    ],
+    "03_Obrzek3": [
+      "Mediální příčný řez tarzálním tunelem se šlachami TP/FDL/FHL a neurovaskulárním svazkem.",
+      "Důležitý pro syndrom tarzálního tunelu a patologie flexorových šlach."
+    ],
+    "04_Obrzek4": [
+      "Laterální příčný řez přes ATFL mezi fibulou a talem.",
+      "Zásadní pro distorze laterálního hlezna a hodnocení kontinuity vazu."
+    ],
+    "05_Obrzek5": [
+      "Dorzální podélná projekce Achillovy šlachy nad Kagerovým tukovým tělesem.",
+      "Hodnotí tendinopatii, ruptury a retrocalcaneární burzitidu."
+    ],
+    "06_Obrzek6": [
+      "Proximálnější podélná projekce svalové skupiny triceps surae.",
+      "Vhodná pro svalové ruptury, hematomy a asymetrii svalů."
+    ],
+    "07_Obrzek7": [
+      "Dorzální příčný řez Achillovou šlachou.",
+      "Pomáhá hodnotit šířku, echostrukturu i okolní měkké tkáně."
+    ],
+    "08_Obrzek8": [
+      "Dorzální příčný pohled na svaly triceps surae.",
+      "Vhodný pro myotendinózní poranění, chronickou atrofii a fibrózu."
+    ]
+  }
+};
+
 const probes: ProbeSection[] = [
   {
     title: { cs: "Vysokofrekvenční sonda", en: "High-frequency probe" },
@@ -1019,7 +1204,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                 <div className={styles.articleBody}>
                   <h3>{item.heading}</h3>
                   <ul className={styles.compactList}>
-                    {item.bullets.map((bullet) => (
+                    {[...item.bullets, ...(jointProtocolExtraBullets[jointProtocolMatch[1]]?.[item.key] ?? [])].map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
