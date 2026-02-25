@@ -38,6 +38,25 @@ interface ShoulderUltrasoundImage {
   caption: { cs: { heading: string; bullets: string[] }; en: { heading: string; bullets: string[] } };
 }
 
+interface ProtocolStep {
+  view: string;
+  planes: string[];
+}
+
+interface JointProtocolImage {
+  key: string;
+  heading: string;
+  bullets: string[];
+}
+
+interface JointContent {
+  folder: string;
+  introPoints: string[];
+  pathologyPoints: string[];
+  protocolSteps: ProtocolStep[];
+  protocolImages: JointProtocolImage[];
+}
+
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
 
@@ -53,67 +72,199 @@ const makeResponsiveImagePhone = (folder: string, baseName: string): ResponsiveI
   pc: assetPath(folder, `${baseName}_pc.webp`)
 });
 
-const jointProtocolImages: Record<string, { folder: string; keys: string[] }> = {
+const localized = <T,>(value: T) => ({ cs: value, en: value });
+
+const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
-    keys: ["01_01", "01_05", "02_02", "02_06", "03_03", "04_04"]
+    introPoints: [
+      "Ultrazvukové vyšetření loketního kloubu je praktická metoda pro detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí šlachy flexorového i extenzorového aparátu, vazy, nervy i burzy a umožňuje přímou korelaci nálezu s bolestí a porovnání s druhou stranou.",
+      "Kvalitní vyšetření vyžaduje standardizovanou polohu pacienta, systematický postup od kostních orientačních bodů (epikondyly humeru, olecranon, hlavice radia) a skenování v podélné i příčné rovině s aktivní prací se sondou (sliding, rocking, fanning) pro minimalizaci anizotropie.",
+      "Dynamické manévry (flexe/extenze, pronace/supinace) pomáhají zachytit patologii šlach, subluxaci n. ulnaris v kubitálním tunelu i poruchy stability lokte; při tekutinových kolekcích je vhodná komprese/dekomprese pro odlišení výpotku, synovitidy nebo burzitidy od pevné tkáně.",
+      "Zásadní je správné nastavení přístroje (hloubka, fokus, gain) a použití vysokofrekvenční lineární sondy; systematičnost, porovnání s kontralaterální stranou a znalost artefaktů jsou klíčové pro spolehlivou interpretaci."
+    ],
+    pathologyPoints: [
+      "Nejčastější jsou tendinopatie, parciální ruptury a entezopatie v oblasti laterálního a mediálního epikondylu (společný extenzorový/flexorový úpon), dále postižení šlachy m. triceps brachii.",
+      "Časté jsou také burzitida olecrani, synovitida a kloubní výpotek v předním i zadním recesu lokte.",
+      "Významné je hodnocení nervových struktur, zejména n. ulnaris v kubitálním tunelu (ztluštění, změny echogenity, dynamická subluxace).",
+      "U chronických obtíží lze nalézt degenerativní změny šlach, kalcifikace, nepravidelnosti kortikalis v místech úponů a změny echotextury svalů."
+    ],
+    protocolSteps: [
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Mediální pohled", planes: ["Frontální rovina"] },
+      { view: "Laterální pohled", planes: ["Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Sagitální rovina"] }
+    ],
+    protocolImages: [
+      {
+        key: "01_01",
+        heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
+        bullets: [
+          "b: distální šlacha bicepsu brachii, a: arteria brachialis, m: nervus medianus, c: chrupavka. Přední příčný řez loktem s přehledem radiohumerální oblasti, neurovaskulárních struktur a chrupavky."
+        ]
+      },
+      {
+        key: "02_02",
+        heading: "Obrázek 2. Ventrální pohled, sagitální rovina, radiální strana",
+        bullets: [
+          "c: chrupavka, f: tekutina v kloubu. Podélný řez radiohumerálním skloubením vhodný pro hodnocení tekutiny v radiální jamce a předním recesu."
+        ]
+      },
+      {
+        key: "03_03",
+        heading: "Obrázek 3. Ventrální pohled, sagitální rovina, ulnární strana",
+        bullets: [
+          "c: chrupavka, f: tekutina v kloubu. Podélný řez humeroulnárním skloubením s hodnocením fossa coronoidea a předního synoviálního recesu."
+        ]
+      },
+      {
+        key: "04_04",
+        heading: "Obrázek 4. Mediální pohled, frontální rovina",
+        bullets: [
+          "CFT: společná flexorová šlacha. Projekce mediální části lokte pro hodnocení úponu flexorů, MCL a nálezů typu mediální epikondylitida."
+        ]
+      },
+      {
+        key: "01_05",
+        heading: "Obrázek 5. Laterální pohled, frontální rovina",
+        bullets: [
+          "CET: společná šlacha extenzorů. Klíčová projekce pro laterální epikondylitidu, integritu extenzorového úponu a laterálního kolaterálního vazu."
+        ]
+      },
+      {
+        key: "02_06",
+        heading: "Obrázek 6. Dorzální pohled, sagitální rovina",
+        bullets: [
+          "f: tekutina v kloubu. Zadní podélná projekce přes olecranon a šlachu tricepsu pro hodnocení zadního recesu, výpotku a burzitidy."
+        ]
+      }
+    ]
   },
   zapesti: {
     folder: "03_Wrist/protokol",
-    keys: [
-      "01_Obrzek1_v2",
-      "02_Obrzek2",
-      "03_Obrzek3",
-      "04_Obrzek4",
-      "05_Obrzek5",
-      "06_Obrzek6",
-      "07_Obrzek7",
-      "08_Obrzek8"
+    introPoints: [
+      "Ultrazvuk zápěstí umožňuje detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí flexorové a extenzorové šlachy, vazy, nervy i synoviální pochvy.",
+      "Zásadní je standardizovaná poloha pacienta a systematické skenování od kostních orientačních bodů (distální radius/ulna, karpální kosti, karpální tunel) v podélné i příčné rovině s aktivní prací se sondou pro omezení anizotropie.",
+      "Dynamické vyšetření (flexe/extenze, radiální/ulnární dukce) pomáhá odhalit instabilitu šlach, patologii extenzorových kompartmentů a změny v oblasti karpálního tunelu včetně komprese n. medianus.",
+      "Správné nastavení (hloubka, fokus, gain), vysokofrekvenční lineární sonda a srovnání s druhostranným zápěstím jsou klíčové pro kvalitní interpretaci."
+    ],
+    pathologyPoints: [
+      "Nejčastější jsou tendinopatie a tenosynovitidy flexorů/extenzorů, zejména v extenzorových kompartmentech a v karpálním tunelu.",
+      "Častým nálezem jsou gangliové cysty jako ohraničené anechogenní/hypoechogenní léze s posteriorním zesílením.",
+      "Běžné jsou synovitida a výpotek radiokarpálního či mediokarpálního kloubu.",
+      "U n. medianus v karpálním tunelu lze zachytit známky útlaku (ztluštění, změna echogenity, alterace tvaru); u chronických stavů degenerativní změny a kalcifikace."
+    ],
+    protocolSteps: [
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina", "Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina"] }
+    ],
+    protocolImages: [
+      { key: "01_Obrzek1_v2", heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: ["fcr: flexor carpi radialis, m: n. medianus, a: a. ulnaris, u: n. ulnaris, t: flexor tendon. Projekce karpálního tunelu a Guyonova kanálu pro hodnocení komprese nervů, tenosynovitidy a ganglií."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["m: nervus medianus. Proximální sledování n. medianus z karpálního tunelu do distálního předloktí mezi FDS a FDP."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Ventrální pohled, sagitální rovina", bullets: ["m: nervus medianus. Podélné zobrazení fascikulární architektury n. medianus při vstupu do karpálního tunelu."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Dorzální pohled, transverzální rovina", bullets: ["ECU, EDM, EDC, EI, EPL, ECRB, ECRL, EPB, APL. Přehled extenzorových kompartmentů na úrovni distálního radia."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, transverzální rovina", bullets: ["ECRB, ECRL. Druhý extenzorový kompartment laterálně od Listerova hrbolku, vhodný pro tenosynovitidu a přetížení."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, transverzální rovina", bullets: ["EPB, APL. První extenzorový kompartment, typická projekce pro De Quervainovu tenosynovitidu."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["ECU: extensor carpi ulnaris. Šestý extenzorový kompartment pro hodnocení instability/subluxace ECU a tenosynovitidy."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, sagitální rovina", bullets: ["Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub s hodnocením tekutiny, zánětu a kontinuity šlach."] }
     ]
   },
   kycel: {
     folder: "04_Hip/protokol",
-    keys: [
-      "01_Obrzek1",
-      "02_Obrzek10",
-      "03_Obrzek11",
-      "04_Obrzek12",
-      "05_Obrzek13",
-      "06_Obrzek2",
-      "07_Obrzek3",
-      "08_Obrzek4",
-      "09_Obrzek5",
-      "10_Obrzek6",
-      "11_Obrzek7",
-      "12_Obrzek8",
-      "13_Obrzek9"
+    introPoints: [
+      "Ultrazvuk kyčle umožňuje hodnocení měkkých tkání v reálném čase a přináší informace o kloubním pouzdru, synovii, burzách, svalech a šlachách, zejména flexorového a abduktorového aparátu.",
+      "Pro kvalitní vyšetření je zásadní systematický postup od kostních orientačních bodů (hlavice/krček femuru, acetabulum, velký trochanter) a skenování v podélné i příčné rovině se správnou prací se sondou.",
+      "Dynamické manévry (flexe, extenze, abdukce, addukce, rotace) pomáhají posoudit snapping fenomén, patologický pohyb šlach i iritaci burz; komprese/dekomprese napomáhá odlišení tekutiny od pevné tkáně.",
+      "Nastavení přístroje (hloubka, fokus, gain) je klíčové kvůli hlubším strukturám; dle oblasti je vhodná lineární nebo konvexní sonda."
+    ],
+    pathologyPoints: [
+      "Časté jsou kloubní výpotek a synovitida v oblasti předního recesu kyčle.",
+      "Velmi časté je postižení periartikulárních struktur v oblasti velkého trochanteru, zejména tendinopatie/parciální ruptury šlach m. gluteus medius a minimus, často s trochanterickou burzitidou.",
+      "Další nálezy zahrnují tendinopatii m. iliopsoas a iliopsoovou burzitidu, často s bolestí v třísle a snapping fenoménem.",
+      "U chronických potíží lze nalézt entezopatie, kalcifikace, degenerativní změny šlach a změny echotextury svalů včetně atrofie."
+    ],
+    protocolSteps: [
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Šikmá rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina", "Šikmá rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] }
+    ],
+    protocolImages: [
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: ["T: šlacha m. rectus femoris. Zobrazení myotendinózního přechodu m. rectus femoris pod m. sartorius."] },
+      { key: "07_Obrzek3", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["T: šlacha m. rectus femoris, SIAI: spina iliaca anterior inferior. Hodnocení úponu přímé šlachy a apofyzeálních/avulzních lézí."] },
+      { key: "08_Obrzek4", heading: "Obrázek 3. Ventrální pohled, šikmá rovina", bullets: ["IFL: iliofemorální vaz, A: acetabulum, L: labrum, RF: rectus femoris. Projekce femoroacetabulárního kloubu pro hodnocení labra a výpotku."] },
+      { key: "09_Obrzek5", heading: "Obrázek 4. Ventrální pohled, šikmá rovina", bullets: ["IFL: iliofemorální vaz. Distálnější šikmý řez pro hodnocení předního recesu, synovitidy a pouzdra."] },
+      { key: "10_Obrzek6", heading: "Obrázek 5. Laterální pohled, transverzální rovina", bullets: ["Distální referenční řez přes femur a m. vastus lateralis, vhodný pro orientaci před proximálním sledováním."] },
+      { key: "11_Obrzek7", heading: "Obrázek 6. Laterální pohled, transverzální rovina", bullets: ["Proximálnější řez s přechodem tvaru kosti do trojúhelníkového znaku oblasti velkého trochanteru."] },
+      { key: "12_Obrzek8", heading: "Obrázek 7. Laterální pohled, šikmá rovina", bullets: ["TFL: tensor fasciae latae, GM: gluteus minimus. Přední faseta trochanteru pro hodnocení gluteální tendinopatie."] },
+      { key: "13_Obrzek9", heading: "Obrázek 8. Laterální pohled, šikmá rovina", bullets: ["Detail přední fasety trochanteru, šlach gluteálního aparátu a okolních měkkých tkání."] },
+      { key: "02_Obrzek10", heading: "Obrázek 9. Dorzální pohled, transverzální rovina", bullets: ["N: nervus ischiadicus. Příčný řez se „windmill sign“ mezi hamstringy pro lokalizaci sedacího nervu."] },
+      { key: "03_Obrzek11", heading: "Obrázek 10. Dorzální pohled, transverzální rovina", bullets: ["T: šlacha hamstringů. Proximální řez u tuber ischiadicum pro tendinopatii či avulzi hamstringů."] },
+      { key: "04_Obrzek12", heading: "Obrázek 11. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce sedacího nervu s hodnocením kontinuity, fascikulární struktury a pohyblivosti."] },
+      { key: "05_Obrzek13", heading: "Obrázek 12. Dorzální pohled, sagitální rovina", bullets: ["T: šlacha hamstringů. Podélný pohled na úpon hamstringů na tuber ischiadicum pro hodnocení ruptur a tendinopatie."] }
     ]
   },
   koleno: {
     folder: "05_Knee/protokol",
-    keys: [
-      "01_Obrzek1",
-      "02_Obrzek2",
-      "03_Obrzek3",
-      "04_Obrzek4",
-      "05_Obrzek5",
-      "06_Obrzek6",
-      "07_Obrzek7",
-      "08_Obrzek8",
-      "09_Obrzek9"
+    introPoints: [
+      "Ultrazvuk kolene je praktická metoda pro hodnocení měkkých tkání v reálném čase, zejména extenzorového aparátu, burz, synovie a periartikulárních struktur.",
+      "Kvalitní vyšetření vyžaduje systematický postup od orientačních bodů (patela, femorální kondyly, tibiální plato, tuberositas tibiae) a vyšetření v podélné i příčné rovině.",
+      "Dynamické manévry (flexe/extenze) umožňují posoudit pohyb pately, stabilitu šlach i iritaci burz, komprese/dekomprese pomáhá odlišit tekutinové kolekce.",
+      "Správné nastavení hloubky, fokusu a gainu je klíčové; standardně lineární sonda, u hlubších struktur dle potřeby i konvexní."
+    ],
+    pathologyPoints: [
+      "Nejčastěji se nachází kloubní výpotek a synovitida, hlavně v suprapatelárním recesu.",
+      "Běžné je postižení šlachy m. quadriceps femoris a ligamentum patellae (tendinopatie, parciální ruptury, entezopatie).",
+      "Časté jsou burzitidy (prepatelární, infrapatelární, anserinní).",
+      "U chronických obtíží jsou přítomny degenerativní změny šlach, kalcifikace, změny kortikalis v úponech a změny echotextury svalů."
+    ],
+    protocolSteps: [
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Mediální pohled", planes: ["Frontální rovina"] },
+      { view: "Laterální pohled", planes: ["Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina"] }
+    ],
+    protocolImages: [
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, transverzální rovina, suprapatelárně", bullets: ["v. lat: vastus lateralis, v. med: vastus medialis. Příčný řez kvadricepsem a femurem pro orientaci a hodnocení svalových poranění."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, sagitální rovina, suprapatelárně", bullets: ["spfp: suprapatelární tukové těleso, pffp: prefemorální tukové těleso, *: suprapatelární recessus. Hodnocení výpotku a synoviální proliferace."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Ventrální pohled, transverzální rovina, infrapatelárně", bullets: ["Příčný řez patelární šlachou a Hoffovým tukovým tělesem pro tendinopatii a impingement."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Ventrální pohled, sagitální rovina, infrapatelárně", bullets: ["Podélný řez ligamentum patellae od dolního pólu pately k tibii pro ruptury a entezopatii."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Mediální pohled, frontální rovina", bullets: ["MCL: mediální kolaterální vaz. Hodnocení integrity MCL, mediálního menisku a mediálního recesu."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Laterální pohled, frontální rovina", bullets: ["LCL: laterální kolaterální vaz. Klíčová projekce pro entezopatii, parciální ruptury a avulzní poranění."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["ST: šlacha semitendinosu. „Cherry on top“ znak pro orientaci mediálních hamstringů."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["SM: šlacha semimembranosu, ST: šlacha semitendinosu. Typická lokalizace Bakerovy cysty."] },
+      { key: "09_Obrzek9", heading: "Obrázek 9. Dorzální pohled, transverzální rovina", bullets: ["T: nervus tibialis, P: nervus peroneus communis. Hodnocení nervů v posterolaterální oblasti kolene."] }
     ]
   },
   kotnik: {
     folder: "06_Ankle/protokol",
-    keys: [
-      "01_Obrzek1",
-      "02_Obrzek2",
-      "03_Obrzek3",
-      "04_Obrzek4",
-      "05_Obrzek5",
-      "06_Obrzek6",
-      "07_Obrzek7",
-      "08_Obrzek8"
+    introPoints: [
+      "Ultrazvuk hlezna je praktická metoda pro hodnocení měkkých tkání v reálném čase; přináší informace o synovii, vazech, burzách a šlachách (Achillova, peroneální, tibiální).",
+      "Pro kvalitní vyšetření je důležitý systematický postup od orientačních bodů (malleoly, talus, calcaneus, distální tibie/fibula) v podélné i příčné rovině.",
+      "Dynamické manévry (dorzální/plantární flexe, inverze/everze) pomáhají hodnotit stabilitu šlach v retinákulech, stabilitu vazů a patologický pohyb šlach.",
+      "Správné nastavení přístroje a porovnání s druhostranným kotníkem je zásadní pro detekci jemných změn, jako jsou parciální ruptury, tenosynovitida nebo entezopatie."
+    ],
+    pathologyPoints: [
+      "Nejčastěji se vyskytuje výpotek a synovitida v předním recesu hlezna.",
+      "Časté jsou tendinopatie a parciální ruptury Achillovy šlachy, šlach tibialis anterior/posterior a peroneálních šlach.",
+      "Běžné jsou tenosynovitidy, retromaleolární tekutinové kolekce a burzitidy včetně retrocalcaneární.",
+      "Ultrazvuk je přínosný i pro poranění vazů laterálního komplexu, hematomy a chronické degenerativní změny."
+    ],
+    protocolSteps: [
+      { view: "Ventrální pohled", planes: ["Sagitální rovina", "Transverzální rovina"] },
+      { view: "Mediální pohled", planes: ["Transverzální rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina"] },
+      { view: "Dorzální pohled", planes: ["Sagitální rovina", "Transverzální rovina"] }
+    ],
+    protocolImages: [
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, sagitální rovina", bullets: ["c: chrupavka, j: tekutina v kloubní dutině. Podélná přední projekce přes EHL, přední recesus a chrupavku talu."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["EDL, EHL, TA. Příčný řez předními extenzorovými šlachami nad talem pro hodnocení tenosynovitid a tendinopatií."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Mediální pohled, transverzální rovina", bullets: ["TP, FDL, FHL, A, V, T. Projekce tarzálního tunelu s neurovaskulárním svazkem a flexorovými šlachami."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Laterální pohled, transverzální rovina", bullets: ["ATFL: ligamentum talofibulare anterius. Klíčový pohled pro distorzi laterálního hlezna a hodnocení kontinuity ATFL."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce Achillovy šlachy nad Kagerovým tukovým tělesem pro tendinopatii a retrocalcaneární burzitidu."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, sagitální rovina", bullets: ["Proximálnější podélná projekce m. triceps surae pro hodnocení svalové symetrie, ruptur a hematomů."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["TA: Achillova šlacha. Příčný řez Achillovou šlachou s hodnocením kontinuity a okolních měkkých tkání."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["Příčný pohled svaly triceps surae vhodný pro myotendinózní poranění, atrofii a fibrotické změny."] }
     ]
   }
 };
@@ -679,9 +830,10 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
+  const jointIntroMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/uvod$/);
   const jointProtocolMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
-  const jointKey = jointProtocolMatch?.[1];
-  const jointProtocol = jointKey ? jointProtocolImages[jointKey] : undefined;
+  const jointKey = jointProtocolMatch?.[1] ?? jointIntroMatch?.[1];
+  const jointContent = jointKey ? jointContentBySlug[jointKey] : undefined;
   const isProbesPage = path === "/basics/sondy";
   const isProbeMovementsPage = path === "/basics/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
@@ -838,23 +990,65 @@ export default function ContentPage({ path }: ContentPageProps) {
     );
   }
 
-  if (jointProtocol) {
+  if (jointProtocolMatch && jointContent) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
+          <h2>{localized("Vyšetřovací protokol")[lang]}</h2>
+          <ol className={styles.compactList}>
+            {jointContent.protocolSteps.map((step) => (
+              <li key={step.view}>
+                {step.view}
+                <ol type="A" className={styles.compactList}>
+                  {step.planes.map((plane) => (
+                    <li key={plane}>{plane}</li>
+                  ))}
+                </ol>
+              </li>
+            ))}
+          </ol>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-            {jointProtocol.keys.map((key) => (
-              <article key={key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+            {jointContent.protocolImages.map((item) => (
+              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
                 <ResponsiveImage
-                  image={makeResponsiveImagePhone(jointProtocol.folder, key)}
-                  alt={`${localize(node.title, lang)} ${key}`}
+                  image={makeResponsiveImagePhone(jointContent.folder, item.key)}
+                  alt={`${localize(node.title, lang)} ${item.key}`}
                   wrapClassName={styles.shoulderUltrasoundImageWrap}
                 />
+                <div className={styles.articleBody}>
+                  <h3>{item.heading}</h3>
+                  <ul className={styles.compactList}>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (jointIntroMatch && jointContent) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{localized("Úvod")[lang]}</h2>
+          <ul className={styles.compactList}>
+            {jointContent.introPoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+          <h2>{localized("Nejčastější patologie")[lang]}</h2>
+          <ul className={styles.compactList}>
+            {jointContent.pathologyPoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
         </section>
       </section>
     );
