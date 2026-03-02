@@ -240,3 +240,7 @@
     height: 150px;
   }
 }
+
+.knobologyGrid.shoulderUltrasoundGrid {
+  grid-template-columns: 1fr;
+}
