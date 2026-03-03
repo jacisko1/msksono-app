@@ -25,6 +25,12 @@
   border-color: color-mix(in srgb, var(--border) 55%, #00626c 45%);
 }
 
+.cardDone {
+  background: linear-gradient(180deg, #f4fbf6, #edf8f1);
+  border-color: color-mix(in srgb, #2f9f61 35%, #d8e6dd 65%) !important;
+  box-shadow: 0 8px 20px rgba(47, 159, 97, 0.1);
+}
+
 .card h3 {
   margin: 0;
   font-size: 1.05rem;

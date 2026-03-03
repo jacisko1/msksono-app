@@ -58,7 +58,11 @@ export function GridMenu({ items, color }: GridMenuProps) {
               : "Mark as completed";
 
         return (
-          <article key={item.path} className={styles.card} style={{ borderColor: color }}>
+          <article
+            key={item.path}
+            className={`${styles.card} ${isDone ? styles.cardDone : ""}`}
+            style={{ borderColor: color }}
+          >
             <Link className={styles.cardLink} to={item.path}>
               <div className={styles.content}>
                 <h3>{title}</h3>
