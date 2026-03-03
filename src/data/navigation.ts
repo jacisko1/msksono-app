@@ -37,14 +37,19 @@ export const navigationTree: NavItem[] = [
     color: "#209069",
     children: withSection("basics", "#209069", [
       {
-        title: { cs: "Princip ultrazvukového vyšetření", en: "Princip of ultrasound examination" },
+        title: { cs: "Princip UZ vyšetření", en: "US examination principles" },
         path: "/basics/princip-ultrazvukoveho-vysetreni"
       },
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
       { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
+      { title: { cs: "Držení sondy", en: "Probe grip" }, path: "/basics/drzeni-sondy" },
       { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
+      { title: { cs: "Orientace v obrazu", en: "Image orientation" }, path: "/basics/orientace-v-obrazu" },
       { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty" },
-      { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" }
+      { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
+      { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
+      { title: { cs: "Ergonomie vyšetření", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
+      { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" }
     ])
   },
   {
