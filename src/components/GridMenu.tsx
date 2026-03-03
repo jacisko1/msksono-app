@@ -31,9 +31,25 @@ export function GridMenu({ items, color }: GridMenuProps) {
     }
   }, []);
 
-  const toggleDone = (path: string) => {
+  const collectLeafPaths = (navItem: NavItem): string[] => {
+    if (!navItem.children?.length) {
+      return [navItem.path];
+    }
+
+    return navItem.children.flatMap((child) => collectLeafPaths(child));
+  };
+
+  const toggleDone = (navItem: NavItem) => {
+    const leafPaths = collectLeafPaths(navItem);
     setDoneByPath((current) => {
-      const next = { ...current, [path]: !current[path] };
+      const areAllDone = leafPaths.every((leafPath) => Boolean(current[leafPath]));
+      const nextValue = !areAllDone;
+      const next = { ...current };
+
+      leafPaths.forEach((leafPath) => {
+        next[leafPath] = nextValue;
+      });
+
       try {
         localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(next));
       } catch {
@@ -54,20 +70,15 @@ export function GridMenu({ items, color }: GridMenuProps) {
     <section className={styles.grid}>
       {items.map((item) => {
         const title = localize(item.title, lang);
-        const hasChildren = Boolean(item.children?.length);
         const isDone = isNavItemDone(item);
         const progressLabel =
-          hasChildren
-            ? lang === "cs"
-              ? "Automaticky podle podkapitol"
-              : "Automatic based on subchapters"
-            : lang === "cs"
-              ? isDone
-                ? "Označit jako nedokončené"
-                : "Označit jako dokončené"
-              : isDone
-                ? "Mark as not completed"
-                : "Mark as completed";
+          lang === "cs"
+            ? isDone
+              ? "Označit jako nedokončené"
+              : "Označit jako dokončené"
+            : isDone
+              ? "Mark as not completed"
+              : "Mark as completed";
 
         return (
           <article key={item.path} className={styles.card} style={{ borderColor: color }}>
@@ -81,8 +92,7 @@ export function GridMenu({ items, color }: GridMenuProps) {
               className={`${styles.progressToggle} ${isDone ? styles.progressDone : ""}`}
               aria-label={progressLabel}
               aria-pressed={isDone}
-              disabled={hasChildren}
-              onClick={() => toggleDone(item.path)}
+              onClick={() => toggleDone(item)}
             >
               ✓
             </button>
