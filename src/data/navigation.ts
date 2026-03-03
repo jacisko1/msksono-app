@@ -150,6 +150,10 @@ export const navigationTree: NavItem[] = [
             path: "/periferni-nervy/nervus-medianus/ultrazvukove-vysetreni"
           },
           {
+            title: { cs: "Video tutorial", en: "Video tutorial" },
+            path: "/periferni-nervy/nervus-medianus/video-tutorial"
+          },
+          {
             title: { cs: "Místa útlaku", en: "Entrapment sites" },
             path: "/periferni-nervy/nervus-medianus/mista-utlaku"
           }

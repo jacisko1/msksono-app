@@ -1041,6 +1041,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
+  const isMedianNerveVideo = path === "/periferni-nervy/nervus-medianus/video-tutorial";
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1084,6 +1085,25 @@ export default function ContentPage({ path }: ContentPageProps) {
             <iframe
               src="https://www.youtube-nocookie.com/embed/eDbn7YuYfUo"
               title={lang === "cs" ? "Biceps brachii video tutorial" : "Biceps brachii video tutorial"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (isMedianNerveVideo) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.videoBox}>
+          <div className={styles.videoWrap}>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/WmzHNPNkBx0"
+              title={lang === "cs" ? "Nervus medianus video tutorial" : "Median nerve video tutorial"}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
