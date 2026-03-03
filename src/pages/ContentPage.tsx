@@ -80,23 +80,23 @@ const jointVideoBySlug = {
     title: { cs: "Rameno video tutorial", en: "Shoulder video tutorial" }
   },
   loket: {
-    src: "https://www.youtube-nocookie.com/embed/7dexOe8owkE",
+    src: "https://www.youtube-nocookie.com/embed/H27ofDhfzVk",
     title: { cs: "Loket video tutorial", en: "Elbow video tutorial" }
   },
   zapesti: {
-    src: "https://www.youtube-nocookie.com/embed/9amXVQnCin0",
+    src: "https://www.youtube-nocookie.com/embed/Lq4cgPNbpR8",
     title: { cs: "Zápěstí video tutorial", en: "Wrist video tutorial" }
   },
   kycel: {
-    src: "https://www.youtube-nocookie.com/embed/Xag8-Odb7is",
+    src: "https://www.youtube-nocookie.com/embed/7dexOe8owkE",
     title: { cs: "Kyčel video tutorial", en: "Hip video tutorial" }
   },
   koleno: {
-    src: "https://www.youtube-nocookie.com/embed/H27ofDhfzVk",
+    src: "https://www.youtube-nocookie.com/embed/9amXVQnCin0",
     title: { cs: "Koleno video tutorial", en: "Knee video tutorial" }
   },
   kotnik: {
-    src: "https://www.youtube-nocookie.com/embed/Lq4cgPNbpR8",
+    src: "https://www.youtube-nocookie.com/embed/Xag8-Odb7is",
     title: { cs: "Kotník video tutorial", en: "Ankle video tutorial" }
   }
 } as const;
