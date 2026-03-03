@@ -36,9 +36,15 @@ export const navigationTree: NavItem[] = [
     section: "basics",
     color: "#209069",
     children: withSection("basics", "#209069", [
+      {
+        title: { cs: "Princip ultrazvukového vyšetření", en: "Princip of ultrasound examination" },
+        path: "/basics/princip-ultrazvukoveho-vysetreni"
+      },
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
       { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
-      { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" }
+      { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
+      { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty" },
+      { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" }
     ])
   },
   {
