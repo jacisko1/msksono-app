@@ -129,7 +129,32 @@ export const navigationTree: NavItem[] = [
     section: "periferni-nervy",
     color: "#d2be00",
     children: withSection("periferni-nervy", "#d2be00", [
-      { title: { cs: "Nervus medianus", en: "Median nerve" }, path: "/periferni-nervy/nervus-medianus" },
+      {
+        title: { cs: "Nervus medianus", en: "Median nerve" },
+        path: "/periferni-nervy/nervus-medianus",
+        children: [
+          {
+            title: { cs: "Motorická inervace", en: "Motor innervation" },
+            path: "/periferni-nervy/nervus-medianus/motoricka-inervace"
+          },
+          {
+            title: { cs: "Senzitivní inervace", en: "Sensory innervation" },
+            path: "/periferni-nervy/nervus-medianus/senzitivni-inervace"
+          },
+          {
+            title: { cs: "Anatomický průběh", en: "Anatomical course" },
+            path: "/periferni-nervy/nervus-medianus/anatomicky-prubeh"
+          },
+          {
+            title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" },
+            path: "/periferni-nervy/nervus-medianus/ultrazvukove-vysetreni"
+          },
+          {
+            title: { cs: "Místa útlaku", en: "Entrapment sites" },
+            path: "/periferni-nervy/nervus-medianus/mista-utlaku"
+          }
+        ]
+      },
       { title: { cs: "Nervus ulnaris", en: "Ulnar nerve" }, path: "/periferni-nervy/nervus-ulnaris" },
       { title: { cs: "Nervus radialis", en: "Radial nerve" }, path: "/periferni-nervy/nervus-radialis" },
       { title: { cs: "Nervus femoralis", en: "Femoral nerve" }, path: "/periferni-nervy/nervus-femoralis" },
