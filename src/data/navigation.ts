@@ -118,23 +118,6 @@ export const navigationTree: NavItem[] = [
     section: "periferni-nervy",
     color: "#d2be00",
     children: withSection("periferni-nervy", "#d2be00", [
-      {
-        title: { cs: "Úvod", en: "Introduction" },
-        path: "/periferni-nervy/uvod",
-        children: [
-          {
-            title: { cs: "Význam a indikace", en: "Importance and indications" },
-            path: "/periferni-nervy/uvod/vyznam-a-indikace"
-          },
-          { title: { cs: "Sonoanatomie", en: "Sonoanatomy" }, path: "/periferni-nervy/uvod/sonoanatomie" },
-          { title: { cs: "Sonopatologie", en: "Sonopathology" }, path: "/periferni-nervy/uvod/sonopatologie" },
-          {
-            title: { cs: "Technické principy", en: "Technical principles" },
-            path: "/periferni-nervy/uvod/technicke-principy"
-          },
-          { title: { cs: "Plexy", en: "Plexuses" }, path: "/periferni-nervy/uvod/plexy" }
-        ]
-      },
       { title: { cs: "Nervus medianus", en: "Median nerve" }, path: "/periferni-nervy/nervus-medianus" },
       { title: { cs: "Nervus ulnaris", en: "Ulnar nerve" }, path: "/periferni-nervy/nervus-ulnaris" },
       { title: { cs: "Nervus radialis", en: "Radial nerve" }, path: "/periferni-nervy/nervus-radialis" },
@@ -153,8 +136,16 @@ export const navigationTree: NavItem[] = [
     section: "svaly",
     color: "#9a2626",
     children: withSection("svaly", "#9a2626", [
-      { title: { cs: "Horní končetina", en: "Upper limb" }, path: "/svaly/horni-koncetina" },
-      { title: { cs: "Dolní končetina", en: "Lower limb" }, path: "/svaly/dolni-koncetina" }
+      {
+        title: { cs: "Biceps brachii", en: "Biceps brachii" },
+        path: "/svaly/biceps-brachii",
+        children: [
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
+          { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
+          { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" }
+        ]
+      }
     ])
   }
 ];
@@ -195,3 +186,4 @@ export const getBreadcrumbItems = (path: string): NavItem[] => {
 
   return crumbs;
 };
+
