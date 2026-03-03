@@ -7,7 +7,7 @@
 .card {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.8rem;
   background: linear-gradient(180deg, #ffffff, #f9fcfd);
@@ -29,6 +29,19 @@
   margin: 0;
   font-size: 1.05rem;
   letter-spacing: -0.01em;
+}
+
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid color-mix(in srgb, #00626c 75%, white);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 .cardWithImage {
@@ -53,6 +66,32 @@
 
 .content {
   min-width: 0;
+}
+
+.progressToggle {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #c8cdd4;
+  border-radius: 50%;
+  background: #f2f4f7;
+  color: #8d95a0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.progressToggle:hover {
+  border-color: #a8b0ba;
+  background: #e9edf2;
+}
+
+.progressDone {
+  border-color: #2f9f61;
+  background: #e8f7ee;
+  color: #1f7a47;
 }
 
 .card span {
