@@ -32,16 +32,22 @@ export function GridMenu({ items, color }: GridMenuProps) {
     }
   }, []);
 
-  const collectLeafPaths = (navItem: NavItem): string[] => {
+  const collectLeafPaths = (navItem: NavItem, onlyAvailable = false): string[] => {
     if (!navItem.children?.length) {
+      if (onlyAvailable && !hasContentForPath(navItem.path)) {
+        return [];
+      }
       return [navItem.path];
     }
 
-    return navItem.children.flatMap((child) => collectLeafPaths(child));
+    return navItem.children.flatMap((child) => collectLeafPaths(child, onlyAvailable));
   };
 
   const toggleDone = (navItem: NavItem) => {
-    const leafPaths = collectLeafPaths(navItem);
+    const leafPaths = collectLeafPaths(navItem, true);
+    if (!leafPaths.length) {
+      return;
+    }
     setDoneByPath((current) => {
       const areAllDone = leafPaths.every((leafPath) => Boolean(current[leafPath]));
       const nextValue = !areAllDone;
@@ -62,7 +68,14 @@ export function GridMenu({ items, color }: GridMenuProps) {
 
   const isNavItemDone = (navItem: NavItem): boolean => {
     if (navItem.children?.length) {
-      return navItem.children.every((child) => isNavItemDone(child));
+      const availableLeafPaths = collectLeafPaths(navItem, true);
+      if (!availableLeafPaths.length) {
+        return false;
+      }
+      return availableLeafPaths.every((leafPath) => Boolean(doneByPath[leafPath]));
+    }
+    if (!hasContentForPath(navItem.path)) {
+      return true;
     }
     return Boolean(doneByPath[navItem.path]);
   };
