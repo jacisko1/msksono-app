@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.05rem;
 }
 
@@ -72,6 +72,18 @@
   }
 }
 
+@media (min-width: 541px) and (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1024px) and (min-width: 541px) {
   .cardWithImage {
     grid-template-columns: 108px 1fr;
@@ -83,6 +95,10 @@
 }
 
 @media (min-width: 1025px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .cardWithImage {
     grid-template-columns: 132px 1fr;
   }
