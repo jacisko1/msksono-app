@@ -103,6 +103,14 @@
   color: #1f7a47;
 }
 
+.progressToggle.progressDone:hover,
+.progressToggle.progressDone:active,
+.progressToggle.progressDone:focus-visible {
+  border-color: #2f9f61;
+  background: #e8f7ee;
+  color: #1f7a47;
+}
+
 .card span {
   display: inline-block;
   margin-top: 0.5rem;
