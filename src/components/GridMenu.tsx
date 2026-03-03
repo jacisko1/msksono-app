@@ -43,26 +43,34 @@ export function GridMenu({ items, color }: GridMenuProps) {
     });
   };
 
+  const isNavItemDone = (navItem: NavItem): boolean => {
+    if (navItem.children?.length) {
+      return navItem.children.every((child) => isNavItemDone(child));
+    }
+    return Boolean(doneByPath[navItem.path]);
+  };
+
   return (
     <section className={styles.grid}>
       {items.map((item) => {
         const title = localize(item.title, lang);
-        const isDone = Boolean(doneByPath[item.path]);
+        const hasChildren = Boolean(item.children?.length);
+        const isDone = isNavItemDone(item);
         const progressLabel =
-          lang === "cs"
-            ? isDone
-              ? "Označit jako nedokončené"
-              : "Označit jako dokončené"
-            : isDone
-              ? "Mark as not completed"
-              : "Mark as completed";
+          hasChildren
+            ? lang === "cs"
+              ? "Automaticky podle podkapitol"
+              : "Automatic based on subchapters"
+            : lang === "cs"
+              ? isDone
+                ? "Označit jako nedokončené"
+                : "Označit jako dokončené"
+              : isDone
+                ? "Mark as not completed"
+                : "Mark as completed";
 
         return (
-          <article
-            key={item.path}
-            className={`${styles.card} ${isDone ? styles.cardDone : ""}`}
-            style={{ borderColor: color }}
-          >
+          <article key={item.path} className={styles.card} style={{ borderColor: color }}>
             <Link className={styles.cardLink} to={item.path}>
               <div className={styles.content}>
                 <h3>{title}</h3>
@@ -73,6 +81,7 @@ export function GridMenu({ items, color }: GridMenuProps) {
               className={`${styles.progressToggle} ${isDone ? styles.progressDone : ""}`}
               aria-label={progressLabel}
               aria-pressed={isDone}
+              disabled={hasChildren}
               onClick={() => toggleDone(item.path)}
             >
               ✓
