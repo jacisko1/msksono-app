@@ -74,6 +74,33 @@ const makeResponsiveImagePhone = (folder: string, baseName: string): ResponsiveI
 
 const localized = <T,>(value: T) => ({ cs: value, en: value });
 
+const jointVideoBySlug = {
+  rameno: {
+    src: "https://www.youtube-nocookie.com/embed/TCpKWtJ9g9A",
+    title: { cs: "Rameno video tutorial", en: "Shoulder video tutorial" }
+  },
+  loket: {
+    src: "https://www.youtube-nocookie.com/embed?listType=search&list=msksono%20elbow%20ultrasound",
+    title: { cs: "Loket video tutorial", en: "Elbow video tutorial" }
+  },
+  zapesti: {
+    src: "https://www.youtube-nocookie.com/embed?listType=search&list=msksono%20wrist%20ultrasound",
+    title: { cs: "Zápěstí video tutorial", en: "Wrist video tutorial" }
+  },
+  kycel: {
+    src: "https://www.youtube-nocookie.com/embed?listType=search&list=msksono%20hip%20ultrasound",
+    title: { cs: "Kyčel video tutorial", en: "Hip video tutorial" }
+  },
+  koleno: {
+    src: "https://www.youtube-nocookie.com/embed?listType=search&list=msksono%20knee%20ultrasound",
+    title: { cs: "Koleno video tutorial", en: "Knee video tutorial" }
+  },
+  kotnik: {
+    src: "https://www.youtube-nocookie.com/embed?listType=search&list=msksono%20ankle%20ultrasound",
+    title: { cs: "Kotník video tutorial", en: "Ankle video tutorial" }
+  }
+} as const;
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -1011,7 +1038,8 @@ function ResponsiveImage({
 export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
-  const isShoulderVideo = path === "/klouby/rameno/video-tutorial";
+  const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
+  const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1027,15 +1055,15 @@ export default function ContentPage({ path }: ContentPageProps) {
     return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
-  if (isShoulderVideo) {
+  if (jointVideo) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.videoBox}>
           <div className={styles.videoWrap}>
             <iframe
-              src="https://www.youtube-nocookie.com/embed/TCpKWtJ9g9A"
-              title="Rameno video tutorial"
+              src={jointVideo.src}
+              title={jointVideo.title[lang]}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
