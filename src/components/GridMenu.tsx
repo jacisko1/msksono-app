@@ -89,15 +89,7 @@ export function GridMenu({ items, color }: GridMenuProps) {
           <article key={item.path} className={styles.card} style={{ borderColor: color }}>
             <Link className={styles.cardLink} to={item.path}>
               <div className={styles.content}>
-                <h3 className={isAvailable ? undefined : styles.unavailableTitle}>
-                  {title}
-                  {!isAvailable ? (
-                    <span className={styles.soonLabel} style={{ color }}>
-                      {" "}
-                      {lang === "cs" ? "brzy" : "soon"}
-                    </span>
-                  ) : null}
-                </h3>
+                <h3 className={isAvailable ? undefined : styles.unavailableTitle}>{title}</h3>
               </div>
             </Link>
             {isAvailable ? (

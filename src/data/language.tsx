@@ -13,7 +13,7 @@ const translations = {
     cs: "Praktická výuka muskuloskeletální ultrasonografie v jasně strukturovaných modulech.",
     en: "Practical musculoskeletal ultrasound education in clearly structured modules."
   },
-  contentComingSoon: { cs: "Obsah se připravuje", en: "Content coming soon" },
+  contentComingSoon: { cs: "Obsah", en: "Content" },
   contentPlaceholderBody: {
     cs: "Obsah bude doplněn.",
     en: "Content will be added."
