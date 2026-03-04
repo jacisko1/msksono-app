@@ -1,0 +1,77 @@
+.wrap {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #f8fcfd);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(0.9rem, 2.8vw, 1.2rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+}
+
+.card p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+.progressList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.progressItem {
+  display: grid;
+  gap: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+}
+
+.progressHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.progressHead h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.progressHead strong {
+  font-size: 1rem;
+}
+
+.progressMeta {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--section-color) 14%, white);
+}
+
+.progressFill {
+  width: var(--progress);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--section-color);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--section-color) 35%, black);
+  transition: width 900ms ease;
+}
+

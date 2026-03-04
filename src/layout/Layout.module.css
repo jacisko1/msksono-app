@@ -17,10 +17,10 @@
   margin: 0 auto;
   padding: 0.9rem 1rem;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
   grid-template-areas:
-    "brand lang menu"
-    "install install install";
+    "brand lang account menu"
+    "install install install install";
   gap: 0.6rem;
   align-items: center;
 }
@@ -116,6 +116,33 @@
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+.accountLink {
+  grid-area: account;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  min-width: 42px;
+  min-height: 42px;
+  box-shadow: var(--shadow-sm);
+  color: #004a52;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.accountLink:hover {
+  transform: translateY(-1px);
+  background: #fff;
+}
+
+.accountLink svg {
+  width: 20px;
+  height: 20px;
+  fill: currentcolor;
+}
+
 .menuToggle:hover {
   transform: translateY(-1px);
   background: #fff;
@@ -192,6 +219,10 @@
   }
 
   .menuToggle {
+    display: none;
+  }
+
+  .accountLink {
     display: none;
   }
 

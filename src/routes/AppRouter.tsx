@@ -7,6 +7,7 @@ import { Layout } from "../layout/Layout";
 const HomePage = lazy(() => import("../pages/HomePage"));
 const SectionPage = lazy(() => import("../pages/SectionPage"));
 const ContentPage = lazy(() => import("../pages/ContentPage"));
+const AccountPage = lazy(() => import("../pages/AccountPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const OfflinePage = lazy(() => import("../pages/OfflinePage"));
 
@@ -36,6 +37,7 @@ export function AppRouter() {
           {allPaths.map((path) => (
             <Route key={path} path={path.slice(1)} element={<RoutedPage path={path} />} />
           ))}
+          <Route path="muj-ucet" element={<AccountPage />} />
           <Route path="offline" element={<OfflinePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
@@ -43,4 +45,3 @@ export function AppRouter() {
     </Suspense>
   );
 }
-

@@ -77,7 +77,6 @@ export function Layout() {
         <div className={styles.brandWrap}>
           <Link className={styles.brand} to="/" onClick={() => setMobileOpen(false)}>
             <img src={logoMark} alt="MSK Sono logo" />
-            <span>msksono.org</span>
           </Link>
 
           <div className={styles.topControls}>
@@ -98,6 +97,17 @@ export function Layout() {
               </button>
             </div>
           </div>
+
+          <Link
+            className={styles.accountLink}
+            aria-label={t("myAccount")}
+            to="/muj-ucet"
+            onClick={() => setMobileOpen(false)}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 12.25a4.75 4.75 0 1 0 0-9.5 4.75 4.75 0 0 0 0 9.5Zm0 2c-4.55 0-8.25 2.83-8.25 6.31 0 .38.31.69.69.69h15.12c.38 0 .69-.31.69-.69 0-3.48-3.7-6.31-8.25-6.31Z" />
+            </svg>
+          </Link>
 
           <button
             className={styles.menuToggle}
@@ -141,6 +151,13 @@ export function Layout() {
               {localize(section.title, lang)}
             </NavLink>
           ))}
+          <NavLink
+            to="/muj-ucet"
+            className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
+            onClick={() => setMobileOpen(false)}
+          >
+            {t("myAccount")}
+          </NavLink>
         </nav>
       </header>
 

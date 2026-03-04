@@ -43,6 +43,13 @@ const translations = {
     cs: "Instalace není v tomto prohlížeči právě dostupná. Zkuste nabídku prohlížeče: Přidat na plochu.",
     en: "Install is not available in this browser right now. Open the app over HTTPS and try again."
   },
+  myAccount: { cs: "Můj účet", en: "My account" },
+  accountProgressTitle: { cs: "Progress podkapitol", en: "Subchapter progress" },
+  accountProgressHint: {
+    cs: "Postup je počítaný podle hotových podstránek v jednotlivých sekcích.",
+    en: "Progress is calculated from completed subpages in each section."
+  },
+  accountDone: { cs: "hotovo", en: "done" },
   loading: { cs: "Načítám...", en: "Loading..." },
   goToSection: { cs: "Přejít do sekce", en: "Go to section" }
 } as const;
@@ -92,5 +99,3 @@ export function useLanguage() {
   }
   return context;
 }
-
-
