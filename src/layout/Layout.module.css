@@ -139,6 +139,10 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.desktopOnlyLink {
+  display: none;
+}
+
 .homeActive {
   background: #dff0f2;
   color: #004a52;
@@ -275,6 +279,10 @@
 
   .mobileOnlyLink {
     display: none;
+  }
+
+  .desktopOnlyLink {
+    display: inline-flex;
   }
 
   .main {

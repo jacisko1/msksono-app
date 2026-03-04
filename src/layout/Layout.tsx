@@ -102,7 +102,9 @@ export function Layout() {
           <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ""}`} aria-label="Main navigation">
             <NavLink
               to="/"
-              className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
+              className={({ isActive }) =>
+                `${styles.link} ${styles.desktopOnlyLink} ${isActive ? styles.homeActive : ""}`.trim()
+              }
               onClick={() => setMobileOpen(false)}
             >
               {t("home")}
@@ -122,13 +124,6 @@ export function Layout() {
                 {localize(section.title, lang)}
               </NavLink>
             ))}
-            <NavLink
-              to="/muj-ucet"
-              className={({ isActive }) => `${styles.link} ${styles.mobileOnlyLink} ${isActive ? styles.homeActive : ""}`.trim()}
-              onClick={() => setMobileOpen(false)}
-            >
-              {t("accountTab")}
-            </NavLink>
           </nav>
 
           <div className={styles.desktopControls}>
