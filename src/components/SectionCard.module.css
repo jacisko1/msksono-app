@@ -40,3 +40,15 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 540px) {
+  .card {
+    min-height: 104px;
+    padding: 0.82rem 0.9rem;
+    box-shadow: 0 14px 24px rgba(9, 37, 44, 0.2);
+  }
+
+  .card h2 {
+    font-size: clamp(1.05rem, 5.1vw, 1.26rem);
+  }
+}
