@@ -37,7 +37,7 @@ export const navigationTree: NavItem[] = [
     color: "#209069",
     children: withSection("basics", "#209069", [
       {
-        title: { cs: "Princip UZ vyšetření", en: "US examination principles" },
+        title: { cs: "Princip UZ zobrazení", en: "US examination principles" },
         path: "/basics/princip-ultrazvukoveho-vysetreni"
       },
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
