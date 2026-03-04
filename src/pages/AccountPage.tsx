@@ -1,7 +1,6 @@
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
-import { hasContentForPath } from "../data/contentStatus";
 import { localize, navigationTree, type NavItem } from "../data/navigation";
 import { PROGRESS_STORAGE_KEY, PROGRESS_UPDATED_EVENT, readProgress } from "../data/progress";
 import styles from "./AccountPage.module.css";
@@ -49,7 +48,7 @@ export default function AccountPage() {
   const sectionProgress = useMemo<SectionProgress[]>(
     () =>
       navigationTree.map((section) => {
-        const leaves = getLeafNodes(section.children ?? []).filter((item) => hasContentForPath(item.path));
+        const leaves = getLeafNodes(section.children ?? []);
         const total = leaves.length;
         const done = leaves.filter((item) => Boolean(doneByPath[item.path])).length;
         const percent = total > 0 ? Math.round((done / total) * 100) : 0;

@@ -1,4 +1,4 @@
-import type { Locale } from "./language";
+﻿import type { Locale } from "./language";
 
 export type SectionKey = "basics" | "klouby" | "periferni-nervy" | "svaly";
 
@@ -31,27 +31,28 @@ const withSection = (section: SectionKey, color: string, items: RawNavItem[]): N
 
 export const navigationTree: NavItem[] = [
   {
-    title: { cs: "Základy", en: "Basics" },
+    title: { cs: "ZĂˇklady", en: "Basics" },
     path: "/basics",
     section: "basics",
     color: "#209069",
     children: withSection("basics", "#209069", [
       {
-        title: { cs: "Princip UZ zobrazení", en: "US examination principles" },
+        title: { cs: "Princip UZ zobrazenĂ­", en: "US examination principles" },
         path: "/basics/princip-ultrazvukoveho-vysetreni"
       },
       { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/echogenita" },
       { title: { cs: "Orientace v obrazu", en: "Image orientation" }, path: "/basics/orientace-v-obrazu" },
-      { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
+      { title: { cs: "VyĹˇetĹ™ovanĂ© struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
       { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
-      { title: { cs: "Držení sondy", en: "Probe grip" }, path: "/basics/drzeni-sondy" },
+      { title: { cs: "DrĹľenĂ­ sondy", en: "Probe grip" }, path: "/basics/drzeni-sondy" },
       { title: { cs: "Orientace sondy", en: "Probe orientation" }, path: "/basics/orientace-sondy" },
       { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
-      { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty" },
-      { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
+      { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty"  },
       { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
-      { title: { cs: "Ergonomie vyšetření", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" }
+      { title: { cs: "Ergonomie vyĹˇetĹ™enĂ­", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
+      { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
+
     ])
   },
   {
@@ -64,63 +65,75 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Rameno", en: "Shoulder" },
         path: "/klouby/rameno",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/rameno/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/rameno/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
           {
             title: { cs: "Protokol", en: "Protocol" },
             path: "/klouby/rameno/vysetrovaci-protokol"
-          }
+          },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/rameno/nejcastejsi-patologie" }
         ]
       },
       {
         title: { cs: "Loket", en: "Elbow" },
         path: "/klouby/loket",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/loket/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/loket/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/loket/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/loket/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/loket/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/loket/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/loket/vysetrovaci-protokol" },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/loket/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Zápěstí a ruka", en: "Wrist and hand" },
+        title: { cs: "ZĂˇpÄ›stĂ­ a ruka", en: "Wrist and hand" },
         path: "/klouby/zapesti",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/zapesti/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/zapesti/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/zapesti/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/zapesti/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/zapesti/vysetrovaci-protokol" },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/zapesti/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Kyčel", en: "Hip" },
+        title: { cs: "KyÄŤel", en: "Hip" },
         path: "/klouby/kycel",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kycel/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/kycel/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kycel/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kycel/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kycel/vysetrovaci-protokol" },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/kycel/nejcastejsi-patologie" }
         ]
       },
       {
         title: { cs: "Koleno", en: "Knee" },
         path: "/klouby/koleno",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/koleno/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/koleno/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/koleno/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/koleno/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/koleno/vysetrovaci-protokol" },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/koleno/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Kotník a noha", en: "Ankle and foot" },
+        title: { cs: "KotnĂ­k a noha", en: "Ankle and foot" },
         path: "/klouby/kotnik",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kotnik/anatomie" },
+            { title: { cs: "PolohovĂˇnĂ­", en: "Positioning" }, path: "/klouby/kotnik/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kotnik/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kotnik/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kotnik/vysetrovaci-protokol" },
+          { title: { cs: "NejÄŤastÄ›jĹˇĂ­ patologie", en: "Most common pathologies" }, path: "/klouby/kotnik/nejcastejsi-patologie" }
         ]
       }
     ])
@@ -136,19 +149,19 @@ export const navigationTree: NavItem[] = [
         path: "/periferni-nervy/nervus-medianus",
         children: [
           {
-            title: { cs: "Motorická inervace", en: "Motor innervation" },
+            title: { cs: "MotorickĂˇ inervace", en: "Motor innervation" },
             path: "/periferni-nervy/nervus-medianus/motoricka-inervace"
           },
           {
-            title: { cs: "Senzitivní inervace", en: "Sensory innervation" },
+            title: { cs: "SenzitivnĂ­ inervace", en: "Sensory innervation" },
             path: "/periferni-nervy/nervus-medianus/senzitivni-inervace"
           },
           {
-            title: { cs: "Anatomický průběh", en: "Anatomical course" },
+            title: { cs: "AnatomickĂ˝ prĹŻbÄ›h", en: "Anatomical course" },
             path: "/periferni-nervy/nervus-medianus/anatomicky-prubeh"
           },
           {
-            title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" },
+            title: { cs: "UltrazvukovĂ© vyĹˇetĹ™enĂ­", en: "Ultrasound examination" },
             path: "/periferni-nervy/nervus-medianus/ultrazvukove-vysetreni"
           },
           {
@@ -156,7 +169,7 @@ export const navigationTree: NavItem[] = [
             path: "/periferni-nervy/nervus-medianus/video-tutorial"
           },
           {
-            title: { cs: "Místa útlaku", en: "Entrapment sites" },
+            title: { cs: "MĂ­sta Ăştlaku", en: "Entrapment sites" },
             path: "/periferni-nervy/nervus-medianus/mista-utlaku"
           }
         ]
@@ -182,7 +195,7 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Biceps brachii", en: "Biceps brachii" },
         path: "/svaly/biceps-brachii",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
+          { title: { cs: "Ăšvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" }
