@@ -219,10 +219,12 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Biceps brachii", en: "Biceps brachii" },
         path: "/svaly/biceps-brachii",
         children: [
-          { title: { cs: "Úvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
+          { title: { cs: "Uvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
+          { title: { cs: "Polohovani", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" }
+          { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" },
+          { title: { cs: "Nejcastejsi patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
         ]
       }
     ])
