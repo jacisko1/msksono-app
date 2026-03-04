@@ -31,19 +31,19 @@ const withSection = (section: SectionKey, color: string, items: RawNavItem[]): N
 
 const nerveChildren = (basePath: string): RawNavItem[] => [
   {
-    title: { cs: "Motoricka inervace", en: "Motor innervation" },
+    title: { cs: "Motorická inervace", en: "Motor innervation" },
     path: `${basePath}/motoricka-inervace`
   },
   {
-    title: { cs: "Senzitivni inervace", en: "Sensory innervation" },
+    title: { cs: "Senzitivní inervace", en: "Sensory innervation" },
     path: `${basePath}/senzitivni-inervace`
   },
   {
-    title: { cs: "Anatomicky prubeh", en: "Anatomical course" },
+    title: { cs: "Anatomický průběh", en: "Anatomical course" },
     path: `${basePath}/anatomicky-prubeh`
   },
   {
-    title: { cs: "Ultrazvukove vysetreni", en: "Ultrasound examination" },
+    title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" },
     path: `${basePath}/ultrazvukove-vysetreni`
   },
   {
@@ -51,7 +51,7 @@ const nerveChildren = (basePath: string): RawNavItem[] => [
     path: `${basePath}/video-tutorial`
   },
   {
-    title: { cs: "Mista utlaku", en: "Entrapment sites" },
+    title: { cs: "Místa útlaku", en: "Entrapment sites" },
     path: `${basePath}/mista-utlaku`
   }
 ];
@@ -219,12 +219,12 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Biceps brachii", en: "Biceps brachii" },
         path: "/svaly/biceps-brachii",
         children: [
-          { title: { cs: "Uvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
+          { title: { cs: "Úvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
-          { title: { cs: "Polohovani", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
+          { title: { cs: "Polohování", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" },
-          { title: { cs: "Nejcastejsi patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
+          { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
         ]
       }
     ])
