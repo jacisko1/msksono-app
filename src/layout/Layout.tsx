@@ -79,36 +79,6 @@ export function Layout() {
             <img src={logoMark} alt="MSK Sono logo" />
           </Link>
 
-          <div className={styles.topControls}>
-            <div className={styles.langSwitch} role="group" aria-label="Language">
-              <button
-                type="button"
-                className={`${styles.langBtn} ${lang === "cs" ? styles.langBtnActive : ""}`}
-                onClick={() => setLang("cs")}
-              >
-                CZ
-              </button>
-              <button
-                type="button"
-                className={`${styles.langBtn} ${lang === "en" ? styles.langBtnActive : ""}`}
-                onClick={() => setLang("en")}
-              >
-                EN
-              </button>
-            </div>
-          </div>
-
-          <Link
-            className={styles.accountLink}
-            aria-label={t("myAccount")}
-            to="/muj-ucet"
-            onClick={() => setMobileOpen(false)}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M12 12.25a4.75 4.75 0 1 0 0-9.5 4.75 4.75 0 0 0 0 9.5Zm0 2c-4.55 0-8.25 2.83-8.25 6.31 0 .38.31.69.69.69h15.12c.38 0 .69-.31.69-.69 0-3.48-3.7-6.31-8.25-6.31Z" />
-            </svg>
-          </Link>
-
           <button
             className={styles.menuToggle}
             type="button"
@@ -169,6 +139,42 @@ export function Layout() {
           <Outlet />
         </div>
       </main>
+
+      <nav className={styles.bottomBar} aria-label="Bottom navigation">
+        <NavLink to="/" className={({ isActive }) => `${styles.bottomItem} ${isActive ? styles.bottomActive : ""}`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3.2 3 10.8v9a1 1 0 0 0 1 1h5.3a1 1 0 0 0 1-1V15h3.4v4.8a1 1 0 0 0 1 1H20a1 1 0 0 0 1-1v-9l-9-7.6Z" />
+          </svg>
+          <span>{t("home")}</span>
+        </NavLink>
+
+        <div className={styles.bottomLang} role="group" aria-label="Language">
+          <button
+            type="button"
+            className={`${styles.langBtn} ${lang === "cs" ? styles.langBtnActive : ""}`}
+            onClick={() => setLang("cs")}
+          >
+            CZ
+          </button>
+          <button
+            type="button"
+            className={`${styles.langBtn} ${lang === "en" ? styles.langBtnActive : ""}`}
+            onClick={() => setLang("en")}
+          >
+            EN
+          </button>
+        </div>
+
+        <NavLink
+          to="/muj-ucet"
+          className={({ isActive }) => `${styles.bottomItem} ${isActive ? styles.bottomActive : ""}`}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 12.25a4.75 4.75 0 1 0 0-9.5 4.75 4.75 0 0 0 0 9.5Zm0 2c-4.55 0-8.25 2.83-8.25 6.31 0 .38.31.69.69.69h15.12c.38 0 .69-.31.69-.69 0-3.48-3.7-6.31-8.25-6.31Z" />
+          </svg>
+          <span>{t("accountTab")}</span>
+        </NavLink>
+      </nav>
     </div>
   );
 }
