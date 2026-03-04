@@ -78,7 +78,7 @@ export default function AccountPage() {
                 <strong>{item.percent}%</strong>
               </div>
               <div className={styles.progressMeta}>
-                {item.done}/{item.total} {t("accountDone")}
+                {item.done}/{item.total} {t("accountDone")} · {item.title}
               </div>
               <div className={styles.progressTrack}>
                 <div
