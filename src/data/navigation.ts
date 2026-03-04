@@ -29,6 +29,33 @@ const withSection = (section: SectionKey, color: string, items: RawNavItem[]): N
     children: item.children ? withSection(section, color, item.children) : undefined
   }));
 
+const nerveChildren = (basePath: string): RawNavItem[] => [
+  {
+    title: { cs: "Motoricka inervace", en: "Motor innervation" },
+    path: `${basePath}/motoricka-inervace`
+  },
+  {
+    title: { cs: "Senzitivni inervace", en: "Sensory innervation" },
+    path: `${basePath}/senzitivni-inervace`
+  },
+  {
+    title: { cs: "Anatomicky prubeh", en: "Anatomical course" },
+    path: `${basePath}/anatomicky-prubeh`
+  },
+  {
+    title: { cs: "Ultrazvukove vysetreni", en: "Ultrasound examination" },
+    path: `${basePath}/ultrazvukove-vysetreni`
+  },
+  {
+    title: { cs: "Video tutorial", en: "Video tutorial" },
+    path: `${basePath}/video-tutorial`
+  },
+  {
+    title: { cs: "Mista utlaku", en: "Entrapment sites" },
+    path: `${basePath}/mista-utlaku`
+  }
+];
+
 export const navigationTree: NavItem[] = [
   {
     title: { cs: "Základy", en: "Basics" },
@@ -51,6 +78,7 @@ export const navigationTree: NavItem[] = [
       { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty"  },
       { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
       { title: { cs: "Ergonomie vyšetření", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
+      { title: { cs: "Metaforicke pomucky", en: "Metaphorical aids" }, path: "/basics/metaforicke-pomucky" },
       { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
 
     ])
@@ -147,41 +175,37 @@ export const navigationTree: NavItem[] = [
       {
         title: { cs: "Nervus medianus", en: "Median nerve" },
         path: "/periferni-nervy/nervus-medianus",
-        children: [
-          {
-            title: { cs: "Motorická inervace", en: "Motor innervation" },
-            path: "/periferni-nervy/nervus-medianus/motoricka-inervace"
-          },
-          {
-            title: { cs: "Senzitivní inervace", en: "Sensory innervation" },
-            path: "/periferni-nervy/nervus-medianus/senzitivni-inervace"
-          },
-          {
-            title: { cs: "Anatomický průběh", en: "Anatomical course" },
-            path: "/periferni-nervy/nervus-medianus/anatomicky-prubeh"
-          },
-          {
-            title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" },
-            path: "/periferni-nervy/nervus-medianus/ultrazvukove-vysetreni"
-          },
-          {
-            title: { cs: "Video tutorial", en: "Video tutorial" },
-            path: "/periferni-nervy/nervus-medianus/video-tutorial"
-          },
-          {
-            title: { cs: "Místa útlaku", en: "Entrapment sites" },
-            path: "/periferni-nervy/nervus-medianus/mista-utlaku"
-          }
-        ]
+        children: nerveChildren("/periferni-nervy/nervus-medianus")
       },
-      { title: { cs: "Nervus ulnaris", en: "Ulnar nerve" }, path: "/periferni-nervy/nervus-ulnaris" },
-      { title: { cs: "Nervus radialis", en: "Radial nerve" }, path: "/periferni-nervy/nervus-radialis" },
-      { title: { cs: "Nervus femoralis", en: "Femoral nerve" }, path: "/periferni-nervy/nervus-femoralis" },
-      { title: { cs: "Nervus ischiadicus", en: "Sciatic nerve" }, path: "/periferni-nervy/nervus-ischiadicus" },
-      { title: { cs: "Nervus tibialis", en: "Tibial nerve" }, path: "/periferni-nervy/nervus-tibialis" },
+      {
+        title: { cs: "Nervus ulnaris", en: "Ulnar nerve" },
+        path: "/periferni-nervy/nervus-ulnaris",
+        children: nerveChildren("/periferni-nervy/nervus-ulnaris")
+      },
+      {
+        title: { cs: "Nervus radialis", en: "Radial nerve" },
+        path: "/periferni-nervy/nervus-radialis",
+        children: nerveChildren("/periferni-nervy/nervus-radialis")
+      },
+      {
+        title: { cs: "Nervus femoralis", en: "Femoral nerve" },
+        path: "/periferni-nervy/nervus-femoralis",
+        children: nerveChildren("/periferni-nervy/nervus-femoralis")
+      },
+      {
+        title: { cs: "Nervus ischiadicus", en: "Sciatic nerve" },
+        path: "/periferni-nervy/nervus-ischiadicus",
+        children: nerveChildren("/periferni-nervy/nervus-ischiadicus")
+      },
+      {
+        title: { cs: "Nervus tibialis", en: "Tibial nerve" },
+        path: "/periferni-nervy/nervus-tibialis",
+        children: nerveChildren("/periferni-nervy/nervus-tibialis")
+      },
       {
         title: { cs: "Nervus peroneus communis", en: "Common peroneal nerve" },
-        path: "/periferni-nervy/nervus-peroneus-communis"
+        path: "/periferni-nervy/nervus-peroneus-communis",
+        children: nerveChildren("/periferni-nervy/nervus-peroneus-communis")
       }
     ])
   },
