@@ -78,7 +78,7 @@ export const navigationTree: NavItem[] = [
       { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty"  },
       { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
       { title: { cs: "Ergonomie vyšetření", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
-      { title: { cs: "Metaforicke pomucky", en: "Metaphorical aids" }, path: "/basics/metaforicke-pomucky" },
+      { title: { cs: "Metaforické pomůcky", en: "Metaphorical aids" }, path: "/basics/metaforicke-pomucky" },
       { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
 
     ])
@@ -267,4 +267,3 @@ export const getBreadcrumbItems = (path: string): NavItem[] => {
 
   return crumbs;
 };
-
