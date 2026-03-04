@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { hasContentForPath } from "../data/contentStatus";
 import { useLanguage } from "../data/language";
 import { localize, type NavItem } from "../data/navigation";
+import { readProgress, writeProgress } from "../data/progress";
 import styles from "./GridMenu.module.css";
 
 interface GridMenuProps {
@@ -10,26 +11,12 @@ interface GridMenuProps {
   color: string;
 }
 
-const PROGRESS_STORAGE_KEY = "msk-us-progress-v1";
-
 export function GridMenu({ items, color }: GridMenuProps) {
   const { lang } = useLanguage();
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(PROGRESS_STORAGE_KEY);
-      if (!raw) {
-        return;
-      }
-
-      const parsed = JSON.parse(raw);
-      if (parsed && typeof parsed === "object") {
-        setDoneByPath(parsed as Record<string, boolean>);
-      }
-    } catch {
-      setDoneByPath({});
-    }
+    setDoneByPath(readProgress());
   }, []);
 
   const collectLeafPaths = (navItem: NavItem, onlyAvailable = false): string[] => {
@@ -57,11 +44,7 @@ export function GridMenu({ items, color }: GridMenuProps) {
         next[leafPath] = nextValue;
       });
 
-      try {
-        localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(next));
-      } catch {
-        // Ignore storage errors (e.g. private mode quota)
-      }
+      writeProgress(next);
       return next;
     });
   };

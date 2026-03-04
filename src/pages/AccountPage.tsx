@@ -3,6 +3,7 @@ import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
 import { hasContentForPath } from "../data/contentStatus";
 import { localize, navigationTree, type NavItem } from "../data/navigation";
+import { PROGRESS_STORAGE_KEY, PROGRESS_UPDATED_EVENT, readProgress } from "../data/progress";
 import styles from "./AccountPage.module.css";
 
 interface SectionProgress {
@@ -20,18 +21,37 @@ const getLeafNodes = (items: NavItem[]): NavItem[] =>
 export default function AccountPage() {
   const { lang, t } = useLanguage();
   const [animateProgress, setAnimateProgress] = useState(false);
+  const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const timer = window.setTimeout(() => setAnimateProgress(true), 80);
     return () => window.clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const syncProgress = () => setDoneByPath(readProgress());
+    syncProgress();
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === null || event.key === PROGRESS_STORAGE_KEY) {
+        syncProgress();
+      }
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener(PROGRESS_UPDATED_EVENT, syncProgress);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(PROGRESS_UPDATED_EVENT, syncProgress);
+    };
+  }, []);
+
   const sectionProgress = useMemo<SectionProgress[]>(
     () =>
       navigationTree.map((section) => {
-        const leaves = getLeafNodes(section.children ?? []);
+        const leaves = getLeafNodes(section.children ?? []).filter((item) => hasContentForPath(item.path));
         const total = leaves.length;
-        const done = leaves.filter((item) => hasContentForPath(item.path)).length;
+        const done = leaves.filter((item) => Boolean(doneByPath[item.path])).length;
         const percent = total > 0 ? Math.round((done / total) * 100) : 0;
 
         return {
@@ -43,15 +63,13 @@ export default function AccountPage() {
           percent
         };
       }),
-    [lang]
+    [doneByPath, lang]
   );
 
   return (
     <section className={styles.wrap}>
       <PageHeader title={t("myAccount")} color="#1f6f78" />
       <div className={styles.card}>
-        <h2>{t("accountProgressTitle")}</h2>
-        <p>{t("accountProgressHint")}</p>
         <div className={styles.progressList}>
           {sectionProgress.map((item) => (
             <article key={item.path} className={styles.progressItem}>
@@ -80,4 +98,3 @@ export default function AccountPage() {
     </section>
   );
 }
-
