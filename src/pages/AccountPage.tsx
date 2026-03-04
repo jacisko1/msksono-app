@@ -74,10 +74,13 @@ export default function AccountPage() {
           {sectionProgress.map((item) => (
             <article key={item.path} className={styles.progressItem}>
               <div className={styles.progressHead}>
+                <div className={styles.progressLabel}>
+                  <h3>{item.title}:</h3>
+                  <span className={styles.progressMetaInline}>
+                    {t("accountDone")} {item.done}/{item.total}
+                  </span>
+                </div>
                 <strong>{item.percent}%</strong>
-              </div>
-              <div className={styles.progressMeta}>
-                {item.title}: {item.done}/{item.total} {t("accountDone")}
               </div>
               <div className={styles.progressTrack}>
                 <div
