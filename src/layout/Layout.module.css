@@ -124,6 +124,10 @@
   padding: 0 1rem 1.05rem;
 }
 
+.desktopControls {
+  display: none;
+}
+
 .navOpen {
   display: flex;
 }
@@ -196,6 +200,22 @@
   color: #005c66;
 }
 
+.desktopAccount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.78rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #244248;
+}
+
+.desktopAccount svg {
+  width: 18px;
+  height: 18px;
+  fill: currentcolor;
+}
+
 @keyframes fade {
   from {
     opacity: 0;
@@ -238,11 +258,23 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     gap: 0.25rem;
     padding: 0;
+    margin-left: 0.45rem;
+    flex: 1;
+  }
+
+  .desktopControls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     margin-left: auto;
+  }
+
+  .mobileOnlyLink {
+    display: none;
   }
 
   .main {

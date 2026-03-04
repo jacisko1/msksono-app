@@ -124,12 +124,37 @@ export function Layout() {
             ))}
             <NavLink
               to="/muj-ucet"
-              className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
+              className={({ isActive }) => `${styles.link} ${styles.mobileOnlyLink} ${isActive ? styles.homeActive : ""}`.trim()}
               onClick={() => setMobileOpen(false)}
             >
               {t("accountTab")}
             </NavLink>
           </nav>
+
+          <div className={styles.desktopControls}>
+            <div className={styles.bottomLang} role="group" aria-label="Language">
+              <button
+                type="button"
+                className={`${styles.langBtn} ${lang === "cs" ? styles.langBtnActive : ""}`}
+                onClick={() => setLang("cs")}
+              >
+                CZ
+              </button>
+              <button
+                type="button"
+                className={`${styles.langBtn} ${lang === "en" ? styles.langBtnActive : ""}`}
+                onClick={() => setLang("en")}
+              >
+                EN
+              </button>
+            </div>
+            <NavLink to="/muj-ucet" className={({ isActive }) => `${styles.desktopAccount} ${isActive ? styles.homeActive : ""}`}>
+              <span>{t("accountTab")}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 12.25a4.75 4.75 0 1 0 0-9.5 4.75 4.75 0 0 0 0 9.5Zm0 2c-4.55 0-8.25 2.83-8.25 6.31 0 .38.31.69.69.69h15.12c.38 0 .69-.31.69-.69 0-3.48-3.7-6.31-8.25-6.31Z" />
+              </svg>
+            </NavLink>
+          </div>
         </div>
       </header>
 
