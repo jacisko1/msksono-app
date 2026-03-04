@@ -70,10 +70,6 @@
   min-width: 0;
 }
 
-.unavailableTitle {
-  color: #8f96a3;
-}
-
 .progressToggle {
   display: inline-grid;
   place-items: center;
