@@ -74,61 +74,63 @@ export function Layout() {
   return (
     <div className={styles.app}>
       <header className={styles.topBar}>
-        <div className={styles.brandWrap}>
-          <Link className={styles.brand} to="/" onClick={() => setMobileOpen(false)}>
-            <img src={logoMark} alt="MSK Sono logo" />
-          </Link>
+        <div className={styles.headerInner}>
+          <div className={styles.brandWrap}>
+            <Link className={styles.brand} to="/" onClick={() => setMobileOpen(false)}>
+              <img src={logoMark} alt="MSK Sono logo" />
+            </Link>
 
-          <button
-            className={styles.menuToggle}
-            type="button"
-            aria-expanded={mobileOpen}
-            aria-label={t("toggleMenu")}
-            onClick={() => setMobileOpen((prev) => !prev)}
-          >
-            {"\u2630"}
-          </button>
+            <button
+              className={styles.menuToggle}
+              type="button"
+              aria-expanded={mobileOpen}
+              aria-label={t("toggleMenu")}
+              onClick={() => setMobileOpen((prev) => !prev)}
+            >
+              {"\u2630"}
+            </button>
 
-          {!isInstalled ? (
-            <div className={styles.installRow}>
-              <button className={styles.installButton} type="button" onClick={handleInstallClick}>
-                {t("installApp")}
-              </button>
-            </div>
-          ) : null}
-        </div>
+            {!isInstalled ? (
+              <div className={styles.installRow}>
+                <button className={styles.installButton} type="button" onClick={handleInstallClick}>
+                  {t("installApp")}
+                </button>
+              </div>
+            ) : null}
+          </div>
 
-        <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ""}`} aria-label="Main navigation">
-          <NavLink
-            to="/"
-            className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("home")}
-          </NavLink>
-          {navigationTree.map((section) => (
+          <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ""}`} aria-label="Main navigation">
             <NavLink
-              key={section.path}
-              to={section.path}
-              className={`${styles.link} ${isSectionActive(location.pathname, section.path) ? styles.active : ""}`}
-              style={
-                isSectionActive(location.pathname, section.path)
-                  ? ({ "--active-color": section.color } as CSSProperties)
-                  : undefined
-              }
+              to="/"
+              className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
               onClick={() => setMobileOpen(false)}
             >
-              {localize(section.title, lang)}
+              {t("home")}
             </NavLink>
-          ))}
-          <NavLink
-            to="/muj-ucet"
-            className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
-            onClick={() => setMobileOpen(false)}
-          >
-            {t("myAccount")}
-          </NavLink>
-        </nav>
+            {navigationTree.map((section) => (
+              <NavLink
+                key={section.path}
+                to={section.path}
+                className={`${styles.link} ${isSectionActive(location.pathname, section.path) ? styles.active : ""}`}
+                style={
+                  isSectionActive(location.pathname, section.path)
+                    ? ({ "--active-color": section.color } as CSSProperties)
+                    : undefined
+                }
+                onClick={() => setMobileOpen(false)}
+              >
+                {localize(section.title, lang)}
+              </NavLink>
+            ))}
+            <NavLink
+              to="/muj-ucet"
+              className={({ isActive }) => `${styles.link} ${isActive ? styles.homeActive : ""}`.trim()}
+              onClick={() => setMobileOpen(false)}
+            >
+              {t("accountTab")}
+            </NavLink>
+          </nav>
+        </div>
       </header>
 
       <main className={styles.main}>

@@ -44,7 +44,7 @@ const translations = {
     en: "Install is not available in this browser right now. Open the app over HTTPS and try again."
   },
   myAccount: { cs: "Můj účet", en: "My account" },
-  accountTab: { cs: "Účet", en: "account" },
+  accountTab: { cs: "Účet", en: "Account" },
   accountProgressTitle: { cs: "Progress podkapitol", en: "Subchapter progress" },
   accountProgressHint: {
     cs: "Postup je počítaný podle hotových podstránek v jednotlivých sekcích.",
