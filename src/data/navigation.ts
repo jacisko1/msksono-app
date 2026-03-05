@@ -64,11 +64,29 @@ export const navigationTree: NavItem[] = [
     color: "#209069",
     children: withSection("basics", "#209069", [
       {
+        title: { cs: "Fyzikalni principy", en: "Physical principles" },
+        path: "/basics/fyzikalni-principy",
+        children: [
+          { title: { cs: "Ultrazvuk", en: "Ultrasound" }, path: "/basics/fyzikalni-principy/ultrazvuk" },
+          { title: { cs: "Zvukova vlna", en: "Sound wave" }, path: "/basics/fyzikalni-principy/zvukova-vlna" },
+          { title: { cs: "Rychlost zvuku", en: "Speed of sound" }, path: "/basics/fyzikalni-principy/rychlost-zvuku" },
+          { title: { cs: "Akusticka impedance", en: "Acoustic impedance" }, path: "/basics/fyzikalni-principy/akusticka-impedance" },
+          { title: { cs: "Odraz", en: "Reflection" }, path: "/basics/fyzikalni-principy/odraz" },
+          { title: { cs: "Lom", en: "Refraction" }, path: "/basics/fyzikalni-principy/lom" }
+        ]
+      },
+      {
+        title: { cs: "Ultrazvukovy obraz", en: "Ultrasound image" },
+        path: "/basics/ultrazvukovy-obraz",
+        children: [
+          { title: { cs: "Orientace v obraze", en: "Image orientation" }, path: "/basics/ultrazvukovy-obraz/orientace-v-obrazu" },
+          { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/ultrazvukovy-obraz/echogenita" }
+        ]
+      },
+      {
         title: { cs: "Princip UZ zobrazení", en: "US examination principles" },
         path: "/basics/princip-ultrazvukoveho-vysetreni"
       },
-      { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/echogenita" },
-      { title: { cs: "Orientace v obrazu", en: "Image orientation" }, path: "/basics/orientace-v-obrazu" },
       { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
       { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
       { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
