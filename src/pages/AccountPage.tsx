@@ -164,7 +164,6 @@ export default function AccountPage() {
       <PageHeader title={t("myAccount")} color="#1f6f78" />
       <div className={styles.card}>
         <div className={styles.cardHead}>
-          <h2>{lang === "cs" ? "Přehled" : "Overview"}</h2>
           <div className={styles.tabs} role="tablist" aria-label={lang === "cs" ? "Přepnutí přehledu" : "Overview switch"}>
             <button
               type="button"
@@ -194,18 +193,20 @@ export default function AccountPage() {
                   <div className={styles.progressLabel}>
                     <h3>{item.title}</h3>
                   </div>
-                  <strong>{item.percent}%</strong>
                 </div>
-                <div className={styles.progressTrack}>
-                  <div
-                    className={styles.progressFill}
-                    style={
-                      {
-                        "--progress": `${animateProgress ? item.percent : 0}%`,
-                        "--section-color": item.color
-                      } as CSSProperties
-                    }
-                  />
+                <div className={styles.progressRow}>
+                  <div className={styles.progressTrack}>
+                    <div
+                      className={styles.progressFill}
+                      style={
+                        {
+                          "--progress": `${animateProgress ? item.percent : 0}%`,
+                          "--section-color": item.color
+                        } as CSSProperties
+                      }
+                    />
+                  </div>
+                  <strong>{item.percent}%</strong>
                 </div>
               </article>
             ))}
