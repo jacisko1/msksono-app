@@ -14,8 +14,47 @@ interface SectionProgress {
   percent: number;
 }
 
+interface SectionMilestone {
+  path: string;
+  symbol: string;
+  title: { cs: string; en: string };
+  hint: { cs: string; en: string };
+  gradient: string;
+}
+
 const getLeafNodes = (items: NavItem[]): NavItem[] =>
   items.flatMap((item) => (item.children?.length ? getLeafNodes(item.children) : [item]));
+
+const sectionMilestones: SectionMilestone[] = [
+  {
+    path: "/basics",
+    symbol: "FX",
+    title: { cs: "Základy sonografie", en: "Ultrasound basics" },
+    hint: { cs: "Fyzikální principy a orientace v obraze.", en: "Physical principles and image orientation." },
+    gradient: "linear-gradient(135deg, #2aa96b, #0f7044)"
+  },
+  {
+    path: "/klouby",
+    symbol: "JT",
+    title: { cs: "Kloubní protokoly", en: "Joint protocols" },
+    hint: { cs: "Systematické vyšetření velkých i malých kloubů.", en: "Systematic examination of major and minor joints." },
+    gradient: "linear-gradient(135deg, #0097a7, #005f68)"
+  },
+  {
+    path: "/periferni-nervy",
+    symbol: "NR",
+    title: { cs: "Periferní nervy", en: "Peripheral nerves" },
+    hint: { cs: "Průběh nervů, inervace a místa útlaku.", en: "Nerve course, innervation, and entrapment sites." },
+    gradient: "linear-gradient(135deg, #f1c40f, #b58a00)"
+  },
+  {
+    path: "/svaly",
+    symbol: "MS",
+    title: { cs: "Svalové jednotky", en: "Muscle units" },
+    hint: { cs: "Anatomie, protokol a patologie svalů.", en: "Muscle anatomy, protocol, and pathology." },
+    gradient: "linear-gradient(135deg, #cf3f3f, #8b1f1f)"
+  }
+];
 
 export default function AccountPage() {
   const { lang, t } = useLanguage();
@@ -65,6 +104,17 @@ export default function AccountPage() {
     [doneByPath, lang]
   );
 
+  const milestones = useMemo(
+    () =>
+      sectionMilestones.map((milestone) => {
+        const progress = sectionProgress.find((item) => item.path === milestone.path);
+        const percent = progress?.percent ?? 0;
+        const unlocked = percent === 100;
+        return { ...milestone, percent, unlocked };
+      }),
+    [sectionProgress]
+  );
+
   return (
     <section className={styles.wrap}>
       <PageHeader title={t("myAccount")} color="#1f6f78" />
@@ -95,6 +145,29 @@ export default function AccountPage() {
             </article>
           ))}
         </div>
+        <section className={styles.milestoneSection}>
+          <h2>{lang === "cs" ? "Milníky sekcí" : "Section milestones"}</h2>
+          <p>
+            {lang === "cs"
+              ? "Každý milník se odemkne až při 100 % dokončení celé sekce."
+              : "Each milestone unlocks only after 100% completion of the whole section."}
+          </p>
+          <div className={styles.milestoneGrid}>
+            {milestones.map((item) => (
+              <article
+                key={item.path}
+                className={`${styles.milestoneCard} ${item.unlocked ? styles.milestoneCardActive : styles.milestoneCardLocked}`}
+              >
+                <div className={styles.milestoneSeal} style={{ "--milestone-gradient": item.gradient } as CSSProperties}>
+                  <span>{item.symbol}</span>
+                </div>
+                <h3>{item.title[lang]}</h3>
+                <p>{item.hint[lang]}</p>
+                <strong>{item.unlocked ? (lang === "cs" ? "100 % splněno" : "100% complete") : `${item.percent}% / 100%`}</strong>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );

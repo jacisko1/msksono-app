@@ -82,3 +82,77 @@
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--section-color) 35%, black);
   transition: width 900ms ease;
 }
+
+.milestoneSection {
+  display: grid;
+  gap: 0.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--border) 75%, white);
+  padding-top: 0.9rem;
+}
+
+.milestoneGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.7rem;
+}
+
+.milestoneCard {
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  background: #fff;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.milestoneCard h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.milestoneCard p {
+  font-size: 0.86rem;
+}
+
+.milestoneCard strong {
+  font-size: 0.85rem;
+}
+
+.milestoneSeal {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: var(--milestone-gradient);
+  box-shadow:
+    0 12px 22px rgba(10, 26, 30, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.milestoneSeal span {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  font-weight: 800;
+  color: #fff;
+}
+
+.milestoneCardActive .milestoneSeal {
+  filter: none;
+}
+
+.milestoneCardLocked {
+  background: linear-gradient(180deg, #fbfcfd, #f3f6f8);
+}
+
+.milestoneCardLocked .milestoneSeal {
+  background: linear-gradient(135deg, #dbe2e8, #bcc7d1);
+}
+
+.milestoneCardLocked .milestoneSeal span,
+.milestoneCardLocked h3,
+.milestoneCardLocked p,
+.milestoneCardLocked strong {
+  color: #64717c;
+}
