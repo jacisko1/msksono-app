@@ -64,23 +64,23 @@ export const navigationTree: NavItem[] = [
     color: "#209069",
     children: withSection("basics", "#209069", [
       {
-        title: { cs: "Fyzikalni principy", en: "Physical principles" },
+        title: { cs: "Fyzik\u00e1ln\u00ed principy", en: "Physical principles" },
         path: "/basics/fyzikalni-principy",
         children: [
           { title: { cs: "Ultrazvuk", en: "Ultrasound" }, path: "/basics/fyzikalni-principy/ultrazvuk" },
-          { title: { cs: "Zvukova vlna", en: "Sound wave" }, path: "/basics/fyzikalni-principy/zvukova-vlna" },
+          { title: { cs: "Zvukov\u00e1 vlna", en: "Sound wave" }, path: "/basics/fyzikalni-principy/zvukova-vlna" },
           { title: { cs: "Rychlost zvuku", en: "Speed of sound" }, path: "/basics/fyzikalni-principy/rychlost-zvuku" },
-          { title: { cs: "Akusticka impedance", en: "Acoustic impedance" }, path: "/basics/fyzikalni-principy/akusticka-impedance" },
+          { title: { cs: "Akustick\u00e1 impedance", en: "Acoustic impedance" }, path: "/basics/fyzikalni-principy/akusticka-impedance" },
           { title: { cs: "Odraz", en: "Reflection" }, path: "/basics/fyzikalni-principy/odraz" },
           { title: { cs: "Lom", en: "Refraction" }, path: "/basics/fyzikalni-principy/lom" }
         ]
       },
       {
-        title: { cs: "Ultrazvukovy obraz", en: "Ultrasound image" },
+        title: { cs: "Ultrazvukov\u00fd obraz", en: "Ultrasound image" },
         path: "/basics/ultrazvukovy-obraz",
         children: [
           {
-            title: { cs: "Vznik ultrazvukov\u00e9ho obrazu", en: "Formation of ultrasound image" },
+            title: { cs: "Vznik obrazu", en: "Formation of ultrasound image" },
             path: "/basics/ultrazvukovy-obraz/vznik-ultrazvukoveho-obrazu"
           },
           { title: { cs: "Orientace v obraze", en: "Image orientation" }, path: "/basics/ultrazvukovy-obraz/orientace-v-obrazu" },
@@ -97,13 +97,13 @@ export const navigationTree: NavItem[] = [
           { title: { cs: "Orientace sondy", en: "Probe orientation" }, path: "/basics/ultrazvukove-sondy/orientace-sondy" }
         ]
       },
-      { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
       { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
+      { title: { cs: "Vy\u0161et\u0159ovan\u00e9 struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
+      { title: { cs: "Metaforick\u00e9 pom\u016fcky", en: "Metaphorical aids" }, path: "/basics/metaforicke-pomucky" },
       { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty"  },
-      { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
-      { title: { cs: "Ergonomie vyšetření", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
-      { title: { cs: "Metaforické pomůcky", en: "Metaphorical aids" }, path: "/basics/metaforicke-pomucky" },
       { title: { cs: "Fantomy", en: "Phantoms" }, path: "/basics/fantomy" },
+      { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },
+      { title: { cs: "Ergonomie vy\u0161et\u0159en\u00ed", en: "Examination ergonomics" }, path: "/basics/ergonomie-vysetreni" },
 
     ])
   },

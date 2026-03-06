@@ -3,6 +3,33 @@
   gap: 1.05rem;
 }
 
+.sectionProgressRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.sectionProgressTrack {
+  height: 8px;
+  border-radius: 999px;
+  background: #e6f2eb;
+  overflow: hidden;
+}
+
+.sectionProgressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1b8f60, #35b27f);
+  transition: width 260ms ease;
+}
+
+.sectionProgressPercent {
+  font-size: 0.92rem;
+  line-height: 1;
+  color: #1b8f60;
+}
+
 .videoBox {
   background: linear-gradient(180deg, #ffffff, #f8fcfd);
   border: 1px solid color-mix(in srgb, var(--border) 72%, white);
