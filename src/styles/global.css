@@ -61,6 +61,12 @@ button {
   font: inherit;
 }
 
+a,
+button,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #root {
   isolation: isolate;
 }
