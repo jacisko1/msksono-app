@@ -13,21 +13,21 @@
 .sectionProgressTrack {
   height: 8px;
   border-radius: 999px;
-  background: #e6f2eb;
+  background: color-mix(in srgb, var(--section-progress-color, #1b8f60) 16%, white);
   overflow: hidden;
 }
 
 .sectionProgressFill {
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #1b8f60, #35b27f);
+  background: var(--section-progress-color, #1b8f60);
   transition: width 260ms ease;
 }
 
 .sectionProgressPercent {
   font-size: 0.92rem;
   line-height: 1;
-  color: #1b8f60;
+  color: var(--section-progress-color, #1b8f60);
 }
 
 .videoBox {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { GridMenu } from "../components/GridMenu";
 import { PageHeader } from "../components/PageHeader";
@@ -59,7 +59,11 @@ export default function SectionPage({ path }: SectionPageProps) {
     <section className={styles.stack}>
       <PageHeader title={localize(node.title, lang)} color={node.color} />
       {sectionProgress ? (
-        <div className={styles.sectionProgressRow} aria-label={`${sectionProgress.percent}%`}>
+        <div
+          className={styles.sectionProgressRow}
+          aria-label={`${sectionProgress.percent}%`}
+          style={{ "--section-progress-color": node.color } as CSSProperties}
+        >
           <div className={styles.sectionProgressTrack}>
             <div className={styles.sectionProgressFill} style={{ width: `${sectionProgress.percent}%` }} />
           </div>
