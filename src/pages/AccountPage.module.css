@@ -40,8 +40,7 @@
 .progressHead {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 0.8rem;
+  gap: 0.4rem;
 }
 
 .progressLabel {
@@ -53,16 +52,6 @@
 
 .progressHead h3 {
   margin: 0;
-  font-size: 1rem;
-}
-
-.progressMetaInline {
-  color: var(--text-soft);
-  font-size: 0.92rem;
-  font-weight: 400;
-}
-
-.progressHead strong {
   font-size: 1rem;
 }
 
@@ -84,15 +73,12 @@
 }
 
 .milestoneSection {
-  display: grid;
-  gap: 0.8rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 75%, white);
-  padding-top: 0.9rem;
+  display: block;
 }
 
 .milestoneGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 0.7rem;
 }
 
@@ -102,57 +88,43 @@
   background: #fff;
   padding: 0.75rem;
   display: grid;
-  gap: 0.5rem;
-  align-content: start;
+  gap: 0.45rem;
+  justify-items: center;
+  text-align: center;
 }
 
 .milestoneCard h3 {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
 }
 
-.milestoneCard p {
-  font-size: 0.86rem;
-}
-
-.milestoneCard strong {
-  font-size: 0.85rem;
-}
-
-.milestoneSeal {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+.milestoneImage {
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
   display: grid;
   place-items: center;
-  background: var(--milestone-gradient);
-  box-shadow:
-    0 12px 22px rgba(10, 26, 30, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  background: #f4f9fa;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
 }
 
-.milestoneSeal span {
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-  font-weight: 800;
-  color: #fff;
+.milestoneImage svg {
+  width: 44px;
+  height: 44px;
 }
 
-.milestoneCardActive .milestoneSeal {
-  filter: none;
+.milestoneCardActive .milestoneImage {
+  background: #f1f9fa;
+  box-shadow: 0 10px 22px rgba(11, 37, 42, 0.12);
 }
 
 .milestoneCardLocked {
   background: linear-gradient(180deg, #fbfcfd, #f3f6f8);
 }
 
-.milestoneCardLocked .milestoneSeal {
-  background: linear-gradient(135deg, #dbe2e8, #bcc7d1);
-}
-
-.milestoneCardLocked .milestoneSeal span,
-.milestoneCardLocked h3,
-.milestoneCardLocked p,
-.milestoneCardLocked strong {
+.milestoneCardLocked .milestoneImage svg,
+.milestoneCardLocked h3 {
   color: #64717c;
+  opacity: 0.58;
+  filter: grayscale(1);
 }

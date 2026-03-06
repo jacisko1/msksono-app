@@ -16,10 +16,9 @@ interface SectionProgress {
 
 interface SectionMilestone {
   path: string;
-  symbol: string;
   title: { cs: string; en: string };
-  hint: { cs: string; en: string };
-  gradient: string;
+  icon: "basics" | "joints" | "nerves" | "muscles";
+  color: string;
 }
 
 const getLeafNodes = (items: NavItem[]): NavItem[] =>
@@ -28,33 +27,77 @@ const getLeafNodes = (items: NavItem[]): NavItem[] =>
 const sectionMilestones: SectionMilestone[] = [
   {
     path: "/basics",
-    symbol: "FX",
-    title: { cs: "Základy sonografie", en: "Ultrasound basics" },
-    hint: { cs: "Fyzikální principy a orientace v obraze.", en: "Physical principles and image orientation." },
-    gradient: "linear-gradient(135deg, #2aa96b, #0f7044)"
+    title: { cs: "Základy", en: "Basics" },
+    icon: "basics",
+    color: "#209069"
   },
   {
     path: "/klouby",
-    symbol: "JT",
-    title: { cs: "Kloubní protokoly", en: "Joint protocols" },
-    hint: { cs: "Systematické vyšetření velkých i malých kloubů.", en: "Systematic examination of major and minor joints." },
-    gradient: "linear-gradient(135deg, #0097a7, #005f68)"
+    title: { cs: "Klouby", en: "Joints" },
+    icon: "joints",
+    color: "#00626c"
   },
   {
     path: "/periferni-nervy",
-    symbol: "NR",
-    title: { cs: "Periferní nervy", en: "Peripheral nerves" },
-    hint: { cs: "Průběh nervů, inervace a místa útlaku.", en: "Nerve course, innervation, and entrapment sites." },
-    gradient: "linear-gradient(135deg, #f1c40f, #b58a00)"
+    title: { cs: "Nervy", en: "Nerves" },
+    icon: "nerves",
+    color: "#d2be00"
   },
   {
     path: "/svaly",
-    symbol: "MS",
-    title: { cs: "Svalové jednotky", en: "Muscle units" },
-    hint: { cs: "Anatomie, protokol a patologie svalů.", en: "Muscle anatomy, protocol, and pathology." },
-    gradient: "linear-gradient(135deg, #cf3f3f, #8b1f1f)"
+    title: { cs: "Svaly", en: "Muscles" },
+    icon: "muscles",
+    color: "#9a2626"
   }
 ];
+
+function MilestoneIcon({ kind, color }: { kind: SectionMilestone["icon"]; color: string }) {
+  if (kind === "basics") {
+    return (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="10" y="14" width="44" height="36" rx="8" fill={color} opacity="0.22" />
+        <circle cx="32" cy="32" r="10" fill="none" stroke={color} strokeWidth="4" />
+        <path d="M32 20v24M20 32h24" stroke={color} strokeWidth="3" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (kind === "joints") {
+    return (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="22" cy="22" r="8" fill={color} />
+        <circle cx="42" cy="42" r="8" fill={color} />
+        <rect x="26" y="26" width="12" height="12" rx="4" fill={color} opacity="0.45" />
+        <path d="M28 28L36 36" stroke={color} strokeWidth="4" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (kind === "nerves") {
+    return (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path
+          d="M14 48c8-8 10-14 16-14s8 6 14 6 8-5 12-9"
+          fill="none"
+          stroke={color}
+          strokeWidth="5"
+          strokeLinecap="round"
+        />
+        <circle cx="14" cy="48" r="4" fill={color} />
+        <circle cx="30" cy="34" r="4" fill={color} />
+        <circle cx="44" cy="40" r="4" fill={color} />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M14 46c2-12 10-20 18-20s16 8 18 20" fill={color} opacity="0.22" />
+      <path d="M18 44c2-9 7-14 14-14s12 5 14 14" fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" />
+      <path d="M26 30v-8m12 8v-8" stroke={color} strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export default function AccountPage() {
   const { lang, t } = useLanguage();
@@ -119,17 +162,14 @@ export default function AccountPage() {
     <section className={styles.wrap}>
       <PageHeader title={t("myAccount")} color="#1f6f78" />
       <div className={styles.card}>
+        <h2>{lang === "cs" ? "Statistiky" : "Statistics"}</h2>
         <div className={styles.progressList}>
           {sectionProgress.map((item) => (
             <article key={item.path} className={styles.progressItem}>
               <div className={styles.progressHead}>
                 <div className={styles.progressLabel}>
-                  <h3>{item.title}:</h3>
-                  <span className={styles.progressMetaInline}>
-                    {t("accountDone")} {item.done}/{item.total}
-                  </span>
+                  <h3>{item.title}</h3>
                 </div>
-                <strong>{item.percent}%</strong>
               </div>
               <div className={styles.progressTrack}>
                 <div
@@ -145,25 +185,20 @@ export default function AccountPage() {
             </article>
           ))}
         </div>
+      </div>
+      <div className={styles.card}>
+        <h2>{lang === "cs" ? "Odznaky" : "Badges"}</h2>
         <section className={styles.milestoneSection}>
-          <h2>{lang === "cs" ? "Milníky sekcí" : "Section milestones"}</h2>
-          <p>
-            {lang === "cs"
-              ? "Každý milník se odemkne až při 100 % dokončení celé sekce."
-              : "Each milestone unlocks only after 100% completion of the whole section."}
-          </p>
           <div className={styles.milestoneGrid}>
             {milestones.map((item) => (
               <article
                 key={item.path}
                 className={`${styles.milestoneCard} ${item.unlocked ? styles.milestoneCardActive : styles.milestoneCardLocked}`}
               >
-                <div className={styles.milestoneSeal} style={{ "--milestone-gradient": item.gradient } as CSSProperties}>
-                  <span>{item.symbol}</span>
+                <div className={styles.milestoneImage}>
+                  <MilestoneIcon kind={item.icon} color={item.color} />
                 </div>
                 <h3>{item.title[lang]}</h3>
-                <p>{item.hint[lang]}</p>
-                <strong>{item.unlocked ? (lang === "cs" ? "100 % splněno" : "100% complete") : `${item.percent}% / 100%`}</strong>
               </article>
             ))}
           </div>
