@@ -79,24 +79,22 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Ultrazvukovy obraz", en: "Ultrasound image" },
         path: "/basics/ultrazvukovy-obraz",
         children: [
-          { title: { cs: "Orientace v obraze", en: "Image orientation" }, path: "/basics/ultrazvukovy-obraz/orientace-v-obrazu" },
-          { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/ultrazvukovy-obraz/echogenita" },
           {
-            title: { cs: "Ultrazvukov\u00e9 sondy", en: "Ultrasound probes" },
-            path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy",
-            children: [
-              { title: { cs: "Typy sond", en: "Probe types" }, path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/typy-sond" },
-              {
-                title: { cs: "Pohyby sondou", en: "Probe movements" },
-                path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/pohyby-sondou"
-              },
-              { title: { cs: "Dr\u017een\u00ed sondy", en: "Probe grip" }, path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/drzeni-sondy" },
-              {
-                title: { cs: "Orientace sondy", en: "Probe orientation" },
-                path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/orientace-sondy"
-              }
-            ]
-          }
+            title: { cs: "Vznik ultrazvukov\u00e9ho obrazu", en: "Formation of ultrasound image" },
+            path: "/basics/ultrazvukovy-obraz/vznik-ultrazvukoveho-obrazu"
+          },
+          { title: { cs: "Orientace v obraze", en: "Image orientation" }, path: "/basics/ultrazvukovy-obraz/orientace-v-obrazu" },
+          { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/ultrazvukovy-obraz/echogenita" }
+        ]
+      },
+      {
+        title: { cs: "Ultrazvukov\u00e9 sondy", en: "Ultrasound probes" },
+        path: "/basics/ultrazvukove-sondy",
+        children: [
+          { title: { cs: "Typy sond", en: "Probe types" }, path: "/basics/ultrazvukove-sondy/typy-sond" },
+          { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/ultrazvukove-sondy/pohyby-sondou" },
+          { title: { cs: "Dr\u017een\u00ed sondy", en: "Probe grip" }, path: "/basics/ultrazvukove-sondy/drzeni-sondy" },
+          { title: { cs: "Orientace sondy", en: "Probe orientation" }, path: "/basics/ultrazvukove-sondy/orientace-sondy" }
         ]
       },
       { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },

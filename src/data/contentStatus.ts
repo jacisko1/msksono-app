@@ -1,6 +1,6 @@
 const pathMatchers: Array<(path: string) => boolean> = [
-  (path) => path === "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/typy-sond",
-  (path) => path === "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/pohyby-sondou",
+  (path) => path === "/basics/ultrazvukove-sondy/typy-sond",
+  (path) => path === "/basics/ultrazvukove-sondy/pohyby-sondou",
   (path) => path === "/basics/knobologie",
   (path) => /^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/.test(path),
   (path) => path === "/svaly/biceps-brachii/video-tutorial",
