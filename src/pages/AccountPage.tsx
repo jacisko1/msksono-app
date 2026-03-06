@@ -103,6 +103,7 @@ export default function AccountPage() {
   const { lang, t } = useLanguage();
   const [animateProgress, setAnimateProgress] = useState(false);
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
+  const [activeTab, setActiveTab] = useState<"stats" | "badges">("stats");
 
   useEffect(() => {
     const timer = window.setTimeout(() => setAnimateProgress(true), 80);
@@ -162,47 +163,70 @@ export default function AccountPage() {
     <section className={styles.wrap}>
       <PageHeader title={t("myAccount")} color="#1f6f78" />
       <div className={styles.card}>
-        <h2>{lang === "cs" ? "Statistiky" : "Statistics"}</h2>
-        <div className={styles.progressList}>
-          {sectionProgress.map((item) => (
-            <article key={item.path} className={styles.progressItem}>
-              <div className={styles.progressHead}>
-                <div className={styles.progressLabel}>
-                  <h3>{item.title}</h3>
-                </div>
-              </div>
-              <div className={styles.progressTrack}>
-                <div
-                  className={styles.progressFill}
-                  style={
-                    {
-                      "--progress": `${animateProgress ? item.percent : 0}%`,
-                      "--section-color": item.color
-                    } as CSSProperties
-                  }
-                />
-              </div>
-            </article>
-          ))}
+        <div className={styles.cardHead}>
+          <h2>{lang === "cs" ? "Přehled" : "Overview"}</h2>
+          <div className={styles.tabs} role="tablist" aria-label={lang === "cs" ? "Přepnutí přehledu" : "Overview switch"}>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === "stats"}
+              className={`${styles.tabBtn} ${activeTab === "stats" ? styles.tabBtnActive : ""}`}
+              onClick={() => setActiveTab("stats")}
+            >
+              {lang === "cs" ? "Statistiky" : "Statistics"}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeTab === "badges"}
+              className={`${styles.tabBtn} ${activeTab === "badges" ? styles.tabBtnActive : ""}`}
+              onClick={() => setActiveTab("badges")}
+            >
+              {lang === "cs" ? "Odznaky" : "Badges"}
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={styles.card}>
-        <h2>{lang === "cs" ? "Odznaky" : "Badges"}</h2>
-        <section className={styles.milestoneSection}>
-          <div className={styles.milestoneGrid}>
-            {milestones.map((item) => (
-              <article
-                key={item.path}
-                className={`${styles.milestoneCard} ${item.unlocked ? styles.milestoneCardActive : styles.milestoneCardLocked}`}
-              >
-                <div className={styles.milestoneImage}>
-                  <MilestoneIcon kind={item.icon} color={item.color} />
+        {activeTab === "stats" ? (
+          <div className={styles.progressList}>
+            {sectionProgress.map((item) => (
+              <article key={item.path} className={styles.progressItem}>
+                <div className={styles.progressHead}>
+                  <div className={styles.progressLabel}>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <strong>{item.percent}%</strong>
                 </div>
-                <h3>{item.title[lang]}</h3>
+                <div className={styles.progressTrack}>
+                  <div
+                    className={styles.progressFill}
+                    style={
+                      {
+                        "--progress": `${animateProgress ? item.percent : 0}%`,
+                        "--section-color": item.color
+                      } as CSSProperties
+                    }
+                  />
+                </div>
               </article>
             ))}
           </div>
-        </section>
+        ) : (
+          <section className={styles.milestoneSection}>
+            <div className={styles.milestoneGrid}>
+              {milestones.map((item) => (
+                <article
+                  key={item.path}
+                  className={`${styles.milestoneCard} ${item.unlocked ? styles.milestoneCardActive : styles.milestoneCardLocked}`}
+                >
+                  <div className={styles.milestoneImage}>
+                    <MilestoneIcon kind={item.icon} color={item.color} />
+                  </div>
+                  <h3>{item.title[lang]}</h3>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </section>
   );

@@ -23,6 +23,41 @@
   color: var(--text-soft);
 }
 
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  background: #eef5f7;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, white);
+}
+
+.tabBtn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  min-height: 34px;
+  background: transparent;
+  color: #49656b;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tabBtnActive {
+  background: #fff;
+  color: #0f5f68;
+  box-shadow: 0 6px 12px rgba(9, 39, 44, 0.1);
+}
+
 .progressList {
   display: grid;
   gap: 0.8rem;
@@ -53,6 +88,11 @@
 .progressHead h3 {
   margin: 0;
   font-size: 1rem;
+}
+
+.progressHead strong {
+  font-size: 1rem;
+  color: #0f5d66;
 }
 
 .progressTrack {
