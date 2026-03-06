@@ -80,18 +80,26 @@ export const navigationTree: NavItem[] = [
         path: "/basics/ultrazvukovy-obraz",
         children: [
           { title: { cs: "Orientace v obraze", en: "Image orientation" }, path: "/basics/ultrazvukovy-obraz/orientace-v-obrazu" },
-          { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/ultrazvukovy-obraz/echogenita" }
+          { title: { cs: "Echogenita", en: "Echogenicity" }, path: "/basics/ultrazvukovy-obraz/echogenita" },
+          {
+            title: { cs: "Ultrazvukov\u00e9 sondy", en: "Ultrasound probes" },
+            path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy",
+            children: [
+              { title: { cs: "Typy sond", en: "Probe types" }, path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/typy-sond" },
+              {
+                title: { cs: "Pohyby sondou", en: "Probe movements" },
+                path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/pohyby-sondou"
+              },
+              { title: { cs: "Dr\u017een\u00ed sondy", en: "Probe grip" }, path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/drzeni-sondy" },
+              {
+                title: { cs: "Orientace sondy", en: "Probe orientation" },
+                path: "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/orientace-sondy"
+              }
+            ]
+          }
         ]
       },
-      {
-        title: { cs: "Princip UZ zobrazení", en: "US examination principles" },
-        path: "/basics/princip-ultrazvukoveho-vysetreni"
-      },
       { title: { cs: "Vyšetřované struktury", en: "Examined structures" }, path: "/basics/vysetrovane-struktury" },
-      { title: { cs: "Sondy", en: "Probes" }, path: "/basics/sondy" },
-      { title: { cs: "Pohyby sondou", en: "Probe movements" }, path: "/basics/pohyby-sondou" },
-      { title: { cs: "Držení sondy", en: "Probe grip" }, path: "/basics/drzeni-sondy" },
-      { title: { cs: "Orientace sondy", en: "Probe orientation" }, path: "/basics/orientace-sondy" },
       { title: { cs: "Knobologie", en: "Knobology" }, path: "/basics/knobologie" },
       { title: { cs: "Artefakty", en: "Artifacts" }, path: "/basics/artefakty"  },
       { title: { cs: "Poloha pacienta", en: "Patient positioning" }, path: "/basics/poloha-pacienta" },

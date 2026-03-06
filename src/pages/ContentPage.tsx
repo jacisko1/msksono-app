@@ -1049,8 +1049,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointProtocolMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
   const jointKey = jointProtocolMatch?.[1] ?? jointIntroMatch?.[1];
   const jointContent = jointKey ? jointContentBySlug[jointKey] : undefined;
-  const isProbesPage = path === "/basics/sondy";
-  const isProbeMovementsPage = path === "/basics/pohyby-sondou";
+  const isProbesPage = path === "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/typy-sond";
+  const isProbeMovementsPage = path === "/basics/ultrazvukovy-obraz/ultrazvukove-sondy/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
 
   if (!node) {
