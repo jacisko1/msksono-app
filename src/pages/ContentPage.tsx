@@ -309,6 +309,13 @@ const nerveAnatomyImages = [
   { key: "4_forearm", title: { cs: "PÅ™edloktÃ­", en: "Forearm" } },
   { key: "5_wrist", title: { cs: "ZÃ¡pÄ›stÃ­", en: "Wrist" } }
 ];
+const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
+  "2_axilla": { cs: "Øez axillou", en: "Axilla section" },
+  "1_arm": { cs: "Øez paží", en: "Arm section" },
+  "3_elbow": { cs: "Øez loktem", en: "Elbow section" },
+  "4_forearm": { cs: "Øez pøedloktím", en: "Forearm section" },
+  "5_wrist": { cs: "Øez zápìstím", en: "Wrist section" }
+};
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
   "nervus-medianus": {
@@ -1300,24 +1307,30 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-            {nerveAnatomyImages.map((item) => {
+            {nerveAnatomyImages.map((item, index) => {
               const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
               const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
+              const figureCaptionData = nerveAnatomyFigureCaptions[item.key];
+              const figureCaption = figureCaptionData
+                ? `Obrázek ${index + 1}: ${figureCaptionData.cs} (Figure ${index + 1}: ${figureCaptionData.en})`
+                : undefined;
+              const zoomCaption = [figureCaption, abbreviationLine].filter(Boolean).join(" ");
 
               return (
                 <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+                  <div className={styles.articleBody}>
+                    <h3>{item.title[lang]}</h3>
+                    {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
+                  </div>
                   <ResponsiveImage
                     image={makeResponsiveImagePhone("CS", item.key)}
                     alt={item.title[lang]}
                     wrapClassName={styles.shoulderUltrasoundImageWrap}
                     enableMobileZoom
-                    caption={abbreviationLine}
+                    caption={zoomCaption}
                   />
+                  {figureCaption ? <p className={styles.figureCaption}>{figureCaption}</p> : null}
                   {abbreviationLine ? <p className={styles.abbrevInline}>{abbreviationLine}</p> : null}
-                  <div className={styles.articleBody}>
-                    <h3>{item.title[lang]}</h3>
-                    {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
-                  </div>
                 </article>
               );
             })}
@@ -1558,5 +1571,15 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
 
 

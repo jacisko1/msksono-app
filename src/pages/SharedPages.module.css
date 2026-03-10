@@ -73,13 +73,15 @@
 }
 
 .articleBox {
-  background: linear-gradient(180deg, #ffffff, #f8fcfd);
-  border: 1px solid color-mix(in srgb, var(--border) 72%, white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: clamp(0.9rem, 2.6vw, 1.1rem);
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   display: grid;
-  gap: 1rem;
+  gap: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.25;
 }
 
 .articleBox h2 {
@@ -90,6 +92,8 @@
 .articleBox > p {
   margin: 0;
   color: var(--text-soft);
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .articleGrid {
@@ -115,6 +119,8 @@
 .articleBody p {
   margin: 0;
   color: var(--text-soft);
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .compactList {
@@ -123,6 +129,15 @@
   color: var(--text-soft);
   display: grid;
   gap: 0.25rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.figureCaption {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: color-mix(in srgb, var(--text-soft) 92%, #000);
 }
 
 .abbrevInline {
