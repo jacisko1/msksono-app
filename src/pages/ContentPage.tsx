@@ -296,6 +296,14 @@ const jointContentBySlug: Record<string, JointContent> = {
   }
 };
 
+const nerveAnatomyImages = [
+  { key: "2_axilla", title: { cs: "Axilla", en: "Axilla" } },
+  { key: "1_arm", title: { cs: "Paže", en: "Arm" } },
+  { key: "3_elbow", title: { cs: "Loket", en: "Elbow" } },
+  { key: "4_forearm", title: { cs: "Předloktí", en: "Forearm" } },
+  { key: "5_wrist", title: { cs: "Zápěstí", en: "Wrist" } }
+];
+
 const jointProtocolExtraBullets: Record<string, Record<string, string[]>> = {
   loket: {
     "01_01": [
@@ -1042,6 +1050,9 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
   const isMedianNerveVideo = path === "/periferni-nervy/nervus-medianus/video-tutorial";
+  const nerveAnatomyMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
+  );
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1108,6 +1119,31 @@ export default function ContentPage({ path }: ContentPageProps) {
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
+          </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (nerveAnatomyMatch) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Cross section ilustrace" : "Cross-section illustrations"}</h2>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
+            {nerveAnatomyImages.map((item) => (
+              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+                <ResponsiveImage
+                  image={makeResponsiveImagePhone("CS", item.key)}
+                  alt={item.title[lang]}
+                  wrapClassName={styles.shoulderUltrasoundImageWrap}
+                />
+                <div className={styles.articleBody}>
+                  <h3>{item.title[lang]}</h3>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
       </section>
