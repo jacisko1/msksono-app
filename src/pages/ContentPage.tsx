@@ -1,4 +1,4 @@
-import { useState } from "react";
+ï»¿import { useState } from "react";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
@@ -310,11 +310,11 @@ const nerveAnatomyImages = [
   { key: "5_wrist", title: { cs: "ZÃ¡pÄ›stÃ­", en: "Wrist" } }
 ];
 const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
-  "2_axilla": { cs: "Øez axillou", en: "Axilla section" },
-  "1_arm": { cs: "Øez paží", en: "Arm section" },
-  "3_elbow": { cs: "Øez loktem", en: "Elbow section" },
-  "4_forearm": { cs: "Øez pøedloktím", en: "Forearm section" },
-  "5_wrist": { cs: "Øez zápìstím", en: "Wrist section" }
+  "2_axilla": { cs: "Å˜ez axillou", en: "Axilla section" },
+  "1_arm": { cs: "Å˜ez paÅ¾Ã­", en: "Arm section" },
+  "3_elbow": { cs: "Å˜ez loktem", en: "Elbow section" },
+  "4_forearm": { cs: "Å˜ez pÅ™edloktÃ­m", en: "Forearm section" },
+  "5_wrist": { cs: "Å˜ez zÃ¡pÄ›stÃ­m", en: "Wrist section" }
 };
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
@@ -1312,7 +1312,7 @@ export default function ContentPage({ path }: ContentPageProps) {
               const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
               const figureCaptionData = nerveAnatomyFigureCaptions[item.key];
               const figureCaption = figureCaptionData
-                ? `Obrázek ${index + 1}: ${figureCaptionData.cs} (Figure ${index + 1}: ${figureCaptionData.en})`
+                ? `ObrÃ¡zek ${index + 1}: ${figureCaptionData.cs} (Figure ${index + 1}: ${figureCaptionData.en})`
                 : undefined;
               const zoomCaption = [figureCaption, abbreviationLine].filter(Boolean).join(" ");
 
