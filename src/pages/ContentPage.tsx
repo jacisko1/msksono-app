@@ -386,6 +386,186 @@ const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescri
   }
 };
 
+const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = {
+  "nervus-medianus": {
+    cs: [
+      "Předloktí: m. pronator teres, m. flexor carpi radialis, m. palmaris longus, m. flexor digitorum superficialis.",
+      "N. interosseus anterior: m. flexor pollicis longus, m. pronator quadratus, radiální polovina m. flexor digitorum profundus (prsty II–III).",
+      "Ruka (thenar): m. abductor pollicis brevis, m. opponens pollicis, m. flexor pollicis brevis (caput superficiale).",
+      "Ruka: mm. lumbricales I–II."
+    ],
+    en: [
+      "Forearm: pronator teres, flexor carpi radialis, palmaris longus, flexor digitorum superficialis.",
+      "Anterior interosseous nerve: flexor pollicis longus, pronator quadratus, radial half of flexor digitorum profundus (digits II–III).",
+      "Hand (thenar): abductor pollicis brevis, opponens pollicis, flexor pollicis brevis (superficial head).",
+      "Hand: lumbricals I–II."
+    ]
+  },
+  "nervus-ulnaris": {
+    cs: [
+      "Předloktí: m. flexor carpi ulnaris, ulnární polovina m. flexor digitorum profundus (prsty IV–V).",
+      "Ruka (hypothenar): m. abductor digiti minimi, m. flexor digiti minimi brevis, m. opponens digiti minimi, m. palmaris brevis.",
+      "Ruka: mm. interossei palmares et dorsales, mm. lumbricales III–IV.",
+      "Ruka: m. adductor pollicis, hluboká hlava m. flexor pollicis brevis."
+    ],
+    en: [
+      "Forearm: flexor carpi ulnaris, ulnar half of flexor digitorum profundus (digits IV–V).",
+      "Hand (hypothenar): abductor digiti minimi, flexor digiti minimi brevis, opponens digiti minimi, palmaris brevis.",
+      "Hand: palmar and dorsal interossei, lumbricals III–IV.",
+      "Hand: adductor pollicis, deep head of flexor pollicis brevis."
+    ]
+  },
+  "nervus-radialis": {
+    cs: [
+      "Paže: m. triceps brachii, m. anconeus.",
+      "Předloktí (n. radialis a n. interosseus posterior): m. brachioradialis, m. extensor carpi radialis longus et brevis, m. supinator.",
+      "Předloktí: m. extensor digitorum, m. extensor digiti minimi, m. extensor carpi ulnaris.",
+      "Předloktí: m. abductor pollicis longus, m. extensor pollicis brevis, m. extensor pollicis longus, m. extensor indicis."
+    ],
+    en: [
+      "Arm: triceps brachii, anconeus.",
+      "Forearm (radial nerve and posterior interosseous nerve): brachioradialis, extensor carpi radialis longus and brevis, supinator.",
+      "Forearm: extensor digitorum, extensor digiti minimi, extensor carpi ulnaris.",
+      "Forearm: abductor pollicis longus, extensor pollicis brevis, extensor pollicis longus, extensor indicis."
+    ]
+  },
+  "nervus-femoralis": {
+    cs: [
+      "Kyčel a stehno: m. iliacus, m. pectineus (částečně), m. sartorius.",
+      "Quadriceps femoris: m. rectus femoris, m. vastus medialis, m. vastus lateralis, m. vastus intermedius.",
+      "Přidruženě: m. articularis genus."
+    ],
+    en: [
+      "Hip and thigh: iliacus, pectineus (partial), sartorius.",
+      "Quadriceps femoris: rectus femoris, vastus medialis, vastus lateralis, vastus intermedius.",
+      "Associated: articularis genus."
+    ]
+  },
+  "nervus-ischiadicus": {
+    cs: [
+      "Zadní skupina stehna: m. semitendinosus, m. semimembranosus, m. biceps femoris (caput longum).",
+      "Ischiokrurální část m. adductor magnus.",
+      "Caput breve m. biceps femoris přes n. peroneus communis."
+    ],
+    en: [
+      "Posterior thigh: semitendinosus, semimembranosus, biceps femoris (long head).",
+      "Hamstring part of adductor magnus.",
+      "Short head of biceps femoris via the common peroneal division."
+    ]
+  },
+  "nervus-tibialis": {
+    cs: [
+      "Bérec (zadní kompartment): m. gastrocnemius, m. soleus, m. plantaris, m. popliteus.",
+      "Bérec (hluboká vrstva): m. tibialis posterior, m. flexor digitorum longus, m. flexor hallucis longus.",
+      "Noha (plantární svaly přes n. plantaris medialis et lateralis): m. abductor hallucis, m. flexor digitorum brevis, m. flexor hallucis brevis, m. quadratus plantae, mm. lumbricales, mm. interossei, m. adductor hallucis, m. abductor digiti minimi, m. flexor digiti minimi brevis."
+    ],
+    en: [
+      "Leg (posterior compartment): gastrocnemius, soleus, plantaris, popliteus.",
+      "Leg (deep layer): tibialis posterior, flexor digitorum longus, flexor hallucis longus.",
+      "Foot (plantar muscles via medial and lateral plantar nerves): abductor hallucis, flexor digitorum brevis, flexor hallucis brevis, quadratus plantae, lumbricals, interossei, adductor hallucis, abductor digiti minimi, flexor digiti minimi brevis."
+    ]
+  },
+  "nervus-peroneus-communis": {
+    cs: [
+      "Stehno: m. biceps femoris (caput breve).",
+      "Bérec (n. peroneus profundus): m. tibialis anterior, m. extensor hallucis longus, m. extensor digitorum longus, m. peroneus tertius.",
+      "Bérec (n. peroneus superficialis): m. peroneus longus, m. peroneus brevis.",
+      "Hřbet nohy (n. peroneus profundus): m. extensor digitorum brevis, m. extensor hallucis brevis."
+    ],
+    en: [
+      "Thigh: biceps femoris (short head).",
+      "Leg (deep peroneal nerve): tibialis anterior, extensor hallucis longus, extensor digitorum longus, fibularis tertius.",
+      "Leg (superficial peroneal nerve): fibularis longus, fibularis brevis.",
+      "Dorsum of foot (deep peroneal nerve): extensor digitorum brevis, extensor hallucis brevis."
+    ]
+  }
+};
+
+const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = {
+  "nervus-medianus": {
+    cs: [
+      "Dlaň: radiální polovina dlaně.",
+      "Prsty: palmar I–III a radiální polovina IV. prstu.",
+      "Hřbet prstů: distální články I–III a radiální polovina IV. prstu."
+    ],
+    en: [
+      "Palm: radial half of the palm.",
+      "Digits: palmar I–III and radial half of digit IV.",
+      "Dorsal digits: distal phalanges of I–III and radial half of digit IV."
+    ]
+  },
+  "nervus-ulnaris": {
+    cs: [
+      "Dlaň: ulnární část dlaně.",
+      "Prsty: palmar i dorsální V. a ulnární polovina IV. prstu.",
+      "Hřbet ruky: ulnární část hřbetu ruky."
+    ],
+    en: [
+      "Palm: ulnar part of the palm.",
+      "Digits: palmar and dorsal digit V and ulnar half of digit IV.",
+      "Dorsum of hand: ulnar aspect of the dorsum."
+    ]
+  },
+  "nervus-radialis": {
+    cs: [
+      "Paže a předloktí: dorzální/laterální část.",
+      "Hřbet ruky: radiální část hřbetu ruky.",
+      "Prsty: dorzální proximální části I–III a radiální polovina IV. prstu (bez bříšek)."
+    ],
+    en: [
+      "Arm and forearm: posterior/lateral skin.",
+      "Dorsum of hand: radial aspect of the dorsum.",
+      "Digits: dorsal proximal parts of I–III and radial half of digit IV (not the fingertips)."
+    ]
+  },
+  "nervus-femoralis": {
+    cs: [
+      "Přední strana stehna (rr. cutanei anteriores).",
+      "Mediální bérec a mediální okraj nohy přes n. saphenus."
+    ],
+    en: [
+      "Anterior thigh (anterior cutaneous branches).",
+      "Medial leg and medial foot via the saphenous nerve."
+    ]
+  },
+  "nervus-ischiadicus": {
+    cs: [
+      "Přímá kožní inervace není typická.",
+      "Senzitivní oblast zajišťují jeho větve: n. tibialis a n. peroneus communis (bérce a nohy)."
+    ],
+    en: [
+      "No typical direct cutaneous territory.",
+      "Sensory territory is via its divisions: tibial and common peroneal nerves (leg and foot)."
+    ]
+  },
+  "nervus-tibialis": {
+    cs: [
+      "Bérec: posterolaterální část přes n. suralis (spoluúčast n. peroneus communis).",
+      "Pata: rr. calcanei mediales.",
+      "Planta nohy: n. plantaris medialis et lateralis (většina plosky)."
+    ],
+    en: [
+      "Leg: posterolateral skin via sural nerve (with common peroneal contribution).",
+      "Heel: medial calcaneal branches.",
+      "Plantar foot: medial and lateral plantar nerves (most of the sole)."
+    ]
+  },
+  "nervus-peroneus-communis": {
+    cs: [
+      "Laterální bérec: n. peroneus superficialis.",
+      "Dorzum nohy: n. peroneus superficialis (většina hřbetu).",
+      "První meziprstní prostor: n. peroneus profundus.",
+      "Laterální okraj nohy: přes n. suralis (spoluúčast n. tibialis)."
+    ],
+    en: [
+      "Lateral leg: superficial peroneal nerve.",
+      "Dorsum of foot: superficial peroneal nerve (most of dorsum).",
+      "First web space: deep peroneal nerve.",
+      "Lateral foot border: via sural nerve (with tibial contribution)."
+    ]
+  }
+};
+
 const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
   "4_forearm": {
     cs: [
@@ -1227,8 +1407,18 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
   );
+  const motorInnervationMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/motoricka-inervace$/
+  );
+  const sensoryInnervationMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/senzitivni-inervace$/
+  );
   const nerveKey = nerveAnatomyMatch?.[1];
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
+  const motorInnervationKey = motorInnervationMatch?.[1];
+  const motorInnervation = motorInnervationKey ? motorInnervationByNerve[motorInnervationKey] : undefined;
+  const sensoryInnervationKey = sensoryInnervationMatch?.[1];
+  const sensoryInnervation = sensoryInnervationKey ? sensoryInnervationByNerve[sensoryInnervationKey] : undefined;
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1337,6 +1527,38 @@ export default function ContentPage({ path }: ContentPageProps) {
               );
             })}
           </div>
+        </section>
+      </section>
+    );
+  }
+
+  if (motorInnervationMatch && motorInnervation) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Motorická inervace" : "Motor innervation"}</h2>
+          <ul className={styles.compactList}>
+            {motorInnervation[lang].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      </section>
+    );
+  }
+
+  if (sensoryInnervationMatch && sensoryInnervation) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Senzitivní inervace" : "Sensory innervation"}</h2>
+          <ul className={styles.compactList}>
+            {sensoryInnervation[lang].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
       </section>
     );
