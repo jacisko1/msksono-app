@@ -305,6 +305,17 @@
   border-radius: inherit;
 }
 
+@media (min-width: 741px) {
+  .nerveImageWrap {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .nerveImageWrap .inlineImage {
+    max-height: 320px;
+  }
+}
+
 @media (max-width: 740px) {
   .articleCard {
     grid-template-columns: 1fr;

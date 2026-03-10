@@ -1517,7 +1517,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                   <ResponsiveImage
                     image={makeResponsiveImagePhone("CS", item.key)}
                     alt={item.title[lang]}
-                    wrapClassName={styles.shoulderUltrasoundImageWrap}
+                    wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
                     enableMobileZoom
                     caption={zoomCaption}
                   />
