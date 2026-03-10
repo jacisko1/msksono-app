@@ -379,6 +379,57 @@ const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescri
   }
 };
 
+const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
+  "4_forearm": {
+    cs: [
+      "Br – m. brachioradialis",
+      "ECRL – m. extensor carpi radialis longus",
+      "ECRB – m. extensor carpi radialis brevis",
+      "ED – m. extensor digitorum",
+      "EDM – m. extensor digiti minimi",
+      "ECU – m. extensor carpi ulnaris",
+      "AbPL – m. abductor pollicis longus",
+      "EPB – m. extensor pollicis brevis",
+      "EPL – m. extensor pollicis longus",
+      "FCR – m. flexor carpi radialis",
+      "PL – m. palmaris longus",
+      "FDS – m. flexor digitorum superficialis",
+      "FPL – m. flexor pollicis longus",
+      "FDP – m. flexor digitorum profundus",
+      "FCU – m. flexor carpi ulnaris",
+      "M – n. medianus",
+      "U (nerv) – n. ulnaris",
+      "Rs – r. superficialis n. radialis",
+      "Rp – r. profundus n. radialis (n. interosseus posterior)",
+      "R – radius",
+      "U (kost) – ulna"
+    ],
+    en: [
+      "Br – brachioradialis muscle",
+      "ECRL – extensor carpi radialis longus",
+      "ECRB – extensor carpi radialis brevis",
+      "ED – extensor digitorum",
+      "EDM – extensor digiti minimi",
+      "ECU – extensor carpi ulnaris",
+      "AbPL – abductor pollicis longus",
+      "EPB – extensor pollicis brevis",
+      "EPL – extensor pollicis longus",
+      "FCR – flexor carpi radialis",
+      "PL – palmaris longus",
+      "FDS – flexor digitorum superficialis",
+      "FPL – flexor pollicis longus",
+      "FDP – flexor digitorum profundus",
+      "FCU – flexor carpi ulnaris",
+      "M – median nerve",
+      "U (nerve) – ulnar nerve",
+      "Rs – superficial branch of the radial nerve",
+      "Rp – deep branch of the radial nerve (posterior interosseous nerve)",
+      "R – radius",
+      "U (bone) – ulna"
+    ]
+  }
+};
+
 const jointProtocolExtraBullets: Record<string, Record<string, string[]>> = {
   loket: {
     "01_01": [
@@ -1254,6 +1305,16 @@ export default function ContentPage({ path }: ContentPageProps) {
                   wrapClassName={styles.shoulderUltrasoundImageWrap}
                   enableMobileZoom
                 />
+                {nerveAnatomyAbbreviations[item.key] ? (
+                  <div className={styles.abbrevBlock}>
+                    <h4>{lang === "cs" ? "Zkratky na obrázku" : "Abbreviations in the image"}</h4>
+                    <ul className={styles.compactList}>
+                      {nerveAnatomyAbbreviations[item.key][lang].map((line) => (
+                        <li key={line}>{line}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
                 <div className={styles.articleBody}>
                   <h3>{item.title[lang]}</h3>
                   {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
