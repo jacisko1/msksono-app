@@ -73,7 +73,7 @@
 }
 
 .articleBox {
-  background: #ffffff;
+  background: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -290,10 +290,11 @@
 .shoulderUltrasoundImageWrap {
   min-height: 0;
   height: auto;
-  border-radius: 18px;
-  background: transparent;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
   display: block;
   width: 100%;
+  overflow: hidden;
 }
 
 .shoulderUltrasoundImageWrap .inlineImage {

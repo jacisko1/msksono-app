@@ -1312,7 +1312,9 @@ export default function ContentPage({ path }: ContentPageProps) {
               const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
               const figureCaptionData = nerveAnatomyFigureCaptions[item.key];
               const figureCaption = figureCaptionData
-                ? `Obrázek ${index + 1}: ${figureCaptionData.cs} (Figure ${index + 1}: ${figureCaptionData.en})`
+                ? lang === "cs"
+                  ? `Obrázek ${index + 1}: ${figureCaptionData.cs}`
+                  : `Figure ${index + 1}: ${figureCaptionData.en}`
                 : undefined;
               const zoomCaption = [figureCaption, abbreviationLine].filter(Boolean).join(" ");
 
