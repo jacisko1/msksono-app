@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
@@ -55,6 +56,11 @@ interface JointContent {
   pathologyPoints: string[];
   protocolSteps: ProtocolStep[];
   protocolImages: JointProtocolImage[];
+}
+
+interface NerveAnatomyDescription {
+  cs: string;
+  en: string;
 }
 
 const assetPath = (folder: string, file: string) =>
@@ -303,6 +309,75 @@ const nerveAnatomyImages = [
   { key: "4_forearm", title: { cs: "Předloktí", en: "Forearm" } },
   { key: "5_wrist", title: { cs: "Zápěstí", en: "Wrist" } }
 ];
+
+const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
+  "nervus-medianus": {
+    "2_axilla": {
+      cs: "Nervus medianus leží v axille obvykle anterolaterálně nebo přímo anteriorně vůči a. axillaris.",
+      en: "In the axilla, the median nerve usually lies anterolateral or directly anterior to the axillary artery."
+    },
+    "1_arm": {
+      cs: "V proximální části paže probíhá nerv laterálně od a. brachialis. Zhruba v polovině paže tepnu kříží z laterální na mediální stranu a distálně pokračuje mediálně od a. brachialis. Nerv leží povrchněji než tepna a je uložen mezi m. biceps brachii a m. brachialis.",
+      en: "In the proximal arm, the nerve runs lateral to the brachial artery. Around mid-arm it crosses the artery from lateral to medial and continues distally medial to the brachial artery. The nerve lies more superficially than the artery and sits between the biceps brachii and brachialis muscles."
+    },
+    "3_elbow": {
+      cs: "V oblasti loketní jamky vstupuje n. medianus mezi dvě hlavy m. pronator teres. Při průchodu loktem leží na povrchu m. brachialis a mediálně od šlachy m. biceps brachii. Tato oblast je klinicky významná jako jedno z míst možné komprese nervu (syndrom m. pronator teres).",
+      en: "In the cubital fossa, the median nerve enters between the two heads of the pronator teres. At the elbow it lies on the surface of the brachialis and medial to the biceps brachii tendon. This region is clinically significant as a potential site of nerve compression (pronator teres syndrome)."
+    },
+    "4_forearm": {
+      cs: "Po průchodu mezi hlavami m. pronator teres vydává n. medianus hlubokou motorickou větev – n. interosseus anterior. Ten sestupuje po membrana interossea mezi m. flexor digitorum profundus a m. flexor pollicis longus. Hlavní kmen n. medianus pokračuje povrchněji mezi m. flexor digitorum superficialis a m. flexor digitorum profundus. Tato vztahová anatomie je ve střední třetině předloktí velmi dobře patrná při sonografii.",
+      en: "After passing between the heads of the pronator teres, the median nerve gives off the deep motor branch – the anterior interosseous nerve. It descends along the interosseous membrane between the flexor digitorum profundus and flexor pollicis longus muscles. The main trunk continues more superficially between the flexor digitorum superficialis and flexor digitorum profundus. This relational anatomy is clearly visible on ultrasound in the mid-forearm."
+    },
+    "5_wrist": {
+      cs: "Distálně n. medianus vystupuje zpod okraje m. flexor digitorum superficialis a vstupuje do karpálního tunelu. Zde probíhá pod flexor retinaculum, typicky povrchně nad šlachami flexorů prstů. V této oblasti je nerv sonograficky snadno identifikovatelný a klinicky významný jako místo komprese při syndromu karpálního tunelu.",
+      en: "Distally, the median nerve emerges from beneath the edge of the flexor digitorum superficialis and enters the carpal tunnel. Here it runs under the flexor retinaculum, typically superficial to the finger flexor tendons. In this region the nerve is easily identified on ultrasound and is clinically important as the site of compression in carpal tunnel syndrome."
+    }
+  },
+  "nervus-ulnaris": {
+    "2_axilla": {
+      cs: "N. ulnaris vzniká z mediálního svazku plexus brachialis. V axile leží mediálně od a. axillaris a distálně vstupuje do mediálního kompartmentu paže.",
+      en: "The ulnar nerve arises from the medial cord of the brachial plexus. In the axilla it lies medial to the axillary artery and then enters the medial arm compartment."
+    },
+    "1_arm": {
+      cs: "V proximální části paže probíhá nerv mediálně od a. brachialis. Ve střední třetině opouští přední kompartment a proniká přes septum intermusculare mediale do zadního kompartmentu, kde sestupuje k mediálnímu epikondylu.",
+      en: "In the proximal arm, the nerve runs medial to the brachial artery. In the mid-arm it leaves the anterior compartment, passes through the medial intermuscular septum into the posterior compartment, and descends toward the medial epicondyle."
+    },
+    "3_elbow": {
+      cs: "Nerv probíhá za mediálním epikondylem humeru v kubitálním tunelu pod retinakulem. Distálně vstupuje mezi dvě hlavy m. flexor carpi ulnaris. Jde o nejčastější místo komprese – syndrom kubitálního tunelu.",
+      en: "The nerve passes behind the medial epicondyle in the cubital tunnel under the retinaculum. Distally it enters between the two heads of the flexor carpi ulnaris. This is the most common compression site – cubital tunnel syndrome."
+    },
+    "4_forearm": {
+      cs: "Na předloktí sestupuje n. ulnaris mezi m. flexor carpi ulnaris a m. flexor digitorum profundus. Proximálně vydává hluboké větve pro FCU a ulnární část FDP. Ve střední a distální třetině běží společně s a. ulnaris, obvykle mediálně od ní.",
+      en: "In the forearm, the ulnar nerve descends between the flexor carpi ulnaris and flexor digitorum profundus. Proximally it gives deep branches to FCU and the ulnar part of FDP. In the mid and distal forearm it runs with the ulnar artery, usually medial to it."
+    },
+    "5_wrist": {
+      cs: "V oblasti zápěstí probíhá n. ulnaris povrchově od flexor retinaculum a vstupuje do Guyonova kanálu, kde se dělí na povrchovou senzitivní a hlubokou motorickou větev. Komprese v této oblasti vede k syndromu Guyonova kanálu.",
+      en: "At the wrist, the ulnar nerve runs superficial to the flexor retinaculum and enters Guyon’s canal, where it divides into a superficial sensory and a deep motor branch. Compression here leads to Guyon’s canal syndrome."
+    }
+  },
+  "nervus-radialis": {
+    "2_axilla": {
+      cs: "N. radialis vzniká ze zadního svazku plexus brachialis. V axile leží posteriorně od a. axillaris a vstupuje do zadního kompartmentu paže.",
+      en: "The radial nerve arises from the posterior cord of the brachial plexus. In the axilla it lies posterior to the axillary artery and enters the posterior arm compartment."
+    },
+    "1_arm": {
+      cs: "Nerv vstupuje do sulcus nervi radialis na humeru, kde probíhá společně s a. profunda brachii mezi hlavami m. triceps brachii. V distální části paže proráží septum intermusculare laterale a přechází do předního kompartmentu.",
+      en: "The nerve enters the radial groove of the humerus, running with the profunda brachii artery between the heads of the triceps brachii. In the distal arm it pierces the lateral intermuscular septum and moves into the anterior compartment."
+    },
+    "3_elbow": {
+      cs: "V loketní jamce probíhá nerv mezi m. brachialis a m. brachioradialis a dělí se na povrchovou senzitivní a hlubokou motorickou větev – n. interosseus posterior.",
+      en: "In the cubital fossa the nerve runs between the brachialis and brachioradialis muscles and divides into a superficial sensory branch and a deep motor branch – the posterior interosseous nerve."
+    },
+    "4_forearm": {
+      cs: "Hluboká větev vstupuje do m. supinator pod vazivovým obloukem (Arcade of Frohse), což je nejčastější místo komprese, a distálně pokračuje jako n. interosseus posterior v zadním kompartmentu. Povrchová větev pokračuje distálně pod m. brachioradialis společně s a. radialis.",
+      en: "The deep branch enters the supinator under the fibrous arch (Arcade of Frohse), the most common compression site, and continues distally as the posterior interosseous nerve in the posterior compartment. The superficial branch continues distally beneath the brachioradialis with the radial artery."
+    },
+    "5_wrist": {
+      cs: "Povrchová větev n. radialis vystupuje mezi šlachami m. brachioradialis a m. extensor carpi radialis longus, kde se stává subkutánní, a distálně se větví pro dorzum ruky. V této oblasti může dojít ke kompresi známé jako Wartenbergův syndrom.",
+      en: "The superficial radial branch emerges between the tendons of the brachioradialis and extensor carpi radialis longus, becomes subcutaneous, and then branches to the dorsum of the hand. Compression here is known as Wartenberg syndrome."
+    }
+  }
+};
 
 const jointProtocolExtraBullets: Record<string, Record<string, string[]>> = {
   loket: {
@@ -1026,20 +1101,58 @@ const shoulderPathologyPoints = {
 function ResponsiveImage({
   image,
   alt,
-  wrapClassName
+  wrapClassName,
+  enableMobileZoom
 }: {
   image: ResponsiveImageSet;
   alt: string;
   wrapClassName?: string;
+  enableMobileZoom?: boolean;
 }) {
   const wrapClass = wrapClassName ? `${styles.inlineImageWrap} ${wrapClassName}` : styles.inlineImageWrap;
+  const [isZoomed, setIsZoomed] = useState(false);
 
-  return (
+  const handleOpen = () => {
+    if (!enableMobileZoom) {
+      return;
+    }
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 740px)").matches) {
+      setIsZoomed(true);
+    }
+  };
+
+  const handleClose = () => {
+    setIsZoomed(false);
+  };
+
+  const picture = (
     <picture className={wrapClass}>
       <source media="(max-width: 640px)" srcSet={image.mobile} />
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
       <img className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
     </picture>
+  );
+
+  return (
+    <>
+      {enableMobileZoom ? (
+        <button type="button" className={styles.imageZoomButton} onClick={handleOpen} aria-label={alt}>
+          {picture}
+        </button>
+      ) : (
+        picture
+      )}
+      {isZoomed ? (
+        <div className={styles.imageZoomOverlay} role="dialog" aria-modal="true" onClick={handleClose}>
+          <div className={styles.imageZoomContent} onClick={(event) => event.stopPropagation()}>
+            <button type="button" className={styles.imageZoomClose} onClick={handleClose} aria-label="Close">
+              ×
+            </button>
+            <img className={styles.imageZoomImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -1053,6 +1166,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
   );
+  const nerveKey = nerveAnatomyMatch?.[1];
+  const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1130,7 +1245,6 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Cross section ilustrace" : "Cross-section illustrations"}</h2>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {nerveAnatomyImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
@@ -1138,9 +1252,11 @@ export default function ContentPage({ path }: ContentPageProps) {
                   image={makeResponsiveImagePhone("CS", item.key)}
                   alt={item.title[lang]}
                   wrapClassName={styles.shoulderUltrasoundImageWrap}
+                  enableMobileZoom
                 />
                 <div className={styles.articleBody}>
                   <h3>{item.title[lang]}</h3>
+                  {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
                 </div>
               </article>
             ))}
