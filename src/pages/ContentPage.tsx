@@ -1153,12 +1153,14 @@ function ResponsiveImage({
   image,
   alt,
   wrapClassName,
-  enableMobileZoom
+  enableMobileZoom,
+  caption
 }: {
   image: ResponsiveImageSet;
   alt: string;
   wrapClassName?: string;
   enableMobileZoom?: boolean;
+  caption?: string;
 }) {
   const wrapClass = wrapClassName ? `${styles.inlineImageWrap} ${wrapClassName}` : styles.inlineImageWrap;
   const [isZoomed, setIsZoomed] = useState(false);
@@ -1200,6 +1202,7 @@ function ResponsiveImage({
               ×
             </button>
             <img className={styles.imageZoomImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+            {caption ? <p className={styles.imageZoomCaption}>{caption}</p> : null}
           </div>
         </div>
       ) : null}
@@ -1297,30 +1300,27 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-            {nerveAnatomyImages.map((item) => (
-              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
-                <ResponsiveImage
-                  image={makeResponsiveImagePhone("CS", item.key)}
-                  alt={item.title[lang]}
-                  wrapClassName={styles.shoulderUltrasoundImageWrap}
-                  enableMobileZoom
-                />
-                {nerveAnatomyAbbreviations[item.key] ? (
-                  <div className={styles.abbrevBlock}>
-                    <h4>{lang === "cs" ? "Zkratky na obrázku" : "Abbreviations in the image"}</h4>
-                    <ul className={styles.compactList}>
-                      {nerveAnatomyAbbreviations[item.key][lang].map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
+            {nerveAnatomyImages.map((item) => {
+              const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
+              const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
+
+              return (
+                <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+                  <ResponsiveImage
+                    image={makeResponsiveImagePhone("CS", item.key)}
+                    alt={item.title[lang]}
+                    wrapClassName={styles.shoulderUltrasoundImageWrap}
+                    enableMobileZoom
+                    caption={abbreviationLine}
+                  />
+                  {abbreviationLine ? <p className={styles.abbrevInline}>{abbreviationLine}</p> : null}
+                  <div className={styles.articleBody}>
+                    <h3>{item.title[lang]}</h3>
+                    {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
                   </div>
-                ) : null}
-                <div className={styles.articleBody}>
-                  <h3>{item.title[lang]}</h3>
-                  {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </section>
       </section>
@@ -1558,4 +1558,5 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
+
 

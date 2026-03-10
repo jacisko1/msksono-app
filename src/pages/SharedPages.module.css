@@ -125,15 +125,19 @@
   gap: 0.25rem;
 }
 
-.abbrevBlock {
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.6rem 0.75rem 0.2rem;
+.abbrevInline {
+  margin: 0.45rem 0 0.1rem;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: color-mix(in srgb, var(--text-soft) 92%, #000);
 }
 
-.abbrevBlock h4 {
-  margin: 0;
-  font-size: 0.95rem;
+.imageZoomCaption {
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.25;
+  color: #e6e8ef;
+  text-align: left;
 }
 
 .inlineImageWrap {
@@ -187,13 +191,16 @@
   max-height: 85vh;
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .imageZoomImage {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 70vh;
   object-fit: contain;
   border-radius: 14px;
   background: #fff;
