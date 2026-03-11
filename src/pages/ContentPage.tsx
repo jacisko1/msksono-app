@@ -591,6 +591,64 @@ const sensoryInnervationImages: Record<string, { baseName: string; alt: { cs: st
 };
 
 const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
+  "2_axilla": {
+    cs: [
+      "D – m. deltoideus",
+      "PM – m. pectoralis major",
+      "LHBB – caput longum m. biceps brachii",
+      "SHBB – caput breve m. biceps brachii",
+      "CB – m. coracobrachialis",
+      "mc – n. musculocutaneus",
+      "M – n. medianus",
+      "U – n. ulnaris",
+      "R – n. radialis",
+      "Tmaj – m. teres major",
+      "TLa – caput laterale m. triceps brachii",
+      "TLo – caput longum m. triceps brachii",
+      "H – humerus"
+    ],
+    en: [
+      "D – deltoid muscle",
+      "PM – pectoralis major",
+      "LHBB – long head of the biceps brachii",
+      "SHBB – short head of the biceps brachii",
+      "CB – coracobrachialis muscle",
+      "mc – musculocutaneous nerve",
+      "M – median nerve",
+      "U – ulnar nerve",
+      "R – radial nerve",
+      "Tmaj – teres major muscle",
+      "TLa – lateral head of the triceps brachii",
+      "TLo – long head of the triceps brachii",
+      "H – humerus"
+    ]
+  },
+  "1_arm": {
+    cs: [
+      "B – m. biceps brachii",
+      "Br – m. brachialis",
+      "CB – m. coracobrachialis",
+      "H – humerus",
+      "TLa – caput laterale m. triceps brachii",
+      "TM – caput mediale m. triceps brachii",
+      "TLo – caput longum m. triceps brachii",
+      "R – n. radialis",
+      "M – n. medianus",
+      "U – n. ulnaris"
+    ],
+    en: [
+      "B – biceps brachii muscle",
+      "Br – brachialis muscle",
+      "CB – coracobrachialis muscle",
+      "H – humerus",
+      "TLa – lateral head of the triceps brachii",
+      "TM – medial head of the triceps brachii",
+      "TLo – long head of the triceps brachii",
+      "R – radial nerve",
+      "M – median nerve",
+      "U – ulnar nerve"
+    ]
+  },
   "3_elbow": {
     cs: [
       "Br – m. brachioradialis",
@@ -667,6 +725,26 @@ const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> 
       "AIN – anterior interosseous nerve",
       "R – radius",
       "U (bone) – ulna"
+    ]
+  },
+  "5_wrist": {
+    cs: [
+      "FCR – m. flexor carpi radialis",
+      "M – n. medianus",
+      "U – n. ulnaris",
+      "P – os pisiforme",
+      "H – os hamatum",
+      "C – os capitatum",
+      "S – os scaphoideum"
+    ],
+    en: [
+      "FCR – flexor carpi radialis",
+      "M – median nerve",
+      "U – ulnar nerve",
+      "P – pisiform",
+      "H – hamate",
+      "C – capitate",
+      "S – scaphoid"
     ]
   }
 };
