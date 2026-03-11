@@ -309,6 +309,14 @@ const nerveAnatomyImages = [
   { key: "4_forearm", title: { cs: "Předloktí", en: "Forearm" } },
   { key: "5_wrist", title: { cs: "Zápěstí", en: "Wrist" } }
 ];
+const nerveAnatomyIntroCopy = {
+  cs: "Příčná anatomie je klíčová pro porozumění sonografickému obrazu, protože ultrazvuk zobrazuje struktury v jednotlivých řezech. Níže projdeme pět klíčových úrovní příčného řezu, které budeme na nervu sledovat.",
+  en: "Cross-sectional anatomy is essential for understanding ultrasound images because the probe visualizes structures in slices. Below we discuss five key cross-section levels that we will follow along the nerve."
+};
+const nerveAnatomyIntroAlt = {
+  cs: "Přehled klíčových příčných řezů",
+  en: "Overview of key cross sections"
+};
 const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
   "2_axilla": { cs: "Řez axillou", en: "Axilla section" },
   "1_arm": { cs: "Řez paží", en: "Arm section" },
@@ -1627,6 +1635,13 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
+          <p>{nerveAnatomyIntroCopy[lang]}</p>
+          <ResponsiveImage
+            image={makeResponsiveImagePhone("CS", "cross_sections")}
+            alt={nerveAnatomyIntroAlt[lang]}
+            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
+            enableMobileZoom
+          />
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {nerveAnatomyImages.map((item, index) => {
               const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
