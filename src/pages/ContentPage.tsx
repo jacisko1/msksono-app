@@ -566,6 +566,30 @@ const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> 
   }
 };
 
+const sensoryInnervationImages: Record<string, { baseName: string; alt: { cs: string; en: string } }> = {
+  "nervus-medianus": {
+    baseName: "Median_senzory",
+    alt: {
+      cs: "Senzitivní inervace nervus medianus",
+      en: "Median nerve sensory innervation"
+    }
+  },
+  "nervus-ulnaris": {
+    baseName: "Ulnar_senzory",
+    alt: {
+      cs: "Senzitivní inervace nervus ulnaris",
+      en: "Ulnar nerve sensory innervation"
+    }
+  },
+  "nervus-radialis": {
+    baseName: "Radial_senzory",
+    alt: {
+      cs: "Senzitivní inervace nervus radialis",
+      en: "Radial nerve sensory innervation"
+    }
+  }
+};
+
 const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
   "4_forearm": {
     cs: [
@@ -1419,6 +1443,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const motorInnervation = motorInnervationKey ? motorInnervationByNerve[motorInnervationKey] : undefined;
   const sensoryInnervationKey = sensoryInnervationMatch?.[1];
   const sensoryInnervation = sensoryInnervationKey ? sensoryInnervationByNerve[sensoryInnervationKey] : undefined;
+  const sensoryInnervationImage = sensoryInnervationKey ? sensoryInnervationImages[sensoryInnervationKey] : undefined;
   const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
@@ -1559,6 +1584,14 @@ export default function ContentPage({ path }: ContentPageProps) {
               <li key={item}>{item}</li>
             ))}
           </ul>
+          {sensoryInnervationImage ? (
+            <ResponsiveImage
+              image={makeResponsiveImagePhone("Sensory inervation", sensoryInnervationImage.baseName)}
+              alt={sensoryInnervationImage.alt[lang]}
+              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
+              enableMobileZoom
+            />
+          ) : null}
         </section>
       </section>
     );
