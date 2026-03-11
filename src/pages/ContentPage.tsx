@@ -1488,9 +1488,7 @@ function ResponsiveImage({
     if (!enableMobileZoom) {
       return;
     }
-    if (typeof window !== "undefined" && window.matchMedia("(max-width: 740px)").matches) {
-      setIsZoomed(true);
-    }
+    setIsZoomed(true);
   };
 
   const handleClose = () => {
