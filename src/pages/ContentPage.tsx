@@ -591,12 +591,40 @@ const sensoryInnervationImages: Record<string, { baseName: string; alt: { cs: st
 };
 
 const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
+  "3_elbow": {
+    cs: [
+      "Br – m. brachioradialis",
+      "ECRL – m. extensor carpi radialis longus",
+      "ECRB – m. extensor carpi radialis brevis",
+      "B – šlacha m. biceps brachii",
+      "S – r. superficialis n. radialis",
+      "P – r. profundus n. radialis (n. interosseus posterior)",
+      "M – n. medianus",
+      "PT – m. pronator teres",
+      "U – n. ulnaris",
+      "FCU – m. flexor carpi ulnaris",
+      "A – m. anconeus"
+    ],
+    en: [
+      "Br – brachioradialis muscle",
+      "ECRL – extensor carpi radialis longus",
+      "ECRB – extensor carpi radialis brevis",
+      "B – biceps brachii tendon",
+      "S – superficial branch of the radial nerve",
+      "P – deep branch of the radial nerve (posterior interosseous nerve)",
+      "M – median nerve",
+      "PT – pronator teres muscle",
+      "U – ulnar nerve",
+      "FCU – flexor carpi ulnaris",
+      "A – anconeus muscle"
+    ]
+  },
   "4_forearm": {
     cs: [
       "Br – m. brachioradialis",
       "ECRL – m. extensor carpi radialis longus",
       "ECRB – m. extensor carpi radialis brevis",
-      "ED – m. extensor digitorum",
+      "EDC – m. extensor digitorum communis",
       "EDM – m. extensor digiti minimi",
       "ECU – m. extensor carpi ulnaris",
       "AbPL – m. abductor pollicis longus",
@@ -612,6 +640,7 @@ const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> 
       "U (nerv) – n. ulnaris",
       "Rs – r. superficialis n. radialis",
       "Rp – r. profundus n. radialis (n. interosseus posterior)",
+      "AIN – n. interosseus anterior",
       "R – radius",
       "U (kost) – ulna"
     ],
@@ -619,7 +648,7 @@ const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> 
       "Br – brachioradialis muscle",
       "ECRL – extensor carpi radialis longus",
       "ECRB – extensor carpi radialis brevis",
-      "ED – extensor digitorum",
+      "EDC – extensor digitorum communis",
       "EDM – extensor digiti minimi",
       "ECU – extensor carpi ulnaris",
       "AbPL – abductor pollicis longus",
@@ -635,6 +664,7 @@ const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> 
       "U (nerve) – ulnar nerve",
       "Rs – superficial branch of the radial nerve",
       "Rp – deep branch of the radial nerve (posterior interosseous nerve)",
+      "AIN – anterior interosseous nerve",
       "R – radius",
       "U (bone) – ulna"
     ]
