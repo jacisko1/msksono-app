@@ -1575,23 +1575,25 @@ export default function ContentPage({ path }: ContentPageProps) {
     return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
-  const { previous, next } = getSiblingNavigation(path);
+  const { previous, next, parent } = getSiblingNavigation(path);
   const markCurrentDone = () => {
     const current = readProgress();
     if (!current[path]) {
       writeProgress({ ...current, [path]: true });
     }
   };
+  const previousTarget = previous ?? parent;
+  const nextTarget = next ?? parent;
   const chapterNav = (
     <nav className={styles.chapterNav} aria-label={t("chapterNavAria")}>
-      {previous ? (
-        <Link to={previous.path} className={`${styles.chapterLink} ${styles.chapterPrev}`}>
+      {previousTarget ? (
+        <Link to={previousTarget.path} className={`${styles.chapterLink} ${styles.chapterPrev}`} onClick={markCurrentDone}>
           <span className={styles.chapterArrow} aria-hidden="true">
             ←
           </span>
           <span className={styles.chapterText}>
             <span className={styles.chapterLabel}>{t("previousChapter")}</span>
-            <span className={styles.chapterTitle}>{localize(previous.title, lang)}</span>
+            <span className={styles.chapterTitle}>{localize(previousTarget.title, lang)}</span>
           </span>
         </Link>
       ) : (
@@ -1604,11 +1606,11 @@ export default function ContentPage({ path }: ContentPageProps) {
           </span>
         </span>
       )}
-      {next ? (
-        <Link to={next.path} className={`${styles.chapterLink} ${styles.chapterNext}`} onClick={markCurrentDone}>
+      {nextTarget ? (
+        <Link to={nextTarget.path} className={`${styles.chapterLink} ${styles.chapterNext}`} onClick={markCurrentDone}>
           <span className={styles.chapterText}>
             <span className={styles.chapterLabel}>{t("nextChapter")}</span>
-            <span className={styles.chapterTitle}>{localize(next.title, lang)}</span>
+            <span className={styles.chapterTitle}>{localize(nextTarget.title, lang)}</span>
           </span>
           <span className={styles.chapterArrow} aria-hidden="true">
             →
