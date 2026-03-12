@@ -1596,14 +1596,23 @@ export default function ContentPage({ path }: ContentPageProps) {
   }
 
   const { previous, next, parent } = getSiblingNavigation(path);
+  const parentFromPath = useMemo(() => {
+    const segments = path.split("/").filter(Boolean);
+    if (segments.length <= 1) {
+      return undefined;
+    }
+    const parentPath = `/${segments.slice(0, -1).join("/")}`;
+    return findNavItem(parentPath);
+  }, [path]);
+  const progressParent = parent ?? parentFromPath;
   const progressPercent = useMemo(() => {
-    if (!parent?.children?.length) {
+    if (!progressParent?.children?.length) {
       return null;
     }
-    const total = parent.children.length;
-    const done = parent.children.filter((item) => Boolean(doneByPath[item.path])).length;
+    const total = progressParent.children.length;
+    const done = progressParent.children.filter((item) => Boolean(doneByPath[item.path])).length;
     return total > 0 ? Math.round((done / total) * 100) : 0;
-  }, [parent, doneByPath]);
+  }, [progressParent, doneByPath]);
   const progressBar =
     progressPercent === null ? null : (
       <div
