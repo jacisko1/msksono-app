@@ -64,8 +64,8 @@ export function GridMenu({ items, color }: GridMenuProps) {
         const progressLabel =
           lang === "cs"
             ? isDone
-              ? "Oznaèit jako nedokonèené"
-              : "Oznaèit jako dokonèené"
+              ? "OznaÄit jako nedokonÄenÃ©"
+              : "OznaÄit jako dokonÄenÃ©"
             : isDone
               ? "Mark as not completed"
               : "Mark as completed";
