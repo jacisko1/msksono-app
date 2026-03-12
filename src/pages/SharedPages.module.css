@@ -452,6 +452,25 @@
 
 @media (max-width: 640px) {
   .chapterNav {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .chapterLink {
+    padding: 0.7rem 0.75rem;
+    min-height: 56px;
+  }
+
+  .chapterLabel {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+
+  .chapterTitle {
+    font-size: 0.85rem;
+  }
+
+  .chapterArrow {
+    font-size: 1.15rem;
   }
 }

@@ -1584,6 +1584,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   };
   const previousTarget = previous ?? parent;
   const nextTarget = next ?? parent;
+  const previousLabel = previous ? t("previousChapter") : t("upLevel");
+  const nextLabel = next ? t("nextChapter") : t("upLevel");
   const chapterNav = (
     <nav className={styles.chapterNav} aria-label={t("chapterNavAria")}>
       {previousTarget ? (
@@ -1592,7 +1594,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ←
           </span>
           <span className={styles.chapterText}>
-            <span className={styles.chapterLabel}>{t("previousChapter")}</span>
+            <span className={styles.chapterLabel}>{previousLabel}</span>
             <span className={styles.chapterTitle}>{localize(previousTarget.title, lang)}</span>
           </span>
         </Link>
@@ -1609,7 +1611,7 @@ export default function ContentPage({ path }: ContentPageProps) {
       {nextTarget ? (
         <Link to={nextTarget.path} className={`${styles.chapterLink} ${styles.chapterNext}`} onClick={markCurrentDone}>
           <span className={styles.chapterText}>
-            <span className={styles.chapterLabel}>{t("nextChapter")}</span>
+            <span className={styles.chapterLabel}>{nextLabel}</span>
             <span className={styles.chapterTitle}>{localize(nextTarget.title, lang)}</span>
           </span>
           <span className={styles.chapterArrow} aria-hidden="true">

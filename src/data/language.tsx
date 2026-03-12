@@ -55,7 +55,8 @@ const translations = {
   goToSection: { cs: "Přejít do sekce", en: "Go to section" },
   previousChapter: { cs: "Předchozí kapitola", en: "Previous chapter" },
   nextChapter: { cs: "Další kapitola", en: "Next chapter" },
-  chapterNavAria: { cs: "Navigace kapitol", en: "Chapter navigation" }
+  chapterNavAria: { cs: "Navigace kapitol", en: "Chapter navigation" },
+  upLevel: { cs: "O úroveň výše", en: "Up one level" }
 } as const;
 
 type TranslationKey = keyof typeof translations;
