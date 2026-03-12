@@ -31,19 +31,19 @@ const withSection = (section: SectionKey, color: string, items: RawNavItem[]): N
 
 const nerveChildren = (basePath: string): RawNavItem[] => [
   {
-    title: { cs: "Motorick√° inervace", en: "Motor innervation" },
+    title: { cs: "Motorick· inervace", en: "Motor innervation" },
     path: `${basePath}/motoricka-inervace`
   },
   {
-    title: { cs: "Senzitivn√≠ inervace", en: "Sensory innervation" },
+    title: { cs: "SenzitivnÌ inervace", en: "Sensory innervation" },
     path: `${basePath}/senzitivni-inervace`
   },
   {
-    title: { cs: "Anatomick√Ω pr≈Øbƒõh", en: "Anatomical course" },
+    title: { cs: "Anatomick˝ pr˘bÏh", en: "Anatomical course" },
     path: `${basePath}/anatomicky-prubeh`
   },
   {
-    title: { cs: "Ultrazvukov√© vy≈°et≈ôen√≠", en: "Ultrasound examination" },
+    title: { cs: "UltrazvukovÈ vyöet¯enÌ", en: "Ultrasound examination" },
     path: `${basePath}/ultrazvukove-vysetreni`
   },
   {
@@ -51,14 +51,14 @@ const nerveChildren = (basePath: string): RawNavItem[] => [
     path: `${basePath}/video-tutorial`
   },
   {
-    title: { cs: "M√≠sta √∫tlaku", en: "Entrapment sites" },
+    title: { cs: "MÌsta ˙tlaku", en: "Entrapment sites" },
     path: `${basePath}/mista-utlaku`
   }
 ];
 
 export const navigationTree: NavItem[] = [
   {
-    title: { cs: "Z√°klady", en: "Basics" },
+    title: { cs: "Z·klady", en: "Basics" },
     path: "/basics",
     section: "basics",
     color: "#209069",
@@ -117,75 +117,75 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Rameno", en: "Shoulder" },
         path: "/klouby/rameno",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/rameno/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/rameno/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/rameno/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
           {
             title: { cs: "Protokol", en: "Protocol" },
             path: "/klouby/rameno/vysetrovaci-protokol"
           },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/rameno/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/rameno/nejcastejsi-patologie" }
         ]
       },
       {
         title: { cs: "Loket", en: "Elbow" },
         path: "/klouby/loket",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/loket/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/loket/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/loket/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/loket/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/loket/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/loket/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/loket/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/loket/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/loket/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Z√°pƒõst√≠ a ruka", en: "Wrist and hand" },
+        title: { cs: "Z·pÏstÌ a ruka", en: "Wrist and hand" },
         path: "/klouby/zapesti",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/zapesti/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/zapesti/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/zapesti/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/zapesti/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/zapesti/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/zapesti/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/zapesti/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Kyƒçel", en: "Hip" },
+        title: { cs: "KyËel", en: "Hip" },
         path: "/klouby/kycel",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kycel/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/kycel/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/kycel/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kycel/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kycel/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/kycel/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/kycel/nejcastejsi-patologie" }
         ]
       },
       {
         title: { cs: "Koleno", en: "Knee" },
         path: "/klouby/koleno",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/koleno/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/koleno/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/koleno/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/koleno/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/koleno/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/koleno/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/koleno/nejcastejsi-patologie" }
         ]
       },
       {
-        title: { cs: "Kotn√≠k a noha", en: "Ankle and foot" },
+        title: { cs: "KotnÌk a noha", en: "Ankle and foot" },
         path: "/klouby/kotnik",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kotnik/anatomie" },
-            { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/klouby/kotnik/polohovani" },
+            { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/klouby/kotnik/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kotnik/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kotnik/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/klouby/kotnik/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/klouby/kotnik/nejcastejsi-patologie" }
         ]
       }
     ])
@@ -243,12 +243,12 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Biceps brachii", en: "Biceps brachii" },
         path: "/svaly/biceps-brachii",
         children: [
-          { title: { cs: "√övod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
+          { title: { cs: "⁄vod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
-          { title: { cs: "Polohov√°n√≠", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
+          { title: { cs: "Polohov·nÌ", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
           { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" },
-          { title: { cs: "Nejƒçastƒõj≈°√≠ patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
+          { title: { cs: "NejËastÏjöÌ patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
         ]
       }
     ])

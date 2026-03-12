@@ -27,7 +27,7 @@ const getLeafNodes = (items: NavItem[]): NavItem[] =>
 const sectionMilestones: SectionMilestone[] = [
   {
     path: "/basics",
-    title: { cs: "ZÃ¡klady", en: "Basics" },
+    title: { cs: "Základy", en: "Basics" },
     icon: "basics",
     color: "#209069"
   },
@@ -164,7 +164,7 @@ export default function AccountPage() {
       <PageHeader title={t("myAccount")} color="#1f6f78" />
       <div className={styles.card}>
         <div className={styles.cardHead}>
-          <div className={styles.tabs} role="tablist" aria-label={lang === "cs" ? "PÅ™epnutÃ­ pÅ™ehledu" : "Overview switch"}>
+          <div className={styles.tabs} role="tablist" aria-label={lang === "cs" ? "Pøepnutí pøehledu" : "Overview switch"}>
             <button
               type="button"
               role="tab"

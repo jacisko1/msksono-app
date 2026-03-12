@@ -5,58 +5,58 @@ export type Locale = "cs" | "en";
 const STORAGE_KEY = "msk-us-locale";
 
 const translations = {
-  home: { cs: "DomÅ¯", en: "Home" },
+  home: { cs: "Domù", en: "Home" },
   installApp: { cs: "Instalovat aplikaci", en: "Install App" },
-  toggleMenu: { cs: "PÅ™epnout menu", en: "Toggle menu" },
-  breadcrumbAria: { cs: "DrobkovÃ¡ navigace", en: "Breadcrumb" },
+  toggleMenu: { cs: "Pøepnout menu", en: "Toggle menu" },
+  breadcrumbAria: { cs: "Drobková navigace", en: "Breadcrumb" },
   homeIntro: {
-    cs: "PraktickÃ¡ vÃ½uka muskuloskeletÃ¡lnÃ­ ultrasonografie v jasnÄ› strukturovanÃ½ch modulech.",
+    cs: "Praktická vıuka muskuloskeletální ultrasonografie v jasnì strukturovanıch modulech.",
     en: "Practical musculoskeletal ultrasound education in clearly structured modules."
   },
   contentComingSoon: { cs: "Obsah", en: "Content" },
   contentPlaceholderBody: {
-    cs: "Obsah bude doplnÄ›n.",
+    cs: "Obsah bude doplnìn.",
     en: "Content will be added."
   },
   sectionNotFound: { cs: "Sekce nenalezena", en: "Section not found" },
-  pageNotFound: { cs: "StrÃ¡nka nenalezena", en: "Page not found" },
-  notFoundMessage: { cs: "PoÅ¾adovanÃ¡ strÃ¡nka nebyla nalezena.", en: "Requested page was not found." },
-  backHome: { cs: "ZpÄ›t na Ãºvod", en: "Back to home" },
-  offlineTitle: { cs: "Offline reÅ¾im", en: "Offline mode" },
+  pageNotFound: { cs: "Stránka nenalezena", en: "Page not found" },
+  notFoundMessage: { cs: "Poadovaná stránka nebyla nalezena.", en: "Requested page was not found." },
+  backHome: { cs: "Zpìt na úvod", en: "Back to home" },
+  offlineTitle: { cs: "Offline reim", en: "Offline mode" },
   offlineMessage: {
-    cs: "Aplikace bÄ›Å¾Ã­ bez pÅ™ipojenÃ­. DÅ™Ã­ve naÄtenÃ© sekce zÅ¯stÃ¡vajÃ­ dostupnÃ©.",
+    cs: "Aplikace bìí bez pøipojení. Døíve naètené sekce zùstávají dostupné.",
     en: "The app is running offline. Previously loaded sections remain available."
   },
   installIosHint: {
-    cs: "V iPhone Safari otevÅ™ete SdÃ­let a zvolte PÅ™idat na plochu.",
+    cs: "V iPhone Safari otevøete Sdílet a zvolte Pøidat na plochu.",
     en: "In iPhone Safari, open Share and choose Add to Home Screen."
   },
   installAndroidHint: {
-    cs: "V Android Chrome otevÅ™ete menu prohlÃ­Å¾eÄe (tÅ™i teÄky) a zvolte PÅ™idat na plochu nebo Instalovat aplikaci.",
+    cs: "V Android Chrome otevøete menu prohlíeèe (tøi teèky) a zvolte Pøidat na plochu nebo Instalovat aplikaci.",
     en: "In Android Chrome, open the browser menu (three dots) and choose Add to Home screen or Install app."
   },
   installSecureHint: {
-    cs: "Instalace PWA vyÅ¾aduje zabezpeÄenÃ© pÅ™ipojenÃ­ HTTPS. OtevÅ™ete aplikaci pÅ™es HTTPS URL a zkuste to znovu.",
+    cs: "Instalace PWA vyaduje zabezpeèené pøipojení HTTPS. Otevøete aplikaci pøes HTTPS URL a zkuste to znovu.",
     en: "PWA installation requires a secure HTTPS connection. Open the app via an HTTPS URL and try again."
   },
   installUnavailableHint: {
-    cs: "Instalace nenÃ­ v tomto prohlÃ­Å¾eÄi prÃ¡vÄ› dostupnÃ¡. Zkuste nabÃ­dku prohlÃ­Å¾eÄe: PÅ™idat na plochu.",
+    cs: "Instalace není v tomto prohlíeèi právì dostupná. Zkuste nabídku prohlíeèe: Pøidat na plochu.",
     en: "Install is not available in this browser right now. Open the app over HTTPS and try again."
   },
-  myAccount: { cs: "MÅ¯j ÃºÄet", en: "My account" },
-  accountTab: { cs: "ÃšÄet", en: "Account" },
+  myAccount: { cs: "Mùj úèet", en: "My account" },
+  accountTab: { cs: "Úèet", en: "Account" },
   accountProgressTitle: { cs: "Progress podkapitol", en: "Subchapter progress" },
   accountProgressHint: {
-    cs: "Postup je poÄÃ­tanÃ½ podle hotovÃ½ch podstrÃ¡nek v jednotlivÃ½ch sekcÃ­ch.",
+    cs: "Postup je poèítanı podle hotovıch podstránek v jednotlivıch sekcích.",
     en: "Progress is calculated from completed subpages in each section."
   },
   accountDone: { cs: "hotovo", en: "done" },
-  loading: { cs: "NaÄÃ­tÃ¡m...", en: "Loading..." },
-  goToSection: { cs: "PÅ™ejÃ­t do sekce", en: "Go to section" },
-  previousChapter: { cs: "PÅ™edchozÃ­ kapitola", en: "Previous chapter" },
-  nextChapter: { cs: "DalÅ¡Ã­ kapitola", en: "Next chapter" },
+  loading: { cs: "Naèítám...", en: "Loading..." },
+  goToSection: { cs: "Pøejít do sekce", en: "Go to section" },
+  previousChapter: { cs: "Pøedchozí kapitola", en: "Previous chapter" },
+  nextChapter: { cs: "Další kapitola", en: "Next chapter" },
   chapterNavAria: { cs: "Navigace kapitol", en: "Chapter navigation" },
-  upLevel: { cs: "O ÃºroveÅˆ vÃ½Å¡e", en: "Up one level" }
+  upLevel: { cs: "O úroveò vıše", en: "Up one level" }
 } as const;
 
 type TranslationKey = keyof typeof translations;
