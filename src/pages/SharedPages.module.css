@@ -457,20 +457,19 @@
   }
 
   .chapterLink {
-    padding: 0.7rem 0.75rem;
-    min-height: 56px;
+    padding: 0.6rem 0.65rem;
+    min-height: 50px;
   }
 
   .chapterLabel {
-    font-size: 0.62rem;
-    letter-spacing: 0.06em;
+    display: none;
   }
 
   .chapterTitle {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
   }
 
   .chapterArrow {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 }
