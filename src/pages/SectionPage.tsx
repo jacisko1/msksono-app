@@ -3,7 +3,7 @@ import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { GridMenu } from "../components/GridMenu";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
-import { findNavItem, localize, navigationTree, type NavItem } from "../data/navigation";
+import { findNavItem, localize, type NavItem } from "../data/navigation";
 import { PROGRESS_STORAGE_KEY, PROGRESS_UPDATED_EVENT, readProgress } from "../data/progress";
 import styles from "./SharedPages.module.css";
 
@@ -42,11 +42,7 @@ export default function SectionPage({ path }: SectionPageProps) {
       return null;
     }
 
-    const rootSection =
-      navigationTree.find(
-        (section) => path === section.path || path.startsWith(`${section.path}/`)
-      ) ?? node;
-    const leaves = getLeafNodes(rootSection.children ?? []);
+    const leaves = getLeafNodes(node.children ?? []);
     const total = leaves.length;
     const done = leaves.filter((item) => Boolean(doneByPath[item.path])).length;
     const percent = total > 0 ? Math.round((done / total) * 100) : 0;

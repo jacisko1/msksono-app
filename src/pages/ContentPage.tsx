@@ -4,6 +4,7 @@ import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
 import { findNavItem, getSiblingNavigation, localize } from "../data/navigation";
+import { readProgress, writeProgress } from "../data/progress";
 import styles from "./SharedPages.module.css";
 
 interface ContentPageProps {
@@ -1575,6 +1576,12 @@ export default function ContentPage({ path }: ContentPageProps) {
   }
 
   const { previous, next } = getSiblingNavigation(path);
+  const markCurrentDone = () => {
+    const current = readProgress();
+    if (!current[path]) {
+      writeProgress({ ...current, [path]: true });
+    }
+  };
   const chapterNav = (
     <nav className={styles.chapterNav} aria-label={t("chapterNavAria")}>
       {previous ? (
@@ -1598,7 +1605,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         </span>
       )}
       {next ? (
-        <Link to={next.path} className={`${styles.chapterLink} ${styles.chapterNext}`}>
+        <Link to={next.path} className={`${styles.chapterLink} ${styles.chapterNext}`} onClick={markCurrentDone}>
           <span className={styles.chapterText}>
             <span className={styles.chapterLabel}>{t("nextChapter")}</span>
             <span className={styles.chapterTitle}>{localize(next.title, lang)}</span>
