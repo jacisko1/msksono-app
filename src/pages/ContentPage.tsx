@@ -2,9 +2,10 @@
 import { Link } from "react-router-dom";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { useLanguage } from "../data/language";
-import { findNavItem, getSiblingNavigation, localize } from "../data/navigation";
-import { readProgress, writeProgress } from "../data/progress";
+import { findNavItem, getSiblingNavigation, localize, type NavItem } from "../data/navigation";
+import { PROGRESS_STORAGE_KEY, PROGRESS_UPDATED_EVENT, readProgress, writeProgress } from "../data/progress";
 import styles from "./SharedPages.module.css";
 
 interface ContentPageProps {
@@ -1540,6 +1541,7 @@ function ResponsiveImage({
 export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
+  const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
@@ -1571,11 +1573,50 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
 
+  useEffect(() => {
+    const syncProgress = () => setDoneByPath(readProgress());
+    syncProgress();
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === null || event.key === PROGRESS_STORAGE_KEY) {
+        syncProgress();
+      }
+    };
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener(PROGRESS_UPDATED_EVENT, syncProgress);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(PROGRESS_UPDATED_EVENT, syncProgress);
+    };
+  }, []);
+
   if (!node) {
     return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
   const { previous, next, parent } = getSiblingNavigation(path);
+  const progressPercent = useMemo(() => {
+    if (!parent?.children?.length) {
+      return null;
+    }
+    const total = parent.children.length;
+    const done = parent.children.filter((item) => Boolean(doneByPath[item.path])).length;
+    return total > 0 ? Math.round((done / total) * 100) : 0;
+  }, [parent, doneByPath]);
+  const progressBar =
+    progressPercent === null ? null : (
+      <div
+        className={styles.sectionProgressRow}
+        aria-label={`${progressPercent}%`}
+        style={{ "--section-progress-color": node.color } as CSSProperties}
+      >
+        <div className={styles.sectionProgressTrack}>
+          <div className={styles.sectionProgressFill} style={{ width: `${progressPercent}%` }} />
+        </div>
+        <strong className={styles.sectionProgressPercent}>{progressPercent}%</strong>
+      </div>
+    );
   const markCurrentDone = () => {
     const current = readProgress();
     if (!current[path]) {
@@ -1635,6 +1676,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.videoBox}>
           <div className={styles.videoWrap}>
             <iframe
@@ -1655,6 +1697,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.videoBox}>
           <div className={styles.videoWrap}>
             <iframe
@@ -1675,6 +1718,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.videoBox}>
           <div className={styles.videoWrap}>
             <iframe
@@ -1695,6 +1739,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <p>{nerveAnatomyIntroCopy[lang]}</p>
           <ResponsiveImage
@@ -1744,6 +1789,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Motorická inervace" : "Motor innervation"}</h2>
           <ul className={styles.compactList}>
@@ -1761,6 +1807,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Senzitivní inervace" : "Sensory innervation"}</h2>
           <ul className={styles.compactList}>
@@ -1786,6 +1833,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
@@ -1817,6 +1865,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <div className={styles.articleGrid}>
             {movements.map((movement) => (
@@ -1843,6 +1892,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
@@ -1874,6 +1924,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
           <ol className={styles.compactList}>
@@ -1919,6 +1970,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <h2>{localized("Vyšetřovací protokol")[lang]}</h2>
           <ol className={styles.compactList}>
@@ -1962,6 +2014,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.articleBox}>
           <h2>{localized("Úvod")[lang]}</h2>
           <ul className={styles.compactList}>
@@ -2008,6 +2061,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
         <section className={styles.emptyBox} />
         {chapterNav}
       </section>
@@ -2017,6 +2071,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   return (
     <section className={styles.stack}>
       <PageHeader title={localize(node.title, lang)} color={node.color} />
+      {progressBar}
       <section className={styles.emptyBox} />
       {chapterNav}
     </section>
