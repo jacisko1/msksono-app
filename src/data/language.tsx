@@ -52,7 +52,10 @@ const translations = {
   },
   accountDone: { cs: "hotovo", en: "done" },
   loading: { cs: "Načítám...", en: "Loading..." },
-  goToSection: { cs: "Přejít do sekce", en: "Go to section" }
+  goToSection: { cs: "Přejít do sekce", en: "Go to section" },
+  previousChapter: { cs: "Předchozí kapitola", en: "Previous chapter" },
+  nextChapter: { cs: "Další kapitola", en: "Next chapter" },
+  chapterNavAria: { cs: "Navigace kapitol", en: "Chapter navigation" }
 } as const;
 
 type TranslationKey = keyof typeof translations;

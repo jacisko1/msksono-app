@@ -1,8 +1,9 @@
 ﻿import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
-import { findNavItem, localize } from "../data/navigation";
+import { findNavItem, getSiblingNavigation, localize } from "../data/navigation";
 import styles from "./SharedPages.module.css";
 
 interface ContentPageProps {
@@ -1573,6 +1574,52 @@ export default function ContentPage({ path }: ContentPageProps) {
     return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
+  const { previous, next } = getSiblingNavigation(path);
+  const chapterNav = (
+    <nav className={styles.chapterNav} aria-label={t("chapterNavAria")}>
+      {previous ? (
+        <Link to={previous.path} className={`${styles.chapterLink} ${styles.chapterPrev}`}>
+          <span className={styles.chapterArrow} aria-hidden="true">
+            ←
+          </span>
+          <span className={styles.chapterText}>
+            <span className={styles.chapterLabel}>{t("previousChapter")}</span>
+            <span className={styles.chapterTitle}>{localize(previous.title, lang)}</span>
+          </span>
+        </Link>
+      ) : (
+        <span className={`${styles.chapterLink} ${styles.chapterDisabled}`} aria-disabled="true">
+          <span className={styles.chapterArrow} aria-hidden="true">
+            ←
+          </span>
+          <span className={styles.chapterText}>
+            <span className={styles.chapterLabel}>{t("previousChapter")}</span>
+          </span>
+        </span>
+      )}
+      {next ? (
+        <Link to={next.path} className={`${styles.chapterLink} ${styles.chapterNext}`}>
+          <span className={styles.chapterText}>
+            <span className={styles.chapterLabel}>{t("nextChapter")}</span>
+            <span className={styles.chapterTitle}>{localize(next.title, lang)}</span>
+          </span>
+          <span className={styles.chapterArrow} aria-hidden="true">
+            →
+          </span>
+        </Link>
+      ) : (
+        <span className={`${styles.chapterLink} ${styles.chapterDisabled}`} aria-disabled="true">
+          <span className={styles.chapterText}>
+            <span className={styles.chapterLabel}>{t("nextChapter")}</span>
+          </span>
+          <span className={styles.chapterArrow} aria-hidden="true">
+            →
+          </span>
+        </span>
+      )}
+    </nav>
+  );
+
   if (jointVideo) {
     return (
       <section className={styles.stack}>
@@ -1588,6 +1635,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             />
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1607,6 +1655,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             />
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1626,6 +1675,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             />
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1674,6 +1724,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             })}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1690,6 +1741,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </ul>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1714,6 +1766,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             />
           ) : null}
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1744,6 +1797,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1769,6 +1823,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1799,6 +1854,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1843,6 +1899,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1885,6 +1942,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </div>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1907,6 +1965,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </ul>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1929,6 +1988,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             ))}
           </ul>
         </section>
+        {chapterNav}
       </section>
     );
   }
@@ -1938,6 +1998,7 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.emptyBox} />
+        {chapterNav}
       </section>
     );
   }
@@ -1946,6 +2007,7 @@ export default function ContentPage({ path }: ContentPageProps) {
     <section className={styles.stack}>
       <PageHeader title={localize(node.title, lang)} color={node.color} />
       <section className={styles.emptyBox} />
+      {chapterNav}
     </section>
   );
 }

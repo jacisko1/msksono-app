@@ -6,7 +6,7 @@ import styles from "./Breadcrumbs.module.css";
 export function Breadcrumbs() {
   const location = useLocation();
   const { lang, t } = useLanguage();
-  const crumbs = getBreadcrumbItems(location.pathname);
+  const crumbs = getBreadcrumbItems(location.pathname).slice(0, 2);
 
   if (crumbs.length === 0) {
     return null;
@@ -28,4 +28,3 @@ export function Breadcrumbs() {
     </nav>
   );
 }
-

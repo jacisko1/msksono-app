@@ -262,17 +262,16 @@ export const flatNavigation = flattenRecursive(navigationTree);
 
 const pathMap = new Map(flatNavigation.map((item) => [item.path, item] as const));
 
+const normalizePath = (path: string) => (path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path);
+
 export const localize = (label: LocalizedLabel, lang: Locale): string => label[lang];
 
-export const findNavItem = (path: string): NavItem | undefined => {
-  const cleaned = path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
-  return pathMap.get(cleaned);
-};
+export const findNavItem = (path: string): NavItem | undefined => pathMap.get(normalizePath(path));
 
 export const getThemeColor = (path: string): string => findNavItem(path)?.color ?? "#00626c";
 
 export const getBreadcrumbItems = (path: string): NavItem[] => {
-  const cleaned = path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path;
+  const cleaned = normalizePath(path);
   if (cleaned === "/") {
     return [];
   }
@@ -290,4 +289,43 @@ export const getBreadcrumbItems = (path: string): NavItem[] => {
   }
 
   return crumbs;
+};
+
+const findWithParent = (
+  items: NavItem[],
+  path: string,
+  parent?: NavItem
+): { item: NavItem; parent?: NavItem } | undefined => {
+  for (const item of items) {
+    if (item.path === path) {
+      return { item, parent };
+    }
+    if (item.children) {
+      const found = findWithParent(item.children, path, item);
+      if (found) {
+        return found;
+      }
+    }
+  }
+  return undefined;
+};
+
+export const getSiblingNavigation = (
+  path: string
+): { previous?: NavItem; next?: NavItem; parent?: NavItem } => {
+  const cleaned = normalizePath(path);
+  const found = findWithParent(navigationTree, cleaned);
+  if (!found?.parent?.children) {
+    return {};
+  }
+  const siblings = found.parent.children;
+  const index = siblings.findIndex((item) => item.path === found.item.path);
+  if (index < 0) {
+    return {};
+  }
+  return {
+    previous: index > 0 ? siblings[index - 1] : undefined,
+    next: index < siblings.length - 1 ? siblings[index + 1] : undefined,
+    parent: found.parent
+  };
 };
