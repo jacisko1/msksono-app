@@ -1977,6 +1977,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             alt={lang === "cs" ? "Ultrazvuk v medicínském zobrazování" : "Ultrasound in medical imaging"}
             enableMobileZoom
             caption={lang === "cs" ? "Obrázek 1: Ultrazvuk v medicínském zobrazování." : "Figure 1: Ultrasound in medical imaging."}
+            wrapClassName={styles.shoulderUltrasoundImageWrap}
           />
           <p>{ultrasoundBasicsCopy[lang][3]}</p>
         </section>
@@ -1998,6 +1999,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             alt={lang === "cs" ? "Schéma podélné zvukové vlny" : "Longitudinal sound wave diagram"}
             enableMobileZoom
             caption={lang === "cs" ? "Obrázek 2: Podélná zvuková vlna – komprese a rarefakce." : "Figure 2: Longitudinal sound wave – compression and rarefaction."}
+            wrapClassName={styles.shoulderUltrasoundImageWrap}
           />
           <p>{soundWaveCopy[lang][2]}</p>
           <p>{soundWaveCopy[lang][3]}</p>
