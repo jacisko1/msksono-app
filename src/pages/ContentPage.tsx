@@ -97,6 +97,21 @@ const ultrasoundBasicsCopy = {
   ]
 } as const;
 
+const soundWaveCopy = {
+  cs: [
+    "Zvuk je mechanické vlnění, které se šíří prostředím přenosem energie mezi částicemi látky. Na rozdíl od elektromagnetického záření se zvuk nemůže šířit ve vakuu – k propagaci vždy potřebuje materiální prostředí, například vzduch, vodu nebo biologické tkáně.",
+    "Z fyzikálního hlediska se jedná o podélnou vlnu. Částice prostředí se při jejím šíření nepohybují ve směru šíření vlny, ale pouze kmitají kolem své rovnovážné polohy. Toto kmitání vytváří střídající se oblasti komprese (zvýšený tlak a hustota částic) a rarefakce (snížený tlak a hustota částic), které se postupně šíří prostředím.",
+    "Zvukovou vlnu lze popsat několika základními parametry. Mezi nejdůležitější patří frekvence, která udává počet kmitů za sekundu, a vlnová délka, tedy vzdálenost mezi dvěma sousedními body stejné fáze vlnění (například mezi dvěma maximy komprese). Tyto parametry jsou vzájemně propojeny – při konstantní rychlosti šíření vyšší frekvence odpovídá kratší vlnové délce.",
+    "V ultrazvukovém zobrazování mají vlastnosti zvukové vlny zásadní význam, protože určují způsob, jakým se ultrazvuk šíří biologickými tkáněmi a jak interaguje s jejich rozhraními."
+  ],
+  en: [
+    "Sound is a mechanical wave that propagates through a medium by transferring energy between particles of matter. Unlike electromagnetic radiation, sound cannot travel in a vacuum; it always requires a material medium, such as air, water, or biological tissues.",
+    "From a physical perspective it is a longitudinal wave. The particles of the medium do not move in the direction of propagation but oscillate around their equilibrium position. This oscillation creates alternating regions of compression (increased pressure and particle density) and rarefaction (reduced pressure and particle density) that travel through the medium.",
+    "A sound wave can be described by several basic parameters. The most important are frequency, which indicates the number of oscillations per second, and wavelength, the distance between two neighboring points of the same phase of the wave (for example, between two maxima of compression). These parameters are related: at a constant propagation speed, higher frequency corresponds to a shorter wavelength.",
+    "In ultrasound imaging, the properties of the sound wave are essential because they determine how ultrasound propagates through biological tissues and how it interacts with tissue interfaces."
+  ]
+} as const;
+
 const jointVideoBySlug = {
   rameno: {
     src: "https://www.youtube-nocookie.com/embed/TCpKWtJ9g9A",
@@ -1587,6 +1602,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
   const isUltrasoundBasicsPage = path === "/basics/fyzikalni-principy/ultrazvuk";
+  const isSoundWavePage = path === "/basics/fyzikalni-principy/zvukova-vlna";
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -1951,6 +1967,21 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           {ultrasoundBasicsCopy[lang].map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isSoundWavePage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {soundWaveCopy[lang].map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </section>
