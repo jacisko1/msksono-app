@@ -97,6 +97,9 @@ const ultrasoundBasicsCopy = {
   ]
 } as const;
 
+const ultrasoundBasicsImage = makeResponsiveImage("Fyzikalni principy", "ultrasound");
+const soundWaveImage = makeResponsiveImage("Fyzikalni principy", "wave");
+
 const soundWaveCopy = {
   cs: [
     "Zvuk je mechanické vlnění, které se šíří prostředím přenosem energie mezi částicemi látky. Na rozdíl od elektromagnetického záření se zvuk nemůže šířit ve vakuu – k propagaci vždy potřebuje materiální prostředí, například vzduch, vodu nebo biologické tkáně.",
@@ -1966,9 +1969,14 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          {ultrasoundBasicsCopy[lang].map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <p>{ultrasoundBasicsCopy[lang][0]}</p>
+          <p>{ultrasoundBasicsCopy[lang][1]}</p>
+          <p>{ultrasoundBasicsCopy[lang][2]}</p>
+          <ResponsiveImage
+            image={ultrasoundBasicsImage}
+            alt={lang === "cs" ? "Ultrazvuk v medicínském zobrazování" : "Ultrasound in medical imaging"}
+          />
+          <p>{ultrasoundBasicsCopy[lang][3]}</p>
         </section>
         {chapterNav}
       </section>
@@ -1981,9 +1989,14 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          {soundWaveCopy[lang].map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+          <p>{soundWaveCopy[lang][0]}</p>
+          <p>{soundWaveCopy[lang][1]}</p>
+          <ResponsiveImage
+            image={soundWaveImage}
+            alt={lang === "cs" ? "Schéma podélné zvukové vlny" : "Longitudinal sound wave diagram"}
+          />
+          <p>{soundWaveCopy[lang][2]}</p>
+          <p>{soundWaveCopy[lang][3]}</p>
         </section>
         {chapterNav}
       </section>
