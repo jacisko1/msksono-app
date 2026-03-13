@@ -82,6 +82,21 @@ const makeResponsiveImagePhone = (folder: string, baseName: string): ResponsiveI
 
 const localized = <T,>(value: T) => ({ cs: value, en: value });
 
+const ultrasoundBasicsCopy = {
+  cs: [
+    "Zvuk je mechanické vlnění, které se šíří prostředím (například vzduchem, vodou nebo biologickými tkáněmi). Vzniká kmitáním částic prostředí a šíří se jako podélná vlna tvořená střídáním oblastí komprese a rarefakce.",
+    "Předpona ultra- znamená „za“ nebo „nad“. V tomto případě označuje frekvence vyšší než je horní hranice slyšitelnosti lidského ucha. Člověk je schopen vnímat zvuk přibližně v rozsahu 20 Hz až 20 kHz. Vlnění s vyšší frekvencí se označuje jako ultrazvuk.",
+    "V medicínském zobrazování se používají výrazně vyšší frekvence, typicky přibližně 2–18 MHz. Tyto frekvence jsou několikanásobně vyšší než frekvence slyšitelného zvuku, a proto je lidské ucho nedokáže zachytit.",
+    "Důležitou vlastností ultrazvuku je, že se jedná o mechanické vlnění, nikoli o elektromagnetické záření. Ke svému šíření proto vždy potřebuje materiální prostředí. V biologických tkáních se ultrazvuk šíří relativně dobře, zatímco ve vzduchu velmi špatně. Z tohoto důvodu se při ultrazvukovém vyšetření používá kontaktní gel, který eliminuje vzduchovou vrstvu mezi sondou a kůží a umožňuje efektivní přenos ultrazvukových vln do tkání."
+  ],
+  en: [
+    "Sound is a mechanical wave that propagates through a medium (for example air, water, or biological tissues). It arises from the oscillation of particles in the medium and propagates as a longitudinal wave formed by alternating regions of compression and rarefaction.",
+    "The prefix ultra- means “beyond” or “above.” In this case it denotes frequencies higher than the upper limit of human hearing. Humans can perceive sound approximately in the range of 20 Hz to 20 kHz. Waves with higher frequency are called ultrasound.",
+    "In medical imaging, much higher frequencies are used, typically about 2–18 MHz. These frequencies are many times higher than audible sound and therefore cannot be detected by the human ear.",
+    "An important property of ultrasound is that it is a mechanical wave, not electromagnetic radiation. It therefore always needs a material medium to propagate. In biological tissues ultrasound propagates relatively well, whereas in air it propagates very poorly. For this reason ultrasound examinations use coupling gel, which eliminates the air layer between the probe and the skin and enables efficient transmission of ultrasound waves into tissues."
+  ]
+} as const;
+
 const jointVideoBySlug = {
   rameno: {
     src: "https://www.youtube-nocookie.com/embed/TCpKWtJ9g9A",
@@ -1571,6 +1586,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isProbesPage = path === "/basics/ultrazvukove-sondy/typy-sond";
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
   const isKnobologyPage = path === "/basics/knobologie";
+  const isUltrasoundBasicsPage = path === "/basics/fyzikalni-principy/ultrazvuk";
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -1922,6 +1938,21 @@ export default function ContentPage({ path }: ContentPageProps) {
               </article>
             ))}
           </div>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isUltrasoundBasicsPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {ultrasoundBasicsCopy[lang].map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </section>
         {chapterNav}
       </section>
