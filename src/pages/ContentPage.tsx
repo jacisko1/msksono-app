@@ -1975,6 +1975,8 @@ export default function ContentPage({ path }: ContentPageProps) {
           <ResponsiveImage
             image={ultrasoundBasicsImage}
             alt={lang === "cs" ? "Ultrazvuk v medicínském zobrazování" : "Ultrasound in medical imaging"}
+            enableMobileZoom
+            caption={lang === "cs" ? "Obrázek 1: Ultrazvuk v medicínském zobrazování." : "Figure 1: Ultrasound in medical imaging."}
           />
           <p>{ultrasoundBasicsCopy[lang][3]}</p>
         </section>
@@ -1994,6 +1996,8 @@ export default function ContentPage({ path }: ContentPageProps) {
           <ResponsiveImage
             image={soundWaveImage}
             alt={lang === "cs" ? "Schéma podélné zvukové vlny" : "Longitudinal sound wave diagram"}
+            enableMobileZoom
+            caption={lang === "cs" ? "Obrázek 2: Podélná zvuková vlna – komprese a rarefakce." : "Figure 2: Longitudinal sound wave – compression and rarefaction."}
           />
           <p>{soundWaveCopy[lang][2]}</p>
           <p>{soundWaveCopy[lang][3]}</p>
