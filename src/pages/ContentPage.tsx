@@ -84,16 +84,48 @@ const localized = <T,>(value: T) => ({ cs: value, en: value });
 
 const ultrasoundBasicsCopy = {
   cs: [
-    "Zvuk je mechanické vlnění, které se šíří prostředím (například vzduchem, vodou nebo biologickými tkáněmi). Vzniká kmitáním částic prostředí a šíří se jako podélná vlna tvořená střídáním oblastí komprese a rarefakce.",
-    "Předpona ultra- znamená „za“ nebo „nad“. V tomto případě označuje frekvence vyšší než je horní hranice slyšitelnosti lidského ucha. Člověk je schopen vnímat zvuk přibližně v rozsahu 20 Hz až 20 kHz. Vlnění s vyšší frekvencí se označuje jako ultrazvuk.",
-    "V medicínském zobrazování se používají výrazně vyšší frekvence, typicky přibližně 2–18 MHz. Tyto frekvence jsou několikanásobně vyšší než frekvence slyšitelného zvuku, a proto je lidské ucho nedokáže zachytit.",
-    "Důležitou vlastností ultrazvuku je, že se jedná o mechanické vlnění, nikoli o elektromagnetické záření. Ke svému šíření proto vždy potřebuje materiální prostředí. V biologických tkáních se ultrazvuk šíří relativně dobře, zatímco ve vzduchu velmi špatně. Z tohoto důvodu se při ultrazvukovém vyšetření používá kontaktní gel, který eliminuje vzduchovou vrstvu mezi sondou a kůží a umožňuje efektivní přenos ultrazvukových vln do tkání."
+    <>
+      Zvuk je <strong>mechanické vlnění</strong>, které se šíří prostředím (například vzduchem, vodou nebo biologickými tkáněmi).
+      Vzniká kmitáním částic prostředí a šíří se jako <strong>podélná vlna</strong> tvořená střídáním oblastí komprese
+      a rarefakce.
+    </>,
+    <>
+      Předpona <strong>ultra-</strong> znamená „za“ nebo „nad“. V tomto případě označuje frekvence vyšší než je horní hranice
+      slyšitelnosti lidského ucha. Člověk je schopen vnímat zvuk přibližně v rozsahu <strong>20 Hz až 20 kHz</strong>. Vlnění
+      s vyšší frekvencí se označuje jako ultrazvuk.
+    </>,
+    <>
+      V medicínském zobrazování se používají výrazně vyšší frekvence, typicky přibližně <strong>2–18 MHz</strong>. Tyto frekvence
+      jsou několikanásobně vyšší než frekvence slyšitelného zvuku, a proto je lidské ucho nedokáže zachytit.
+    </>,
+    <>
+      Důležitou vlastností ultrazvuku je, že se jedná o <strong>mechanické vlnění, nikoli elektromagnetické záření</strong>.
+      Ke svému šíření proto vždy potřebuje materiální prostředí. V biologických tkáních se ultrazvuk šíří relativně dobře,
+      zatímco ve vzduchu velmi špatně. Z tohoto důvodu se při ultrazvukovém vyšetření používá <strong>kontaktní gel</strong>,
+      který eliminuje vzduchovou vrstvu mezi sondou a kůží a umožňuje efektivní přenos ultrazvukových vln do tkání.
+    </>
   ],
   en: [
-    "Sound is a mechanical wave that propagates through a medium (for example air, water, or biological tissues). It arises from the oscillation of particles in the medium and propagates as a longitudinal wave formed by alternating regions of compression and rarefaction.",
-    "The prefix ultra- means “beyond” or “above.” In this case it denotes frequencies higher than the upper limit of human hearing. Humans can perceive sound approximately in the range of 20 Hz to 20 kHz. Waves with higher frequency are called ultrasound.",
-    "In medical imaging, much higher frequencies are used, typically about 2–18 MHz. These frequencies are many times higher than audible sound and therefore cannot be detected by the human ear.",
-    "An important property of ultrasound is that it is a mechanical wave, not electromagnetic radiation. It therefore always needs a material medium to propagate. In biological tissues ultrasound propagates relatively well, whereas in air it propagates very poorly. For this reason ultrasound examinations use coupling gel, which eliminates the air layer between the probe and the skin and enables efficient transmission of ultrasound waves into tissues."
+    <>
+      Sound is a <strong>mechanical wave</strong> that propagates through a medium (for example air, water, or biological tissues).
+      It arises from the oscillation of particles in the medium and propagates as a <strong>longitudinal wave</strong> formed
+      by alternating regions of compression and rarefaction.
+    </>,
+    <>
+      The prefix <strong>ultra-</strong> means “beyond” or “above.” In this case it denotes frequencies higher than the upper
+      limit of human hearing. Humans can perceive sound approximately in the range of <strong>20 Hz to 20 kHz</strong>. Waves
+      with higher frequency are called ultrasound.
+    </>,
+    <>
+      In medical imaging, much higher frequencies are used, typically about <strong>2–18 MHz</strong>. These frequencies are
+      many times higher than audible sound and therefore cannot be detected by the human ear.
+    </>,
+    <>
+      An important property of ultrasound is that it is a <strong>mechanical wave, not electromagnetic radiation</strong>.
+      It therefore always needs a material medium to propagate. In biological tissues ultrasound propagates relatively well,
+      whereas in air it propagates very poorly. For this reason ultrasound examinations use <strong>coupling gel</strong>, which
+      eliminates the air layer between the probe and the skin and enables efficient transmission of ultrasound waves into tissues.
+    </>
   ]
 } as const;
 
@@ -102,16 +134,205 @@ const soundWaveImage = makeResponsiveImage("Fyzikalni principy", "wave");
 
 const soundWaveCopy = {
   cs: [
-    "Zvuk je mechanické vlnění, které se šíří prostředím přenosem energie mezi částicemi látky. Na rozdíl od elektromagnetického záření se zvuk nemůže šířit ve vakuu – k propagaci vždy potřebuje materiální prostředí, například vzduch, vodu nebo biologické tkáně.",
-    "Z fyzikálního hlediska se jedná o podélnou vlnu. Částice prostředí se při jejím šíření nepohybují ve směru šíření vlny, ale pouze kmitají kolem své rovnovážné polohy. Toto kmitání vytváří střídající se oblasti komprese (zvýšený tlak a hustota částic) a rarefakce (snížený tlak a hustota částic), které se postupně šíří prostředím.",
-    "Zvukovou vlnu lze popsat několika základními parametry. Mezi nejdůležitější patří frekvence, která udává počet kmitů za sekundu, a vlnová délka, tedy vzdálenost mezi dvěma sousedními body stejné fáze vlnění (například mezi dvěma maximy komprese). Tyto parametry jsou vzájemně propojeny – při konstantní rychlosti šíření vyšší frekvence odpovídá kratší vlnové délce.",
-    "V ultrazvukovém zobrazování mají vlastnosti zvukové vlny zásadní význam, protože určují způsob, jakým se ultrazvuk šíří biologickými tkáněmi a jak interaguje s jejich rozhraními."
+    <>
+      Zvuk je <strong>mechanické vlnění</strong>, které se šíří prostředím přenosem energie mezi částicemi látky. Na rozdíl od
+      elektromagnetického záření se zvuk <strong>nemůže šířit ve vakuu</strong> – k propagaci vždy potřebuje materiální prostředí,
+      například vzduch, vodu nebo biologické tkáně.
+    </>,
+    <>
+      Z fyzikálního hlediska se jedná o <strong>podélnou vlnu</strong>. Částice prostředí se při jejím šíření nepohybují ve směru
+      šíření vlny, ale pouze kmitají kolem své rovnovážné polohy. Toto kmitání vytváří střídající se oblasti komprese
+      (<strong>zvýšený tlak a hustota částic</strong>) a rarefakce (<strong>snížený tlak a hustota částic</strong>), které se
+      postupně šíří prostředím.
+    </>,
+    <>
+      Zvukovou vlnu lze popsat několika základními parametry. Mezi nejdůležitější patří <strong>frekvence</strong>, která udává
+      počet kmitů za sekundu, a <strong>vlnová délka</strong>, tedy vzdálenost mezi dvěma sousedními body stejné fáze vlnění
+      (například mezi dvěma maximy komprese). Tyto parametry jsou vzájemně propojeny – při konstantní rychlosti šíření vyšší
+      frekvence odpovídá kratší vlnové délce.
+    </>,
+    <>
+      V ultrazvukovém zobrazování mají vlastnosti zvukové vlny <strong>zásadní význam</strong>, protože určují způsob, jakým se
+      ultrazvuk šíří biologickými tkáněmi a jak interaguje s jejich rozhraními.
+    </>
   ],
   en: [
-    "Sound is a mechanical wave that propagates through a medium by transferring energy between particles of matter. Unlike electromagnetic radiation, sound cannot travel in a vacuum; it always requires a material medium, such as air, water, or biological tissues.",
-    "From a physical perspective it is a longitudinal wave. The particles of the medium do not move in the direction of propagation but oscillate around their equilibrium position. This oscillation creates alternating regions of compression (increased pressure and particle density) and rarefaction (reduced pressure and particle density) that travel through the medium.",
-    "A sound wave can be described by several basic parameters. The most important are frequency, which indicates the number of oscillations per second, and wavelength, the distance between two neighboring points of the same phase of the wave (for example, between two maxima of compression). These parameters are related: at a constant propagation speed, higher frequency corresponds to a shorter wavelength.",
-    "In ultrasound imaging, the properties of the sound wave are essential because they determine how ultrasound propagates through biological tissues and how it interacts with tissue interfaces."
+    <>
+      Sound is a <strong>mechanical wave</strong> that propagates through a medium by transferring energy between particles of
+      matter. Unlike electromagnetic radiation, sound <strong>cannot travel in a vacuum</strong>; it always requires a material
+      medium, such as air, water, or biological tissues.
+    </>,
+    <>
+      From a physical perspective it is a <strong>longitudinal wave</strong>. The particles of the medium do not move in the
+      direction of propagation but oscillate around their equilibrium position. This oscillation creates alternating regions of
+      compression (<strong>increased pressure and particle density</strong>) and rarefaction (<strong>reduced pressure and
+      particle density</strong>) that travel through the medium.
+    </>,
+    <>
+      A sound wave can be described by several basic parameters. The most important are <strong>frequency</strong>, which
+      indicates the number of oscillations per second, and <strong>wavelength</strong>, the distance between two neighboring
+      points of the same phase of the wave (for example, between two maxima of compression). These parameters are related: at a
+      constant propagation speed, higher frequency corresponds to a shorter wavelength.
+    </>,
+    <>
+      In ultrasound imaging, the properties of the sound wave are <strong>essential</strong> because they determine how ultrasound
+      propagates through biological tissues and how it interacts with tissue interfaces.
+    </>
+  ]
+} as const;
+
+const speedOfSoundCopy = {
+  cs: [
+    <>
+      <strong>Rychlost zvuku</strong> závisí na vlastnostech prostředí – zejména na jeho hustotě a elasticitě. V měkkých tkáních
+      lidského těla se pro klinickou praxi používá průměrná hodnota přibližně <strong>1540 m/s</strong>.
+    </>,
+    <>
+      Rychlost zvuku je klíčová pro správný přepočet času letu odražené vlny na vzdálenost. Přístroj vždy předpokládá konstantní
+      rychlost šíření v tkáních. Pokud se reálná rychlost liší, vzniká <strong>geometrická chyba</strong> – struktury se mohou
+      zobrazit o něco hlouběji nebo mělčeji, než ve skutečnosti jsou.
+    </>,
+    <>
+      Obecně platí, že <strong>rychleji se zvuk šíří v tuhých prostředích</strong> (například kost), pomaleji v měkčích a
+      méně elastických tkáních. Velké rozdíly rychlosti na rozhraních přispívají k odrazům a artefaktům.
+    </>,
+    <>
+      Pro sonografistu je proto důležité rozumět tomu, že změny rychlosti šíření ovlivňují <strong>polohu, tvar i velikost</strong>
+      zobrazených struktur.
+    </>
+  ],
+  en: [
+    <>
+      The <strong>speed of sound</strong> depends on the properties of the medium, especially its density and elasticity. In
+      soft tissues of the human body, a practical average value of about <strong>1540 m/s</strong> is used in clinical practice.
+    </>,
+    <>
+      Speed of sound is critical for converting the echo travel time into distance. The scanner always assumes a constant
+      propagation speed in tissues. If the real speed differs, a <strong>geometric error</strong> occurs and structures may be
+      displayed slightly deeper or shallower than they really are.
+    </>,
+    <>
+      In general, sound travels <strong>faster in stiff media</strong> (for example bone) and slower in softer, less elastic
+      tissues. Large differences in speed at interfaces contribute to reflections and artifacts.
+    </>,
+    <>
+      For the sonographer, it is therefore important to understand that changes in propagation speed affect the <strong>position,
+      shape, and size</strong> of imaged structures.
+    </>
+  ]
+} as const;
+
+const acousticImpedanceCopy = {
+  cs: [
+    <>
+      <strong>Akustická impedance</strong> je veličina, která popisuje odpor prostředí proti šíření zvukové vlny. Závisí na hustotě
+      prostředí a rychlosti zvuku v něm.
+    </>,
+    <>
+      Rozdíl akustických impedancí mezi dvěma tkáněmi určuje, kolik energie se na rozhraní <strong>odrazí</strong> a kolik projde
+      dál. Čím větší rozdíl, tím silnější odraz a jasnější echogenní linie v obraze.
+    </>,
+    <>
+      Extrémní rozdíl je mezi měkkými tkáněmi a vzduchem – proto vzduch vytváří téměř úplný odraz a výrazně zhoršuje zobrazení.
+      Z tohoto důvodu se používá <strong>gel</strong> pro odstranění vzduchové vrstvy.
+    </>,
+    <>
+      Porozumění akustické impedanci je klíčové pro interpretaci toho, proč jsou některé rozhraní <strong>hyperechogenní</strong>
+      a jiné naopak málo viditelné.
+    </>
+  ],
+  en: [
+    <>
+      <strong>Acoustic impedance</strong> describes the resistance of a medium to the propagation of a sound wave. It depends on
+      the density of the medium and the speed of sound within it.
+    </>,
+    <>
+      The difference in acoustic impedance between two tissues determines how much energy is <strong>reflected</strong> and how
+      much is transmitted. The greater the difference, the stronger the reflection and the brighter the echogenic line in the image.
+    </>,
+    <>
+      An extreme difference exists between soft tissues and air, which causes near-total reflection and severely degrades imaging.
+      This is why <strong>gel</strong> is used to eliminate the air layer.
+    </>,
+    <>
+      Understanding acoustic impedance is key to interpreting why some interfaces are <strong>hyperechoic</strong> and others are
+      barely visible.
+    </>
+  ]
+} as const;
+
+const reflectionCopy = {
+  cs: [
+    <>
+      <strong>Odraz</strong> vzniká na rozhraní dvou prostředí s odlišnou akustickou impedancí. Část energie se vrací zpět jako
+      echo, které přístroj využívá k tvorbě obrazu.
+    </>,
+    <>
+      Intenzita odrazu závisí na rozdílu impedancí a na úhlu dopadu paprsku. Nejvíce energie se vrací při <strong>kolmém dopadu</strong>,
+      proto se snažíme sondu nastavit co nejkolměji k vyšetřované struktuře.
+    </>,
+    <>
+      Odraz je hlavní mechanizmus, díky kterému vidíme hranice tkání. Zároveň je zdrojem některých artefaktů, například
+      <strong>zrcadlení</strong> nebo <strong>reverberací</strong>.
+    </>,
+    <>
+      V praxi je důležité chápat, že slabé odrazy mohou vést k nízké echogenitě, zatímco silné odrazy vytvářejí jasné linie.
+    </>
+  ],
+  en: [
+    <>
+      <strong>Reflection</strong> occurs at the interface between two media with different acoustic impedances. Part of the energy
+      returns as an echo, which the scanner uses to build the image.
+    </>,
+    <>
+      The strength of reflection depends on the impedance difference and the angle of incidence. The most energy returns with
+      <strong>perpendicular incidence</strong>, which is why we aim to keep the probe as perpendicular as possible to the target.
+    </>,
+    <>
+      Reflection is the main mechanism that makes tissue boundaries visible. It is also the source of some artifacts, such as
+      <strong>mirror</strong> and <strong>reverberation</strong> artifacts.
+    </>,
+    <>
+      In practice, it is important to understand that weak reflections can lead to low echogenicity, while strong reflections
+      create bright lines.
+    </>
+  ]
+} as const;
+
+const refractionCopy = {
+  cs: [
+    <>
+      <strong>Lom</strong> (refraction) nastává, když zvuková vlna přechází mezi prostředími s různou rychlostí šíření a dopadá na
+      rozhraní pod úhlem. Paprsek se potom <strong>odchyluje</strong> od původního směru.
+    </>,
+    <>
+      V ultrazvuku může lom způsobit, že se struktura zobrazí na jiném místě, než kde skutečně je. Typickým důsledkem je
+      <strong>laterální posun</strong> nebo zdvojení kontur.
+    </>,
+    <>
+      K lomům často dochází na zakřivených rozhraních, například na okrajích šlach či cév. Změnou úhlu sondy lze tento efekt
+      částečně minimalizovat.
+    </>,
+    <>
+      Porozumění lomu pomáhá správně interpretovat obraz a odlišit skutečný nález od artefaktu.
+    </>
+  ],
+  en: [
+    <>
+      <strong>Refraction</strong> occurs when a sound wave crosses an interface between media with different propagation speeds
+      at an oblique angle. The beam then <strong>deviates</strong> from its original direction.
+    </>,
+    <>
+      In ultrasound, refraction can cause a structure to appear in a different position than it actually is. A typical consequence
+      is <strong>lateral displacement</strong> or duplication of edges.
+    </>,
+    <>
+      Refraction often occurs at curved interfaces, for example along the edges of tendons or vessels. Adjusting the probe angle
+      can partially reduce this effect.
+    </>,
+    <>
+      Understanding refraction helps interpret the image correctly and distinguish true findings from artifacts.
+    </>
   ]
 } as const;
 
@@ -1606,6 +1827,10 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isKnobologyPage = path === "/basics/knobologie";
   const isUltrasoundBasicsPage = path === "/basics/fyzikalni-principy/ultrazvuk";
   const isSoundWavePage = path === "/basics/fyzikalni-principy/zvukova-vlna";
+  const isSpeedOfSoundPage = path === "/basics/fyzikalni-principy/rychlost-zvuku";
+  const isAcousticImpedancePage = path === "/basics/fyzikalni-principy/akusticka-impedance";
+  const isReflectionPage = path === "/basics/fyzikalni-principy/odraz";
+  const isRefractionPage = path === "/basics/fyzikalni-principy/lom";
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -2003,6 +2228,66 @@ export default function ContentPage({ path }: ContentPageProps) {
           />
           <p>{soundWaveCopy[lang][2]}</p>
           <p>{soundWaveCopy[lang][3]}</p>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isSpeedOfSoundPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {speedOfSoundCopy[lang].map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isAcousticImpedancePage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {acousticImpedanceCopy[lang].map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isReflectionPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {reflectionCopy[lang].map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isRefractionPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {refractionCopy[lang].map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </section>
         {chapterNav}
       </section>
