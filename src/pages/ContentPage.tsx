@@ -348,16 +348,16 @@ const probeGripCopy = {
     ),
     items: [
       <>
-        <strong>Princess grip</strong> – jemný, přesný úchop konečky prstů. Vhodný pro povrchové struktury a detailní práci, kde je
-        potřeba maximální cit a minimální tlak.
+        <strong>Princess grip</strong> – jemný úchop konečky prstů, ale je <strong>nestabilní</strong> a snadno vede k nechtěným
+        pohybům sondy. Hodí se spíše výjimečně; jeho nevýhodou je nižší kontrola a horší reprodukovatelnost obrazu.
       </>,
       <>
         <strong>Normal grip</strong> – standardní vyvážený úchop. Poskytuje dobrou stabilitu i citlivost a je nejčastěji používaný
         při rutinním vyšetření.
       </>,
       <>
-        <strong>Powerful grip</strong> – pevný úchop celou rukou. Používá se u hlubších struktur nebo při nutnosti vyššího tlaku,
-        kdy je cílem maximalizovat kontakt a kontrolu sondy.
+        <strong>Powerful grip</strong> – pevný úchop celou rukou, který ale často <strong>omezuje jemné řízení</strong> a zvyšuje
+        tlak na tkáně. Nevýhodou je menší citlivost, horší práce s drobnými korekcemi a rychlejší únava ruky.
       </>
     ]
   },
@@ -370,16 +370,16 @@ const probeGripCopy = {
     ),
     items: [
       <>
-        <strong>Princess grip</strong> – a light, precise fingertip grip. Ideal for superficial structures and fine work where
-        maximum sensitivity and minimal pressure are needed.
+        <strong>Princess grip</strong> – a light fingertip grip, but it is <strong>unstable</strong> and easily leads to unintended
+        probe movement. It is only suitable in limited situations; its drawbacks are reduced control and poorer reproducibility.
       </>,
       <>
         <strong>Normal grip</strong> – a balanced standard grip. It provides good stability and sensitivity and is the most common
         choice for routine scanning.
       </>,
       <>
-        <strong>Powerful grip</strong> – a firm whole-hand grip. Used for deeper structures or when higher pressure is required to
-        maximize contact and probe control.
+        <strong>Powerful grip</strong> – a firm whole-hand grip that often <strong>limits fine control</strong> and increases
+        pressure on tissues. Drawbacks include reduced sensitivity, poorer fine adjustments, and faster hand fatigue.
       </>
     ]
   }
