@@ -348,16 +348,16 @@ const probeGripCopy = {
     ),
     items: [
       <>
-        Princess grip – špatný způsob držení, protože je nestabilní a snadno vede k nechtěným pohybům sondy. Výsledkem je nižší
-        kontrola a horší reprodukovatelnost obrazu.
+        <strong>Princess grip</strong> – špatný způsob držení, protože je nestabilní a snadno vede k nechtěným pohybům sondy.
+        Výsledkem je nižší kontrola a horší reprodukovatelnost obrazu.
       </>,
       <>
         <strong>Normal grip</strong> – standardní vyvážený úchop. Poskytuje dobrou stabilitu i citlivost a je nejčastěji používaný
         při rutinním vyšetření.
       </>,
       <>
-        Powerful grip – také špatný způsob držení, protože omezuje jemné řízení a vede k přehnanému tlaku na tkáně. To snižuje
-        citlivost, zhoršuje drobné korekce a zvyšuje únavu ruky.
+        <strong>Powerful grip</strong> – také špatný způsob držení, protože omezuje jemné řízení a vede k přehnanému tlaku na
+        tkáně. To snižuje citlivost, zhoršuje drobné korekce a zvyšuje únavu ruky.
       </>
     ]
   },
@@ -370,16 +370,16 @@ const probeGripCopy = {
     ),
     items: [
       <>
-        Princess grip – a poor grip choice because it is unstable and easily causes unintended probe movement. This results in
-        reduced control and poorer reproducibility.
+        <strong>Princess grip</strong> – a poor grip choice because it is unstable and easily causes unintended probe movement.
+        This results in reduced control and poorer reproducibility.
       </>,
       <>
         <strong>Normal grip</strong> – a balanced standard grip. It provides good stability and sensitivity and is the most common
         choice for routine scanning.
       </>,
       <>
-        Powerful grip – also a poor grip choice because it limits fine control and encourages excessive pressure on tissues. This
-        reduces sensitivity, worsens fine adjustments, and increases hand fatigue.
+        <strong>Powerful grip</strong> – also a poor grip choice because it limits fine control and encourages excessive pressure
+        on tissues. This reduces sensitivity, worsens fine adjustments, and increases hand fatigue.
       </>
     ]
   }
