@@ -131,6 +131,7 @@ const ultrasoundBasicsCopy = {
 
 const ultrasoundBasicsImage = makeResponsiveImage("Fyzikalni principy", "ultrasound");
 const soundWaveImage = makeResponsiveImage("Fyzikalni principy", "wave");
+const probeGripImage = makeResponsiveImage("Probes", "grips");
 
 const soundWaveCopy = {
   cs: [
@@ -334,6 +335,53 @@ const refractionCopy = {
       Understanding refraction helps interpret the image correctly and distinguish true findings from artifacts.
     </>
   ]
+} as const;
+
+const probeGripCopy = {
+  cs: {
+    intro: (
+      <>
+        Správné <strong>držení sondy</strong> zvyšuje stabilitu, zlepšuje kontakt s tkáněmi a snižuje únavu ruky. Níže jsou tři
+        praktické typy úchopu používané v MSK sonografii.
+      </>
+    ),
+    items: [
+      <>
+        <strong>Princess grip</strong> – jemný, přesný úchop konečky prstů. Vhodný pro povrchové struktury a detailní práci, kde je
+        potřeba maximální cit a minimální tlak.
+      </>,
+      <>
+        <strong>Normal grip</strong> – standardní vyvážený úchop. Poskytuje dobrou stabilitu i citlivost a je nejčastěji používaný
+        při rutinním vyšetření.
+      </>,
+      <>
+        <strong>Powerful grip</strong> – pevný úchop celou rukou. Používá se u hlubších struktur nebo při nutnosti vyššího tlaku,
+        kdy je cílem maximalizovat kontakt a kontrolu sondy.
+      </>
+    ]
+  },
+  en: {
+    intro: (
+      <>
+        Proper <strong>probe grip</strong> improves stability, enhances tissue contact, and reduces hand fatigue. Below are three
+        practical grip types commonly used in MSK ultrasound.
+      </>
+    ),
+    items: [
+      <>
+        <strong>Princess grip</strong> – a light, precise fingertip grip. Ideal for superficial structures and fine work where
+        maximum sensitivity and minimal pressure are needed.
+      </>,
+      <>
+        <strong>Normal grip</strong> – a balanced standard grip. It provides good stability and sensitivity and is the most common
+        choice for routine scanning.
+      </>,
+      <>
+        <strong>Powerful grip</strong> – a firm whole-hand grip. Used for deeper structures or when higher pressure is required to
+        maximize contact and probe control.
+      </>
+    ]
+  }
 } as const;
 
 const jointVideoBySlug = {
@@ -1824,6 +1872,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointContent = jointKey ? jointContentBySlug[jointKey] : undefined;
   const isProbesPage = path === "/basics/ultrazvukove-sondy/typy-sond";
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
+  const isProbeGripPage = path === "/basics/ultrazvukove-sondy/drzeni-sondy";
   const isKnobologyPage = path === "/basics/knobologie";
   const isUltrasoundBasicsPage = path === "/basics/fyzikalni-principy/ultrazvuk";
   const isSoundWavePage = path === "/basics/fyzikalni-principy/zvukova-vlna";
@@ -2150,6 +2199,30 @@ export default function ContentPage({ path }: ContentPageProps) {
               </article>
             ))}
           </div>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isProbeGripPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          <p>{probeGripCopy[lang].intro}</p>
+          <ResponsiveImage
+            image={probeGripImage}
+            alt={lang === "cs" ? "Typy držení sondy" : "Probe grip types"}
+            wrapClassName={styles.probeImageWrap}
+            enableMobileZoom
+          />
+          <ul className={styles.compactList}>
+            {probeGripCopy[lang].items.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </section>
         {chapterNav}
       </section>
