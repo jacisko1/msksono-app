@@ -132,6 +132,7 @@ const ultrasoundBasicsCopy = {
 const ultrasoundBasicsImage = makeResponsiveImage("Fyzikalni principy", "ultrasound");
 const soundWaveImage = makeResponsiveImage("Fyzikalni principy", "wave");
 const probeGripImage = makeResponsiveImage("Probes", "grips");
+const echogenicityImage = makeResponsiveImage("UZ obraz", "echogenic");
 
 const soundWaveCopy = {
   cs: [
@@ -382,6 +383,47 @@ const probeGripCopy = {
       </>
     ]
   }
+} as const;
+
+const echogenicityCopy = {
+  cs: [
+    <>
+      <strong>Echogenita</strong> popisuje, jak intenzivně tkáň odráží ultrazvuk. V obraze se projevuje jako různý stupeň jasu,
+      který umožňuje rozlišit struktury a jejich vlastnosti.
+    </>,
+    <>
+      Základní pojmy: <strong>anechogenní</strong> (bez odrazu, zcela černé – typicky tekutiny), <strong>hypoechogenní</strong>
+      (tmavší než okolí), <strong>izoechogenní</strong> (stejný jas jako okolí) a <strong>hyperechogenní</strong> (světlejší než
+      okolí – silné odrazy, např. fibrotické tkáně nebo kalcifikace).
+    </>,
+    <>
+      Echogenita vždy závisí na <strong>nastavení přístroje</strong> (gain, TGC) a na úhlu dopadu paprsku. Proto je důležité
+      hodnotit jas struktury v kontextu okolí a při správném nastavení.
+    </>,
+    <>
+      V praxi se často používá i termín <strong>heterogenní</strong> echotextura, která znamená nehomogenní vzhled tkáně. To může
+      svědčit pro zánět, degenerativní změny nebo smíšený obsah.
+    </>
+  ],
+  en: [
+    <>
+      <strong>Echogenicity</strong> describes how strongly a tissue reflects ultrasound. On the image it appears as different
+      levels of brightness, allowing structures and their properties to be distinguished.
+    </>,
+    <>
+      Key terms: <strong>anechoic</strong> (no reflection, completely black – typically fluid), <strong>hypoechoic</strong>
+      (darker than surroundings), <strong>isoechoic</strong> (same brightness as surroundings), and <strong>hyperechoic</strong>
+      (brighter than surroundings – strong reflections, e.g. fibrotic tissue or calcifications).
+    </>,
+    <>
+      Echogenicity always depends on <strong>machine settings</strong> (gain, TGC) and on the angle of insonation. It should be
+      judged in context of surrounding tissues and with proper settings.
+    </>,
+    <>
+      In practice, the term <strong>heterogeneous</strong> echotexture is also used to indicate a non-uniform appearance, which can
+      suggest inflammation, degenerative change, or mixed content.
+    </>
+  ]
 } as const;
 
 const jointVideoBySlug = {
@@ -1880,6 +1922,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isAcousticImpedancePage = path === "/basics/fyzikalni-principy/akusticka-impedance";
   const isReflectionPage = path === "/basics/fyzikalni-principy/odraz";
   const isRefractionPage = path === "/basics/fyzikalni-principy/lom";
+  const isEchogenicityPage = path === "/basics/ultrazvukovy-obraz/echogenita";
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -2361,6 +2404,29 @@ export default function ContentPage({ path }: ContentPageProps) {
           {refractionCopy[lang].map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isEchogenicityPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          <p>{echogenicityCopy[lang][0]}</p>
+          <p>{echogenicityCopy[lang][1]}</p>
+          <ResponsiveImage
+            image={echogenicityImage}
+            alt={lang === "cs" ? "Echogenita – srovnání jasových úrovní" : "Echogenicity – comparison of brightness levels"}
+            wrapClassName={styles.shoulderUltrasoundImageWrap}
+            enableMobileZoom
+            caption={lang === "cs" ? "Obrázek: Základní úrovně echogenity." : "Figure: Basic echogenicity levels."}
+          />
+          <p>{echogenicityCopy[lang][2]}</p>
+          <p>{echogenicityCopy[lang][3]}</p>
         </section>
         {chapterNav}
       </section>
