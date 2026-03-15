@@ -835,6 +835,65 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   }
 };
 
+const entrapmentSitesByNerve: Record<string, { cs: string[]; en: string[] }> = {
+  "nervus-medianus": {
+    cs: [
+      "Struthersovo ligamentum: vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus.",
+      "Lacertus fibrosus: aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv.",
+      "M. pronator teres: průchod mezi dvěma hlavami, typické místo pronator syndromu.",
+      "Arcade of FDS: vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem.",
+      "Gantzerův sval: akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior.",
+      "AINS (Kiloh‑Nevin): neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku.",
+      "Karpální tunel: průběh pod flexor retinaculum, nejčastější distální útlak."
+    ],
+    en: [
+      "Struthers ligament: fibrous band near a supracondylar process, proximal median nerve compression.",
+      "Lacertus fibrosus: biceps aponeurosis in the cubital fossa, can compress the nerve.",
+      "Pronator teres: passage between two heads, classic site of pronator syndrome.",
+      "FDS arcade: fibrous arch of flexor digitorum superficialis between the medial epicondyle and radius.",
+      "Gantzer muscle: accessory head of flexor pollicis longus, may compress the anterior interosseous nerve.",
+      "AINS (Kiloh‑Nevin): anterior interosseous neuropathy with weak thumb and index flexion.",
+      "Carpal tunnel: course under the flexor retinaculum, most common distal compression."
+    ]
+  },
+  "nervus-ulnaris": {
+    cs: [
+      "Mediální intermusculární septum: průchod do zadního kompartmentu paže, možnost útlaku.",
+      "Struthersova arkáda: vazivový pruh mezi mediální hlavou tricepsu a septem.",
+      "Osbornův ligament: strop kubitálního tunelu za mediálním epikondylem.",
+      "Arcade of Osborne: fibrotický oblouk v kubitálním tunelu, časté místo komprese.",
+      "Mezi dvěma hlavami m. flexor carpi ulnaris: vstup nervu do předloktí.",
+      "Guyonův kanál: komprese v zápěstí s poruchou senzitivity či motoriky ruky."
+    ],
+    en: [
+      "Medial intermuscular septum: passage to the posterior arm compartment, possible compression.",
+      "Struthers arcade: fibrous band between the medial triceps head and the septum.",
+      "Osborne ligament: roof of the cubital tunnel behind the medial epicondyle.",
+      "Arcade of Osborne: fibrotic arch within the cubital tunnel, common compression site.",
+      "Between the two heads of flexor carpi ulnaris: entry into the forearm.",
+      "Guyon canal: wrist compression affecting sensory or motor function."
+    ]
+  },
+  "nervus-radialis": {
+    cs: [
+      "Sulcus nervi radialis (spirální žlábek): útlak při frakturách humeru či tlaku.",
+      "Laterální intermusculární septum: průchod do předního kompartmentu paže.",
+      "Arcade of Frohse: vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve.",
+      "Supinator tunnel (radial tunnel): komprese hluboké větve v supinátoru.",
+      "Fascie m. brachioradialis a m. extensor carpi radialis longus: útlak povrchové větve, Wartenbergův syndrom.",
+      "Křížení s v. cephalica: iritace/útlak při kanylace či katétru."
+    ],
+    en: [
+      "Radial groove: compression with humeral fractures or external pressure.",
+      "Lateral intermuscular septum: passage into the anterior arm compartment.",
+      "Arcade of Frohse: fibrous arch of the supinator, most common deep-branch compression site.",
+      "Supinator tunnel (radial tunnel): compression of the deep branch within the supinator.",
+      "Brachioradialis and ECRL fascia: superficial branch compression, Wartenberg syndrome.",
+      "Crossing with the cephalic vein: irritation/compression during cannulation or catheter placement."
+    ]
+  }
+};
+
 const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = {
   "nervus-medianus": {
     cs: [
@@ -1892,6 +1951,9 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
   );
+  const entrapmentSitesMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/mista-utlaku$/
+  );
   const motorInnervationMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/motoricka-inervace$/
   );
@@ -1900,6 +1962,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   );
   const nerveKey = nerveAnatomyMatch?.[1];
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
+  const entrapmentSitesKey = entrapmentSitesMatch?.[1];
+  const entrapmentSites = entrapmentSitesKey ? entrapmentSitesByNerve[entrapmentSitesKey] : undefined;
   const motorInnervationKey = motorInnervationMatch?.[1];
   const motorInnervation = motorInnervationKey ? motorInnervationByNerve[motorInnervationKey] : undefined;
   const sensoryInnervationKey = sensoryInnervationMatch?.[1];
@@ -2139,6 +2203,24 @@ export default function ContentPage({ path }: ContentPageProps) {
               );
             })}
           </div>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (entrapmentSitesMatch && entrapmentSites) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Místa útlaku" : "Entrapment sites"}</h2>
+          <ul className={styles.compactList}>
+            {entrapmentSites[lang].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
         {chapterNav}
       </section>
