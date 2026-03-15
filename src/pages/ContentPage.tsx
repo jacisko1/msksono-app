@@ -838,58 +838,58 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
 const entrapmentSitesByNerve: Record<string, { cs: string[]; en: string[] }> = {
   "nervus-medianus": {
     cs: [
-      "Struthersovo ligamentum: vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus.",
-      "Lacertus fibrosus: aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv.",
-      "M. pronator teres: průchod mezi dvěma hlavami, typické místo pronator syndromu.",
-      "Arcade of FDS: vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem.",
-      "Gantzerův sval: akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior.",
-      "AINS (Kiloh‑Nevin): neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku.",
-      "Karpální tunel: průběh pod flexor retinaculum, nejčastější distální útlak."
+      "1. **Struthersovo ligamentum** – vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus.",
+      "2. **Lacertus fibrosus** – aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv.",
+      "3. **M. pronator teres** – průchod mezi dvěma hlavami, typické místo pronator syndromu.",
+      "4. **Arcade of FDS** – vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem.",
+      "5. **Gantzerův sval** – akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior.",
+      "6. **AINS (Kiloh‑Nevin)** – neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku.",
+      "7. **Karpální tunel** – průběh pod flexor retinaculum, nejčastější distální útlak."
     ],
     en: [
-      "Struthers ligament: fibrous band near a supracondylar process, proximal median nerve compression.",
-      "Lacertus fibrosus: biceps aponeurosis in the cubital fossa, can compress the nerve.",
-      "Pronator teres: passage between two heads, classic site of pronator syndrome.",
-      "FDS arcade: fibrous arch of flexor digitorum superficialis between the medial epicondyle and radius.",
-      "Gantzer muscle: accessory head of flexor pollicis longus, may compress the anterior interosseous nerve.",
-      "AINS (Kiloh‑Nevin): anterior interosseous neuropathy with weak thumb and index flexion.",
-      "Carpal tunnel: course under the flexor retinaculum, most common distal compression."
+      "1. **Struthers ligament** – fibrous band near a supracondylar process, proximal median nerve compression.",
+      "2. **Lacertus fibrosus** – biceps aponeurosis in the cubital fossa, can compress the nerve.",
+      "3. **Pronator teres** – passage between two heads, classic site of pronator syndrome.",
+      "4. **FDS arcade** – fibrous arch of flexor digitorum superficialis between the medial epicondyle and radius.",
+      "5. **Gantzer muscle** – accessory head of flexor pollicis longus, may compress the anterior interosseous nerve.",
+      "6. **AINS (Kiloh‑Nevin)** – anterior interosseous neuropathy with weak thumb and index flexion.",
+      "7. **Carpal tunnel** – course under the flexor retinaculum, most common distal compression."
     ]
   },
   "nervus-ulnaris": {
     cs: [
-      "Mediální intermusculární septum: průchod do zadního kompartmentu paže, možnost útlaku.",
-      "Struthersova arkáda: vazivový pruh mezi mediální hlavou tricepsu a septem.",
-      "Osbornův ligament: strop kubitálního tunelu za mediálním epikondylem.",
-      "Arcade of Osborne: fibrotický oblouk v kubitálním tunelu, časté místo komprese.",
-      "Mezi dvěma hlavami m. flexor carpi ulnaris: vstup nervu do předloktí.",
-      "Guyonův kanál: komprese v zápěstí s poruchou senzitivity či motoriky ruky."
+      "1. **Mediální intermusculární septum** – průchod do zadního kompartmentu paže, možnost útlaku.",
+      "2. **Struthersova arkáda** – vazivový pruh mezi mediální hlavou tricepsu a septem.",
+      "3. **Osbornův ligament** – strop kubitálního tunelu za mediálním epikondylem.",
+      "4. **Arcade of Osborne** – fibrotický oblouk v kubitálním tunelu, časté místo komprese.",
+      "5. **Mezi dvěma hlavami m. flexor carpi ulnaris** – vstup nervu do předloktí.",
+      "6. **Guyonův kanál** – komprese v zápěstí s poruchou senzitivity či motoriky ruky."
     ],
     en: [
-      "Medial intermuscular septum: passage to the posterior arm compartment, possible compression.",
-      "Struthers arcade: fibrous band between the medial triceps head and the septum.",
-      "Osborne ligament: roof of the cubital tunnel behind the medial epicondyle.",
-      "Arcade of Osborne: fibrotic arch within the cubital tunnel, common compression site.",
-      "Between the two heads of flexor carpi ulnaris: entry into the forearm.",
-      "Guyon canal: wrist compression affecting sensory or motor function."
+      "1. **Medial intermuscular septum** – passage to the posterior arm compartment, possible compression.",
+      "2. **Struthers arcade** – fibrous band between the medial triceps head and the septum.",
+      "3. **Osborne ligament** – roof of the cubital tunnel behind the medial epicondyle.",
+      "4. **Arcade of Osborne** – fibrotic arch within the cubital tunnel, common compression site.",
+      "5. **Between the two heads of flexor carpi ulnaris** – entry into the forearm.",
+      "6. **Guyon canal** – wrist compression affecting sensory or motor function."
     ]
   },
   "nervus-radialis": {
     cs: [
-      "Sulcus nervi radialis (spirální žlábek): útlak při frakturách humeru či tlaku.",
-      "Laterální intermusculární septum: průchod do předního kompartmentu paže.",
-      "Arcade of Frohse: vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve.",
-      "Supinator tunnel (radial tunnel): komprese hluboké větve v supinátoru.",
-      "Fascie m. brachioradialis a m. extensor carpi radialis longus: útlak povrchové větve, Wartenbergův syndrom.",
-      "Křížení s v. cephalica: iritace/útlak při kanylace či katétru."
+      "1. **Sulcus nervi radialis (spirální žlábek)** – útlak při frakturách humeru či tlaku.",
+      "2. **Laterální intermusculární septum** – průchod do předního kompartmentu paže.",
+      "3. **Arcade of Frohse** – vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve.",
+      "4. **Supinator tunnel (radial tunnel)** – komprese hluboké větve v supinátoru.",
+      "5. **Fascie m. brachioradialis a m. extensor carpi radialis longus** – útlak povrchové větve, Wartenbergův syndrom.",
+      "6. **Křížení s v. cephalica** – iritace/útlak při kanylace či katétru."
     ],
     en: [
-      "Radial groove: compression with humeral fractures or external pressure.",
-      "Lateral intermuscular septum: passage into the anterior arm compartment.",
-      "Arcade of Frohse: fibrous arch of the supinator, most common deep-branch compression site.",
-      "Supinator tunnel (radial tunnel): compression of the deep branch within the supinator.",
-      "Brachioradialis and ECRL fascia: superficial branch compression, Wartenberg syndrome.",
-      "Crossing with the cephalic vein: irritation/compression during cannulation or catheter placement."
+      "1. **Radial groove** – compression with humeral fractures or external pressure.",
+      "2. **Lateral intermuscular septum** – passage into the anterior arm compartment.",
+      "3. **Arcade of Frohse** – fibrous arch of the supinator, most common deep-branch compression site.",
+      "4. **Supinator tunnel (radial tunnel)** – compression of the deep branch within the supinator.",
+      "5. **Brachioradialis and ECRL fascia** – superficial branch compression, Wartenberg syndrome.",
+      "6. **Crossing with the cephalic vein** – irritation/compression during cannulation or catheter placement."
     ]
   }
 };
