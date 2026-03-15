@@ -835,61 +835,157 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   }
 };
 
-const entrapmentSitesByNerve: Record<string, { cs: string[]; en: string[] }> = {
+const entrapmentSitesByNerve: Record<
+  string,
+  {
+    cs: { title: string; description: string }[];
+    en: { title: string; description: string }[];
+  }
+> = {
   "nervus-medianus": {
     cs: [
-      "1. **Struthersovo ligamentum** – vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus.",
-      "2. **Lacertus fibrosus** – aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv.",
-      "3. **M. pronator teres** – průchod mezi dvěma hlavami, typické místo pronator syndromu.",
-      "4. **Arcade of FDS** – vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem.",
-      "5. **Gantzerův sval** – akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior.",
-      "6. **AINS (Kiloh‑Nevin)** – neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku.",
-      "7. **Karpální tunel** – průběh pod flexor retinaculum, nejčastější distální útlak."
+      {
+        title: "Struthersovo ligamentum",
+        description: "vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus."
+      },
+      {
+        title: "Lacertus fibrosus",
+        description: "aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv."
+      },
+      { title: "M. pronator teres", description: "průchod mezi dvěma hlavami, typické místo pronator syndromu." },
+      {
+        title: "Arcade of FDS",
+        description: "vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem."
+      },
+      {
+        title: "Gantzerův sval",
+        description: "akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior."
+      },
+      {
+        title: "AINS (Kiloh‑Nevin)",
+        description: "neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku."
+      },
+      { title: "Karpální tunel", description: "průběh pod flexor retinaculum, nejčastější distální útlak." }
     ],
     en: [
-      "1. **Struthers ligament** – fibrous band near a supracondylar process, proximal median nerve compression.",
-      "2. **Lacertus fibrosus** – biceps aponeurosis in the cubital fossa, can compress the nerve.",
-      "3. **Pronator teres** – passage between two heads, classic site of pronator syndrome.",
-      "4. **FDS arcade** – fibrous arch of flexor digitorum superficialis between the medial epicondyle and radius.",
-      "5. **Gantzer muscle** – accessory head of flexor pollicis longus, may compress the anterior interosseous nerve.",
-      "6. **AINS (Kiloh‑Nevin)** – anterior interosseous neuropathy with weak thumb and index flexion.",
-      "7. **Carpal tunnel** – course under the flexor retinaculum, most common distal compression."
+      {
+        title: "Struthers ligament",
+        description: "fibrous band near a supracondylar process, proximal median nerve compression."
+      },
+      {
+        title: "Lacertus fibrosus",
+        description: "biceps aponeurosis in the cubital fossa, can compress the nerve."
+      },
+      { title: "Pronator teres", description: "passage between two heads, classic site of pronator syndrome." },
+      {
+        title: "FDS arcade",
+        description: "fibrous arch of flexor digitorum superficialis between the medial epicondyle and radius."
+      },
+      {
+        title: "Gantzer muscle",
+        description: "accessory head of flexor pollicis longus, may compress the anterior interosseous nerve."
+      },
+      {
+        title: "AINS (Kiloh‑Nevin)",
+        description: "anterior interosseous neuropathy with weak thumb and index flexion."
+      },
+      { title: "Carpal tunnel", description: "course under the flexor retinaculum, most common distal compression." }
     ]
   },
   "nervus-ulnaris": {
     cs: [
-      "1. **Mediální intermusculární septum** – průchod do zadního kompartmentu paže, možnost útlaku.",
-      "2. **Struthersova arkáda** – vazivový pruh mezi mediální hlavou tricepsu a septem.",
-      "3. **Osbornův ligament** – strop kubitálního tunelu za mediálním epikondylem.",
-      "4. **Arcade of Osborne** – fibrotický oblouk v kubitálním tunelu, časté místo komprese.",
-      "5. **Mezi dvěma hlavami m. flexor carpi ulnaris** – vstup nervu do předloktí.",
-      "6. **Guyonův kanál** – komprese v zápěstí s poruchou senzitivity či motoriky ruky."
+      {
+        title: "Mediální intermusculární septum",
+        description: "průchod do zadního kompartmentu paže, možnost útlaku."
+      },
+      {
+        title: "Struthersova arkáda",
+        description: "vazivový pruh mezi mediální hlavou tricepsu a septem."
+      },
+      {
+        title: "Osbornův ligament",
+        description: "strop kubitálního tunelu za mediálním epikondylem."
+      },
+      {
+        title: "Arcade of Osborne",
+        description: "fibrotický oblouk v kubitálním tunelu, časté místo komprese."
+      },
+      {
+        title: "Mezi dvěma hlavami m. flexor carpi ulnaris",
+        description: "vstup nervu do předloktí."
+      },
+      {
+        title: "Guyonův kanál",
+        description: "komprese v zápěstí s poruchou senzitivity či motoriky ruky."
+      }
     ],
     en: [
-      "1. **Medial intermuscular septum** – passage to the posterior arm compartment, possible compression.",
-      "2. **Struthers arcade** – fibrous band between the medial triceps head and the septum.",
-      "3. **Osborne ligament** – roof of the cubital tunnel behind the medial epicondyle.",
-      "4. **Arcade of Osborne** – fibrotic arch within the cubital tunnel, common compression site.",
-      "5. **Between the two heads of flexor carpi ulnaris** – entry into the forearm.",
-      "6. **Guyon canal** – wrist compression affecting sensory or motor function."
+      {
+        title: "Medial intermuscular septum",
+        description: "passage to the posterior arm compartment, possible compression."
+      },
+      {
+        title: "Struthers arcade",
+        description: "fibrous band between the medial triceps head and the septum."
+      },
+      { title: "Osborne ligament", description: "roof of the cubital tunnel behind the medial epicondyle." },
+      {
+        title: "Arcade of Osborne",
+        description: "fibrotic arch within the cubital tunnel, common compression site."
+      },
+      {
+        title: "Between the two heads of flexor carpi ulnaris",
+        description: "entry into the forearm."
+      },
+      { title: "Guyon canal", description: "wrist compression affecting sensory or motor function." }
     ]
   },
   "nervus-radialis": {
     cs: [
-      "1. **Sulcus nervi radialis (spirální žlábek)** – útlak při frakturách humeru či tlaku.",
-      "2. **Laterální intermusculární septum** – průchod do předního kompartmentu paže.",
-      "3. **Arcade of Frohse** – vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve.",
-      "4. **Supinator tunnel (radial tunnel)** – komprese hluboké větve v supinátoru.",
-      "5. **Fascie m. brachioradialis a m. extensor carpi radialis longus** – útlak povrchové větve, Wartenbergův syndrom.",
-      "6. **Křížení s v. cephalica** – iritace/útlak při kanylace či katétru."
+      {
+        title: "Sulcus nervi radialis (spirální žlábek)",
+        description: "útlak při frakturách humeru či tlaku."
+      },
+      {
+        title: "Laterální intermusculární septum",
+        description: "průchod do předního kompartmentu paže."
+      },
+      {
+        title: "Arcade of Frohse",
+        description: "vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve."
+      },
+      {
+        title: "Supinator tunnel (radial tunnel)",
+        description: "komprese hluboké větve v supinátoru."
+      },
+      {
+        title: "Fascie m. brachioradialis a m. extensor carpi radialis longus",
+        description: "útlak povrchové větve, Wartenbergův syndrom."
+      },
+      { title: "Křížení s v. cephalica", description: "iritace/útlak při kanylace či katétru." }
     ],
     en: [
-      "1. **Radial groove** – compression with humeral fractures or external pressure.",
-      "2. **Lateral intermuscular septum** – passage into the anterior arm compartment.",
-      "3. **Arcade of Frohse** – fibrous arch of the supinator, most common deep-branch compression site.",
-      "4. **Supinator tunnel (radial tunnel)** – compression of the deep branch within the supinator.",
-      "5. **Brachioradialis and ECRL fascia** – superficial branch compression, Wartenberg syndrome.",
-      "6. **Crossing with the cephalic vein** – irritation/compression during cannulation or catheter placement."
+      { title: "Radial groove", description: "compression with humeral fractures or external pressure." },
+      {
+        title: "Lateral intermuscular septum",
+        description: "passage into the anterior arm compartment."
+      },
+      {
+        title: "Arcade of Frohse",
+        description: "fibrous arch of the supinator, most common deep-branch compression site."
+      },
+      {
+        title: "Supinator tunnel (radial tunnel)",
+        description: "compression of the deep branch within the supinator."
+      },
+      {
+        title: "Brachioradialis and ECRL fascia",
+        description: "superficial branch compression, Wartenberg syndrome."
+      },
+      {
+        title: "Crossing with the cephalic vein",
+        description: "irritation/compression during cannulation or catheter placement."
+      }
     ]
   }
 };
@@ -2216,11 +2312,13 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Místa útlaku" : "Entrapment sites"}</h2>
-          <ul className={styles.compactList}>
+          <ol className={styles.compactList}>
             {entrapmentSites[lang].map((item) => (
-              <li key={item}>{item}</li>
+              <li key={`${item.title}-${item.description}`}>
+                <strong>{item.title}</strong> – {item.description}
+              </li>
             ))}
-          </ul>
+          </ol>
         </section>
         {chapterNav}
       </section>
