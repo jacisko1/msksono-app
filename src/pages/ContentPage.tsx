@@ -658,15 +658,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   rameno: {
     imageBaseName: "rameno",
     intro: {
-      cs: "Schema ukazuje doporucene nastaveni pacienta, koncetiny a sondy pro zakladni vysetreni ramene. Cilem je rychla orientace pred samotnym protokolem.",
+      cs: "Schéma ukazuje doporučené nastavení pacienta, končetiny a sondy pro základní vyšetření ramene. Cílem je rychlá orientace před samotným protokolem.",
       en: "The chart shows recommended patient, limb, and probe setup for the basic shoulder exam. It provides quick orientation before running the full protocol."
     },
     positions: {
       cs: [
-        "Predni pohled (vsedu, ruka v neutralu): zakladni orientace v oblasti dlouhe hlavy bicepsu a rotatorove manzety.",
-        "Predni pohled (vnitrni/zevni rotace): dynamicke hodnoceni subscapularis, bicepsu a stability sulku.",
-        "Lateralni pohled: zobrazeni supraspinatu a subakromialni-subdeltoidni burzy, vhodne pri bolestivem oblouku.",
-        "Dorzalni pohled: hodnoceni infraspinatu, zadniho recesu a zadni casti glenohumeralniho kloubu."
+        "Přední pohled (vsedě, ruka v neutrálu): základní orientace v oblasti dlouhé hlavy bicepsu a rotátorové manžety.",
+        "Přední pohled (vnitřní/zevní rotace): dynamické hodnocení subscapularis, bicepsu a stability sulku.",
+        "Laterální pohled: zobrazení supraspinatu a subakromiální-subdeltoidní burzy, vhodné při bolestivém oblouku.",
+        "Dorzální pohled: hodnocení infraspinatu, zadního recesu a zadní části glenohumerálního kloubu."
       ],
       en: [
         "Anterior view (seated, arm neutral): baseline orientation of the long-head biceps and rotator cuff.",
@@ -679,15 +679,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   loket: {
     imageBaseName: "loket",
     intro: {
-      cs: "Prehled polohovani lokte sjednocuje polohu pacienta a smer sondy, aby bylo vysetreni reprodukovatelne a dobre porovnatelne mezi stranami.",
+      cs: "Přehled polohování lokte sjednocuje polohu pacienta a směr sondy, aby bylo vyšetření reprodukovatelné a dobře porovnatelné mezi stranami.",
       en: "The elbow positioning overview standardizes patient and probe setup to keep scans reproducible and comparable side-to-side."
     },
     positions: {
       cs: [
-        "Ventrální pohled (loket lehce flektovan): hodnoceni predniho recesu, bicepsove slachy a brachialis.",
-        "Medialni pohled: vysetreni spolecneho flexoroveho uponu, MCL a oblasti n. ulnaris.",
-        "Lateralni pohled: posouzeni spolecneho extenzoroveho uponu a LCL, typicky pri lateralni epikondylalgii.",
-        "Dorzalni pohled (loket flektovan): zobrazeni tricepsu, olecranu a zadniho recesu pri podezreni na vypotek/burzitidu."
+        "Ventrální pohled (loket lehce flektován): hodnocení předního recesu, bicepsové šlachy a brachialis.",
+        "Mediální pohled: vyšetření společného flexorového úponu, MCL a oblasti n. ulnaris.",
+        "Laterální pohled: posouzení společného extenzorového úponu a LCL, typicky při laterální epikondylalgii.",
+        "Dorzální pohled (loket flektován): zobrazení tricepsu, olecranu a zadního recesu při podezření na výpotek/burzitidu."
       ],
       en: [
         "Anterior view (slight elbow flexion): evaluates anterior recess, distal biceps tendon, and brachialis.",
@@ -700,15 +700,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   zapesti: {
     imageBaseName: "zapesti",
     intro: {
-      cs: "Schema pro zapesti pomaha rychle nastavit ruku a sondu pro ventralni i dorzalni skenovani vcetne karpalniho tunelu a extenzorovych kompartmentu.",
+      cs: "Schéma pro zápěstí pomáhá rychle nastavit ruku a sondu pro ventrální i dorzální skenování včetně karpálního tunelu a extenzorových kompartmentů.",
       en: "The wrist chart helps quickly set hand and probe position for volar and dorsal scanning, including the carpal tunnel and extensor compartments."
     },
     positions: {
       cs: [
-        "Ventrální transverzalni poloha: orientace v karpalnim tunelu a Guyonove kanalu, zejmena pro medianus/ulnaris.",
-        "Ventrální sagitalni poloha: podélné sledovani medianu a flexorovych slach.",
-        "Dorzalni transverzalni poloha: prehled extenzorovych kompartmentu a tenosynovitid.",
-        "Dorzalni sagitalni poloha: hodnoceni radiokarpalniho kloubu, tekutiny a kontinuity extenzorovych slach."
+        "Ventrální transverzální poloha: orientace v karpálním tunelu a Guyonově kanálu, zejména pro medianus/ulnaris.",
+        "Ventrální sagitální poloha: podélné sledování medianu a flexorových šlach.",
+        "Dorzální transverzální poloha: přehled extenzorových kompartmentů a tenosynovitid.",
+        "Dorzální sagitální poloha: hodnocení radiokarpálního kloubu, tekutiny a kontinuity extenzorových šlach."
       ],
       en: [
         "Volar transverse setup: orientation in carpal tunnel and Guyon's canal, especially for median/ulnar nerves.",
@@ -721,15 +721,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kycel: {
     imageBaseName: "kycel",
     intro: {
-      cs: "Polohovani kycle je zamerene na stabilni orientaci v hlubsich strukturach. Obrazek shrnuje doporucenou polohu pacienta a vedeni sondy pro jednotlive pristupy.",
+      cs: "Polohování kyčle je zaměřené na stabilní orientaci v hlubších strukturách. Obrázek shrnuje doporučenou polohu pacienta a vedení sondy pro jednotlivé přístupy.",
       en: "Hip positioning focuses on stable orientation in deeper structures. The image summarizes recommended patient posture and probe direction for each approach."
     },
     positions: {
       cs: [
-        "Ventrální poloha (supinace): hodnoceni predniho recesu, pouzdra, labra a iliopsoaticke oblasti.",
-        "Lateralni poloha: zobrazeni velkeho trochanteru, glutealnich uponu a trochantericke burzy.",
-        "Dorzalni poloha: sledovani hamstringovych uponu a prubehu n. ischiadicus.",
-        "Dynamika (rotace, flexe/extenze): uzitecna pro snapping fenomény a posouzeni dráhy slach."
+        "Ventrální poloha (supinace): hodnocení předního recesu, pouzdra, labra a iliopsoatické oblasti.",
+        "Laterální poloha: zobrazení velkého trochanteru, gluteálních úponů a trochanterické burzy.",
+        "Dorzální poloha: sledování hamstringových úponů a průběhu n. ischiadicus.",
+        "Dynamika (rotace, flexe/extenze): užitečná pro snapping fenomény a posouzení dráhy šlach."
       ],
       en: [
         "Anterior setup (supine): evaluates anterior recess, capsule, labrum, and iliopsoas region.",
@@ -742,15 +742,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   koleno: {
     imageBaseName: "koleno",
     intro: {
-      cs: "U kolene je dulezita konzistentni poloha v extenzi i flexi. Prehled ukazuje jak pacienta nastavit pro predni, medialni, lateralni a zadni projekce.",
+      cs: "U kolene je důležitá konzistentní poloha v extenzi i flexi. Přehled ukazuje, jak pacienta nastavit pro přední, mediální, laterální a zadní projekce.",
       en: "For the knee, consistent extension/flexion setup is key. The overview shows how to position the patient for anterior, medial, lateral, and posterior windows."
     },
     positions: {
       cs: [
-        "Predni poloha (extenze): kontrola quadricepsove slachy, pately, patelarni slachy a suprapatelarniho recesu.",
-        "Predni poloha (flektovane koleno): zlepsuje pohled na kloubni recessy a pohyb pately.",
-        "Medialni/lateralni poloha: hodnoceni kolateralnich vazu, meniskalnich okraju a entezopatii.",
-        "Dorzalni poloha: vysetreni podkolenni jamky, Bakerovy cysty a prubehu tibialniho/peronealniho nervu."
+        "Přední poloha (extenze): kontrola quadricepsové šlachy, pately, patelární šlachy a suprapatelárního recesu.",
+        "Přední poloha (flektované koleno): zlepšuje pohled na kloubní recessy a pohyb pately.",
+        "Mediální/laterální poloha: hodnocení kolaterálních vazů, meniskálních okrajů a entezopatií.",
+        "Dorzální poloha: vyšetření podkolenní jamky, Bakerovy cysty a průběhu tibiálního/peroneálního nervu."
       ],
       en: [
         "Anterior setup (extension): checks quadriceps tendon, patella, patellar tendon, and suprapatellar recess.",
@@ -763,15 +763,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kotnik: {
     imageBaseName: "kotnik",
     intro: {
-      cs: "Schema pro kotnik shrnuje nejpouzivanejsi pozice nohy a sondy pro predni, medialni, lateralni i zadni pristup vcetne dynamickych testu stability.",
+      cs: "Schéma pro kotník shrnuje nejpoužívanější pozice nohy a sondy pro přední, mediální, laterální i zadní přístup včetně dynamických testů stability.",
       en: "The ankle chart summarizes the most-used foot and probe positions for anterior, medial, lateral, and posterior approaches, including dynamic stability tests."
     },
     positions: {
       cs: [
-        "Predni poloha: orientace v prednim recesu hlezna a extenzorovych slachach.",
-        "Medialni poloha: vysetreni tarzalniho tunelu, tibialis posterior a flexorovych struktur.",
-        "Lateralni poloha: cilene hodnoceni ATFL/CFL a peronealnich slach pri distorzich.",
-        "Dorzalni (posteriorni) poloha: zobrazeni Achillovy slachy, Kagerova prostoru a retrokalkanealni burzy."
+        "Přední poloha: orientace v předním recesu hlezna a extenzorových šlachách.",
+        "Mediální poloha: vyšetření tarzálního tunelu, tibialis posterior a flexorových struktur.",
+        "Laterální poloha: cílené hodnocení ATFL/CFL a peroneálních šlach při distorzích.",
+        "Dorzální (posteriorní) poloha: zobrazení Achillovy šlachy, Kagerova prostoru a retrokalkaneální burzy."
       ],
       en: [
         "Anterior setup: orientation in the anterior ankle recess and extensor tendons.",
@@ -2762,18 +2762,18 @@ export default function ContentPage({ path }: ContentPageProps) {
             image={makeResponsiveImagePhone("Positioning", jointPositioning.imageBaseName)}
             alt={
               lang === "cs"
-                ? `Polohovani pacienta a sondy: ${localize(node.title, lang)}`
+                ? `Polohování pacienta a sondy: ${localize(node.title, lang)}`
                 : `Patient and probe positioning: ${localize(node.title, lang)}`
             }
             wrapClassName={styles.shoulderUltrasoundImageWrap}
             enableMobileZoom
             caption={
               lang === "cs"
-                ? `Polohovani - ${localize(node.title, lang)}`
+                ? `Polohování - ${localize(node.title, lang)}`
                 : `Positioning - ${localize(node.title, lang)}`
             }
           />
-          <h2>{lang === "cs" ? "Pozice a jejich vyuziti" : "Positions and their use"}</h2>
+          <h2>{lang === "cs" ? "Pozice a jejich využití" : "Positions and their use"}</h2>
           <ul className={styles.compactList}>
             {jointPositioning.positions[lang].map((item) => (
               <li key={item}>{item}</li>
