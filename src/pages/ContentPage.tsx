@@ -86,6 +86,11 @@ const makeResponsiveImagePhone = (folder: string, baseName: string): ResponsiveI
   pc: assetPath(folder, `${baseName}_pc.webp`)
 });
 
+const makeSingleImage = (folder: string, fileName: string): ResponsiveImageSet => {
+  const src = assetPath(folder, fileName);
+  return { mobile: src, tablet: src, pc: src };
+};
+
 const localized = <T,>(value: T) => ({ cs: value, en: value });
 
 const ultrasoundBasicsCopy = {
@@ -2112,6 +2117,20 @@ const shoulderPathologyPoints = {
   ]
 };
 
+const jointIntroCopy = {
+  cs: "MSK ultrazvuk kloubu je dulezity pro rychle, cilene a dynamicke zhodnoceni mekkotkanovych struktur v realnem case. U ramene i ostatnich kloubu umoznuje presnou korelaci nalezu s bolesti pri pohybu, porovnani s druhostrannou koncetinou a podporuje prubezne klinicke rozhodovani bez ionizujiciho zareni.",
+  en: "MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing clinical decision-making without ionizing radiation."
+} as const;
+
+const jointIntroImageBySlug = {
+  rameno: { fileName: "01_Shoulder.png", alt: { cs: "Anatomie ramene", en: "Shoulder anatomy" } },
+  loket: { fileName: "02_Elbow.png", alt: { cs: "Anatomie lokte", en: "Elbow anatomy" } },
+  zapesti: { fileName: "03_Wrist.png", alt: { cs: "Anatomie zapesti", en: "Wrist anatomy" } },
+  kycel: { fileName: "04_Hip.png", alt: { cs: "Anatomie kycle", en: "Hip anatomy" } },
+  koleno: { fileName: "05_Knee.png", alt: { cs: "Anatomie kolene", en: "Knee anatomy" } },
+  kotnik: { fileName: "06_Ankle.png", alt: { cs: "Anatomie kotniku", en: "Ankle anatomy" } }
+} as const;
+
 function ResponsiveImage({
   image,
   alt,
@@ -2204,12 +2223,14 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isShoulderIntroPage = path === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
   const jointPositioningMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/polohovani$/);
-  const jointIntroMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/uvod$/);
+  const jointIntroMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/uvod$/);
   const jointProtocolMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
   const jointPositioningKey = jointPositioningMatch?.[1];
   const jointPositioning = jointPositioningKey ? jointPositioningBySlug[jointPositioningKey] : undefined;
   const jointKey = jointProtocolMatch?.[1] ?? jointIntroMatch?.[1];
   const jointContent = jointKey ? jointContentBySlug[jointKey] : undefined;
+  const jointIntroKey = jointIntroMatch?.[1] as keyof typeof jointIntroImageBySlug | undefined;
+  const jointIntroImage = jointIntroKey ? jointIntroImageBySlug[jointIntroKey] : undefined;
   const isProbesPage = path === "/basics/ultrazvukove-sondy/typy-sond";
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
   const isProbeGripPage = path === "/basics/ultrazvukove-sondy/drzeni-sondy";
@@ -2875,24 +2896,21 @@ export default function ContentPage({ path }: ContentPageProps) {
     );
   }
 
-  if (jointIntroMatch && jointContent) {
+  if (jointIntroMatch && jointIntroImage) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{localized("Úvod")[lang]}</h2>
-          <ul className={styles.compactList}>
-            {jointContent.introPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
-          <h2>{localized("Nejčastější patologie")[lang]}</h2>
-          <ul className={styles.compactList}>
-            {jointContent.pathologyPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
+          <h2>{lang === "cs" ? "Uvod" : "Introduction"}</h2>
+          <p>{jointIntroCopy[lang]}</p>
+          <ResponsiveImage
+            image={makeSingleImage("Anatomy", jointIntroImage.fileName)}
+            alt={jointIntroImage.alt[lang]}
+            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.jointIntroImageWrap}`}
+            enableMobileZoom
+            caption={jointIntroImage.alt[lang]}
+          />
         </section>
         {chapterNav}
       </section>
@@ -2942,14 +2960,6 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
-
-
-
-
-
-
-
-
 
 
 

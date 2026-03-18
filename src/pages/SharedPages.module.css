@@ -305,6 +305,12 @@
   border-radius: inherit;
 }
 
+.jointIntroImageWrap {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+}
+
 @media (min-width: 741px) {
   .nerveImageWrap {
     max-width: 520px;
@@ -313,6 +319,10 @@
 
   .nerveImageWrap .inlineImage {
     max-height: 320px;
+  }
+
+  .jointIntroImageWrap .inlineImage {
+    max-height: 520px;
   }
 }
 
@@ -344,6 +354,10 @@
 
   .knobologyImageWrap {
     aspect-ratio: 1 / 1;
+  }
+
+  .jointIntroImageWrap .inlineImage {
+    max-height: 360px;
   }
 }
 
