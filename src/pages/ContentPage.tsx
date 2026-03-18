@@ -2297,6 +2297,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
+  const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
@@ -2351,6 +2352,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isReflectionPage = path === "/basics/fyzikalni-principy/odraz";
   const isRefractionPage = path === "/basics/fyzikalni-principy/lom";
   const isEchogenicityPage = path === "/basics/ultrazvukovy-obraz/echogenita";
+  const activeShoulderMuscleImage =
+    activeShoulderMuscleImageIndex !== null ? shoulderAnatomyMuscleGallery[activeShoulderMuscleImageIndex] : null;
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -3104,19 +3107,77 @@ export default function ContentPage({ path }: ContentPageProps) {
               className={`${styles.swipeGallery} ${styles.anatomyGallery}`}
               aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}
             >
-              {shoulderAnatomyMuscleGallery.map((item) => (
+              {shoulderAnatomyMuscleGallery.map((item, index) => (
                 <article key={item.fileName} className={styles.swipeGalleryItem}>
-                  <ResponsiveImage
-                    image={makeSingleImage("Anatomy/Shoulder", item.fileName)}
-                    alt={item.alt[lang]}
-                    wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyGalleryImageWrap}`}
-                    enableMobileZoom
-                  />
+                  <button
+                    type="button"
+                    className={styles.imageZoomButton}
+                    onClick={() => setActiveShoulderMuscleImageIndex(index)}
+                    aria-label={item.alt[lang]}
+                  >
+                    <picture className={`${styles.inlineImageWrap} ${styles.shoulderUltrasoundImageWrap} ${styles.anatomyGalleryImageWrap}`}>
+                      <img
+                        className={styles.inlineImage}
+                        src={makeSingleImage("Anatomy/Shoulder", item.fileName).pc}
+                        alt={item.alt[lang]}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
+                  </button>
                 </article>
               ))}
             </div>
           </section>
         </section>
+        {activeShoulderMuscleImage ? (
+          <div className={styles.imageZoomOverlay} role="dialog" aria-modal="true" onClick={() => setActiveShoulderMuscleImageIndex(null)}>
+            <div className={styles.imageZoomContent} onClick={(event) => event.stopPropagation()}>
+              <button
+                type="button"
+                className={styles.imageZoomClose}
+                onClick={() => setActiveShoulderMuscleImageIndex(null)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <button
+                type="button"
+                className={`${styles.imageZoomNav} ${styles.imageZoomPrev}`}
+                onClick={() =>
+                  setActiveShoulderMuscleImageIndex((prev) =>
+                    prev === null ? 0 : (prev - 1 + shoulderAnatomyMuscleGallery.length) % shoulderAnatomyMuscleGallery.length
+                  )
+                }
+                aria-label={lang === "cs" ? "Předchozí obrázek" : "Previous image"}
+              >
+                ‹
+              </button>
+              <img
+                className={styles.imageZoomImage}
+                src={makeSingleImage("Anatomy/Shoulder", activeShoulderMuscleImage.fileName).pc}
+                alt={activeShoulderMuscleImage.alt[lang]}
+                loading="lazy"
+                decoding="async"
+              />
+              <button
+                type="button"
+                className={`${styles.imageZoomNav} ${styles.imageZoomNext}`}
+                onClick={() =>
+                  setActiveShoulderMuscleImageIndex((prev) =>
+                    prev === null ? 0 : (prev + 1) % shoulderAnatomyMuscleGallery.length
+                  )
+                }
+                aria-label={lang === "cs" ? "Další obrázek" : "Next image"}
+              >
+                ›
+              </button>
+              <p className={styles.imageZoomCaption}>
+                {activeShoulderMuscleImage.alt[lang]} ({(activeShoulderMuscleImageIndex ?? 0) + 1}/{shoulderAnatomyMuscleGallery.length})
+              </p>
+            </div>
+          </div>
+        ) : null}
         {chapterNav}
       </section>
     );

@@ -239,6 +239,31 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.imageZoomNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.imageZoomPrev {
+  left: -0.15rem;
+}
+
+.imageZoomNext {
+  right: -0.15rem;
+}
+
 .knobologyGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
