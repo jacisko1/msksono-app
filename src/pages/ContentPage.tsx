@@ -2724,7 +2724,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
             enableMobileZoom
           />
-          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid} ${styles.protocolImageGrid}`}>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {nerveAnatomyImages.map((item, index) => {
               const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
               const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
@@ -3192,7 +3192,7 @@ export default function ContentPage({ path }: ContentPageProps) {
               </li>
             ))}
           </ul>
-          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid} ${styles.protocolImageGrid}`}>
             {jointContent.protocolImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
                 <ResponsiveImage
