@@ -2620,7 +2620,7 @@ export default function ContentPage({ path }: ContentPageProps) {
           <ResponsiveImage
             image={probeGripImage}
             alt={lang === "cs" ? "Typy držení sondy" : "Probe grip types"}
-            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
+            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.probeGripRoundedWrap}`}
             enableMobileZoom
           />
           <ul className={styles.compactList}>
@@ -2982,4 +2982,3 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
-

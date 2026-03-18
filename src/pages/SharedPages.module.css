@@ -311,6 +311,15 @@
   background: #fff;
 }
 
+.probeGripRoundedWrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.probeGripRoundedWrap .inlineImage {
+  border-radius: inherit;
+}
+
 @media (min-width: 741px) {
   .nerveImageWrap {
     max-width: 520px;
