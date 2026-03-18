@@ -2052,6 +2052,57 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
   }
 ];
 
+const shoulderProtocolCopyOverrides: Record<string, { heading: string; legend: string; description: string }> = {
+  "01_anterior_view_transverse_plane": {
+    heading: "Obrázek 1: Ventrální pohled, transverzální rovina",
+    legend: "b: šlacha dlouhé hlavy bicepsu, TM: tuberculum majus, tm: tuberculum minus.",
+    description:
+      "TM a tm jsou hlavní orientační body. Mezi nimi je LHBB v bicipitálním sulku, kde se často zachytí tekutina. Hodnoťte i šlachu m. subscapularis, m. deltoideus a množství tekutiny (fyziologické vs. synovitida)."
+  },
+  "02_anterior_view_transverse_plane_2": {
+    heading: "Obrázek 2: Ventrální pohled, transverzální rovina",
+    legend: "LHBB: dlouhá hlava bicepsu, SHBB: krátká hlava bicepsu.",
+    description:
+      "Distální posun sondy hodnotí svalové bříško m. biceps brachii (caput longum i breve). Projekce je vhodná pro posouzení symetrie, ruptur, hematomu a atrofie."
+  },
+  "03_anterior_view_longitudinal_plane": {
+    heading: "Obrázek 3: Ventrální pohled, sagitální rovina",
+    legend: "b: šlacha dlouhé hlavy bicepsu.",
+    description:
+      "Podélný řez (otočení sondy o 90°) ukazuje LHBB v bicipitálním sulku. Zdravá šlacha má lineární fibrilární vzhled; projekce je vhodná pro posouzení kontinuity, tenosynovitidy, tekutiny a parciálních ruptur."
+  },
+  "04_anterior_view_longitudinal_plane_2": {
+    heading: "Obrázek 4: Ventrální pohled, sagitální rovina",
+    legend: "LHBB: myotendinózní junkce dlouhé hlavy bicepsu brachii.",
+    description:
+      "Distálnější poloha sondy zobrazuje myotendinózní přechod, časté místo poranění. Sledujte přechod fibrilární šlachy do hypoechogenní svaloviny a známky tendinopatie, parciální ruptury nebo přetížení."
+  },
+  "05_lateral_view_transverse_plane": {
+    heading: "Obrázek 5: Laterální pohled, transverzální rovina",
+    legend: "Krátká osa šlachy rotátorové manžety („obraz pneumatiky“).",
+    description:
+      "Mírným tlakem hodnotíme integritu: zdravá šlacha je pevná, ruptura je měkká a kompresibilní („vyfouklá pneumatika“). Šlachu vždy sledujte v celé délce kvůli fokálním lézím a kalcifikacím."
+  },
+  "06_lateral_view_longitudinal_plane": {
+    heading: "Obrázek 6: Laterální pohled, frontální rovina",
+    legend: "Akromion, tuberculum majus a šlacha m. supraspinatus („ptačí zobák“).",
+    description:
+      "Pohybujte sondou anteroposteriorně pro kompletní zobrazení supraspinatu. Sledujte i SASD burzu; projekce je klíčová pro tendinopatii, parciální/full-thickness ruptury a subakromiální impingement."
+  },
+  "07_posterior_view_transverse_plane": {
+    heading: "Obrázek 7: Dorzální pohled, transverzální rovina",
+    legend: "L: labrum glenoidale.",
+    description:
+      "Sonda pod hřebenem lopatky: orientační body jsou hlavice humeru a glenoid. V horní části glenoidu je patrné labrum. Tekutina kolem labra je lépe detekovatelná při zevní rotaci."
+  },
+  "08_posterior_view_transverse_plane_2": {
+    heading: "Obrázek 8: Dorzální pohled, transverzální rovina",
+    legend: "Šlacha m. infraspinatus; při kaudálním posunu i šlacha m. teres minor.",
+    description:
+      "Laterální posun sondy hodnotí integritu infraspinatu při podezření na rupturu manžety. Kaudální posun přidá teres minor a pomáhá odlišit izolované a kombinované léze."
+  }
+};
+
 const shoulderProtocolSteps = {
   cs: [
     {
@@ -2972,21 +3023,35 @@ export default function ContentPage({ path }: ContentPageProps) {
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {shoulderUltrasoundImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
-                <ResponsiveImage
-                  image={makeResponsiveImage("shoulder", item.key)}
-                  alt={item.title[lang]}
-                  wrapClassName={styles.shoulderUltrasoundImageWrap}
-                />
-                <div className={styles.articleBody}>
-                  <h3>{item.caption[lang].heading}</h3>
-                  {item.caption[lang].bullets.length > 0 && (
-                    <ul className={styles.compactList}>
-                      {item.caption[lang].bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+                {(() => {
+                  const override = lang === "cs" ? shoulderProtocolCopyOverrides[item.key] : undefined;
+                  const heading = override?.heading ?? item.caption[lang].heading;
+                  const legend = override?.legend ?? item.caption[lang].bullets[0] ?? "";
+                  const description = override?.description ?? item.caption[lang].bullets.slice(1).join(" ");
+                  const headingWithPeriod = heading ? `${heading.replace(/[.]\s*$/, "")}.` : "";
+                  const zoomCaption = [headingWithPeriod, legend].filter(Boolean).join(" ");
+
+                  return (
+                    <>
+                      <ResponsiveImage
+                        image={makeResponsiveImage("shoulder", item.key)}
+                        alt={item.title[lang]}
+                        wrapClassName={styles.shoulderUltrasoundImageWrap}
+                        enableMobileZoom
+                        caption={zoomCaption}
+                      />
+                      <div className={styles.articleBody}>
+                        {heading || legend ? (
+                          <p className={styles.figureCaption}>
+                            {headingWithPeriod ? <strong>{headingWithPeriod}</strong> : null}
+                            {legend ? ` ${legend}` : ""}
+                          </p>
+                        ) : null}
+                        {description ? <p>{description}</p> : null}
+                      </div>
+                    </>
+                  );
+                })()}
               </article>
             ))}
           </div>
