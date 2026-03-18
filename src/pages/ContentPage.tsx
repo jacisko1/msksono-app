@@ -3059,41 +3059,47 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
-        <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Anatomie ramene" : "Shoulder anatomy"}</h2>
-          <p>{shoulderAnatomyIntro[lang]}</p>
-          <h2>{lang === "cs" ? "Landmarky" : "Landmarks"}</h2>
-          <ul className={styles.compactList}>
-            {shoulderAnatomyLandmarks[lang].map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+        <section className={`${styles.articleBox} ${styles.anatomyLayout}`}>
+          <p className={styles.anatomyLead}>{shoulderAnatomyIntro[lang]}</p>
+          <section className={styles.anatomyCard}>
+            <h2>{lang === "cs" ? "Landmarky" : "Landmarks"}</h2>
+            <ul className={styles.compactList}>
+              {shoulderAnatomyLandmarks[lang].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
           <ResponsiveImage
             image={makeSingleImage("Anatomy/Shoulder", shoulderAnatomyLandmarkImage.fileName)}
             alt={shoulderAnatomyLandmarkImage.alt[lang]}
-            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.jointIntroImageWrap}`}
+            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyImageWrap}`}
             enableMobileZoom
           />
-          <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
-          <h3>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
-          <ul className={styles.compactList}>
-            {shoulderAnatomyMuscles[lang].cuff.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <h3>{lang === "cs" ? "Další důležité svaly" : "Other key muscles"}</h3>
-          <ul className={styles.compactList}>
-            {shoulderAnatomyMuscles[lang].other.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <div className={styles.swipeGallery} aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}>
+          <section className={styles.anatomyCard}>
+            <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
+            <ul className={styles.compactList}>
+              {shoulderAnatomyMuscles[lang].cuff.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Další důležité svaly" : "Other key muscles"}</h3>
+            <ul className={styles.compactList}>
+              {shoulderAnatomyMuscles[lang].other.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+          <div
+            className={`${styles.swipeGallery} ${styles.anatomyGallery}`}
+            aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}
+          >
             {shoulderAnatomyMuscleGallery.map((item) => (
               <article key={item.fileName} className={styles.swipeGalleryItem}>
                 <ResponsiveImage
                   image={makeSingleImage("Anatomy/Shoulder", item.fileName)}
                   alt={item.alt[lang]}
-                  wrapClassName={styles.shoulderUltrasoundImageWrap}
+                  wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyGalleryImageWrap}`}
                   enableMobileZoom
                 />
               </article>
