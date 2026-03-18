@@ -2194,8 +2194,24 @@ const shoulderAnatomyMuscleGallery = [
 ] as const;
 
 const jointIntroCopy = {
-  cs: "MSK ultrazvuk kloubů je důležitý pro rychlé, cílené a dynamické zhodnocení měkkotkáňových struktur v reálném čase. U ramene i ostatních kloubů umožňuje přesnou korelaci nálezu s bolestí při pohybu, porovnání s druhostrannou končetinou a podporuje průběžné klinické rozhodování bez ionizujícího záření.",
-  en: "MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing clinical decision-making without ionizing radiation."
+  cs: (
+    <>
+      MSK ultrazvuk kloubů je v PMR mimořádně cenný, protože přináší{" "}
+      <strong>rychlé, cílené a dynamické</strong> zhodnocení měkkých tkání přímo u lůžka nebo v ambulanci. Umožňuje{" "}
+      <strong>okamžitě propojit bolest s obrazem</strong> při aktivním pohybu, zachytit patologie šlach, burz, pouzder či
+      ligament a porovnat nález s kontralaterální stranou. V rehabilitační medicíně je důležité, že vyšetření podporuje{" "}
+      <strong>funkční klinické rozhodování v reálném čase</strong>: pomáhá upřesnit diagnózu, lépe zacílit terapii, monitorovat
+      efekt léčby a bezpečně plánovat intervence. Výhodou je také <strong>absence ionizujícího záření</strong>, možnost
+      opakovaného sledování a vysoká dostupnost v každodenní praxi PMR.
+    </>
+  ),
+  en: (
+    <>
+      MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder
+      and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing
+      clinical decision-making without ionizing radiation.
+    </>
+  )
 } as const;
 
 const jointIntroImageBySlug = {
