@@ -2118,17 +2118,17 @@ const shoulderPathologyPoints = {
 };
 
 const jointIntroCopy = {
-  cs: "MSK ultrazvuk kloubu je dulezity pro rychle, cilene a dynamicke zhodnoceni mekkotkanovych struktur v realnem case. U ramene i ostatnich kloubu umoznuje presnou korelaci nalezu s bolesti pri pohybu, porovnani s druhostrannou koncetinou a podporuje prubezne klinicke rozhodovani bez ionizujiciho zareni.",
+  cs: "MSK ultrazvuk kloubů je důležitý pro rychlé, cílené a dynamické zhodnocení měkkotkáňových struktur v reálném čase. U ramene i ostatních kloubů umožňuje přesnou korelaci nálezu s bolestí při pohybu, porovnání s druhostrannou končetinou a podporuje průběžné klinické rozhodování bez ionizujícího záření.",
   en: "MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing clinical decision-making without ionizing radiation."
 } as const;
 
 const jointIntroImageBySlug = {
   rameno: { fileName: "01_Shoulder.png", alt: { cs: "Anatomie ramene", en: "Shoulder anatomy" } },
   loket: { fileName: "02_Elbow.png", alt: { cs: "Anatomie lokte", en: "Elbow anatomy" } },
-  zapesti: { fileName: "03_Wrist.png", alt: { cs: "Anatomie zapesti", en: "Wrist anatomy" } },
-  kycel: { fileName: "04_Hip.png", alt: { cs: "Anatomie kycle", en: "Hip anatomy" } },
+  zapesti: { fileName: "03_Wrist.png", alt: { cs: "Anatomie zápěstí", en: "Wrist anatomy" } },
+  kycel: { fileName: "04_Hip.png", alt: { cs: "Anatomie kyčle", en: "Hip anatomy" } },
   koleno: { fileName: "05_Knee.png", alt: { cs: "Anatomie kolene", en: "Knee anatomy" } },
-  kotnik: { fileName: "06_Ankle.png", alt: { cs: "Anatomie kotniku", en: "Ankle anatomy" } }
+  kotnik: { fileName: "06_Ankle.png", alt: { cs: "Anatomie kotníku", en: "Ankle anatomy" } }
 } as const;
 
 function ResponsiveImage({
@@ -2902,7 +2902,6 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Uvod" : "Introduction"}</h2>
           <p>{jointIntroCopy[lang]}</p>
           <ResponsiveImage
             image={makeSingleImage("Anatomy", jointIntroImage.fileName)}
@@ -2960,7 +2959,6 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
-
 
 
 
