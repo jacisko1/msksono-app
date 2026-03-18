@@ -663,29 +663,31 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   rameno: {
     imageBaseName: "rameno",
     intro: {
-      cs: "Schéma ukazuje doporučené nastavení pacienta, končetiny a sondy pro základní vyšetření ramene. Cílem je rychlá orientace před samotným protokolem.",
-      en: "The chart shows recommended patient, limb, and probe setup for the basic shoulder exam. It provides quick orientation before running the full protocol."
+      cs: "Schéma ukazuje doporučenou polohu pacienta pro základní vyšetření ramene. Cílem je rychlá orientace před samotným protokolem, optimální přístup k vyšetřovaným strukturám, stabilita během skenování a dobré pohodlí pacienta.",
+      en: "The chart shows recommended patient positioning for the basic shoulder exam. The goal is quick orientation before the protocol, optimal access to target structures, scanning stability, and patient comfort."
     },
     positions: {
       cs: [
-        "Přední pohled (vsedě, ruka v neutrálu): základní orientace v oblasti dlouhé hlavy bicepsu a rotátorové manžety.",
-        "Přední pohled (vnitřní/zevní rotace): dynamické hodnocení subscapularis, bicepsu a stability sulku.",
-        "Laterální pohled: zobrazení supraspinatu a subakromiální-subdeltoidní burzy, vhodné při bolestivém oblouku.",
-        "Dorzální pohled: hodnocení infraspinatu, zadního recesu a zadní části glenohumerálního kloubu."
+        "1: základní pozice pro vyšetření ventrálního pohledu.",
+        "2: pozice k vyšetření m. subscapularis - ventrální pohled.",
+        "3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "5: pozice k vyšetření dorzálního pohledu."
       ],
       en: [
-        "Anterior view (seated, arm neutral): baseline orientation of the long-head biceps and rotator cuff.",
-        "Anterior view (internal/external rotation): dynamic assessment of subscapularis, biceps, and groove stability.",
-        "Lateral view: supraspinatus and subacromial-subdeltoid bursa assessment, useful in painful arc symptoms.",
-        "Posterior view: evaluation of infraspinatus, posterior recess, and posterior glenohumeral joint."
+        "1: baseline position for anterior (ventral) view.",
+        "2: position for subscapularis assessment - anterior view.",
+        "3: Crass position - rotator cuff assessment - lateral view.",
+        "4: modified Crass position - rotator cuff assessment - lateral view.",
+        "5: position for posterior (dorsal) view."
       ]
     }
   },
   loket: {
     imageBaseName: "loket",
     intro: {
-      cs: "Přehled polohování lokte sjednocuje polohu pacienta a směr sondy, aby bylo vyšetření reprodukovatelné a dobře porovnatelné mezi stranami.",
-      en: "The elbow positioning overview standardizes patient and probe setup to keep scans reproducible and comparable side-to-side."
+      cs: "Schéma ukazuje doporučenou polohu pacienta pro vyšetření lokte. Cílem je optimální přístup k vyšetřovaným strukturám, stabilita při vyšetření a komfort pacienta v jednotlivých projekcích.",
+      en: "The chart shows recommended patient positioning for elbow ultrasound. The goal is optimal access to target structures, scan stability, and patient comfort in each view."
     },
     positions: {
       cs: [
@@ -705,8 +707,8 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   zapesti: {
     imageBaseName: "zapesti",
     intro: {
-      cs: "Schéma pro zápěstí pomáhá rychle nastavit ruku a sondu pro ventrální i dorzální skenování včetně karpálního tunelu a extenzorových kompartmentů.",
-      en: "The wrist chart helps quickly set hand and probe position for volar and dorsal scanning, including the carpal tunnel and extensor compartments."
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření zápěstí. Cílem je optimální přístup ke strukturám karpální oblasti, stabilita během skenování a pohodlí pacienta při ventrálních i dorzálních projekcích.",
+      en: "The chart shows recommended patient positioning for wrist ultrasound. The goal is optimal access to carpal structures, stable scanning conditions, and patient comfort in volar and dorsal views."
     },
     positions: {
       cs: [
@@ -726,8 +728,8 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kycel: {
     imageBaseName: "kycel",
     intro: {
-      cs: "Polohování kyčle je zaměřené na stabilní orientaci v hlubších strukturách. Obrázek shrnuje doporučenou polohu pacienta a vedení sondy pro jednotlivé přístupy.",
-      en: "Hip positioning focuses on stable orientation in deeper structures. The image summarizes recommended patient posture and probe direction for each approach."
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kyčle. Cílem je optimální přístup i k hlubším strukturám, dobrá stabilita vyšetření a komfort pacienta během jednotlivých projekcí.",
+      en: "The chart shows recommended patient positioning for hip ultrasound. The goal is optimal access, including deeper structures, stable scanning, and patient comfort across views."
     },
     positions: {
       cs: [
@@ -747,8 +749,8 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   koleno: {
     imageBaseName: "koleno",
     intro: {
-      cs: "U kolene je důležitá konzistentní poloha v extenzi i flexi. Přehled ukazuje, jak pacienta nastavit pro přední, mediální, laterální a zadní projekce.",
-      en: "For the knee, consistent extension/flexion setup is key. The overview shows how to position the patient for anterior, medial, lateral, and posterior windows."
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kolene v extenzi i flexi. Cílem je optimální přístup ke strukturám v jednotlivých oknech, stabilita vyšetření a pohodlí pacienta.",
+      en: "The chart shows recommended patient positioning for knee ultrasound in extension and flexion. The goal is optimal access in each window, scan stability, and patient comfort."
     },
     positions: {
       cs: [
@@ -768,8 +770,8 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kotnik: {
     imageBaseName: "kotnik",
     intro: {
-      cs: "Schéma pro kotník shrnuje nejpoužívanější pozice nohy a sondy pro přední, mediální, laterální i zadní přístup včetně dynamických testů stability.",
-      en: "The ankle chart summarizes the most-used foot and probe positions for anterior, medial, lateral, and posterior approaches, including dynamic stability tests."
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kotníku. Cílem je optimální přístup k vyšetřovaným strukturám, stabilita při dynamickém i statickém hodnocení a pohodlí pacienta.",
+      en: "The chart shows recommended patient positioning for ankle ultrasound. The goal is optimal access to target structures, stable static and dynamic assessment, and patient comfort."
     },
     positions: {
       cs: [
@@ -2193,6 +2195,11 @@ const shoulderAnatomyMuscleGallery = [
   }
 ] as const;
 
+const shoulderPositioningZoomCaption = {
+  cs: "Obrázek 1. Polohování pacienta při vyšetření ramenního kloubu. 1: základní pozice pro vyšetření ventrálního pohledu, 2: pozice k vyšetření m. subscapularis - ventrální pohled, 3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 5: pozice k vyšetření dorzálního pohledu.",
+  en: "Figure 1. Patient positioning for shoulder ultrasound. 1: baseline position for ventral view, 2: subscapularis position - ventral view, 3: Crass position - rotator cuff, lateral view, 4: modified Crass position - rotator cuff, lateral view, 5: position for dorsal view."
+} as const;
+
 const renderAnatomyListItem = (item: string) => {
   const [lead, ...rest] = item.split(" - ");
   const tail = rest.join(" - ");
@@ -2912,15 +2919,17 @@ export default function ContentPage({ path }: ContentPageProps) {
             image={makeResponsiveImagePhone("Positioning", jointPositioning.imageBaseName)}
             alt={
               lang === "cs"
-                ? `Polohování pacienta a sondy: ${localize(node.title, lang)}`
-                : `Patient and probe positioning: ${localize(node.title, lang)}`
+                ? `Polohování pacienta: ${localize(node.title, lang)}`
+                : `Patient positioning: ${localize(node.title, lang)}`
             }
             wrapClassName={styles.shoulderUltrasoundImageWrap}
             enableMobileZoom
             caption={
-              lang === "cs"
-                ? `Polohování - ${localize(node.title, lang)}`
-                : `Positioning - ${localize(node.title, lang)}`
+              jointPositioning.imageBaseName === "rameno"
+                ? shoulderPositioningZoomCaption[lang]
+                : lang === "cs"
+                  ? `Polohování pacienta - ${localize(node.title, lang)}`
+                  : `Patient positioning - ${localize(node.title, lang)}`
             }
           />
           <h2>{lang === "cs" ? "Pozice a jejich využití" : "Positions and their use"}</h2>
