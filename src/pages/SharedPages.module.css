@@ -315,6 +315,7 @@
 .nerveSectionCard {
   padding-top: 0.7rem;
   border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-radius: 0;
 }
 
 .shoulderUltrasoundImageWrap {
