@@ -312,6 +312,19 @@
   width: 100%;
 }
 
+.shoulderProtocolCard {
+  border-radius: 0;
+}
+
+.shoulderProtocolCard + .shoulderProtocolCard {
+  padding-top: 0.7rem;
+  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
+}
+
+.shoulderProtocolText {
+  margin-top: 0.85rem;
+}
+
 .nerveSectionCard {
   padding-top: 0.7rem;
   border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);

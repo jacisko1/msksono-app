@@ -664,7 +664,7 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
     imageBaseName: "rameno",
     intro: {
       cs: "Schéma ukazuje doporučenou polohu pacienta pro základní vyšetření ramene. Cílem je rychlá orientace před samotným protokolem, optimální přístup k vyšetřovaným strukturám, stabilita během skenování a dobré pohodlí pacienta.",
-      en: "The chart shows recommended patient positioning for the basic shoulder exam. The goal is quick orientation before the protocol, optimal access to target structures, scanning stability, and patient comfort."
+      en: "The chart shows recommended patient positioning for the basic shoulder examination. The goal is quick orientation before the protocol, optimal access to target structures, stable probe handling during scanning, and patient comfort throughout the exam."
     },
     positions: {
       cs: [
@@ -675,11 +675,11 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
         "5. Pozice k vyšetření dorzálního pohledu."
       ],
       en: [
-        "1: baseline position for anterior (ventral) view.",
-        "2: position for subscapularis assessment - anterior view.",
-        "3: Crass position - rotator cuff assessment - lateral view.",
-        "4: modified Crass position - rotator cuff assessment - lateral view.",
-        "5: position for posterior (dorsal) view."
+        "1. Baseline position for ventral view.",
+        "2. Position for subscapularis assessment - ventral view.",
+        "3. Crass position - rotator cuff assessment - lateral view.",
+        "4. Modified Crass position - rotator cuff assessment - lateral view.",
+        "5. Position for dorsal view."
       ]
     }
   },
@@ -2103,6 +2103,101 @@ const shoulderProtocolCopyOverrides: Record<string, { heading: string; legend: s
   }
 };
 
+const shoulderProtocolCopyOverridesCsExtended: Record<string, { heading: string; legend: string; description: string }> = {
+  ...shoulderProtocolCopyOverrides,
+  "01_anterior_view_transverse_plane": {
+    ...shoulderProtocolCopyOverrides["01_anterior_view_transverse_plane"],
+    description:
+      "TM a tm jsou hlavní orientační body přední části ramene. Mezi nimi probíhá LHBB v bicipitálním sulku, kde se při výpotku často zachytí tekutina komunikující s kloubní dutinou. V této projekci zároveň hodnotíme šlachu m. subscapularis, povrchový m. deltoideus a charakter tekutiny (fyziologické množství vs. synovitida)."
+  },
+  "02_anterior_view_transverse_plane_2": {
+    ...shoulderProtocolCopyOverrides["02_anterior_view_transverse_plane_2"],
+    description:
+      "Distální posun sondy podél přední strany paže zobrazí svalové bříško m. biceps brachii s oběma hlavami (LHBB i SHBB). Projekce je vhodná pro hodnocení struktury a symetrie svaloviny a pro záchyt patologických změn, jako jsou parciální či kompletní ruptury, hematomy nebo známky atrofie."
+  },
+  "03_anterior_view_longitudinal_plane": {
+    ...shoulderProtocolCopyOverrides["03_anterior_view_longitudinal_plane"],
+    description:
+      "Po otočení sondy o 90° je LHBB zobrazena v dlouhé ose v bicipitálním sulku. Intaktní šlacha má lineární fibrilární („špagetovitý“) vzhled; tato rovina je ideální pro hodnocení kontinuity, tenosynovitidy, tekutinových kolekcí a parciálních ruptur při bolesti přední části ramene."
+  },
+  "04_anterior_view_longitudinal_plane_2": {
+    ...shoulderProtocolCopyOverrides["04_anterior_view_longitudinal_plane_2"],
+    description:
+      "Distálnější poloha sondy zobrazuje myotendinózní přechod dlouhé hlavy bicepsu, který bývá častým místem poranění. Sledujeme přechod fibrilární šlachy do hypoechogenní svaloviny a hodnotíme známky tendinopatie, parciální ruptury nebo přetížení, zejména po akutním traumatu."
+  },
+  "05_lateral_view_transverse_plane": {
+    ...shoulderProtocolCopyOverrides["05_lateral_view_transverse_plane"],
+    description:
+      "Krátká osa šlachy rotátorové manžety umožňuje tzv. „tire sign“ s kompresí sondou. Zdravá šlacha je pevná a drží tvar, zatímco ruptura je měkká a kompresibilní („vyfouklá pneumatika“). Šlachu je nutné vyšetřit v celém průběhu, protože ruptury i kalcifikace mohou být pouze fokální."
+  },
+  "06_lateral_view_longitudinal_plane": {
+    ...shoulderProtocolCopyOverrides["06_lateral_view_longitudinal_plane"],
+    description:
+      "Akromion a velký hrbolek humeru tvoří klíčové kostní orientační body. Mezi nimi je v dlouhé ose šlacha m. supraspinatus („ptačí zobák“); protože je široká přibližně 4 cm, je nutný anteroposteriorní posun sondy pro kompletní vyšetření. Hodnotíme i SASD burzu a známky tendinopatie, parciálních/full-thickness ruptur a impingementu."
+  },
+  "07_posterior_view_transverse_plane": {
+    ...shoulderProtocolCopyOverrides["07_posterior_view_transverse_plane"],
+    description:
+      "Dorzální projekce se sondou pod hřebenem lopatky využívá hlavici humeru a glenoid jako základní orientační body. V horní části glenoidu je patrné labrum, které přispívá ke stabilitě ramene. Při zvýšeném množství tekutiny může být kolekce kolem labra lépe detekovatelná při zevní rotaci."
+  },
+  "08_posterior_view_transverse_plane_2": {
+    ...shoulderProtocolCopyOverrides["08_posterior_view_transverse_plane_2"],
+    description:
+      "Laterálním posunem sondy sledujeme šlachu m. infraspinatus nad zadním aspektem hlavice humeru, kaudálně se zobrazí i m. teres minor. Správná identifikace obou struktur je důležitá pro rozlišení izolovaných lézí od kombinované patologie zadní části rotátorové manžety."
+  }
+};
+
+const shoulderProtocolCopyOverridesEn: Record<string, { heading: string; legend: string; description: string }> = {
+  "01_anterior_view_transverse_plane": {
+    heading: "Figure 1: Ventral view, transverse plane",
+    legend: "b: long head of biceps tendon, TM: greater tubercle, tm: lesser tubercle.",
+    description:
+      "TM and tm are the main anterior bony landmarks. The LHBB runs between them in the bicipital groove, a common location for detectable fluid because the tendon sheath communicates with the glenohumeral joint. In this view, also assess the subscapularis tendon, superficial deltoid layer, and fluid amount (physiologic versus synovitis)."
+  },
+  "02_anterior_view_transverse_plane_2": {
+    heading: "Figure 2: Ventral view, transverse plane",
+    legend: "LHBB: long head of biceps, SHBB: short head of biceps.",
+    description:
+      "A distal probe shift along the anterior arm evaluates the biceps brachii muscle belly with both heads clearly visible. This view is useful for muscle symmetry assessment and for detecting pathology such as partial or complete tears, hematoma, or atrophic change."
+  },
+  "03_anterior_view_longitudinal_plane": {
+    heading: "Figure 3: Ventral view, sagittal plane",
+    legend: "b: long head of biceps tendon.",
+    description:
+      "After rotating the probe by 90 degrees, the LHBB is visualized in long axis within the bicipital groove. A healthy tendon has a linear fibrillar appearance; this plane is ideal for continuity assessment and for detecting fluid, tenosynovitis, and partial tears in anterior shoulder pain."
+  },
+  "04_anterior_view_longitudinal_plane_2": {
+    heading: "Figure 4: Ventral view, sagittal plane",
+    legend: "LHBB: myotendinous junction of the long head of biceps brachii.",
+    description:
+      "With a more distal probe position, the myotendinous transition of the long head of biceps is shown, which is a frequent injury zone. Evaluate the transition from bright fibrillar tendon to hypoechoic muscle and look for tendinopathy, partial tearing, or overload, especially after acute trauma."
+  },
+  "05_lateral_view_transverse_plane": {
+    heading: "Figure 5: Lateral view, transverse plane",
+    legend: "Short-axis rotator cuff tendon image (\"tire sign\").",
+    description:
+      "Short-axis imaging allows integrity testing with gentle probe compression. A healthy tendon is firm and resistant to compression, while a tear appears soft and compressible (\"flat tire\"). Sweep the tendon across its full course, because tears and calcifications can be focal."
+  },
+  "06_lateral_view_longitudinal_plane": {
+    heading: "Figure 6: Lateral view, frontal plane",
+    legend: "Acromion, greater tubercle, and supraspinatus tendon (\"bird's beak\").",
+    description:
+      "The acromion and greater tubercle are key bony landmarks. The supraspinatus tendon is seen in long axis between them, and because it is about 4 cm wide, an anteroposterior sweep is required for full evaluation. Also assess the SASD bursa and signs of tendinopathy, partial/full-thickness tears, and subacromial impingement."
+  },
+  "07_posterior_view_transverse_plane": {
+    heading: "Figure 7: Dorsal view, transverse plane",
+    legend: "L: glenoid labrum.",
+    description:
+      "In the posterior projection with the probe below the scapular spine, the humeral head and glenoid serve as main landmarks. The superior glenoid labrum appears as a triangular hyperechoic structure that contributes to joint stability. Perilabral fluid is often easier to detect during external rotation."
+  },
+  "08_posterior_view_transverse_plane_2": {
+    heading: "Figure 8: Dorsal view, transverse plane",
+    legend: "Infraspinatus tendon; with caudal shift, teres minor tendon.",
+    description:
+      "A lateral probe shift visualizes the infraspinatus tendon over the posterior humeral head; a caudal shift brings teres minor into view. Correct identification of both structures is important to distinguish isolated lesions from combined posterior rotator cuff pathology."
+  }
+};
+
 const shoulderProtocolSteps = {
   cs: [
     {
@@ -2248,7 +2343,7 @@ const shoulderAnatomyMuscleGallery = [
 
 const shoulderPositioningZoomCaption = {
   cs: "Obrázek 1. Polohování pacienta při vyšetření ramenního kloubu. 1: základní pozice pro vyšetření ventrálního pohledu, 2: pozice k vyšetření m. subscapularis - ventrální pohled, 3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 5: pozice k vyšetření dorzálního pohledu.",
-  en: "Figure 1. Patient positioning for shoulder ultrasound. 1: baseline position for ventral view, 2: subscapularis position - ventral view, 3: Crass position - rotator cuff, lateral view, 4: modified Crass position - rotator cuff, lateral view, 5: position for dorsal view."
+  en: "Figure 1. Patient positioning for shoulder ultrasound. 1. Baseline position for ventral view, 2. Position for subscapularis assessment - ventral view, 3. Crass position - rotator cuff assessment - lateral view, 4. Modified Crass position - rotator cuff assessment - lateral view, 5. Position for dorsal view."
 } as const;
 
 const renderAnatomyListItem = (item: string) => {
@@ -3008,10 +3103,10 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
-          <ol className={styles.compactList}>
-            {shoulderProtocolSteps[lang].map((step) => (
+          <ul className={styles.compactList}>
+            {shoulderProtocolSteps[lang].map((step, index) => (
               <li key={step.view}>
-                {step.view}
+                <strong>{`${index + 1}. ${step.view}`}</strong>
                 <ol type="A" className={styles.compactList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
@@ -3019,12 +3114,13 @@ export default function ContentPage({ path }: ContentPageProps) {
                 </ol>
               </li>
             ))}
-          </ol>
+          </ul>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {shoulderUltrasoundImages.map((item) => (
-              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
+              <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.shoulderProtocolCard}`}>
                 {(() => {
-                  const override = lang === "cs" ? shoulderProtocolCopyOverrides[item.key] : undefined;
+                  const override =
+                    lang === "cs" ? shoulderProtocolCopyOverridesCsExtended[item.key] : shoulderProtocolCopyOverridesEn[item.key];
                   const heading = override?.heading ?? item.caption[lang].heading;
                   const legend = override?.legend ?? item.caption[lang].bullets[0] ?? "";
                   const description = override?.description ?? item.caption[lang].bullets.slice(1).join(" ");
@@ -3047,7 +3143,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                             {legend ? ` ${legend}` : ""}
                           </p>
                         ) : null}
-                        {description ? <p>{description}</p> : null}
+                        {description ? <p className={styles.shoulderProtocolText}>{description}</p> : null}
                       </div>
                     </>
                   );
@@ -3068,10 +3164,10 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <h2>{localized("Vyšetřovací protokol")[lang]}</h2>
-          <ol className={styles.compactList}>
-            {jointContent.protocolSteps.map((step) => (
+          <ul className={styles.compactList}>
+            {jointContent.protocolSteps.map((step, index) => (
               <li key={step.view}>
-                {step.view}
+                <strong>{`${index + 1}. ${step.view}`}</strong>
                 <ol type="A" className={styles.compactList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
@@ -3079,7 +3175,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                 </ol>
               </li>
             ))}
-          </ol>
+          </ul>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {jointContent.protocolImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
