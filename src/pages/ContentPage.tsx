@@ -2437,12 +2437,23 @@ function ResponsiveImage({
       )}
       {isZoomed ? (
         <div className={styles.imageZoomOverlay} role="dialog" aria-modal="true" onClick={handleClose}>
-          <div className={styles.imageZoomContent} onClick={(event) => event.stopPropagation()}>
+          <div className={styles.imageZoomContent}>
             <button type="button" className={styles.imageZoomClose} onClick={handleClose} aria-label="Close">
               ×
             </button>
-            <img className={styles.imageZoomImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
-            {caption ? <p className={styles.imageZoomCaption}>{caption}</p> : null}
+            <img
+              className={styles.imageZoomImage}
+              src={image.pc}
+              alt={alt}
+              loading="lazy"
+              decoding="async"
+              onClick={(event) => event.stopPropagation()}
+            />
+            {caption ? (
+              <p className={styles.imageZoomCaption} onClick={(event) => event.stopPropagation()}>
+                {caption}
+              </p>
+            ) : null}
           </div>
         </div>
       ) : null}
@@ -3313,7 +3324,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         </section>
         {activeShoulderMuscleImage ? (
           <div className={styles.imageZoomOverlay} role="dialog" aria-modal="true" onClick={() => setActiveShoulderMuscleImageIndex(null)}>
-            <div className={styles.imageZoomContent} onClick={(event) => event.stopPropagation()}>
+            <div className={styles.imageZoomContent}>
               <button
                 type="button"
                 className={styles.imageZoomClose}
@@ -3325,11 +3336,12 @@ export default function ContentPage({ path }: ContentPageProps) {
               <button
                 type="button"
                 className={`${styles.imageZoomNav} ${styles.imageZoomPrev}`}
-                onClick={() =>
+                onClick={(event) => {
+                  event.stopPropagation();
                   setActiveShoulderMuscleImageIndex((prev) =>
                     prev === null ? 0 : (prev - 1 + shoulderAnatomyMuscleGallery.length) % shoulderAnatomyMuscleGallery.length
-                  )
-                }
+                  );
+                }}
                 aria-label={lang === "cs" ? "Předchozí obrázek" : "Previous image"}
               >
                 ‹
@@ -3340,20 +3352,22 @@ export default function ContentPage({ path }: ContentPageProps) {
                 alt={activeShoulderMuscleImage.alt[lang]}
                 loading="lazy"
                 decoding="async"
+                onClick={(event) => event.stopPropagation()}
               />
               <button
                 type="button"
                 className={`${styles.imageZoomNav} ${styles.imageZoomNext}`}
-                onClick={() =>
+                onClick={(event) => {
+                  event.stopPropagation();
                   setActiveShoulderMuscleImageIndex((prev) =>
                     prev === null ? 0 : (prev + 1) % shoulderAnatomyMuscleGallery.length
-                  )
-                }
+                  );
+                }}
                 aria-label={lang === "cs" ? "Další obrázek" : "Next image"}
               >
                 ›
               </button>
-              <p className={styles.imageZoomCaption}>
+              <p className={styles.imageZoomCaption} onClick={(event) => event.stopPropagation()}>
                 {activeShoulderMuscleImage.alt[lang]} ({(activeShoulderMuscleImageIndex ?? 0) + 1}/{shoulderAnatomyMuscleGallery.length})
               </p>
             </div>
