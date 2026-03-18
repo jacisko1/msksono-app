@@ -31,19 +31,19 @@ const withSection = (section: SectionKey, color: string, items: RawNavItem[]): N
 
 const nerveChildren = (basePath: string): RawNavItem[] => [
   {
-    title: { cs: "Motorická inervace", en: "Motor innervation" },
-    path: `${basePath}/motoricka-inervace`
+    title: { cs: "\u00davod", en: "Introduction" },
+    path: `${basePath}/uvod`
   },
   {
-    title: { cs: "Senzitivní inervace", en: "Sensory innervation" },
-    path: `${basePath}/senzitivni-inervace`
-  },
-  {
-    title: { cs: "Anatomický průběh", en: "Anatomical course" },
+    title: { cs: "Anatomie", en: "Anatomy" },
     path: `${basePath}/anatomicky-prubeh`
   },
   {
-    title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" },
+    title: { cs: "Polohov\u00e1n\u00ed pacienta", en: "Patient positioning" },
+    path: `${basePath}/polohovani`
+  },
+  {
+    title: { cs: "Ultrazvukov\u00e9 vy\u0161et\u0159en\u00ed", en: "Ultrasound examination" },
     path: `${basePath}/ultrazvukove-vysetreni`
   },
   {
@@ -51,8 +51,16 @@ const nerveChildren = (basePath: string): RawNavItem[] => [
     path: `${basePath}/video-tutorial`
   },
   {
-    title: { cs: "Místa útlaku", en: "Entrapment sites" },
+    title: { cs: "M\u00edsta \u00fatlaku", en: "Entrapment sites" },
     path: `${basePath}/mista-utlaku`
+  },
+  {
+    title: { cs: "Senzitivn\u00ed inervace", en: "Sensory innervation" },
+    path: `${basePath}/senzitivni-inervace`
+  },
+  {
+    title: { cs: "Motorick\u00e1 inervace", en: "Motor innervation" },
+    path: `${basePath}/motoricka-inervace`
   }
 ];
 
