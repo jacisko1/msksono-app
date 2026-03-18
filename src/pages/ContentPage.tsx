@@ -3103,11 +3103,11 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
-          <ul className={styles.compactList}>
+          <ul className={styles.protocolViewList}>
             {shoulderProtocolSteps[lang].map((step, index) => (
               <li key={step.view}>
-                <strong>{`${index + 1}. ${step.view}`}</strong>
-                <ol type="A" className={styles.compactList}>
+                <strong>{`${index + 1} ${step.view}`}</strong>
+                <ol type="A" className={styles.protocolPlaneList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
                   ))}
@@ -3164,11 +3164,11 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <h2>{localized("Vyšetřovací protokol")[lang]}</h2>
-          <ul className={styles.compactList}>
+          <ul className={styles.protocolViewList}>
             {jointContent.protocolSteps.map((step, index) => (
               <li key={step.view}>
-                <strong>{`${index + 1}. ${step.view}`}</strong>
-                <ol type="A" className={styles.compactList}>
+                <strong>{`${index + 1} ${step.view}`}</strong>
+                <ol type="A" className={styles.protocolPlaneList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
                   ))}

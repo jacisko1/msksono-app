@@ -133,6 +133,27 @@
   line-height: inherit;
 }
 
+.protocolViewList {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  color: var(--text-soft);
+  display: grid;
+  gap: 0.35rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.protocolPlaneList {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-soft);
+  display: grid;
+  gap: 0.2rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .figureCaption {
   margin: 0.35rem 0 0;
   font-size: 0.85rem;
