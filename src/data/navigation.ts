@@ -250,9 +250,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/svaly/biceps-brachii/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/svaly/biceps-brachii/anatomie" },
-          { title: { cs: "Polohování", en: "Positioning" }, path: "/svaly/biceps-brachii/polohovani" },
+          { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/svaly/biceps-brachii/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/svaly/biceps-brachii/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/svaly/biceps-brachii/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/svaly/biceps-brachii/nejcastejsi-patologie" }
         ]
       }
