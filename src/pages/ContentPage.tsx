@@ -2117,6 +2117,59 @@ const shoulderPathologyPoints = {
   ]
 };
 
+const shoulderAnatomyIntro = {
+  cs: "Rameno je nejpohyblivější kloubní komplex v těle. Velký rozsah pohybu zlepšuje funkci, ale zároveň snižuje stabilitu, proto je rameno častým místem poranění. Pro ultrazvuk je zásadní orientace v kostních bodech a úponech šlach.",
+  en: "The shoulder is the most mobile joint complex in the body. This range of motion supports function but reduces stability, making shoulder injury common. In ultrasound, clear orientation to bony landmarks and tendon insertions is essential."
+};
+
+const shoulderAnatomyLandmarks = {
+  cs: [
+    "Klíční kost (clavicle) - přední opora, orientace pro AC a SC skloubení.",
+    "Akromion - horní kostěný strop ramene.",
+    "Processus coracoideus - přední orientační bod pro biceps a subscapularis.",
+    "Tuberculum majus - úpon supraspinatu, infraspinatu a teres minor.",
+    "Tuberculum minus - úpon subscapularis.",
+    "Sulcus intertubercularis (bicipital groove) - průběh dlouhé hlavy bicepsu.",
+    "Spina scapulae - zadní orientační hrana lopatky."
+  ],
+  en: [
+    "Clavicle - anterior support and a guide for AC and SC joints.",
+    "Acromion - the superior bony roof of the shoulder.",
+    "Coracoid process - anterior landmark for biceps and subscapularis scanning.",
+    "Greater tuberosity - insertion site of supraspinatus, infraspinatus, and teres minor.",
+    "Lesser tuberosity - insertion of subscapularis.",
+    "Intertubercular (bicipital) groove - pathway of the long head of the biceps.",
+    "Scapular spine - posterior orientation ridge of the scapula."
+  ]
+};
+
+const shoulderAnatomyMuscles = {
+  cs: {
+    cuff: [
+      "Subscapularis - vnitřní rotace.",
+      "Supraspinatus - zahájení abdukce.",
+      "Infraspinatus - zevní rotace.",
+      "Teres minor - zevní rotace a addukce."
+    ],
+    other: [
+      "Deltoideus - hlavní abdukce, podíl na flexi a extenzi podle části svalu.",
+      "Dlouhá hlava bicepsu - stabilizace ramene, flexe a supinace."
+    ]
+  },
+  en: {
+    cuff: [
+      "Subscapularis - internal rotation.",
+      "Supraspinatus - initiates abduction.",
+      "Infraspinatus - external rotation.",
+      "Teres minor - external rotation and adduction."
+    ],
+    other: [
+      "Deltoid - primary abduction with anterior/posterior fibers assisting flexion and extension.",
+      "Long head of biceps - shoulder stabilization with flexion and supination support."
+    ]
+  }
+};
+
 const jointIntroCopy = {
   cs: "MSK ultrazvuk kloubů je důležitý pro rychlé, cílené a dynamické zhodnocení měkkotkáňových struktur v reálném čase. U ramene i ostatních kloubů umožňuje přesnou korelaci nálezu s bolestí při pohybu, porovnání s druhostrannou končetinou a podporuje průběžné klinické rozhodování bez ionizujícího záření.",
   en: "MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing clinical decision-making without ionizing radiation."
@@ -2967,7 +3020,29 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
-        <section className={styles.emptyBox} />
+        <section className={styles.articleBox}>
+          <h2>{lang === "cs" ? "Anatomie ramene" : "Shoulder anatomy"}</h2>
+          <p>{shoulderAnatomyIntro[lang]}</p>
+          <h2>{lang === "cs" ? "Landmarky" : "Landmarks"}</h2>
+          <ul className={styles.compactList}>
+            {shoulderAnatomyLandmarks[lang].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
+          <h3>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
+          <ul className={styles.compactList}>
+            {shoulderAnatomyMuscles[lang].cuff.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <h3>{lang === "cs" ? "Další důležité svaly" : "Other key muscles"}</h3>
+          <ul className={styles.compactList}>
+            {shoulderAnatomyMuscles[lang].other.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
         {chapterNav}
       </section>
     );
