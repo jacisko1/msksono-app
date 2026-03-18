@@ -119,12 +119,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/rameno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/rameno/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/rameno/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/rameno/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/rameno/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/rameno/video-tutorial" },
-          {
-            title: { cs: "Protokol", en: "Protocol" },
-            path: "/klouby/rameno/vysetrovaci-protokol"
-          },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/rameno/nejcastejsi-patologie" }
         ]
       },
@@ -134,9 +131,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/loket/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/loket/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/loket/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/loket/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/loket/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/loket/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/loket/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/loket/nejcastejsi-patologie" }
         ]
       },
@@ -146,9 +143,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/zapesti/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/zapesti/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/zapesti/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/zapesti/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/zapesti/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/zapesti/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/zapesti/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/zapesti/nejcastejsi-patologie" }
         ]
       },
@@ -158,9 +155,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kycel/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kycel/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/kycel/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/kycel/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/kycel/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kycel/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kycel/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/kycel/nejcastejsi-patologie" }
         ]
       },
@@ -170,9 +167,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/koleno/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/koleno/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/koleno/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/koleno/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/koleno/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/koleno/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/koleno/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/koleno/nejcastejsi-patologie" }
         ]
       },
@@ -182,9 +179,9 @@ export const navigationTree: NavItem[] = [
         children: [
           { title: { cs: "Úvod", en: "Introduction" }, path: "/klouby/kotnik/uvod" },
           { title: { cs: "Anatomie", en: "Anatomy" }, path: "/klouby/kotnik/anatomie" },
-            { title: { cs: "Polohování", en: "Positioning" }, path: "/klouby/kotnik/polohovani" },
+            { title: { cs: "Polohování pacienta", en: "Patient positioning" }, path: "/klouby/kotnik/polohovani" },
+          { title: { cs: "Ultrazvukové vyšetření", en: "Ultrasound examination" }, path: "/klouby/kotnik/vysetrovaci-protokol" },
           { title: { cs: "Video tutorial", en: "Video tutorial" }, path: "/klouby/kotnik/video-tutorial" },
-          { title: { cs: "Protokol", en: "Protocol" }, path: "/klouby/kotnik/vysetrovaci-protokol" },
           { title: { cs: "Nejčastější patologie", en: "Most common pathologies" }, path: "/klouby/kotnik/nejcastejsi-patologie" }
         ]
       }
