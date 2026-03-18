@@ -668,11 +668,11 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
     },
     positions: {
       cs: [
-        "1: základní pozice pro vyšetření ventrálního pohledu.",
-        "2: pozice k vyšetření m. subscapularis - ventrální pohled.",
-        "3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
-        "4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
-        "5: pozice k vyšetření dorzálního pohledu."
+        "1. Základní pozice pro vyšetření ventrálního pohledu.",
+        "2. Pozice k vyšetření m. subscapularis - ventrální pohled.",
+        "3. Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "4. Modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "5. Pozice k vyšetření dorzálního pohledu."
       ],
       en: [
         "1: baseline position for anterior (ventral) view.",
