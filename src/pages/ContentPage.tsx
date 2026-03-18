@@ -2198,6 +2198,12 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
   const isMedianNerveVideo = path === "/periferni-nervy/nervus-medianus/video-tutorial";
+  const nerveIntroMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/uvod$/
+  );
+  const nervePositioningMatch = path.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/polohovani$/
+  );
   const nerveAnatomyMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
   );
@@ -2408,6 +2414,23 @@ export default function ContentPage({ path }: ContentPageProps) {
               allowFullScreen
             />
           </div>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (nerveIntroMatch || nervePositioningMatch) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          <p>
+            {lang === "cs"
+              ? "Tato část je zatím připravena jako prázdná a obsah bude doplněn."
+              : "This section is currently a placeholder and content will be added soon."}
+          </p>
         </section>
         {chapterNav}
       </section>
@@ -2959,5 +2982,4 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
-
 
