@@ -2170,6 +2170,29 @@ const shoulderAnatomyMuscles = {
   }
 };
 
+const shoulderAnatomyLandmarkImage = {
+  fileName: "image326.gif",
+  alt: {
+    cs: "Landmarky ramene",
+    en: "Shoulder landmarks"
+  }
+} as const;
+
+const shoulderAnatomyMuscleGallery = [
+  {
+    fileName: "image410.gif",
+    alt: { cs: "Svaly ramene 1", en: "Shoulder muscles 1" }
+  },
+  {
+    fileName: "image411.gif",
+    alt: { cs: "Svaly ramene 2", en: "Shoulder muscles 2" }
+  },
+  {
+    fileName: "image412.gif",
+    alt: { cs: "Svaly ramene 3", en: "Shoulder muscles 3" }
+  }
+] as const;
+
 const jointIntroCopy = {
   cs: "MSK ultrazvuk kloubů je důležitý pro rychlé, cílené a dynamické zhodnocení měkkotkáňových struktur v reálném čase. U ramene i ostatních kloubů umožňuje přesnou korelaci nálezu s bolestí při pohybu, porovnání s druhostrannou končetinou a podporuje průběžné klinické rozhodování bez ionizujícího záření.",
   en: "MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing clinical decision-making without ionizing radiation."
@@ -3029,6 +3052,12 @@ export default function ContentPage({ path }: ContentPageProps) {
               <li key={item}>{item}</li>
             ))}
           </ul>
+          <ResponsiveImage
+            image={makeSingleImage("Anatomy/Shoulder", shoulderAnatomyLandmarkImage.fileName)}
+            alt={shoulderAnatomyLandmarkImage.alt[lang]}
+            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.jointIntroImageWrap}`}
+            enableMobileZoom
+          />
           <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
           <h3>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
           <ul className={styles.compactList}>
@@ -3042,6 +3071,18 @@ export default function ContentPage({ path }: ContentPageProps) {
               <li key={item}>{item}</li>
             ))}
           </ul>
+          <div className={styles.swipeGallery} aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}>
+            {shoulderAnatomyMuscleGallery.map((item) => (
+              <article key={item.fileName} className={styles.swipeGalleryItem}>
+                <ResponsiveImage
+                  image={makeSingleImage("Anatomy/Shoulder", item.fileName)}
+                  alt={item.alt[lang]}
+                  wrapClassName={styles.shoulderUltrasoundImageWrap}
+                  enableMobileZoom
+                />
+              </article>
+            ))}
+          </div>
         </section>
         {chapterNav}
       </section>

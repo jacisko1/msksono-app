@@ -320,7 +320,26 @@
   border-radius: inherit;
 }
 
+.swipeGallery {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(82%, 1fr);
+  gap: 0.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.25rem;
+}
+
+.swipeGalleryItem {
+  scroll-snap-align: start;
+}
+
 @media (min-width: 741px) {
+  .swipeGallery {
+    grid-auto-columns: minmax(62%, 1fr);
+  }
+
   .nerveImageWrap {
     max-width: 520px;
     margin: 0 auto;
@@ -371,6 +390,10 @@
 }
 
 @media (min-width: 1025px) {
+  .swipeGallery {
+    grid-auto-columns: minmax(48%, 1fr);
+  }
+
   .knobologyGrid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
