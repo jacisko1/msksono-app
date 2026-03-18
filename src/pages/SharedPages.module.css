@@ -332,6 +332,9 @@
 
 .shoulderUltrasoundGrid {
   grid-template-columns: 1fr;
+}
+
+.protocolImageGrid {
   padding-top: 0.7rem;
   border-top: 1px solid var(--divider-line);
 }
