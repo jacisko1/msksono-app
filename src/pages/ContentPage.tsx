@@ -2573,9 +2573,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                   ? `Obrázek ${index + 1}: ${figureCaptionData.cs}`
                   : `Figure ${index + 1}: ${figureCaptionData.en}`
                 : undefined;
-              const figureCaptionWithPeriod = figureCaption
-                ? `${figureCaption.replace(/[.]\s*$/, "")}.`
-                : undefined;
+              const figureCaptionWithPeriod = figureCaption ? `${figureCaption.replace(/[.]\s*$/, "")}.` : undefined;
               const combinedCaptionLine = [figureCaptionWithPeriod, abbreviationLine].filter(Boolean).join(" ");
               const zoomCaption = combinedCaptionLine;
 
