@@ -2341,6 +2341,86 @@ const shoulderAnatomyMuscleGallery = [
   }
 ] as const;
 
+const elbowAnatomyIntro = {
+  cs: "Loket je převážně kladkový kloubní komplex, který kombinuje dobrou stabilitu se středním rozsahem pohybu nutným pro přesné nastavení ruky při běžných i sportovních aktivitách. Oproti rameni je stabilnější, ale často trpí přetížením, mikrotraumaty a opakovanou zátěží. Pro přesné ultrazvukové hodnocení je zásadní orientace ve vztahu humeru, radia a ulny, kloubních recesů, šlach, vazů a nervově-cévních struktur.",
+  en: "The elbow is primarily a hinge-type joint complex that combines stability with a moderate range of motion needed for functional hand positioning in daily and athletic tasks. Compared with the shoulder, it is generally more stable but still vulnerable to overuse and repetitive strain. Accurate ultrasound interpretation requires clear spatial orientation of the humerus, radius, and ulna together with recesses, tendons, ligaments, and neurovascular structures."
+};
+
+const elbowAnatomyJoints = {
+  cs: [
+    "Humeroulnární kloub - kladkový kloub mezi trochleou humeru a incisura trochlearis ulny; umožňuje flexi a extenzi.",
+    "Humeroradiální kloub - spojení capitulum humeri s hlavicí radia; podílí se na stabilitě lokte.",
+    "Proximální radioulnární kloub - čepový kloub mezi hlavicí radia a incisura radialis ulny; umožňuje pronaci a supinaci předloktí."
+  ],
+  en: [
+    "Humeroulnar joint - hinge articulation between the humeral trochlea and ulnar trochlear notch, enabling flexion and extension.",
+    "Humeroradial joint - articulation of the capitulum and radial head, contributing to elbow stability.",
+    "Proximal radioulnar joint - pivot articulation between the radial head and radial notch of the ulna, enabling pronation and supination."
+  ]
+};
+
+const elbowAnatomyUltrasoundFocus = {
+  cs: "V ultrazvuku se loket cíleně hodnotí v oblasti společného extenzorového a flexorového úponu, distální šlachy bicepsu a tricepsu, n. medianus a kloubních recesů. Dobrá anatomická orientace je klíčem k odlišení fyziologického nálezu od patologie.",
+  en: "Elbow ultrasound primarily focuses on the common extensor and flexor origins, distal biceps and triceps tendons, median nerve, and joint recesses. A strong anatomical framework is essential to distinguish normal findings from pathology."
+};
+
+const elbowAnatomyLandmarkLead = {
+  cs: "Palpačně i sonograficky rozpoznatelné kostní body slouží jako pevné orientační body pro vedení sondy a interpretaci nálezu. Jejich správná identifikace zvyšuje přesnost vyšetření a usnadňuje odlišení normální anatomie od patologických změn.",
+  en: "Palpable and sonographically recognizable bony landmarks are fixed reference points for probe positioning and image interpretation. Mastering them improves examination accuracy and supports differentiation between normal anatomy and abnormalities."
+};
+
+const elbowAnatomyLandmarks = {
+  cs: [
+    "Mediální epikondyl humeru - výrazný mediální kostní výběžek; začátek společného flexorového úponu, orientační bod pro flexorový aparát a n. ulnaris.",
+    "Laterální epikondyl humeru - laterální kostní prominence; začátek společného extenzorového úponu a důležitý bod pro hodnocení radiálního kolaterálního komplexu.",
+    "Olecranon - proximální hrot ulny tvořící kostní špičku lokte; klíčový bod pro zadní přístup a hodnocení distální šlachy tricepsu a olekranové burzy.",
+    "Hlavička radia - leží distálně od laterálního epikondylu a artikuluje s capitulem; důležitá pro hodnocení proximálního radioulnárního kloubu."
+  ],
+  en: [
+    "Medial epicondyle of the humerus - prominent medial projection; origin of the common flexor tendon and key landmark for flexor structures and the ulnar nerve.",
+    "Lateral epicondyle of the humerus - lateral prominence; origin of the common extensor tendon and reference point for the radial collateral complex.",
+    "Olecranon - proximal pointed ulna forming the bony tip of the elbow; central posterior landmark for distal triceps tendon and olecranon bursa assessment.",
+    "Radial head - located distal to the lateral epicondyle and articulating with the capitulum; important for proximal radioulnar joint evaluation."
+  ]
+};
+
+const elbowAnatomyMuscles = {
+  cs: {
+    primary: [
+      "Biceps brachii - začátek: caput longum (tuberculum supraglenoidale), caput breve (processus coracoideus); úpon: tuberositas radii + aponeuróza; funkce: flexe lokte, supinace; UZ relevance: hodnocení parciálních i kompletních ruptur distální šlachy.",
+      "Brachialis - začátek: distální přední plocha humeru; úpon: processus coronoideus a tuberositas ulnae; funkce: hlavní flexor lokte nezávisle na poloze předloktí; UZ relevance: diferenciální diagnostika přední bolesti lokte.",
+      "Triceps brachii - začátek: caput longum (tuberculum infraglenoidale), caput laterale a mediale (zadní humerus); úpon: olecranon; funkce: extenze lokte; UZ relevance: zadní přístup k distální šlaše tricepsu a olekranové burze.",
+      "Společný flexor-pronátorový komplex - zahrnuje pronator teres, flexor carpi radialis, palmaris longus, flexor digitorum superficialis, flexor carpi ulnaris; začátek: mediální epikondyl; UZ relevance: typická oblast mediální epikondylopatie.",
+      "Společný extenzor-supinátorový komplex - zahrnuje zejména extensor carpi radialis brevis, extensor digitorum, extensor carpi ulnaris; začátek: laterální epikondyl; UZ relevance: klíčová struktura u laterální epikondylopatie."
+    ],
+    other: [
+      "Anconeus - začátek: laterální epikondyl; úpon: laterální část olecranu a proximální ulna; funkce: pomocná extenze a stabilizace lokte; UZ relevance: důležitý při zadně-laterální bolesti.",
+      "Supinator - začátek: laterální epikondyl, radiální kolaterální vaz a crista musculi supinatoris ulny; úpon: proximální třetina radia; funkce: supinace předloktí; UZ relevance: vyšetření při podezření na útlak radiálního nervu."
+    ]
+  },
+  en: {
+    primary: [
+      "Biceps brachii - origin: long head (supraglenoid tubercle), short head (coracoid process); insertion: radial tuberosity and bicipital aponeurosis; function: elbow flexion and supination; ultrasound relevance: distal tendon tears.",
+      "Brachialis - origin: distal anterior humerus; insertion: coronoid process and ulnar tuberosity; function: primary elbow flexor regardless of forearm position; ultrasound relevance: anterior elbow pain differential.",
+      "Triceps brachii - origin: long, lateral, and medial heads from scapula/posterior humerus; insertion: olecranon; function: elbow extension; ultrasound relevance: distal triceps tendon and olecranon bursa assessment.",
+      "Common flexor-pronator group - includes pronator teres, FCR, palmaris longus, FDS, FCU; origin at the medial epicondyle; ultrasound relevance: medial epicondylitis.",
+      "Common extensor-supinator group - includes ECRB, extensor digitorum, ECU and others; origin at the lateral epicondyle; ultrasound relevance: lateral epicondylitis."
+    ],
+    other: [
+      "Anconeus - origin: lateral epicondyle; insertion: lateral olecranon and proximal ulna; function: assists extension and stabilizes the elbow; ultrasound relevance: posterior-lateral elbow assessment.",
+      "Supinator - origin: lateral epicondyle, radial collateral ligament, and supinator crest of ulna; insertion: proximal radius; function: forearm supination; ultrasound relevance: radial nerve entrapment workup."
+    ]
+  }
+};
+
+const elbowAnatomyLandmarkImage = {
+  fileName: "02_Elbow.png",
+  alt: {
+    cs: "Anatomie lokte",
+    en: "Elbow anatomy"
+  }
+} as const;
+
 const shoulderPositioningZoomCaption = {
   cs: "Obrázek 1. Polohování pacienta při vyšetření ramenního kloubu. 1: základní pozice pro vyšetření ventrálního pohledu, 2: pozice k vyšetření m. subscapularis - ventrální pohled, 3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 5: pozice k vyšetření dorzálního pohledu.",
   en: "Figure 1. Patient positioning for shoulder ultrasound. 1. Baseline position for ventral view, 2. Position for subscapularis assessment - ventral view, 3. Crass position - rotator cuff assessment - lateral view, 4. Modified Crass position - rotator cuff assessment - lateral view, 5. Position for dorsal view."
@@ -2358,28 +2438,104 @@ const renderAnatomyListItem = (item: string) => {
 };
 
 const jointIntroCopy = {
-  cs: (
-    <>
-      MSK ultrazvuk kloubů je v PMR mimořádně cenný, protože přináší{" "}
-      <strong>rychlé, cílené a dynamické</strong> zhodnocení měkkých tkání přímo u lůžka nebo v ambulanci. Umožňuje{" "}
-      <strong>okamžitě propojit bolest s obrazem</strong> při aktivním pohybu, zachytit patologie šlach, burz, pouzder či
-      ligament a porovnat nález s kontralaterální stranou. V rehabilitační medicíně je důležité, že vyšetření podporuje{" "}
-      <strong>funkční klinické rozhodování v reálném čase</strong>: pomáhá upřesnit diagnózu, lépe zacílit terapii, monitorovat
-      efekt léčby a bezpečně plánovat intervence. Výhodou je také <strong>absence ionizujícího záření</strong>, možnost
-      opakovaného sledování a vysoká dostupnost v každodenní praxi PMR.
-    </>
-  ),
-  en: (
-    <>
-      MSK ultrasound of joints is highly valuable in PMR because it provides{" "}
-      <strong>fast, targeted, and dynamic</strong> soft-tissue assessment directly at bedside or in the outpatient setting. It
-      enables <strong>immediate pain-to-image correlation</strong> during active movement, helps detect tendon, bursal, capsular,
-      and ligament pathology, and supports side-to-side comparison with the contralateral limb. In rehabilitation medicine, this
-      is important because ultrasound supports <strong>functional real-time clinical decision-making</strong>: it helps refine the
-      diagnosis, better target therapy, monitor treatment response, and safely plan interventions. Another major benefit is{" "}
-      <strong>the absence of ionizing radiation</strong>, together with repeatability and high availability in daily PMR practice.
-    </>
-  )
+  rameno: {
+    cs: (
+      <>
+        U <strong>ramenního kloubu</strong> se ultrazvuk zaměřuje hlavně na šlachy rotátorové manžety (supraspinatus, infraspinatus,
+        subscapularis), šlachu dlouhé hlavy bicepsu a SASD burzu. Typicky řeší bolest při abdukci a práci nad hlavou, kde pomáhá
+        odlišit impingement, tendinopatii, parciální/kompletní rupturu i burzitidu. Důležité jsou dynamické testy při abdukci,
+        zevní a vnitřní rotaci.
+      </>
+    ),
+    en: (
+      <>
+        Shoulder ultrasound is especially useful for assessing the <strong>rotator cuff, long head of the biceps, and SASD bursa</strong>,
+        which are the main sources of pain during elevation and overhead activity. The exam should follow ventral, lateral, and dorsal
+        views and include <strong>dynamic maneuvers during abduction and rotation</strong> to detect impingement, tenosynovitis,
+        and partial tears.
+      </>
+    )
+  },
+  loket: {
+    cs: (
+      <>
+        U <strong>loketního kloubu</strong> se hodnotí zejména oblast mediálního a laterálního epikondylu, úpony flexorů/extenzorů,
+        kolaterální vazy a průběh n. ulnaris v kubitálním tunelu. Nejčastěji se vyšetřuje bolest při úchopu, extenzi zápěstí a
+        flexi lokte, kde ultrazvuk odliší epikondylopatii, parciální ruptury, synovitidu i kompresi ulnárního nervu.
+      </>
+    ),
+    en: (
+      <>
+        In the elbow, ultrasound is most informative at the <strong>epicondyles, flexor/extensor tendon origins, collateral ligaments,
+        and ulnar nerve</strong>. It is particularly useful in pain with gripping, wrist extension, or elbow flexion, helping distinguish
+        tendinopathy, partial tearing, synovitis, and cubital tunnel nerve compression.
+      </>
+    )
+  },
+  zapesti: {
+    cs: (
+      <>
+        U <strong>zápěstního kloubu</strong> je klíčové vyšetření flexorových a extenzorových kompartmentů, retinakul, radiokarpálního
+        kloubu a karpálního tunelu. Typickými nálezy jsou tenosynovitidy, ganglia, synovitidy drobných karpálních kloubů a změny
+        n. medianus při syndromu karpálního tunelu.
+      </>
+    ),
+    en: (
+      <>
+        At the wrist, ultrasound focuses on the <strong>flexor and extensor tendons, retinacula, synovium, and carpal tunnel region</strong>.
+        It is useful in both overuse and post-traumatic pain, showing tenosynovitis, ganglion cysts, small-joint synovitis, and median
+        nerve changes in suspected carpal tunnel syndrome.
+      </>
+    )
+  },
+  kycel: {
+    cs: (
+      <>
+        U <strong>kyčelního kloubu</strong> se sonograficky hodnotí přední recesus s možným výpotkem, iliopsoas, přímý sval stehenní,
+        adduktory a abduktorový aparát v oblasti velkého trochanteru. Vyšetření je zásadní při bolesti třísla a laterální kyčle,
+        kde odlišuje intraartikulární synovitidu od tendinopatie gluteálních šlach nebo trochanterické burzitidy.
+      </>
+    ),
+    en: (
+      <>
+        For the hip, ultrasound is most useful at the <strong>anterior recess, flexor tendons, adductors, and abductor complex</strong>,
+        including the trochanteric bursae. It helps separate intra-articular effusion from periarticular pain generators, especially
+        in groin and lateral hip pain.
+      </>
+    )
+  },
+  koleno: {
+    cs: (
+      <>
+        U <strong>kolenního kloubu</strong> je hlavní cíl suprapatelární recesus, kvadricepsová a patelární šlacha, mediální/laterální
+        kolaterální vaz a periartikulární burzy. Ultrazvuk rychle prokáže výpotek, synovitidu nebo Bakerovu cystu a upřesní, zda je
+        zdrojem bolesti entezopatie patelární šlachy, pes anserinus bursitida nebo postižení kolaterálních vazů.
+      </>
+    ),
+    en: (
+      <>
+        Knee ultrasound is highly effective for evaluating the <strong>suprapatellar recess, quadriceps and patellar tendons, collateral
+        ligaments, and periarticular bursae</strong>. It rapidly confirms effusion or synovitis and supports focused assessment of
+        enthesopathy and tendinopathy in anterior, medial, or lateral knee pain.
+      </>
+    )
+  },
+  kotnik: {
+    cs: (
+      <>
+        U <strong>hlezenního kloubu (kotníku)</strong> se vyšetřuje laterální vazivový komplex (ATFL, CFL), mediální deltový vaz,
+        peroneální šlachy, tibialis posterior a přední recesus hlezna. Sonografie je velmi přínosná po distorzích, protože dynamicky
+        posoudí stabilitu vazů, subluxaci peroneálních šlach i přítomnost výpotku či synovitidy.
+      </>
+    ),
+    en: (
+      <>
+        In the ankle, ultrasound is best suited for the <strong>lateral ligament complex, medial ligaments, peroneal and tibial tendons,
+        and the anterior ankle recess</strong>. Dynamic scanning is especially valuable after sprain injuries to assess ligament stability,
+        tendon subluxation, and associated effusion or synovitis.
+      </>
+    )
+  }
 } as const;
 
 const jointIntroImageBySlug = {
@@ -2497,18 +2653,21 @@ export default function ContentPage({ path }: ContentPageProps) {
   const sensoryInnervationKey = sensoryInnervationMatch?.[1];
   const sensoryInnervation = sensoryInnervationKey ? sensoryInnervationByNerve[sensoryInnervationKey] : undefined;
   const sensoryInnervationImage = sensoryInnervationKey ? sensoryInnervationImages[sensoryInnervationKey] : undefined;
-  const isShoulderUltrasoundPage = path === "/klouby/rameno/vysetrovaci-protokol";
-  const isShoulderIntroPage = path === "/klouby/rameno/uvod";
-  const isShoulderAnatomyPage = path === "/klouby/rameno/anatomie";
-  const jointPositioningMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/polohovani$/);
-  const jointIntroMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/uvod$/);
-  const jointProtocolMatch = path.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
+  const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
+  const isShoulderUltrasoundPage = normalizedPath === "/klouby/rameno/vysetrovaci-protokol";
+  const isShoulderIntroPage = normalizedPath === "/klouby/rameno/uvod";
+  const isShoulderAnatomyPage = normalizedPath === "/klouby/rameno/anatomie";
+  const isElbowAnatomyPage = normalizedPath === "/klouby/loket/anatomie";
+  const jointPositioningMatch = normalizedPath.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/polohovani$/);
+  const jointIntroMatch = normalizedPath.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/uvod$/);
+  const jointProtocolMatch = normalizedPath.match(/^\/klouby\/(loket|zapesti|kycel|koleno|kotnik)\/vysetrovaci-protokol$/);
   const jointPositioningKey = jointPositioningMatch?.[1];
   const jointPositioning = jointPositioningKey ? jointPositioningBySlug[jointPositioningKey] : undefined;
   const jointKey = jointProtocolMatch?.[1] ?? jointIntroMatch?.[1];
   const jointContent = jointKey ? jointContentBySlug[jointKey] : undefined;
   const jointIntroKey = jointIntroMatch?.[1] as keyof typeof jointIntroImageBySlug | undefined;
   const jointIntroImage = jointIntroKey ? jointIntroImageBySlug[jointIntroKey] : undefined;
+  const jointIntroContent = jointIntroKey ? jointIntroCopy[jointIntroKey] : undefined;
   const isProbesPage = path === "/basics/ultrazvukove-sondy/typy-sond";
   const isProbeMovementsPage = path === "/basics/ultrazvukove-sondy/pohyby-sondou";
   const isProbeGripPage = path === "/basics/ultrazvukove-sondy/drzeni-sondy";
@@ -3217,13 +3376,13 @@ export default function ContentPage({ path }: ContentPageProps) {
     );
   }
 
-  if (jointIntroMatch && jointIntroImage) {
+  if (jointIntroMatch && jointIntroImage && jointIntroContent) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <p>{jointIntroCopy[lang]}</p>
+          <p>{jointIntroContent[lang]}</p>
           <ResponsiveImage
             image={makeSingleImage("Anatomy", jointIntroImage.fileName)}
             alt={jointIntroImage.alt[lang]}
@@ -3373,6 +3532,59 @@ export default function ContentPage({ path }: ContentPageProps) {
             </div>
           </div>
         ) : null}
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (isElbowAnatomyPage) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={`${styles.articleBox} ${styles.anatomyLayout}`}>
+          <p className={styles.anatomyLead}>{elbowAnatomyIntro[lang]}</p>
+          <section className={styles.anatomyCard}>
+            <h2>{lang === "cs" ? "Anatomický přehled" : "Anatomical overview"}</h2>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Relevantní klouby loketního komplexu" : "Relevant joints of the elbow complex"}</h3>
+            <ul className={styles.compactList}>
+              {elbowAnatomyJoints[lang].map((item) => (
+                renderAnatomyListItem(item)
+              ))}
+            </ul>
+            <p>{elbowAnatomyUltrasoundFocus[lang]}</p>
+          </section>
+          <section className={styles.anatomyCard}>
+            <h2>{lang === "cs" ? "Kostní landmarky" : "Bony landmarks"}</h2>
+            <p>{elbowAnatomyLandmarkLead[lang]}</p>
+            <ul className={styles.compactList}>
+              {elbowAnatomyLandmarks[lang].map((item) => (
+                renderAnatomyListItem(item)
+              ))}
+            </ul>
+            <ResponsiveImage
+              image={makeSingleImage("Anatomy", elbowAnatomyLandmarkImage.fileName)}
+              alt={elbowAnatomyLandmarkImage.alt[lang]}
+              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyImageWrap}`}
+              enableMobileZoom
+            />
+          </section>
+          <section className={styles.anatomyCard}>
+            <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Hlavní svalové skupiny" : "Key muscle groups"}</h3>
+            <ul className={styles.compactList}>
+              {elbowAnatomyMuscles[lang].primary.map((item) => (
+                renderAnatomyListItem(item)
+              ))}
+            </ul>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Další důležité svaly" : "Other important muscles"}</h3>
+            <ul className={styles.compactList}>
+              {elbowAnatomyMuscles[lang].other.map((item) => (
+                renderAnatomyListItem(item)
+              ))}
+            </ul>
+          </section>
+        </section>
         {chapterNav}
       </section>
     );
