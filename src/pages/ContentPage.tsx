@@ -2371,9 +2371,13 @@ const jointIntroCopy = {
   ),
   en: (
     <>
-      MSK ultrasound of joints is important for fast, focused, and dynamic soft-tissue assessment in real time. In the shoulder
-      and other joints, it enables accurate pain-to-image correlation during movement, side-to-side comparison, and ongoing
-      clinical decision-making without ionizing radiation.
+      MSK ultrasound of joints is highly valuable in PMR because it provides{" "}
+      <strong>fast, targeted, and dynamic</strong> soft-tissue assessment directly at bedside or in the outpatient setting. It
+      enables <strong>immediate pain-to-image correlation</strong> during active movement, helps detect tendon, bursal, capsular,
+      and ligament pathology, and supports side-to-side comparison with the contralateral limb. In rehabilitation medicine, this
+      is important because ultrasound supports <strong>functional real-time clinical decision-making</strong>: it helps refine the
+      diagnosis, better target therapy, monitor treatment response, and safely plan interventions. Another major benefit is{" "}
+      <strong>the absence of ionizing radiation</strong>, together with repeatability and high availability in daily PMR practice.
     </>
   )
 } as const;
