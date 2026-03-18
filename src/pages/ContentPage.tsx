@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
 import { type CSSProperties, useEffect, useMemo, useState } from "react";
@@ -96,24 +96,24 @@ const localized = <T,>(value: T) => ({ cs: value, en: value });
 const ultrasoundBasicsCopy = {
   cs: [
     <>
-      Zvuk je <strong>mechanickĂ© vlnÄ›nĂ­</strong>, kterĂ© se ĹˇĂ­Ĺ™Ă­ prostĹ™edĂ­m (napĹ™Ă­klad vzduchem, vodou nebo biologickĂ˝mi tkĂˇnÄ›mi).
-      VznikĂˇ kmitĂˇnĂ­m ÄŤĂˇstic prostĹ™edĂ­ a ĹˇĂ­Ĺ™Ă­ se jako <strong>podĂ©lnĂˇ vlna</strong> tvoĹ™enĂˇ stĹ™Ă­dĂˇnĂ­m oblastĂ­ komprese
+      Zvuk je <strong>mechanické vlnění</strong>, které se šíří prostředím (například vzduchem, vodou nebo biologickými tkáněmi).
+      Vzniká kmitáním částic prostředí a šíří se jako <strong>podélná vlna</strong> tvořená střídáním oblastí komprese
       a rarefakce.
     </>,
     <>
-      PĹ™edpona <strong>ultra-</strong> znamenĂˇ â€žzaâ€ś nebo â€žnadâ€ś. V tomto pĹ™Ă­padÄ› oznaÄŤuje frekvence vyĹˇĹˇĂ­ neĹľ je hornĂ­ hranice
-      slyĹˇitelnosti lidskĂ©ho ucha. ÄŚlovÄ›k je schopen vnĂ­mat zvuk pĹ™ibliĹľnÄ› v rozsahu <strong>20 Hz aĹľ 20 kHz</strong>. VlnÄ›nĂ­
-      s vyĹˇĹˇĂ­ frekvencĂ­ se oznaÄŤuje jako ultrazvuk.
+      Předpona <strong>ultra-</strong> znamená „za“ nebo „nad“. V tomto případě označuje frekvence vyšší než je horní hranice
+      slyšitelnosti lidského ucha. Člověk je schopen vnímat zvuk přibližně v rozsahu <strong>20 Hz až 20 kHz</strong>. Vlnění
+      s vyšší frekvencí se označuje jako ultrazvuk.
     </>,
     <>
-      V medicĂ­nskĂ©m zobrazovĂˇnĂ­ se pouĹľĂ­vajĂ­ vĂ˝raznÄ› vyĹˇĹˇĂ­ frekvence, typicky pĹ™ibliĹľnÄ› <strong>2â€“18 MHz</strong>. Tyto frekvence
-      jsou nÄ›kolikanĂˇsobnÄ› vyĹˇĹˇĂ­ neĹľ frekvence slyĹˇitelnĂ©ho zvuku, a proto je lidskĂ© ucho nedokĂˇĹľe zachytit.
+      V medicínském zobrazování se používají výrazně vyšší frekvence, typicky přibližně <strong>2–18 MHz</strong>. Tyto frekvence
+      jsou několikanásobně vyšší než frekvence slyšitelného zvuku, a proto je lidské ucho nedokáže zachytit.
     </>,
     <>
-      DĹŻleĹľitou vlastnostĂ­ ultrazvuku je, Ĺľe se jednĂˇ o <strong>mechanickĂ© vlnÄ›nĂ­, nikoli elektromagnetickĂ© zĂˇĹ™enĂ­</strong>.
-      Ke svĂ©mu ĹˇĂ­Ĺ™enĂ­ proto vĹľdy potĹ™ebuje materiĂˇlnĂ­ prostĹ™edĂ­. V biologickĂ˝ch tkĂˇnĂ­ch se ultrazvuk ĹˇĂ­Ĺ™Ă­ relativnÄ› dobĹ™e,
-      zatĂ­mco ve vzduchu velmi ĹˇpatnÄ›. Z tohoto dĹŻvodu se pĹ™i ultrazvukovĂ©m vyĹˇetĹ™enĂ­ pouĹľĂ­vĂˇ <strong>kontaktnĂ­ gel</strong>,
-      kterĂ˝ eliminuje vzduchovou vrstvu mezi sondou a kĹŻĹľĂ­ a umoĹľĹuje efektivnĂ­ pĹ™enos ultrazvukovĂ˝ch vln do tkĂˇnĂ­.
+      Důležitou vlastností ultrazvuku je, že se jedná o <strong>mechanické vlnění, nikoli elektromagnetické záření</strong>.
+      Ke svému šíření proto vždy potřebuje materiální prostředí. V biologických tkáních se ultrazvuk šíří relativně dobře,
+      zatímco ve vzduchu velmi špatně. Z tohoto důvodu se při ultrazvukovém vyšetření používá <strong>kontaktní gel</strong>,
+      který eliminuje vzduchovou vrstvu mezi sondou a kůží a umožňuje efektivní přenos ultrazvukových vln do tkání.
     </>
   ],
   en: [
@@ -123,12 +123,12 @@ const ultrasoundBasicsCopy = {
       by alternating regions of compression and rarefaction.
     </>,
     <>
-      The prefix <strong>ultra-</strong> means â€śbeyondâ€ť or â€śabove.â€ť In this case it denotes frequencies higher than the upper
+      The prefix <strong>ultra-</strong> means “beyond” or “above.” In this case it denotes frequencies higher than the upper
       limit of human hearing. Humans can perceive sound approximately in the range of <strong>20 Hz to 20 kHz</strong>. Waves
       with higher frequency are called ultrasound.
     </>,
     <>
-      In medical imaging, much higher frequencies are used, typically about <strong>2â€“18 MHz</strong>. These frequencies are
+      In medical imaging, much higher frequencies are used, typically about <strong>2–18 MHz</strong>. These frequencies are
       many times higher than audible sound and therefore cannot be detected by the human ear.
     </>,
     <>
@@ -148,25 +148,25 @@ const echogenicityImage = makeResponsiveImage("UZ obraz", "echogenic");
 const soundWaveCopy = {
   cs: [
     <>
-      Zvuk je <strong>mechanickĂ© vlnÄ›nĂ­</strong>, kterĂ© se ĹˇĂ­Ĺ™Ă­ prostĹ™edĂ­m pĹ™enosem energie mezi ÄŤĂˇsticemi lĂˇtky. Na rozdĂ­l od
-      elektromagnetickĂ©ho zĂˇĹ™enĂ­ se zvuk <strong>nemĹŻĹľe ĹˇĂ­Ĺ™it ve vakuu</strong> â€“ k propagaci vĹľdy potĹ™ebuje materiĂˇlnĂ­ prostĹ™edĂ­,
-      napĹ™Ă­klad vzduch, vodu nebo biologickĂ© tkĂˇnÄ›.
+      Zvuk je <strong>mechanické vlnění</strong>, které se šíří prostředím přenosem energie mezi částicemi látky. Na rozdíl od
+      elektromagnetického záření se zvuk <strong>nemůže šířit ve vakuu</strong> – k propagaci vždy potřebuje materiální prostředí,
+      například vzduch, vodu nebo biologické tkáně.
     </>,
     <>
-      Z fyzikĂˇlnĂ­ho hlediska se jednĂˇ o <strong>podĂ©lnou vlnu</strong>. ÄŚĂˇstice prostĹ™edĂ­ se pĹ™i jejĂ­m ĹˇĂ­Ĺ™enĂ­ nepohybujĂ­ ve smÄ›ru
-      ĹˇĂ­Ĺ™enĂ­ vlny, ale pouze kmitajĂ­ kolem svĂ© rovnovĂˇĹľnĂ© polohy. Toto kmitĂˇnĂ­ vytvĂˇĹ™Ă­ stĹ™Ă­dajĂ­cĂ­ se oblasti komprese
-      (<strong>zvĂ˝ĹˇenĂ˝ tlak a hustota ÄŤĂˇstic</strong>) a rarefakce (<strong>snĂ­ĹľenĂ˝ tlak a hustota ÄŤĂˇstic</strong>), kterĂ© se
-      postupnÄ› ĹˇĂ­Ĺ™Ă­ prostĹ™edĂ­m.
+      Z fyzikálního hlediska se jedná o <strong>podélnou vlnu</strong>. Částice prostředí se při jejím šíření nepohybují ve směru
+      šíření vlny, ale pouze kmitají kolem své rovnovážné polohy. Toto kmitání vytváří střídající se oblasti komprese
+      (<strong>zvýšený tlak a hustota částic</strong>) a rarefakce (<strong>snížený tlak a hustota částic</strong>), které se
+      postupně šíří prostředím.
     </>,
     <>
-      Zvukovou vlnu lze popsat nÄ›kolika zĂˇkladnĂ­mi parametry. Mezi nejdĹŻleĹľitÄ›jĹˇĂ­ patĹ™Ă­ <strong>frekvence</strong>, kterĂˇ udĂˇvĂˇ
-      poÄŤet kmitĹŻ za sekundu, a <strong>vlnovĂˇ dĂ©lka</strong>, tedy vzdĂˇlenost mezi dvÄ›ma sousednĂ­mi body stejnĂ© fĂˇze vlnÄ›nĂ­
-      (napĹ™Ă­klad mezi dvÄ›ma maximy komprese). Tyto parametry jsou vzĂˇjemnÄ› propojeny â€“ pĹ™i konstantnĂ­ rychlosti ĹˇĂ­Ĺ™enĂ­ vyĹˇĹˇĂ­
-      frekvence odpovĂ­dĂˇ kratĹˇĂ­ vlnovĂ© dĂ©lce.
+      Zvukovou vlnu lze popsat několika základními parametry. Mezi nejdůležitější patří <strong>frekvence</strong>, která udává
+      počet kmitů za sekundu, a <strong>vlnová délka</strong>, tedy vzdálenost mezi dvěma sousedními body stejné fáze vlnění
+      (například mezi dvěma maximy komprese). Tyto parametry jsou vzájemně propojeny – při konstantní rychlosti šíření vyšší
+      frekvence odpovídá kratší vlnové délce.
     </>,
     <>
-      V ultrazvukovĂ©m zobrazovĂˇnĂ­ majĂ­ vlastnosti zvukovĂ© vlny <strong>zĂˇsadnĂ­ vĂ˝znam</strong>, protoĹľe urÄŤujĂ­ zpĹŻsob, jakĂ˝m se
-      ultrazvuk ĹˇĂ­Ĺ™Ă­ biologickĂ˝mi tkĂˇnÄ›mi a jak interaguje s jejich rozhranĂ­mi.
+      V ultrazvukovém zobrazování mají vlastnosti zvukové vlny <strong>zásadní význam</strong>, protože určují způsob, jakým se
+      ultrazvuk šíří biologickými tkáněmi a jak interaguje s jejich rozhraními.
     </>
   ],
   en: [
@@ -197,21 +197,21 @@ const soundWaveCopy = {
 const speedOfSoundCopy = {
   cs: [
     <>
-      <strong>Rychlost zvuku</strong> zĂˇvisĂ­ na vlastnostech prostĹ™edĂ­ â€“ zejmĂ©na na jeho hustotÄ› a elasticitÄ›. V mÄ›kkĂ˝ch tkĂˇnĂ­ch
-      lidskĂ©ho tÄ›la se pro klinickou praxi pouĹľĂ­vĂˇ prĹŻmÄ›rnĂˇ hodnota pĹ™ibliĹľnÄ› <strong>1540 m/s</strong>.
+      <strong>Rychlost zvuku</strong> závisí na vlastnostech prostředí – zejména na jeho hustotě a elasticitě. V měkkých tkáních
+      lidského těla se pro klinickou praxi používá průměrná hodnota přibližně <strong>1540 m/s</strong>.
     </>,
     <>
-      Rychlost zvuku je klĂ­ÄŤovĂˇ pro sprĂˇvnĂ˝ pĹ™epoÄŤet ÄŤasu letu odraĹľenĂ© vlny na vzdĂˇlenost. PĹ™Ă­stroj vĹľdy pĹ™edpoklĂˇdĂˇ konstantnĂ­
-      rychlost ĹˇĂ­Ĺ™enĂ­ v tkĂˇnĂ­ch. Pokud se reĂˇlnĂˇ rychlost liĹˇĂ­, vznikĂˇ <strong>geometrickĂˇ chyba</strong> â€“ struktury se mohou
-      zobrazit o nÄ›co hloubÄ›ji nebo mÄ›lÄŤeji, neĹľ ve skuteÄŤnosti jsou.
+      Rychlost zvuku je klíčová pro správný přepočet času letu odražené vlny na vzdálenost. Přístroj vždy předpokládá konstantní
+      rychlost šíření v tkáních. Pokud se reálná rychlost liší, vzniká <strong>geometrická chyba</strong> – struktury se mohou
+      zobrazit o něco hlouběji nebo mělčeji, než ve skutečnosti jsou.
     </>,
     <>
-      ObecnÄ› platĂ­, Ĺľe <strong>rychleji se zvuk ĹˇĂ­Ĺ™Ă­ v tuhĂ˝ch prostĹ™edĂ­ch</strong> (napĹ™Ă­klad kost), pomaleji v mÄ›kÄŤĂ­ch a
-      mĂ©nÄ› elastickĂ˝ch tkĂˇnĂ­ch. VelkĂ© rozdĂ­ly rychlosti na rozhranĂ­ch pĹ™ispĂ­vajĂ­ k odrazĹŻm a artefaktĹŻm.
+      Obecně platí, že <strong>rychleji se zvuk šíří v tuhých prostředích</strong> (například kost), pomaleji v měkčích a
+      méně elastických tkáních. Velké rozdíly rychlosti na rozhraních přispívají k odrazům a artefaktům.
     </>,
     <>
-      Pro sonografistu je proto dĹŻleĹľitĂ© rozumÄ›t tomu, Ĺľe zmÄ›ny rychlosti ĹˇĂ­Ĺ™enĂ­ ovlivĹujĂ­ <strong>polohu, tvar i velikost</strong>
-      zobrazenĂ˝ch struktur.
+      Pro sonografistu je proto důležité rozumět tomu, že změny rychlosti šíření ovlivňují <strong>polohu, tvar i velikost</strong>
+      zobrazených struktur.
     </>
   ],
   en: [
@@ -238,20 +238,20 @@ const speedOfSoundCopy = {
 const acousticImpedanceCopy = {
   cs: [
     <>
-      <strong>AkustickĂˇ impedance</strong> je veliÄŤina, kterĂˇ popisuje odpor prostĹ™edĂ­ proti ĹˇĂ­Ĺ™enĂ­ zvukovĂ© vlny. ZĂˇvisĂ­ na hustotÄ›
-      prostĹ™edĂ­ a rychlosti zvuku v nÄ›m.
+      <strong>Akustická impedance</strong> je veličina, která popisuje odpor prostředí proti šíření zvukové vlny. Závisí na hustotě
+      prostředí a rychlosti zvuku v něm.
     </>,
     <>
-      RozdĂ­l akustickĂ˝ch impedancĂ­ mezi dvÄ›ma tkĂˇnÄ›mi urÄŤuje, kolik energie se na rozhranĂ­ <strong>odrazĂ­</strong> a kolik projde
-      dĂˇl. ÄŚĂ­m vÄ›tĹˇĂ­ rozdĂ­l, tĂ­m silnÄ›jĹˇĂ­ odraz a jasnÄ›jĹˇĂ­ echogennĂ­ linie v obraze.
+      Rozdíl akustických impedancí mezi dvěma tkáněmi určuje, kolik energie se na rozhraní <strong>odrazí</strong> a kolik projde
+      dál. Čím větší rozdíl, tím silnější odraz a jasnější echogenní linie v obraze.
     </>,
     <>
-      ExtrĂ©mnĂ­ rozdĂ­l je mezi mÄ›kkĂ˝mi tkĂˇnÄ›mi a vzduchem â€“ proto vzduch vytvĂˇĹ™Ă­ tĂ©mÄ›Ĺ™ ĂşplnĂ˝ odraz a vĂ˝raznÄ› zhorĹˇuje zobrazenĂ­.
-      Z tohoto dĹŻvodu se pouĹľĂ­vĂˇ <strong>gel</strong> pro odstranÄ›nĂ­ vzduchovĂ© vrstvy.
+      Extrémní rozdíl je mezi měkkými tkáněmi a vzduchem – proto vzduch vytváří téměř úplný odraz a výrazně zhoršuje zobrazení.
+      Z tohoto důvodu se používá <strong>gel</strong> pro odstranění vzduchové vrstvy.
     </>,
     <>
-      PorozumÄ›nĂ­ akustickĂ© impedanci je klĂ­ÄŤovĂ© pro interpretaci toho, proÄŤ jsou nÄ›kterĂ© rozhranĂ­ <strong>hyperechogennĂ­</strong>
-      a jinĂ© naopak mĂˇlo viditelnĂ©.
+      Porozumění akustické impedanci je klíčové pro interpretaci toho, proč jsou některé rozhraní <strong>hyperechogenní</strong>
+      a jiné naopak málo viditelné.
     </>
   ],
   en: [
@@ -277,19 +277,19 @@ const acousticImpedanceCopy = {
 const reflectionCopy = {
   cs: [
     <>
-      <strong>Odraz</strong> vznikĂˇ na rozhranĂ­ dvou prostĹ™edĂ­ s odliĹˇnou akustickou impedancĂ­. ÄŚĂˇst energie se vracĂ­ zpÄ›t jako
-      echo, kterĂ© pĹ™Ă­stroj vyuĹľĂ­vĂˇ k tvorbÄ› obrazu.
+      <strong>Odraz</strong> vzniká na rozhraní dvou prostředí s odlišnou akustickou impedancí. Část energie se vrací zpět jako
+      echo, které přístroj využívá k tvorbě obrazu.
     </>,
     <>
-      Intenzita odrazu zĂˇvisĂ­ na rozdĂ­lu impedancĂ­ a na Ăşhlu dopadu paprsku. NejvĂ­ce energie se vracĂ­ pĹ™i <strong>kolmĂ©m dopadu</strong>,
-      proto se snaĹľĂ­me sondu nastavit co nejkolmÄ›ji k vyĹˇetĹ™ovanĂ© struktuĹ™e.
+      Intenzita odrazu závisí na rozdílu impedancí a na úhlu dopadu paprsku. Nejvíce energie se vrací při <strong>kolmém dopadu</strong>,
+      proto se snažíme sondu nastavit co nejkolměji k vyšetřované struktuře.
     </>,
     <>
-      Odraz je hlavnĂ­ mechanizmus, dĂ­ky kterĂ©mu vidĂ­me hranice tkĂˇnĂ­. ZĂˇroveĹ je zdrojem nÄ›kterĂ˝ch artefaktĹŻ, napĹ™Ă­klad
-      <strong>zrcadlenĂ­</strong> nebo <strong>reverberacĂ­</strong>.
+      Odraz je hlavní mechanizmus, díky kterému vidíme hranice tkání. Zároveň je zdrojem některých artefaktů, například
+      <strong>zrcadlení</strong> nebo <strong>reverberací</strong>.
     </>,
     <>
-      V praxi je dĹŻleĹľitĂ© chĂˇpat, Ĺľe slabĂ© odrazy mohou vĂ©st k nĂ­zkĂ© echogenitÄ›, zatĂ­mco silnĂ© odrazy vytvĂˇĹ™ejĂ­ jasnĂ© linie.
+      V praxi je důležité chápat, že slabé odrazy mohou vést k nízké echogenitě, zatímco silné odrazy vytvářejí jasné linie.
     </>
   ],
   en: [
@@ -315,19 +315,19 @@ const reflectionCopy = {
 const refractionCopy = {
   cs: [
     <>
-      <strong>Lom</strong> (refraction) nastĂˇvĂˇ, kdyĹľ zvukovĂˇ vlna pĹ™echĂˇzĂ­ mezi prostĹ™edĂ­mi s rĹŻznou rychlostĂ­ ĹˇĂ­Ĺ™enĂ­ a dopadĂˇ na
-      rozhranĂ­ pod Ăşhlem. Paprsek se potom <strong>odchyluje</strong> od pĹŻvodnĂ­ho smÄ›ru.
+      <strong>Lom</strong> (refraction) nastává, když zvuková vlna přechází mezi prostředími s různou rychlostí šíření a dopadá na
+      rozhraní pod úhlem. Paprsek se potom <strong>odchyluje</strong> od původního směru.
     </>,
     <>
-      V ultrazvuku mĹŻĹľe lom zpĹŻsobit, Ĺľe se struktura zobrazĂ­ na jinĂ©m mĂ­stÄ›, neĹľ kde skuteÄŤnÄ› je. TypickĂ˝m dĹŻsledkem je
-      <strong>laterĂˇlnĂ­ posun</strong> nebo zdvojenĂ­ kontur.
+      V ultrazvuku může lom způsobit, že se struktura zobrazí na jiném místě, než kde skutečně je. Typickým důsledkem je
+      <strong>laterální posun</strong> nebo zdvojení kontur.
     </>,
     <>
-      K lomĹŻm ÄŤasto dochĂˇzĂ­ na zakĹ™ivenĂ˝ch rozhranĂ­ch, napĹ™Ă­klad na okrajĂ­ch Ĺˇlach ÄŤi cĂ©v. ZmÄ›nou Ăşhlu sondy lze tento efekt
-      ÄŤĂˇsteÄŤnÄ› minimalizovat.
+      K lomům často dochází na zakřivených rozhraních, například na okrajích šlach či cév. Změnou úhlu sondy lze tento efekt
+      částečně minimalizovat.
     </>,
     <>
-      PorozumÄ›nĂ­ lomu pomĂˇhĂˇ sprĂˇvnÄ› interpretovat obraz a odliĹˇit skuteÄŤnĂ˝ nĂˇlez od artefaktu.
+      Porozumění lomu pomáhá správně interpretovat obraz a odlišit skutečný nález od artefaktu.
     </>
   ],
   en: [
@@ -353,22 +353,22 @@ const probeGripCopy = {
   cs: {
     intro: (
       <>
-        SprĂˇvnĂ© <strong>drĹľenĂ­ sondy</strong> zvyĹˇuje stabilitu, zlepĹˇuje kontakt s tkĂˇnÄ›mi a sniĹľuje Ăşnavu ruky. NĂ­Ĺľe jsou tĹ™i
-        praktickĂ© typy Ăşchopu pouĹľĂ­vanĂ© v MSK sonografii.
+        Správné <strong>držení sondy</strong> zvyšuje stabilitu, zlepšuje kontakt s tkáněmi a snižuje únavu ruky. Níže jsou tři
+        praktické typy úchopu používané v MSK sonografii.
       </>
     ),
     items: [
       <>
-        <strong>Princess grip</strong> â€“ ĹˇpatnĂ˝ zpĹŻsob drĹľenĂ­, protoĹľe je nestabilnĂ­ a snadno vede k nechtÄ›nĂ˝m pohybĹŻm sondy.
-        VĂ˝sledkem je niĹľĹˇĂ­ kontrola a horĹˇĂ­ reprodukovatelnost obrazu.
+        <strong>Princess grip</strong> – špatný způsob držení, protože je nestabilní a snadno vede k nechtěným pohybům sondy.
+        Výsledkem je nižší kontrola a horší reprodukovatelnost obrazu.
       </>,
       <>
-        <strong>Normal grip</strong> â€“ standardnĂ­ vyvĂˇĹľenĂ˝ Ăşchop. Poskytuje dobrou stabilitu i citlivost a je nejÄŤastÄ›ji pouĹľĂ­vanĂ˝
-        pĹ™i rutinnĂ­m vyĹˇetĹ™enĂ­.
+        <strong>Normal grip</strong> – standardní vyvážený úchop. Poskytuje dobrou stabilitu i citlivost a je nejčastěji používaný
+        při rutinním vyšetření.
       </>,
       <>
-        <strong>Powerful grip</strong> â€“ takĂ© ĹˇpatnĂ˝ zpĹŻsob drĹľenĂ­, protoĹľe omezuje jemnĂ© Ĺ™Ă­zenĂ­ a vede k pĹ™ehnanĂ©mu tlaku na
-        tkĂˇnÄ›. To sniĹľuje citlivost, zhorĹˇuje drobnĂ© korekce a zvyĹˇuje Ăşnavu ruky.
+        <strong>Powerful grip</strong> – také špatný způsob držení, protože omezuje jemné řízení a vede k přehnanému tlaku na
+        tkáně. To snižuje citlivost, zhoršuje drobné korekce a zvyšuje únavu ruky.
       </>
     ]
   },
@@ -381,15 +381,15 @@ const probeGripCopy = {
     ),
     items: [
       <>
-        <strong>Princess grip</strong> â€“ a poor grip choice because it is unstable and easily causes unintended probe movement.
+        <strong>Princess grip</strong> – a poor grip choice because it is unstable and easily causes unintended probe movement.
         This results in reduced control and poorer reproducibility.
       </>,
       <>
-        <strong>Normal grip</strong> â€“ a balanced standard grip. It provides good stability and sensitivity and is the most common
+        <strong>Normal grip</strong> – a balanced standard grip. It provides good stability and sensitivity and is the most common
         choice for routine scanning.
       </>,
       <>
-        <strong>Powerful grip</strong> â€“ also a poor grip choice because it limits fine control and encourages excessive pressure
+        <strong>Powerful grip</strong> – also a poor grip choice because it limits fine control and encourages excessive pressure
         on tissues. This reduces sensitivity, worsens fine adjustments, and increases hand fatigue.
       </>
     ]
@@ -399,21 +399,21 @@ const probeGripCopy = {
 const echogenicityCopy = {
   cs: [
     <>
-      <strong>Echogenita</strong> popisuje, jak intenzivnÄ› tkĂˇĹ odrĂˇĹľĂ­ ultrazvuk. V obraze se projevuje jako rĹŻznĂ˝ stupeĹ jasu,
-      kterĂ˝ umoĹľĹuje rozliĹˇit struktury a jejich vlastnosti.
+      <strong>Echogenita</strong> popisuje, jak intenzivně tkáň odráží ultrazvuk. V obraze se projevuje jako různý stupeň jasu,
+      který umožňuje rozlišit struktury a jejich vlastnosti.
     </>,
     <>
-      ZĂˇkladnĂ­ pojmy: <strong>anechogennĂ­</strong> (bez odrazu, zcela ÄŤernĂ© â€“ typicky tekutiny), <strong>hypoechogennĂ­</strong>
-      (tmavĹˇĂ­ neĹľ okolĂ­), <strong>izoechogennĂ­</strong> (stejnĂ˝ jas jako okolĂ­) a <strong>hyperechogennĂ­</strong> (svÄ›tlejĹˇĂ­ neĹľ
-      okolĂ­ â€“ silnĂ© odrazy, napĹ™. fibrotickĂ© tkĂˇnÄ› nebo kalcifikace).
+      Základní pojmy: <strong>anechogenní</strong> (bez odrazu, zcela černé – typicky tekutiny), <strong>hypoechogenní</strong>
+      (tmavší než okolí), <strong>izoechogenní</strong> (stejný jas jako okolí) a <strong>hyperechogenní</strong> (světlejší než
+      okolí – silné odrazy, např. fibrotické tkáně nebo kalcifikace).
     </>,
     <>
-      Echogenita vĹľdy zĂˇvisĂ­ na <strong>nastavenĂ­ pĹ™Ă­stroje</strong> (gain, TGC) a na Ăşhlu dopadu paprsku. Proto je dĹŻleĹľitĂ©
-      hodnotit jas struktury v kontextu okolĂ­ a pĹ™i sprĂˇvnĂ©m nastavenĂ­.
+      Echogenita vždy závisí na <strong>nastavení přístroje</strong> (gain, TGC) a na úhlu dopadu paprsku. Proto je důležité
+      hodnotit jas struktury v kontextu okolí a při správném nastavení.
     </>,
     <>
-      V praxi se ÄŤasto pouĹľĂ­vĂˇ i termĂ­n <strong>heterogennĂ­</strong> echotextura, kterĂˇ znamenĂˇ nehomogennĂ­ vzhled tkĂˇnÄ›. To mĹŻĹľe
-      svÄ›dÄŤit pro zĂˇnÄ›t, degenerativnĂ­ zmÄ›ny nebo smĂ­ĹˇenĂ˝ obsah.
+      V praxi se často používá i termín <strong>heterogenní</strong> echotextura, která znamená nehomogenní vzhled tkáně. To může
+      svědčit pro zánět, degenerativní změny nebo smíšený obsah.
     </>
   ],
   en: [
@@ -422,9 +422,9 @@ const echogenicityCopy = {
       levels of brightness, allowing structures and their properties to be distinguished.
     </>,
     <>
-      Key terms: <strong>anechoic</strong> (no reflection, completely black â€“ typically fluid), <strong>hypoechoic</strong>
+      Key terms: <strong>anechoic</strong> (no reflection, completely black – typically fluid), <strong>hypoechoic</strong>
       (darker than surroundings), <strong>isoechoic</strong> (same brightness as surroundings), and <strong>hyperechoic</strong>
-      (brighter than surroundings â€“ strong reflections, e.g. fibrotic tissue or calcifications).
+      (brighter than surroundings – strong reflections, e.g. fibrotic tissue or calcifications).
     </>,
     <>
       Echogenicity always depends on <strong>machine settings</strong> (gain, TGC) and on the angle of insonation. It should be
@@ -448,11 +448,11 @@ const jointVideoBySlug = {
   },
   zapesti: {
     src: "https://www.youtube-nocookie.com/embed/Lq4cgPNbpR8",
-    title: { cs: "ZĂˇpÄ›stĂ­ video tutorial", en: "Wrist video tutorial" }
+    title: { cs: "Zápěstí video tutorial", en: "Wrist video tutorial" }
   },
   kycel: {
     src: "https://www.youtube-nocookie.com/embed/7dexOe8owkE",
-    title: { cs: "KyÄŤel video tutorial", en: "Hip video tutorial" }
+    title: { cs: "Kyčel video tutorial", en: "Hip video tutorial" }
   },
   koleno: {
     src: "https://www.youtube-nocookie.com/embed/9amXVQnCin0",
@@ -460,7 +460,7 @@ const jointVideoBySlug = {
   },
   kotnik: {
     src: "https://www.youtube-nocookie.com/embed/Xag8-Odb7is",
-    title: { cs: "KotnĂ­k video tutorial", en: "Ankle video tutorial" }
+    title: { cs: "Kotník video tutorial", en: "Ankle video tutorial" }
   }
 } as const;
 
@@ -468,64 +468,64 @@ const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
     introPoints: [
-      "UltrazvukovĂ© vyĹˇetĹ™enĂ­ loketnĂ­ho kloubu je praktickĂˇ metoda pro detailnĂ­ hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase; pĹ™i sprĂˇvnĂ© technice pĹ™esnÄ› hodnotĂ­ Ĺˇlachy flexorovĂ©ho i extenzorovĂ©ho aparĂˇtu, vazy, nervy i burzy a umoĹľĹuje pĹ™Ă­mou korelaci nĂˇlezu s bolestĂ­ a porovnĂˇnĂ­ s druhou stranou.",
-      "KvalitnĂ­ vyĹˇetĹ™enĂ­ vyĹľaduje standardizovanou polohu pacienta, systematickĂ˝ postup od kostnĂ­ch orientaÄŤnĂ­ch bodĹŻ (epikondyly humeru, olecranon, hlavice radia) a skenovĂˇnĂ­ v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ› s aktivnĂ­ pracĂ­ se sondou (sliding, rocking, fanning) pro minimalizaci anizotropie.",
-      "DynamickĂ© manĂ©vry (flexe/extenze, pronace/supinace) pomĂˇhajĂ­ zachytit patologii Ĺˇlach, subluxaci n. ulnaris v kubitĂˇlnĂ­m tunelu i poruchy stability lokte; pĹ™i tekutinovĂ˝ch kolekcĂ­ch je vhodnĂˇ komprese/dekomprese pro odliĹˇenĂ­ vĂ˝potku, synovitidy nebo burzitidy od pevnĂ© tkĂˇnÄ›.",
-      "ZĂˇsadnĂ­ je sprĂˇvnĂ© nastavenĂ­ pĹ™Ă­stroje (hloubka, fokus, gain) a pouĹľitĂ­ vysokofrekvenÄŤnĂ­ lineĂˇrnĂ­ sondy; systematiÄŤnost, porovnĂˇnĂ­ s kontralaterĂˇlnĂ­ stranou a znalost artefaktĹŻ jsou klĂ­ÄŤovĂ© pro spolehlivou interpretaci."
+      "Ultrazvukové vyšetření loketního kloubu je praktická metoda pro detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí šlachy flexorového i extenzorového aparátu, vazy, nervy i burzy a umožňuje přímou korelaci nálezu s bolestí a porovnání s druhou stranou.",
+      "Kvalitní vyšetření vyžaduje standardizovanou polohu pacienta, systematický postup od kostních orientačních bodů (epikondyly humeru, olecranon, hlavice radia) a skenování v podélné i příčné rovině s aktivní prací se sondou (sliding, rocking, fanning) pro minimalizaci anizotropie.",
+      "Dynamické manévry (flexe/extenze, pronace/supinace) pomáhají zachytit patologii šlach, subluxaci n. ulnaris v kubitálním tunelu i poruchy stability lokte; při tekutinových kolekcích je vhodná komprese/dekomprese pro odlišení výpotku, synovitidy nebo burzitidy od pevné tkáně.",
+      "Zásadní je správné nastavení přístroje (hloubka, fokus, gain) a použití vysokofrekvenční lineární sondy; systematičnost, porovnání s kontralaterální stranou a znalost artefaktů jsou klíčové pro spolehlivou interpretaci."
     ],
     pathologyPoints: [
-      "NejÄŤastÄ›jĹˇĂ­ jsou tendinopatie, parciĂˇlnĂ­ ruptury a entezopatie v oblasti laterĂˇlnĂ­ho a mediĂˇlnĂ­ho epikondylu (spoleÄŤnĂ˝ extenzorovĂ˝/flexorovĂ˝ Ăşpon), dĂˇle postiĹľenĂ­ Ĺˇlachy m. triceps brachii.",
-      "ÄŚastĂ© jsou takĂ© burzitida olecrani, synovitida a kloubnĂ­ vĂ˝potek v pĹ™ednĂ­m i zadnĂ­m recesu lokte.",
-      "VĂ˝znamnĂ© je hodnocenĂ­ nervovĂ˝ch struktur, zejmĂ©na n. ulnaris v kubitĂˇlnĂ­m tunelu (ztluĹˇtÄ›nĂ­, zmÄ›ny echogenity, dynamickĂˇ subluxace).",
-      "U chronickĂ˝ch obtĂ­ĹľĂ­ lze nalĂ©zt degenerativnĂ­ zmÄ›ny Ĺˇlach, kalcifikace, nepravidelnosti kortikalis v mĂ­stech ĂşponĹŻ a zmÄ›ny echotextury svalĹŻ."
+      "Nejčastější jsou tendinopatie, parciální ruptury a entezopatie v oblasti laterálního a mediálního epikondylu (společný extenzorový/flexorový úpon), dále postižení šlachy m. triceps brachii.",
+      "Časté jsou také burzitida olecrani, synovitida a kloubní výpotek v předním i zadním recesu lokte.",
+      "Významné je hodnocení nervových struktur, zejména n. ulnaris v kubitálním tunelu (ztluštění, změny echogenity, dynamická subluxace).",
+      "U chronických obtíží lze nalézt degenerativní změny šlach, kalcifikace, nepravidelnosti kortikalis v místech úponů a změny echotextury svalů."
     ],
     protocolSteps: [
-      { view: "VentrĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "SagitĂˇlnĂ­ rovina"] },
-      { view: "MediĂˇlnĂ­ pohled", planes: ["FrontĂˇlnĂ­ rovina"] },
-      { view: "LaterĂˇlnĂ­ pohled", planes: ["FrontĂˇlnĂ­ rovina"] },
-      { view: "DorzĂˇlnĂ­ pohled", planes: ["SagitĂˇlnĂ­ rovina"] }
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Mediální pohled", planes: ["Frontální rovina"] },
+      { view: "Laterální pohled", planes: ["Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Sagitální rovina"] }
     ],
     protocolImages: [
       {
         key: "01_01",
-        heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
         bullets: [
-          "b: distĂˇlnĂ­ Ĺˇlacha bicepsu brachii, a: arteria brachialis, m: nervus medianus, c: chrupavka. PĹ™ednĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez loktem s pĹ™ehledem radiohumerĂˇlnĂ­ oblasti, neurovaskulĂˇrnĂ­ch struktur a chrupavky."
+          "b: distální šlacha bicepsu brachii, a: arteria brachialis, m: nervus medianus, c: chrupavka. Přední příčný řez loktem s přehledem radiohumerální oblasti, neurovaskulárních struktur a chrupavky."
         ]
       },
       {
         key: "02_02",
-        heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina, radiĂˇlnĂ­ strana",
+        heading: "Obrázek 2. Ventrální pohled, sagitální rovina, radiální strana",
         bullets: [
-          "c: chrupavka, f: tekutina v kloubu. PodĂ©lnĂ˝ Ĺ™ez radiohumerĂˇlnĂ­m skloubenĂ­m vhodnĂ˝ pro hodnocenĂ­ tekutiny v radiĂˇlnĂ­ jamce a pĹ™ednĂ­m recesu."
+          "c: chrupavka, f: tekutina v kloubu. Podélný řez radiohumerálním skloubením vhodný pro hodnocení tekutiny v radiální jamce a předním recesu."
         ]
       },
       {
         key: "03_03",
-        heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina, ulnĂˇrnĂ­ strana",
+        heading: "Obrázek 3. Ventrální pohled, sagitální rovina, ulnární strana",
         bullets: [
-          "c: chrupavka, f: tekutina v kloubu. PodĂ©lnĂ˝ Ĺ™ez humeroulnĂˇrnĂ­m skloubenĂ­m s hodnocenĂ­m fossa coronoidea a pĹ™ednĂ­ho synoviĂˇlnĂ­ho recesu."
+          "c: chrupavka, f: tekutina v kloubu. Podélný řez humeroulnárním skloubením s hodnocením fossa coronoidea a předního synoviálního recesu."
         ]
       },
       {
         key: "04_04",
-        heading: "ObrĂˇzek 4. MediĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina",
+        heading: "Obrázek 4. Mediální pohled, frontální rovina",
         bullets: [
-          "CFT: spoleÄŤnĂˇ flexorovĂˇ Ĺˇlacha. Projekce mediĂˇlnĂ­ ÄŤĂˇsti lokte pro hodnocenĂ­ Ăşponu flexorĹŻ, MCL a nĂˇlezĹŻ typu mediĂˇlnĂ­ epikondylitida."
+          "CFT: společná flexorová šlacha. Projekce mediální části lokte pro hodnocení úponu flexorů, MCL a nálezů typu mediální epikondylitida."
         ]
       },
       {
         key: "01_05",
-        heading: "ObrĂˇzek 5. LaterĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina",
+        heading: "Obrázek 5. Laterální pohled, frontální rovina",
         bullets: [
-          "CET: spoleÄŤnĂˇ Ĺˇlacha extenzorĹŻ. KlĂ­ÄŤovĂˇ projekce pro laterĂˇlnĂ­ epikondylitidu, integritu extenzorovĂ©ho Ăşponu a laterĂˇlnĂ­ho kolaterĂˇlnĂ­ho vazu."
+          "CET: společná šlacha extenzorů. Klíčová projekce pro laterální epikondylitidu, integritu extenzorového úponu a laterálního kolaterálního vazu."
         ]
       },
       {
         key: "02_06",
-        heading: "ObrĂˇzek 6. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina",
+        heading: "Obrázek 6. Dorzální pohled, sagitální rovina",
         bullets: [
-          "f: tekutina v kloubu. ZadnĂ­ podĂ©lnĂˇ projekce pĹ™es olecranon a Ĺˇlachu tricepsu pro hodnocenĂ­ zadnĂ­ho recesu, vĂ˝potku a burzitidy."
+          "f: tekutina v kloubu. Zadní podélná projekce přes olecranon a šlachu tricepsu pro hodnocení zadního recesu, výpotku a burzitidy."
         ]
       }
     ]
@@ -533,128 +533,128 @@ const jointContentBySlug: Record<string, JointContent> = {
   zapesti: {
     folder: "03_Wrist/protokol",
     introPoints: [
-      "Ultrazvuk zĂˇpÄ›stĂ­ umoĹľĹuje detailnĂ­ hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase; pĹ™i sprĂˇvnĂ© technice pĹ™esnÄ› hodnotĂ­ flexorovĂ© a extenzorovĂ© Ĺˇlachy, vazy, nervy i synoviĂˇlnĂ­ pochvy.",
-      "ZĂˇsadnĂ­ je standardizovanĂˇ poloha pacienta a systematickĂ© skenovĂˇnĂ­ od kostnĂ­ch orientaÄŤnĂ­ch bodĹŻ (distĂˇlnĂ­ radius/ulna, karpĂˇlnĂ­ kosti, karpĂˇlnĂ­ tunel) v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ› s aktivnĂ­ pracĂ­ se sondou pro omezenĂ­ anizotropie.",
-      "DynamickĂ© vyĹˇetĹ™enĂ­ (flexe/extenze, radiĂˇlnĂ­/ulnĂˇrnĂ­ dukce) pomĂˇhĂˇ odhalit instabilitu Ĺˇlach, patologii extenzorovĂ˝ch kompartmentĹŻ a zmÄ›ny v oblasti karpĂˇlnĂ­ho tunelu vÄŤetnÄ› komprese n. medianus.",
-      "SprĂˇvnĂ© nastavenĂ­ (hloubka, fokus, gain), vysokofrekvenÄŤnĂ­ lineĂˇrnĂ­ sonda a srovnĂˇnĂ­ s druhostrannĂ˝m zĂˇpÄ›stĂ­m jsou klĂ­ÄŤovĂ© pro kvalitnĂ­ interpretaci."
+      "Ultrazvuk zápěstí umožňuje detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí flexorové a extenzorové šlachy, vazy, nervy i synoviální pochvy.",
+      "Zásadní je standardizovaná poloha pacienta a systematické skenování od kostních orientačních bodů (distální radius/ulna, karpální kosti, karpální tunel) v podélné i příčné rovině s aktivní prací se sondou pro omezení anizotropie.",
+      "Dynamické vyšetření (flexe/extenze, radiální/ulnární dukce) pomáhá odhalit instabilitu šlach, patologii extenzorových kompartmentů a změny v oblasti karpálního tunelu včetně komprese n. medianus.",
+      "Správné nastavení (hloubka, fokus, gain), vysokofrekvenční lineární sonda a srovnání s druhostranným zápěstím jsou klíčové pro kvalitní interpretaci."
     ],
     pathologyPoints: [
-      "NejÄŤastÄ›jĹˇĂ­ jsou tendinopatie a tenosynovitidy flexorĹŻ/extenzorĹŻ, zejmĂ©na v extenzorovĂ˝ch kompartmentech a v karpĂˇlnĂ­m tunelu.",
-      "ÄŚastĂ˝m nĂˇlezem jsou gangliovĂ© cysty jako ohraniÄŤenĂ© anechogennĂ­/hypoechogennĂ­ lĂ©ze s posteriornĂ­m zesĂ­lenĂ­m.",
-      "BÄ›ĹľnĂ© jsou synovitida a vĂ˝potek radiokarpĂˇlnĂ­ho ÄŤi mediokarpĂˇlnĂ­ho kloubu.",
-      "U n. medianus v karpĂˇlnĂ­m tunelu lze zachytit znĂˇmky Ăştlaku (ztluĹˇtÄ›nĂ­, zmÄ›na echogenity, alterace tvaru); u chronickĂ˝ch stavĹŻ degenerativnĂ­ zmÄ›ny a kalcifikace."
+      "Nejčastější jsou tendinopatie a tenosynovitidy flexorů/extenzorů, zejména v extenzorových kompartmentech a v karpálním tunelu.",
+      "Častým nálezem jsou gangliové cysty jako ohraničené anechogenní/hypoechogenní léze s posteriorním zesílením.",
+      "Běžné jsou synovitida a výpotek radiokarpálního či mediokarpálního kloubu.",
+      "U n. medianus v karpálním tunelu lze zachytit známky útlaku (ztluštění, změna echogenity, alterace tvaru); u chronických stavů degenerativní změny a kalcifikace."
     ],
     protocolSteps: [
-      { view: "VentrĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "SagitĂˇlnĂ­ rovina"] },
-      { view: "LaterĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "FrontĂˇlnĂ­ rovina"] },
-      { view: "DorzĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina"] }
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina", "Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina"] }
     ],
     protocolImages: [
-      { key: "01_Obrzek1_v2", heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["fcr: flexor carpi radialis, m: n. medianus, a: a. ulnaris, u: n. ulnaris, t: flexor tendon. Projekce karpĂˇlnĂ­ho tunelu a Guyonova kanĂˇlu pro hodnocenĂ­ komprese nervĹŻ, tenosynovitidy a gangliĂ­."] },
-      { key: "02_Obrzek2", heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["m: nervus medianus. ProximĂˇlnĂ­ sledovĂˇnĂ­ n. medianus z karpĂˇlnĂ­ho tunelu do distĂˇlnĂ­ho pĹ™edloktĂ­ mezi FDS a FDP."] },
-      { key: "03_Obrzek3", heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["m: nervus medianus. PodĂ©lnĂ© zobrazenĂ­ fascikulĂˇrnĂ­ architektury n. medianus pĹ™i vstupu do karpĂˇlnĂ­ho tunelu."] },
-      { key: "04_Obrzek4", heading: "ObrĂˇzek 4. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ECU, EDM, EDC, EI, EPL, ECRB, ECRL, EPB, APL. PĹ™ehled extenzorovĂ˝ch kompartmentĹŻ na Ăşrovni distĂˇlnĂ­ho radia."] },
-      { key: "05_Obrzek5", heading: "ObrĂˇzek 5. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ECRB, ECRL. DruhĂ˝ extenzorovĂ˝ kompartment laterĂˇlnÄ› od Listerova hrbolku, vhodnĂ˝ pro tenosynovitidu a pĹ™etĂ­ĹľenĂ­."] },
-      { key: "06_Obrzek6", heading: "ObrĂˇzek 6. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["EPB, APL. PrvnĂ­ extenzorovĂ˝ kompartment, typickĂˇ projekce pro De Quervainovu tenosynovitidu."] },
-      { key: "07_Obrzek7", heading: "ObrĂˇzek 7. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ECU: extensor carpi ulnaris. Ĺ estĂ˝ extenzorovĂ˝ kompartment pro hodnocenĂ­ instability/subluxace ECU a tenosynovitidy."] },
-      { key: "08_Obrzek8", heading: "ObrĂˇzek 8. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["PodĂ©lnĂˇ dorzĂˇlnĂ­ projekce pĹ™es extenzorovĂ© Ĺˇlachy a radiokarpĂˇlnĂ­ kloub s hodnocenĂ­m tekutiny, zĂˇnÄ›tu a kontinuity Ĺˇlach."] }
+      { key: "01_Obrzek1_v2", heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: ["fcr: flexor carpi radialis, m: n. medianus, a: a. ulnaris, u: n. ulnaris, t: flexor tendon. Projekce karpálního tunelu a Guyonova kanálu pro hodnocení komprese nervů, tenosynovitidy a ganglií."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["m: nervus medianus. Proximální sledování n. medianus z karpálního tunelu do distálního předloktí mezi FDS a FDP."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Ventrální pohled, sagitální rovina", bullets: ["m: nervus medianus. Podélné zobrazení fascikulární architektury n. medianus při vstupu do karpálního tunelu."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Dorzální pohled, transverzální rovina", bullets: ["ECU, EDM, EDC, EI, EPL, ECRB, ECRL, EPB, APL. Přehled extenzorových kompartmentů na úrovni distálního radia."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, transverzální rovina", bullets: ["ECRB, ECRL. Druhý extenzorový kompartment laterálně od Listerova hrbolku, vhodný pro tenosynovitidu a přetížení."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, transverzální rovina", bullets: ["EPB, APL. První extenzorový kompartment, typická projekce pro De Quervainovu tenosynovitidu."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["ECU: extensor carpi ulnaris. Šestý extenzorový kompartment pro hodnocení instability/subluxace ECU a tenosynovitidy."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, sagitální rovina", bullets: ["Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub s hodnocením tekutiny, zánětu a kontinuity šlach."] }
     ]
   },
   kycel: {
     folder: "04_Hip/protokol",
     introPoints: [
-      "Ultrazvuk kyÄŤle umoĹľĹuje hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase a pĹ™inĂˇĹˇĂ­ informace o kloubnĂ­m pouzdru, synovii, burzĂˇch, svalech a ĹˇlachĂˇch, zejmĂ©na flexorovĂ©ho a abduktorovĂ©ho aparĂˇtu.",
-      "Pro kvalitnĂ­ vyĹˇetĹ™enĂ­ je zĂˇsadnĂ­ systematickĂ˝ postup od kostnĂ­ch orientaÄŤnĂ­ch bodĹŻ (hlavice/krÄŤek femuru, acetabulum, velkĂ˝ trochanter) a skenovĂˇnĂ­ v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ› se sprĂˇvnou pracĂ­ se sondou.",
-      "DynamickĂ© manĂ©vry (flexe, extenze, abdukce, addukce, rotace) pomĂˇhajĂ­ posoudit snapping fenomĂ©n, patologickĂ˝ pohyb Ĺˇlach i iritaci burz; komprese/dekomprese napomĂˇhĂˇ odliĹˇenĂ­ tekutiny od pevnĂ© tkĂˇnÄ›.",
-      "NastavenĂ­ pĹ™Ă­stroje (hloubka, fokus, gain) je klĂ­ÄŤovĂ© kvĹŻli hlubĹˇĂ­m strukturĂˇm; dle oblasti je vhodnĂˇ lineĂˇrnĂ­ nebo konvexnĂ­ sonda."
+      "Ultrazvuk kyčle umožňuje hodnocení měkkých tkání v reálném čase a přináší informace o kloubním pouzdru, synovii, burzách, svalech a šlachách, zejména flexorového a abduktorového aparátu.",
+      "Pro kvalitní vyšetření je zásadní systematický postup od kostních orientačních bodů (hlavice/krček femuru, acetabulum, velký trochanter) a skenování v podélné i příčné rovině se správnou prací se sondou.",
+      "Dynamické manévry (flexe, extenze, abdukce, addukce, rotace) pomáhají posoudit snapping fenomén, patologický pohyb šlach i iritaci burz; komprese/dekomprese napomáhá odlišení tekutiny od pevné tkáně.",
+      "Nastavení přístroje (hloubka, fokus, gain) je klíčové kvůli hlubším strukturám; dle oblasti je vhodná lineární nebo konvexní sonda."
     ],
     pathologyPoints: [
-      "ÄŚastĂ© jsou kloubnĂ­ vĂ˝potek a synovitida v oblasti pĹ™ednĂ­ho recesu kyÄŤle.",
-      "Velmi ÄŤastĂ© je postiĹľenĂ­ periartikulĂˇrnĂ­ch struktur v oblasti velkĂ©ho trochanteru, zejmĂ©na tendinopatie/parciĂˇlnĂ­ ruptury Ĺˇlach m. gluteus medius a minimus, ÄŤasto s trochanterickou burzitidou.",
-      "DalĹˇĂ­ nĂˇlezy zahrnujĂ­ tendinopatii m. iliopsoas a iliopsoovou burzitidu, ÄŤasto s bolestĂ­ v tĹ™Ă­sle a snapping fenomĂ©nem.",
-      "U chronickĂ˝ch potĂ­ĹľĂ­ lze nalĂ©zt entezopatie, kalcifikace, degenerativnĂ­ zmÄ›ny Ĺˇlach a zmÄ›ny echotextury svalĹŻ vÄŤetnÄ› atrofie."
+      "Časté jsou kloubní výpotek a synovitida v oblasti předního recesu kyčle.",
+      "Velmi časté je postižení periartikulárních struktur v oblasti velkého trochanteru, zejména tendinopatie/parciální ruptury šlach m. gluteus medius a minimus, často s trochanterickou burzitidou.",
+      "Další nálezy zahrnují tendinopatii m. iliopsoas a iliopsoovou burzitidu, často s bolestí v třísle a snapping fenoménem.",
+      "U chronických potíží lze nalézt entezopatie, kalcifikace, degenerativní změny šlach a změny echotextury svalů včetně atrofie."
     ],
     protocolSteps: [
-      { view: "VentrĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "Ĺ ikmĂˇ rovina"] },
-      { view: "LaterĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "Ĺ ikmĂˇ rovina"] },
-      { view: "DorzĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "SagitĂˇlnĂ­ rovina"] }
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Šikmá rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina", "Šikmá rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] }
     ],
     protocolImages: [
-      { key: "01_Obrzek1", heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["T: Ĺˇlacha m. rectus femoris. ZobrazenĂ­ myotendinĂłznĂ­ho pĹ™echodu m. rectus femoris pod m. sartorius."] },
-      { key: "07_Obrzek3", heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["T: Ĺˇlacha m. rectus femoris, SIAI: spina iliaca anterior inferior. HodnocenĂ­ Ăşponu pĹ™Ă­mĂ© Ĺˇlachy a apofyzeĂˇlnĂ­ch/avulznĂ­ch lĂ©zĂ­."] },
-      { key: "08_Obrzek4", heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, ĹˇikmĂˇ rovina", bullets: ["IFL: iliofemorĂˇlnĂ­ vaz, A: acetabulum, L: labrum, RF: rectus femoris. Projekce femoroacetabulĂˇrnĂ­ho kloubu pro hodnocenĂ­ labra a vĂ˝potku."] },
-      { key: "09_Obrzek5", heading: "ObrĂˇzek 4. VentrĂˇlnĂ­ pohled, ĹˇikmĂˇ rovina", bullets: ["IFL: iliofemorĂˇlnĂ­ vaz. DistĂˇlnÄ›jĹˇĂ­ ĹˇikmĂ˝ Ĺ™ez pro hodnocenĂ­ pĹ™ednĂ­ho recesu, synovitidy a pouzdra."] },
-      { key: "10_Obrzek6", heading: "ObrĂˇzek 5. LaterĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["DistĂˇlnĂ­ referenÄŤnĂ­ Ĺ™ez pĹ™es femur a m. vastus lateralis, vhodnĂ˝ pro orientaci pĹ™ed proximĂˇlnĂ­m sledovĂˇnĂ­m."] },
-      { key: "11_Obrzek7", heading: "ObrĂˇzek 6. LaterĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ProximĂˇlnÄ›jĹˇĂ­ Ĺ™ez s pĹ™echodem tvaru kosti do trojĂşhelnĂ­kovĂ©ho znaku oblasti velkĂ©ho trochanteru."] },
-      { key: "12_Obrzek8", heading: "ObrĂˇzek 7. LaterĂˇlnĂ­ pohled, ĹˇikmĂˇ rovina", bullets: ["TFL: tensor fasciae latae, GM: gluteus minimus. PĹ™ednĂ­ faseta trochanteru pro hodnocenĂ­ gluteĂˇlnĂ­ tendinopatie."] },
-      { key: "13_Obrzek9", heading: "ObrĂˇzek 8. LaterĂˇlnĂ­ pohled, ĹˇikmĂˇ rovina", bullets: ["Detail pĹ™ednĂ­ fasety trochanteru, Ĺˇlach gluteĂˇlnĂ­ho aparĂˇtu a okolnĂ­ch mÄ›kkĂ˝ch tkĂˇnĂ­."] },
-      { key: "02_Obrzek10", heading: "ObrĂˇzek 9. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["N: nervus ischiadicus. PĹ™Ă­ÄŤnĂ˝ Ĺ™ez se â€žwindmill signâ€ś mezi hamstringy pro lokalizaci sedacĂ­ho nervu."] },
-      { key: "03_Obrzek11", heading: "ObrĂˇzek 10. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["T: Ĺˇlacha hamstringĹŻ. ProximĂˇlnĂ­ Ĺ™ez u tuber ischiadicum pro tendinopatii ÄŤi avulzi hamstringĹŻ."] },
-      { key: "04_Obrzek12", heading: "ObrĂˇzek 11. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["PodĂ©lnĂˇ projekce sedacĂ­ho nervu s hodnocenĂ­m kontinuity, fascikulĂˇrnĂ­ struktury a pohyblivosti."] },
-      { key: "05_Obrzek13", heading: "ObrĂˇzek 12. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["T: Ĺˇlacha hamstringĹŻ. PodĂ©lnĂ˝ pohled na Ăşpon hamstringĹŻ na tuber ischiadicum pro hodnocenĂ­ ruptur a tendinopatie."] }
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: ["T: šlacha m. rectus femoris. Zobrazení myotendinózního přechodu m. rectus femoris pod m. sartorius."] },
+      { key: "07_Obrzek3", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["T: šlacha m. rectus femoris, SIAI: spina iliaca anterior inferior. Hodnocení úponu přímé šlachy a apofyzeálních/avulzních lézí."] },
+      { key: "08_Obrzek4", heading: "Obrázek 3. Ventrální pohled, šikmá rovina", bullets: ["IFL: iliofemorální vaz, A: acetabulum, L: labrum, RF: rectus femoris. Projekce femoroacetabulárního kloubu pro hodnocení labra a výpotku."] },
+      { key: "09_Obrzek5", heading: "Obrázek 4. Ventrální pohled, šikmá rovina", bullets: ["IFL: iliofemorální vaz. Distálnější šikmý řez pro hodnocení předního recesu, synovitidy a pouzdra."] },
+      { key: "10_Obrzek6", heading: "Obrázek 5. Laterální pohled, transverzální rovina", bullets: ["Distální referenční řez přes femur a m. vastus lateralis, vhodný pro orientaci před proximálním sledováním."] },
+      { key: "11_Obrzek7", heading: "Obrázek 6. Laterální pohled, transverzální rovina", bullets: ["Proximálnější řez s přechodem tvaru kosti do trojúhelníkového znaku oblasti velkého trochanteru."] },
+      { key: "12_Obrzek8", heading: "Obrázek 7. Laterální pohled, šikmá rovina", bullets: ["TFL: tensor fasciae latae, GM: gluteus minimus. Přední faseta trochanteru pro hodnocení gluteální tendinopatie."] },
+      { key: "13_Obrzek9", heading: "Obrázek 8. Laterální pohled, šikmá rovina", bullets: ["Detail přední fasety trochanteru, šlach gluteálního aparátu a okolních měkkých tkání."] },
+      { key: "02_Obrzek10", heading: "Obrázek 9. Dorzální pohled, transverzální rovina", bullets: ["N: nervus ischiadicus. Příčný řez se „windmill sign“ mezi hamstringy pro lokalizaci sedacího nervu."] },
+      { key: "03_Obrzek11", heading: "Obrázek 10. Dorzální pohled, transverzální rovina", bullets: ["T: šlacha hamstringů. Proximální řez u tuber ischiadicum pro tendinopatii či avulzi hamstringů."] },
+      { key: "04_Obrzek12", heading: "Obrázek 11. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce sedacího nervu s hodnocením kontinuity, fascikulární struktury a pohyblivosti."] },
+      { key: "05_Obrzek13", heading: "Obrázek 12. Dorzální pohled, sagitální rovina", bullets: ["T: šlacha hamstringů. Podélný pohled na úpon hamstringů na tuber ischiadicum pro hodnocení ruptur a tendinopatie."] }
     ]
   },
   koleno: {
     folder: "05_Knee/protokol",
     introPoints: [
-      "Ultrazvuk kolene je praktickĂˇ metoda pro hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase, zejmĂ©na extenzorovĂ©ho aparĂˇtu, burz, synovie a periartikulĂˇrnĂ­ch struktur.",
-      "KvalitnĂ­ vyĹˇetĹ™enĂ­ vyĹľaduje systematickĂ˝ postup od orientaÄŤnĂ­ch bodĹŻ (patela, femorĂˇlnĂ­ kondyly, tibiĂˇlnĂ­ plato, tuberositas tibiae) a vyĹˇetĹ™enĂ­ v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ›.",
-      "DynamickĂ© manĂ©vry (flexe/extenze) umoĹľĹujĂ­ posoudit pohyb pately, stabilitu Ĺˇlach i iritaci burz, komprese/dekomprese pomĂˇhĂˇ odliĹˇit tekutinovĂ© kolekce.",
-      "SprĂˇvnĂ© nastavenĂ­ hloubky, fokusu a gainu je klĂ­ÄŤovĂ©; standardnÄ› lineĂˇrnĂ­ sonda, u hlubĹˇĂ­ch struktur dle potĹ™eby i konvexnĂ­."
+      "Ultrazvuk kolene je praktická metoda pro hodnocení měkkých tkání v reálném čase, zejména extenzorového aparátu, burz, synovie a periartikulárních struktur.",
+      "Kvalitní vyšetření vyžaduje systematický postup od orientačních bodů (patela, femorální kondyly, tibiální plato, tuberositas tibiae) a vyšetření v podélné i příčné rovině.",
+      "Dynamické manévry (flexe/extenze) umožňují posoudit pohyb pately, stabilitu šlach i iritaci burz, komprese/dekomprese pomáhá odlišit tekutinové kolekce.",
+      "Správné nastavení hloubky, fokusu a gainu je klíčové; standardně lineární sonda, u hlubších struktur dle potřeby i konvexní."
     ],
     pathologyPoints: [
-      "NejÄŤastÄ›ji se nachĂˇzĂ­ kloubnĂ­ vĂ˝potek a synovitida, hlavnÄ› v suprapatelĂˇrnĂ­m recesu.",
-      "BÄ›ĹľnĂ© je postiĹľenĂ­ Ĺˇlachy m. quadriceps femoris a ligamentum patellae (tendinopatie, parciĂˇlnĂ­ ruptury, entezopatie).",
-      "ÄŚastĂ© jsou burzitidy (prepatelĂˇrnĂ­, infrapatelĂˇrnĂ­, anserinnĂ­).",
-      "U chronickĂ˝ch obtĂ­ĹľĂ­ jsou pĹ™Ă­tomny degenerativnĂ­ zmÄ›ny Ĺˇlach, kalcifikace, zmÄ›ny kortikalis v Ăşponech a zmÄ›ny echotextury svalĹŻ."
+      "Nejčastěji se nachází kloubní výpotek a synovitida, hlavně v suprapatelárním recesu.",
+      "Běžné je postižení šlachy m. quadriceps femoris a ligamentum patellae (tendinopatie, parciální ruptury, entezopatie).",
+      "Časté jsou burzitidy (prepatelární, infrapatelární, anserinní).",
+      "U chronických obtíží jsou přítomny degenerativní změny šlach, kalcifikace, změny kortikalis v úponech a změny echotextury svalů."
     ],
     protocolSteps: [
-      { view: "VentrĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina", "SagitĂˇlnĂ­ rovina"] },
-      { view: "MediĂˇlnĂ­ pohled", planes: ["FrontĂˇlnĂ­ rovina"] },
-      { view: "LaterĂˇlnĂ­ pohled", planes: ["FrontĂˇlnĂ­ rovina"] },
-      { view: "DorzĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina"] }
+      { view: "Ventrální pohled", planes: ["Transverzální rovina", "Sagitální rovina"] },
+      { view: "Mediální pohled", planes: ["Frontální rovina"] },
+      { view: "Laterální pohled", planes: ["Frontální rovina"] },
+      { view: "Dorzální pohled", planes: ["Transverzální rovina"] }
     ],
     protocolImages: [
-      { key: "01_Obrzek1", heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina, suprapatelĂˇrnÄ›", bullets: ["v. lat: vastus lateralis, v. med: vastus medialis. PĹ™Ă­ÄŤnĂ˝ Ĺ™ez kvadricepsem a femurem pro orientaci a hodnocenĂ­ svalovĂ˝ch poranÄ›nĂ­."] },
-      { key: "02_Obrzek2", heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina, suprapatelĂˇrnÄ›", bullets: ["spfp: suprapatelĂˇrnĂ­ tukovĂ© tÄ›leso, pffp: prefemorĂˇlnĂ­ tukovĂ© tÄ›leso, *: suprapatelĂˇrnĂ­ recessus. HodnocenĂ­ vĂ˝potku a synoviĂˇlnĂ­ proliferace."] },
-      { key: "03_Obrzek3", heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina, infrapatelĂˇrnÄ›", bullets: ["PĹ™Ă­ÄŤnĂ˝ Ĺ™ez patelĂˇrnĂ­ Ĺˇlachou a HoffovĂ˝m tukovĂ˝m tÄ›lesem pro tendinopatii a impingement."] },
-      { key: "04_Obrzek4", heading: "ObrĂˇzek 4. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina, infrapatelĂˇrnÄ›", bullets: ["PodĂ©lnĂ˝ Ĺ™ez ligamentum patellae od dolnĂ­ho pĂłlu pately k tibii pro ruptury a entezopatii."] },
-      { key: "05_Obrzek5", heading: "ObrĂˇzek 5. MediĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina", bullets: ["MCL: mediĂˇlnĂ­ kolaterĂˇlnĂ­ vaz. HodnocenĂ­ integrity MCL, mediĂˇlnĂ­ho menisku a mediĂˇlnĂ­ho recesu."] },
-      { key: "06_Obrzek6", heading: "ObrĂˇzek 6. LaterĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina", bullets: ["LCL: laterĂˇlnĂ­ kolaterĂˇlnĂ­ vaz. KlĂ­ÄŤovĂˇ projekce pro entezopatii, parciĂˇlnĂ­ ruptury a avulznĂ­ poranÄ›nĂ­."] },
-      { key: "07_Obrzek7", heading: "ObrĂˇzek 7. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ST: Ĺˇlacha semitendinosu. â€žCherry on topâ€ś znak pro orientaci mediĂˇlnĂ­ch hamstringĹŻ."] },
-      { key: "08_Obrzek8", heading: "ObrĂˇzek 8. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["SM: Ĺˇlacha semimembranosu, ST: Ĺˇlacha semitendinosu. TypickĂˇ lokalizace Bakerovy cysty."] },
-      { key: "09_Obrzek9", heading: "ObrĂˇzek 9. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["T: nervus tibialis, P: nervus peroneus communis. HodnocenĂ­ nervĹŻ v posterolaterĂˇlnĂ­ oblasti kolene."] }
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, transverzální rovina, suprapatelárně", bullets: ["v. lat: vastus lateralis, v. med: vastus medialis. Příčný řez kvadricepsem a femurem pro orientaci a hodnocení svalových poranění."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, sagitální rovina, suprapatelárně", bullets: ["spfp: suprapatelární tukové těleso, pffp: prefemorální tukové těleso, *: suprapatelární recessus. Hodnocení výpotku a synoviální proliferace."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Ventrální pohled, transverzální rovina, infrapatelárně", bullets: ["Příčný řez patelární šlachou a Hoffovým tukovým tělesem pro tendinopatii a impingement."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Ventrální pohled, sagitální rovina, infrapatelárně", bullets: ["Podélný řez ligamentum patellae od dolního pólu pately k tibii pro ruptury a entezopatii."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Mediální pohled, frontální rovina", bullets: ["MCL: mediální kolaterální vaz. Hodnocení integrity MCL, mediálního menisku a mediálního recesu."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Laterální pohled, frontální rovina", bullets: ["LCL: laterální kolaterální vaz. Klíčová projekce pro entezopatii, parciální ruptury a avulzní poranění."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["ST: šlacha semitendinosu. „Cherry on top“ znak pro orientaci mediálních hamstringů."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["SM: šlacha semimembranosu, ST: šlacha semitendinosu. Typická lokalizace Bakerovy cysty."] },
+      { key: "09_Obrzek9", heading: "Obrázek 9. Dorzální pohled, transverzální rovina", bullets: ["T: nervus tibialis, P: nervus peroneus communis. Hodnocení nervů v posterolaterální oblasti kolene."] }
     ]
   },
   kotnik: {
     folder: "06_Ankle/protokol",
     introPoints: [
-      "Ultrazvuk hlezna je praktickĂˇ metoda pro hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase; pĹ™inĂˇĹˇĂ­ informace o synovii, vazech, burzĂˇch a ĹˇlachĂˇch (Achillova, peroneĂˇlnĂ­, tibiĂˇlnĂ­).",
-      "Pro kvalitnĂ­ vyĹˇetĹ™enĂ­ je dĹŻleĹľitĂ˝ systematickĂ˝ postup od orientaÄŤnĂ­ch bodĹŻ (malleoly, talus, calcaneus, distĂˇlnĂ­ tibie/fibula) v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ›.",
-      "DynamickĂ© manĂ©vry (dorzĂˇlnĂ­/plantĂˇrnĂ­ flexe, inverze/everze) pomĂˇhajĂ­ hodnotit stabilitu Ĺˇlach v retinĂˇkulech, stabilitu vazĹŻ a patologickĂ˝ pohyb Ĺˇlach.",
-      "SprĂˇvnĂ© nastavenĂ­ pĹ™Ă­stroje a porovnĂˇnĂ­ s druhostrannĂ˝m kotnĂ­kem je zĂˇsadnĂ­ pro detekci jemnĂ˝ch zmÄ›n, jako jsou parciĂˇlnĂ­ ruptury, tenosynovitida nebo entezopatie."
+      "Ultrazvuk hlezna je praktická metoda pro hodnocení měkkých tkání v reálném čase; přináší informace o synovii, vazech, burzách a šlachách (Achillova, peroneální, tibiální).",
+      "Pro kvalitní vyšetření je důležitý systematický postup od orientačních bodů (malleoly, talus, calcaneus, distální tibie/fibula) v podélné i příčné rovině.",
+      "Dynamické manévry (dorzální/plantární flexe, inverze/everze) pomáhají hodnotit stabilitu šlach v retinákulech, stabilitu vazů a patologický pohyb šlach.",
+      "Správné nastavení přístroje a porovnání s druhostranným kotníkem je zásadní pro detekci jemných změn, jako jsou parciální ruptury, tenosynovitida nebo entezopatie."
     ],
     pathologyPoints: [
-      "NejÄŤastÄ›ji se vyskytuje vĂ˝potek a synovitida v pĹ™ednĂ­m recesu hlezna.",
-      "ÄŚastĂ© jsou tendinopatie a parciĂˇlnĂ­ ruptury Achillovy Ĺˇlachy, Ĺˇlach tibialis anterior/posterior a peroneĂˇlnĂ­ch Ĺˇlach.",
-      "BÄ›ĹľnĂ© jsou tenosynovitidy, retromaleolĂˇrnĂ­ tekutinovĂ© kolekce a burzitidy vÄŤetnÄ› retrocalcaneĂˇrnĂ­.",
-      "Ultrazvuk je pĹ™Ă­nosnĂ˝ i pro poranÄ›nĂ­ vazĹŻ laterĂˇlnĂ­ho komplexu, hematomy a chronickĂ© degenerativnĂ­ zmÄ›ny."
+      "Nejčastěji se vyskytuje výpotek a synovitida v předním recesu hlezna.",
+      "Časté jsou tendinopatie a parciální ruptury Achillovy šlachy, šlach tibialis anterior/posterior a peroneálních šlach.",
+      "Běžné jsou tenosynovitidy, retromaleolární tekutinové kolekce a burzitidy včetně retrocalcaneární.",
+      "Ultrazvuk je přínosný i pro poranění vazů laterálního komplexu, hematomy a chronické degenerativní změny."
     ],
     protocolSteps: [
-      { view: "VentrĂˇlnĂ­ pohled", planes: ["SagitĂˇlnĂ­ rovina", "TransverzĂˇlnĂ­ rovina"] },
-      { view: "MediĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina"] },
-      { view: "LaterĂˇlnĂ­ pohled", planes: ["TransverzĂˇlnĂ­ rovina"] },
-      { view: "DorzĂˇlnĂ­ pohled", planes: ["SagitĂˇlnĂ­ rovina", "TransverzĂˇlnĂ­ rovina"] }
+      { view: "Ventrální pohled", planes: ["Sagitální rovina", "Transverzální rovina"] },
+      { view: "Mediální pohled", planes: ["Transverzální rovina"] },
+      { view: "Laterální pohled", planes: ["Transverzální rovina"] },
+      { view: "Dorzální pohled", planes: ["Sagitální rovina", "Transverzální rovina"] }
     ],
     protocolImages: [
-      { key: "01_Obrzek1", heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["c: chrupavka, j: tekutina v kloubnĂ­ dutinÄ›. PodĂ©lnĂˇ pĹ™ednĂ­ projekce pĹ™es EHL, pĹ™ednĂ­ recesus a chrupavku talu."] },
-      { key: "02_Obrzek2", heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["EDL, EHL, TA. PĹ™Ă­ÄŤnĂ˝ Ĺ™ez pĹ™ednĂ­mi extenzorovĂ˝mi Ĺˇlachami nad talem pro hodnocenĂ­ tenosynovitid a tendinopatiĂ­."] },
-      { key: "03_Obrzek3", heading: "ObrĂˇzek 3. MediĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["TP, FDL, FHL, A, V, T. Projekce tarzĂˇlnĂ­ho tunelu s neurovaskulĂˇrnĂ­m svazkem a flexorovĂ˝mi Ĺˇlachami."] },
-      { key: "04_Obrzek4", heading: "ObrĂˇzek 4. LaterĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["ATFL: ligamentum talofibulare anterius. KlĂ­ÄŤovĂ˝ pohled pro distorzi laterĂˇlnĂ­ho hlezna a hodnocenĂ­ kontinuity ATFL."] },
-      { key: "05_Obrzek5", heading: "ObrĂˇzek 5. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["PodĂ©lnĂˇ projekce Achillovy Ĺˇlachy nad KagerovĂ˝m tukovĂ˝m tÄ›lesem pro tendinopatii a retrocalcaneĂˇrnĂ­ burzitidu."] },
-      { key: "06_Obrzek6", heading: "ObrĂˇzek 6. DorzĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: ["ProximĂˇlnÄ›jĹˇĂ­ podĂ©lnĂˇ projekce m. triceps surae pro hodnocenĂ­ svalovĂ© symetrie, ruptur a hematomĹŻ."] },
-      { key: "07_Obrzek7", heading: "ObrĂˇzek 7. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["TA: Achillova Ĺˇlacha. PĹ™Ă­ÄŤnĂ˝ Ĺ™ez Achillovou Ĺˇlachou s hodnocenĂ­m kontinuity a okolnĂ­ch mÄ›kkĂ˝ch tkĂˇnĂ­."] },
-      { key: "08_Obrzek8", heading: "ObrĂˇzek 8. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: ["PĹ™Ă­ÄŤnĂ˝ pohled svaly triceps surae vhodnĂ˝ pro myotendinĂłznĂ­ poranÄ›nĂ­, atrofii a fibrotickĂ© zmÄ›ny."] }
+      { key: "01_Obrzek1", heading: "Obrázek 1. Ventrální pohled, sagitální rovina", bullets: ["c: chrupavka, j: tekutina v kloubní dutině. Podélná přední projekce přes EHL, přední recesus a chrupavku talu."] },
+      { key: "02_Obrzek2", heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: ["EDL, EHL, TA. Příčný řez předními extenzorovými šlachami nad talem pro hodnocení tenosynovitid a tendinopatií."] },
+      { key: "03_Obrzek3", heading: "Obrázek 3. Mediální pohled, transverzální rovina", bullets: ["TP, FDL, FHL, A, V, T. Projekce tarzálního tunelu s neurovaskulárním svazkem a flexorovými šlachami."] },
+      { key: "04_Obrzek4", heading: "Obrázek 4. Laterální pohled, transverzální rovina", bullets: ["ATFL: ligamentum talofibulare anterius. Klíčový pohled pro distorzi laterálního hlezna a hodnocení kontinuity ATFL."] },
+      { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce Achillovy šlachy nad Kagerovým tukovým tělesem pro tendinopatii a retrocalcaneární burzitidu."] },
+      { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, sagitální rovina", bullets: ["Proximálnější podélná projekce m. triceps surae pro hodnocení svalové symetrie, ruptur a hematomů."] },
+      { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["TA: Achillova šlacha. Příčný řez Achillovou šlachou s hodnocením kontinuity a okolních měkkých tkání."] },
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["Příčný pohled svaly triceps surae vhodný pro myotendinózní poranění, atrofii a fibrotické změny."] }
     ]
   }
 };
@@ -663,16 +663,16 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   rameno: {
     imageBaseName: "rameno",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pro zĂˇkladnĂ­ vyĹˇetĹ™enĂ­ ramene. CĂ­lem je rychlĂˇ orientace pĹ™ed samotnĂ˝m protokolem, optimĂˇlnĂ­ pĹ™Ă­stup k vyĹˇetĹ™ovanĂ˝m strukturĂˇm, stabilita bÄ›hem skenovĂˇnĂ­ a dobrĂ© pohodlĂ­ pacienta.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta pro základní vyšetření ramene. Cílem je rychlá orientace před samotným protokolem, optimální přístup k vyšetřovaným strukturám, stabilita během skenování a dobré pohodlí pacienta.",
       en: "The chart shows recommended patient positioning for the basic shoulder exam. The goal is quick orientation before the protocol, optimal access to target structures, scanning stability, and patient comfort."
     },
     positions: {
       cs: [
-        "1. ZĂˇkladnĂ­ pozice pro vyĹˇetĹ™enĂ­ ventrĂˇlnĂ­ho pohledu.",
-        "2. Pozice k vyĹˇetĹ™enĂ­ m. subscapularis - ventrĂˇlnĂ­ pohled.",
-        "3. Crass position - pozice k vyĹˇetĹ™enĂ­ rotĂˇtorovĂ© manĹľety - laterĂˇlnĂ­ pohled.",
-        "4. Modified Crass position - pozice k vyĹˇetĹ™enĂ­ rotĂˇtorovĂ© manĹľety - laterĂˇlnĂ­ pohled.",
-        "5. Pozice k vyĹˇetĹ™enĂ­ dorzĂˇlnĂ­ho pohledu."
+        "1. Základní pozice pro vyšetření ventrálního pohledu.",
+        "2. Pozice k vyšetření m. subscapularis - ventrální pohled.",
+        "3. Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "4. Modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled.",
+        "5. Pozice k vyšetření dorzálního pohledu."
       ],
       en: [
         "1: baseline position for anterior (ventral) view.",
@@ -686,15 +686,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   loket: {
     imageBaseName: "loket",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pro vyĹˇetĹ™enĂ­ lokte. CĂ­lem je optimĂˇlnĂ­ pĹ™Ă­stup k vyĹˇetĹ™ovanĂ˝m strukturĂˇm, stabilita pĹ™i vyĹˇetĹ™enĂ­ a komfort pacienta v jednotlivĂ˝ch projekcĂ­ch.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta pro vyšetření lokte. Cílem je optimální přístup k vyšetřovaným strukturám, stabilita při vyšetření a komfort pacienta v jednotlivých projekcích.",
       en: "The chart shows recommended patient positioning for elbow ultrasound. The goal is optimal access to target structures, scan stability, and patient comfort in each view."
     },
     positions: {
       cs: [
-        "VentrĂˇlnĂ­ pohled (loket lehce flektovĂˇn): hodnocenĂ­ pĹ™ednĂ­ho recesu, bicepsovĂ© Ĺˇlachy a brachialis.",
-        "MediĂˇlnĂ­ pohled: vyĹˇetĹ™enĂ­ spoleÄŤnĂ©ho flexorovĂ©ho Ăşponu, MCL a oblasti n. ulnaris.",
-        "LaterĂˇlnĂ­ pohled: posouzenĂ­ spoleÄŤnĂ©ho extenzorovĂ©ho Ăşponu a LCL, typicky pĹ™i laterĂˇlnĂ­ epikondylalgii.",
-        "DorzĂˇlnĂ­ pohled (loket flektovĂˇn): zobrazenĂ­ tricepsu, olecranu a zadnĂ­ho recesu pĹ™i podezĹ™enĂ­ na vĂ˝potek/burzitidu."
+        "Ventrální pohled (loket lehce flektován): hodnocení předního recesu, bicepsové šlachy a brachialis.",
+        "Mediální pohled: vyšetření společného flexorového úponu, MCL a oblasti n. ulnaris.",
+        "Laterální pohled: posouzení společného extenzorového úponu a LCL, typicky při laterální epikondylalgii.",
+        "Dorzální pohled (loket flektován): zobrazení tricepsu, olecranu a zadního recesu při podezření na výpotek/burzitidu."
       ],
       en: [
         "Anterior view (slight elbow flexion): evaluates anterior recess, distal biceps tendon, and brachialis.",
@@ -707,15 +707,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   zapesti: {
     imageBaseName: "zapesti",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pĹ™i vyĹˇetĹ™enĂ­ zĂˇpÄ›stĂ­. CĂ­lem je optimĂˇlnĂ­ pĹ™Ă­stup ke strukturĂˇm karpĂˇlnĂ­ oblasti, stabilita bÄ›hem skenovĂˇnĂ­ a pohodlĂ­ pacienta pĹ™i ventrĂˇlnĂ­ch i dorzĂˇlnĂ­ch projekcĂ­ch.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření zápěstí. Cílem je optimální přístup ke strukturám karpální oblasti, stabilita během skenování a pohodlí pacienta při ventrálních i dorzálních projekcích.",
       en: "The chart shows recommended patient positioning for wrist ultrasound. The goal is optimal access to carpal structures, stable scanning conditions, and patient comfort in volar and dorsal views."
     },
     positions: {
       cs: [
-        "VentrĂˇlnĂ­ transverzĂˇlnĂ­ poloha: orientace v karpĂˇlnĂ­m tunelu a GuyonovÄ› kanĂˇlu, zejmĂ©na pro medianus/ulnaris.",
-        "VentrĂˇlnĂ­ sagitĂˇlnĂ­ poloha: podĂ©lnĂ© sledovĂˇnĂ­ medianu a flexorovĂ˝ch Ĺˇlach.",
-        "DorzĂˇlnĂ­ transverzĂˇlnĂ­ poloha: pĹ™ehled extenzorovĂ˝ch kompartmentĹŻ a tenosynovitid.",
-        "DorzĂˇlnĂ­ sagitĂˇlnĂ­ poloha: hodnocenĂ­ radiokarpĂˇlnĂ­ho kloubu, tekutiny a kontinuity extenzorovĂ˝ch Ĺˇlach."
+        "Ventrální transverzální poloha: orientace v karpálním tunelu a Guyonově kanálu, zejména pro medianus/ulnaris.",
+        "Ventrální sagitální poloha: podélné sledování medianu a flexorových šlach.",
+        "Dorzální transverzální poloha: přehled extenzorových kompartmentů a tenosynovitid.",
+        "Dorzální sagitální poloha: hodnocení radiokarpálního kloubu, tekutiny a kontinuity extenzorových šlach."
       ],
       en: [
         "Volar transverse setup: orientation in carpal tunnel and Guyon's canal, especially for median/ulnar nerves.",
@@ -728,15 +728,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kycel: {
     imageBaseName: "kycel",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pĹ™i vyĹˇetĹ™enĂ­ kyÄŤle. CĂ­lem je optimĂˇlnĂ­ pĹ™Ă­stup i k hlubĹˇĂ­m strukturĂˇm, dobrĂˇ stabilita vyĹˇetĹ™enĂ­ a komfort pacienta bÄ›hem jednotlivĂ˝ch projekcĂ­.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kyčle. Cílem je optimální přístup i k hlubším strukturám, dobrá stabilita vyšetření a komfort pacienta během jednotlivých projekcí.",
       en: "The chart shows recommended patient positioning for hip ultrasound. The goal is optimal access, including deeper structures, stable scanning, and patient comfort across views."
     },
     positions: {
       cs: [
-        "VentrĂˇlnĂ­ poloha (supinace): hodnocenĂ­ pĹ™ednĂ­ho recesu, pouzdra, labra a iliopsoatickĂ© oblasti.",
-        "LaterĂˇlnĂ­ poloha: zobrazenĂ­ velkĂ©ho trochanteru, gluteĂˇlnĂ­ch ĂşponĹŻ a trochanterickĂ© burzy.",
-        "DorzĂˇlnĂ­ poloha: sledovĂˇnĂ­ hamstringovĂ˝ch ĂşponĹŻ a prĹŻbÄ›hu n. ischiadicus.",
-        "Dynamika (rotace, flexe/extenze): uĹľiteÄŤnĂˇ pro snapping fenomĂ©ny a posouzenĂ­ drĂˇhy Ĺˇlach."
+        "Ventrální poloha (supinace): hodnocení předního recesu, pouzdra, labra a iliopsoatické oblasti.",
+        "Laterální poloha: zobrazení velkého trochanteru, gluteálních úponů a trochanterické burzy.",
+        "Dorzální poloha: sledování hamstringových úponů a průběhu n. ischiadicus.",
+        "Dynamika (rotace, flexe/extenze): užitečná pro snapping fenomény a posouzení dráhy šlach."
       ],
       en: [
         "Anterior setup (supine): evaluates anterior recess, capsule, labrum, and iliopsoas region.",
@@ -749,15 +749,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   koleno: {
     imageBaseName: "koleno",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pĹ™i vyĹˇetĹ™enĂ­ kolene v extenzi i flexi. CĂ­lem je optimĂˇlnĂ­ pĹ™Ă­stup ke strukturĂˇm v jednotlivĂ˝ch oknech, stabilita vyĹˇetĹ™enĂ­ a pohodlĂ­ pacienta.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kolene v extenzi i flexi. Cílem je optimální přístup ke strukturám v jednotlivých oknech, stabilita vyšetření a pohodlí pacienta.",
       en: "The chart shows recommended patient positioning for knee ultrasound in extension and flexion. The goal is optimal access in each window, scan stability, and patient comfort."
     },
     positions: {
       cs: [
-        "PĹ™ednĂ­ poloha (extenze): kontrola quadricepsovĂ© Ĺˇlachy, pately, patelĂˇrnĂ­ Ĺˇlachy a suprapatelĂˇrnĂ­ho recesu.",
-        "PĹ™ednĂ­ poloha (flektovanĂ© koleno): zlepĹˇuje pohled na kloubnĂ­ recessy a pohyb pately.",
-        "MediĂˇlnĂ­/laterĂˇlnĂ­ poloha: hodnocenĂ­ kolaterĂˇlnĂ­ch vazĹŻ, meniskĂˇlnĂ­ch okrajĹŻ a entezopatiĂ­.",
-        "DorzĂˇlnĂ­ poloha: vyĹˇetĹ™enĂ­ podkolennĂ­ jamky, Bakerovy cysty a prĹŻbÄ›hu tibiĂˇlnĂ­ho/peroneĂˇlnĂ­ho nervu."
+        "Přední poloha (extenze): kontrola quadricepsové šlachy, pately, patelární šlachy a suprapatelárního recesu.",
+        "Přední poloha (flektované koleno): zlepšuje pohled na kloubní recessy a pohyb pately.",
+        "Mediální/laterální poloha: hodnocení kolaterálních vazů, meniskálních okrajů a entezopatií.",
+        "Dorzální poloha: vyšetření podkolenní jamky, Bakerovy cysty a průběhu tibiálního/peroneálního nervu."
       ],
       en: [
         "Anterior setup (extension): checks quadriceps tendon, patella, patellar tendon, and suprapatellar recess.",
@@ -770,15 +770,15 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
   kotnik: {
     imageBaseName: "kotnik",
     intro: {
-      cs: "SchĂ©ma ukazuje doporuÄŤenou polohu pacienta pĹ™i vyĹˇetĹ™enĂ­ kotnĂ­ku. CĂ­lem je optimĂˇlnĂ­ pĹ™Ă­stup k vyĹˇetĹ™ovanĂ˝m strukturĂˇm, stabilita pĹ™i dynamickĂ©m i statickĂ©m hodnocenĂ­ a pohodlĂ­ pacienta.",
+      cs: "Schéma ukazuje doporučenou polohu pacienta při vyšetření kotníku. Cílem je optimální přístup k vyšetřovaným strukturám, stabilita při dynamickém i statickém hodnocení a pohodlí pacienta.",
       en: "The chart shows recommended patient positioning for ankle ultrasound. The goal is optimal access to target structures, stable static and dynamic assessment, and patient comfort."
     },
     positions: {
       cs: [
-        "PĹ™ednĂ­ poloha: orientace v pĹ™ednĂ­m recesu hlezna a extenzorovĂ˝ch ĹˇlachĂˇch.",
-        "MediĂˇlnĂ­ poloha: vyĹˇetĹ™enĂ­ tarzĂˇlnĂ­ho tunelu, tibialis posterior a flexorovĂ˝ch struktur.",
-        "LaterĂˇlnĂ­ poloha: cĂ­lenĂ© hodnocenĂ­ ATFL/CFL a peroneĂˇlnĂ­ch Ĺˇlach pĹ™i distorzĂ­ch.",
-        "DorzĂˇlnĂ­ (posteriornĂ­) poloha: zobrazenĂ­ Achillovy Ĺˇlachy, Kagerova prostoru a retrokalkaneĂˇlnĂ­ burzy."
+        "Přední poloha: orientace v předním recesu hlezna a extenzorových šlachách.",
+        "Mediální poloha: vyšetření tarzálního tunelu, tibialis posterior a flexorových struktur.",
+        "Laterální poloha: cílené hodnocení ATFL/CFL a peroneálních šlach při distorzích.",
+        "Dorzální (posteriorní) poloha: zobrazení Achillovy šlachy, Kagerova prostoru a retrokalkaneální burzy."
       ],
       en: [
         "Anterior setup: orientation in the anterior ankle recess and extensor tendons.",
@@ -792,91 +792,91 @@ const jointPositioningBySlug: Record<string, JointPositioningContent> = {
 
 const nerveAnatomyImages = [
   { key: "2_axilla", title: { cs: "Axilla", en: "Axilla" } },
-  { key: "1_arm", title: { cs: "PaĹľe", en: "Arm" } },
+  { key: "1_arm", title: { cs: "Paže", en: "Arm" } },
   { key: "3_elbow", title: { cs: "Loket", en: "Elbow" } },
-  { key: "4_forearm", title: { cs: "PĹ™edloktĂ­", en: "Forearm" } },
-  { key: "5_wrist", title: { cs: "ZĂˇpÄ›stĂ­", en: "Wrist" } }
+  { key: "4_forearm", title: { cs: "Předloktí", en: "Forearm" } },
+  { key: "5_wrist", title: { cs: "Zápěstí", en: "Wrist" } }
 ];
 const nerveAnatomyIntroCopy = {
-  cs: "PĹ™Ă­ÄŤnĂˇ anatomie je klĂ­ÄŤovĂˇ pro porozumÄ›nĂ­ sonografickĂ©mu obrazu, protoĹľe ultrazvuk zobrazuje struktury v jednotlivĂ˝ch Ĺ™ezech. NĂ­Ĺľe projdeme pÄ›t klĂ­ÄŤovĂ˝ch ĂşrovnĂ­ pĹ™Ă­ÄŤnĂ©ho Ĺ™ezu, kterĂ© budeme na nervu sledovat.",
+  cs: "Příčná anatomie je klíčová pro porozumění sonografickému obrazu, protože ultrazvuk zobrazuje struktury v jednotlivých řezech. Níže projdeme pět klíčových úrovní příčného řezu, které budeme na nervu sledovat.",
   en: "Cross-sectional anatomy is essential for understanding ultrasound images because the probe visualizes structures in slices. Below we discuss five key cross-section levels that we will follow along the nerve."
 };
 const nerveAnatomyIntroAlt = {
-  cs: "PĹ™ehled klĂ­ÄŤovĂ˝ch pĹ™Ă­ÄŤnĂ˝ch Ĺ™ezĹŻ",
+  cs: "Přehled klíčových příčných řezů",
   en: "Overview of key cross sections"
 };
 const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
-  "2_axilla": { cs: "Ĺez axillou", en: "Axilla section" },
-  "1_arm": { cs: "Ĺez paĹľĂ­", en: "Arm section" },
-  "3_elbow": { cs: "Ĺez loktem", en: "Elbow section" },
-  "4_forearm": { cs: "Ĺez pĹ™edloktĂ­m", en: "Forearm section" },
-  "5_wrist": { cs: "Ĺez zĂˇpÄ›stĂ­m", en: "Wrist section" }
+  "2_axilla": { cs: "Řez axillou", en: "Axilla section" },
+  "1_arm": { cs: "Řez paží", en: "Arm section" },
+  "3_elbow": { cs: "Řez loktem", en: "Elbow section" },
+  "4_forearm": { cs: "Řez předloktím", en: "Forearm section" },
+  "5_wrist": { cs: "Řez zápěstím", en: "Wrist section" }
 };
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
   "nervus-medianus": {
     "2_axilla": {
-      cs: "Nervus medianus leĹľĂ­ v axille obvykle anterolaterĂˇlnÄ› nebo pĹ™Ă­mo anteriornÄ› vĹŻÄŤi a. axillaris.",
+      cs: "Nervus medianus leží v axille obvykle anterolaterálně nebo přímo anteriorně vůči a. axillaris.",
       en: "In the axilla, the median nerve usually lies anterolateral or directly anterior to the axillary artery."
     },
     "1_arm": {
-      cs: "V proximĂˇlnĂ­ ÄŤĂˇsti paĹľe probĂ­hĂˇ nerv laterĂˇlnÄ› od a. brachialis. Zhruba v polovinÄ› paĹľe tepnu kĹ™Ă­ĹľĂ­ z laterĂˇlnĂ­ na mediĂˇlnĂ­ stranu a distĂˇlnÄ› pokraÄŤuje mediĂˇlnÄ› od a. brachialis. Nerv leĹľĂ­ povrchnÄ›ji neĹľ tepna a je uloĹľen mezi m. biceps brachii a m. brachialis.",
+      cs: "V proximální části paže probíhá nerv laterálně od a. brachialis. Zhruba v polovině paže tepnu kříží z laterální na mediální stranu a distálně pokračuje mediálně od a. brachialis. Nerv leží povrchněji než tepna a je uložen mezi m. biceps brachii a m. brachialis.",
       en: "In the proximal arm, the nerve runs lateral to the brachial artery. Around mid-arm it crosses the artery from lateral to medial and continues distally medial to the brachial artery. The nerve lies more superficially than the artery and sits between the biceps brachii and brachialis muscles."
     },
     "3_elbow": {
-      cs: "V oblasti loketnĂ­ jamky vstupuje n. medianus mezi dvÄ› hlavy m. pronator teres. PĹ™i prĹŻchodu loktem leĹľĂ­ na povrchu m. brachialis a mediĂˇlnÄ› od Ĺˇlachy m. biceps brachii. Tato oblast je klinicky vĂ˝znamnĂˇ jako jedno z mĂ­st moĹľnĂ© komprese nervu (syndrom m. pronator teres).",
+      cs: "V oblasti loketní jamky vstupuje n. medianus mezi dvě hlavy m. pronator teres. Při průchodu loktem leží na povrchu m. brachialis a mediálně od šlachy m. biceps brachii. Tato oblast je klinicky významná jako jedno z míst možné komprese nervu (syndrom m. pronator teres).",
       en: "In the cubital fossa, the median nerve enters between the two heads of the pronator teres. At the elbow it lies on the surface of the brachialis and medial to the biceps brachii tendon. This region is clinically significant as a potential site of nerve compression (pronator teres syndrome)."
     },
     "4_forearm": {
-      cs: "Po prĹŻchodu mezi hlavami m. pronator teres vydĂˇvĂˇ n. medianus hlubokou motorickou vÄ›tev â€“ n. interosseus anterior. Ten sestupuje po membrana interossea mezi m. flexor digitorum profundus a m. flexor pollicis longus. HlavnĂ­ kmen n. medianus pokraÄŤuje povrchnÄ›ji mezi m. flexor digitorum superficialis a m. flexor digitorum profundus. Tato vztahovĂˇ anatomie je ve stĹ™ednĂ­ tĹ™etinÄ› pĹ™edloktĂ­ velmi dobĹ™e patrnĂˇ pĹ™i sonografii.",
-      en: "After passing between the heads of the pronator teres, the median nerve gives off the deep motor branch â€“ the anterior interosseous nerve. It descends along the interosseous membrane between the flexor digitorum profundus and flexor pollicis longus muscles. The main trunk continues more superficially between the flexor digitorum superficialis and flexor digitorum profundus. This relational anatomy is clearly visible on ultrasound in the mid-forearm."
+      cs: "Po průchodu mezi hlavami m. pronator teres vydává n. medianus hlubokou motorickou větev – n. interosseus anterior. Ten sestupuje po membrana interossea mezi m. flexor digitorum profundus a m. flexor pollicis longus. Hlavní kmen n. medianus pokračuje povrchněji mezi m. flexor digitorum superficialis a m. flexor digitorum profundus. Tato vztahová anatomie je ve střední třetině předloktí velmi dobře patrná při sonografii.",
+      en: "After passing between the heads of the pronator teres, the median nerve gives off the deep motor branch – the anterior interosseous nerve. It descends along the interosseous membrane between the flexor digitorum profundus and flexor pollicis longus muscles. The main trunk continues more superficially between the flexor digitorum superficialis and flexor digitorum profundus. This relational anatomy is clearly visible on ultrasound in the mid-forearm."
     },
     "5_wrist": {
-      cs: "DistĂˇlnÄ› n. medianus vystupuje zpod okraje m. flexor digitorum superficialis a vstupuje do karpĂˇlnĂ­ho tunelu. Zde probĂ­hĂˇ pod flexor retinaculum, typicky povrchnÄ› nad Ĺˇlachami flexorĹŻ prstĹŻ. V tĂ©to oblasti je nerv sonograficky snadno identifikovatelnĂ˝ a klinicky vĂ˝znamnĂ˝ jako mĂ­sto komprese pĹ™i syndromu karpĂˇlnĂ­ho tunelu.",
+      cs: "Distálně n. medianus vystupuje zpod okraje m. flexor digitorum superficialis a vstupuje do karpálního tunelu. Zde probíhá pod flexor retinaculum, typicky povrchně nad šlachami flexorů prstů. V této oblasti je nerv sonograficky snadno identifikovatelný a klinicky významný jako místo komprese při syndromu karpálního tunelu.",
       en: "Distally, the median nerve emerges from beneath the edge of the flexor digitorum superficialis and enters the carpal tunnel. Here it runs under the flexor retinaculum, typically superficial to the finger flexor tendons. In this region the nerve is easily identified on ultrasound and is clinically important as the site of compression in carpal tunnel syndrome."
     }
   },
   "nervus-ulnaris": {
     "2_axilla": {
-      cs: "N. ulnaris vznikĂˇ z mediĂˇlnĂ­ho svazku plexus brachialis. V axile leĹľĂ­ mediĂˇlnÄ› od a. axillaris a distĂˇlnÄ› vstupuje do mediĂˇlnĂ­ho kompartmentu paĹľe.",
+      cs: "N. ulnaris vzniká z mediálního svazku plexus brachialis. V axile leží mediálně od a. axillaris a distálně vstupuje do mediálního kompartmentu paže.",
       en: "The ulnar nerve arises from the medial cord of the brachial plexus. In the axilla it lies medial to the axillary artery and then enters the medial arm compartment."
     },
     "1_arm": {
-      cs: "V proximĂˇlnĂ­ ÄŤĂˇsti paĹľe probĂ­hĂˇ nerv mediĂˇlnÄ› od a. brachialis. Ve stĹ™ednĂ­ tĹ™etinÄ› opouĹˇtĂ­ pĹ™ednĂ­ kompartment a pronikĂˇ pĹ™es septum intermusculare mediale do zadnĂ­ho kompartmentu, kde sestupuje k mediĂˇlnĂ­mu epikondylu.",
+      cs: "V proximální části paže probíhá nerv mediálně od a. brachialis. Ve střední třetině opouští přední kompartment a proniká přes septum intermusculare mediale do zadního kompartmentu, kde sestupuje k mediálnímu epikondylu.",
       en: "In the proximal arm, the nerve runs medial to the brachial artery. In the mid-arm it leaves the anterior compartment, passes through the medial intermuscular septum into the posterior compartment, and descends toward the medial epicondyle."
     },
     "3_elbow": {
-      cs: "Nerv probĂ­hĂˇ za mediĂˇlnĂ­m epikondylem humeru v kubitĂˇlnĂ­m tunelu pod retinakulem. DistĂˇlnÄ› vstupuje mezi dvÄ› hlavy m. flexor carpi ulnaris. Jde o nejÄŤastÄ›jĹˇĂ­ mĂ­sto komprese â€“ syndrom kubitĂˇlnĂ­ho tunelu.",
-      en: "The nerve passes behind the medial epicondyle in the cubital tunnel under the retinaculum. Distally it enters between the two heads of the flexor carpi ulnaris. This is the most common compression site â€“ cubital tunnel syndrome."
+      cs: "Nerv probíhá za mediálním epikondylem humeru v kubitálním tunelu pod retinakulem. Distálně vstupuje mezi dvě hlavy m. flexor carpi ulnaris. Jde o nejčastější místo komprese – syndrom kubitálního tunelu.",
+      en: "The nerve passes behind the medial epicondyle in the cubital tunnel under the retinaculum. Distally it enters between the two heads of the flexor carpi ulnaris. This is the most common compression site – cubital tunnel syndrome."
     },
     "4_forearm": {
-      cs: "Na pĹ™edloktĂ­ sestupuje n. ulnaris mezi m. flexor carpi ulnaris a m. flexor digitorum profundus. ProximĂˇlnÄ› vydĂˇvĂˇ hlubokĂ© vÄ›tve pro FCU a ulnĂˇrnĂ­ ÄŤĂˇst FDP. Ve stĹ™ednĂ­ a distĂˇlnĂ­ tĹ™etinÄ› bÄ›ĹľĂ­ spoleÄŤnÄ› s a. ulnaris, obvykle mediĂˇlnÄ› od nĂ­.",
+      cs: "Na předloktí sestupuje n. ulnaris mezi m. flexor carpi ulnaris a m. flexor digitorum profundus. Proximálně vydává hluboké větve pro FCU a ulnární část FDP. Ve střední a distální třetině běží společně s a. ulnaris, obvykle mediálně od ní.",
       en: "In the forearm, the ulnar nerve descends between the flexor carpi ulnaris and flexor digitorum profundus. Proximally it gives deep branches to FCU and the ulnar part of FDP. In the mid and distal forearm it runs with the ulnar artery, usually medial to it."
     },
     "5_wrist": {
-      cs: "V oblasti zĂˇpÄ›stĂ­ probĂ­hĂˇ n. ulnaris povrchovÄ› od flexor retinaculum a vstupuje do Guyonova kanĂˇlu, kde se dÄ›lĂ­ na povrchovou senzitivnĂ­ a hlubokou motorickou vÄ›tev. Komprese v tĂ©to oblasti vede k syndromu Guyonova kanĂˇlu.",
-      en: "At the wrist, the ulnar nerve runs superficial to the flexor retinaculum and enters Guyonâ€™s canal, where it divides into a superficial sensory and a deep motor branch. Compression here leads to Guyonâ€™s canal syndrome."
+      cs: "V oblasti zápěstí probíhá n. ulnaris povrchově od flexor retinaculum a vstupuje do Guyonova kanálu, kde se dělí na povrchovou senzitivní a hlubokou motorickou větev. Komprese v této oblasti vede k syndromu Guyonova kanálu.",
+      en: "At the wrist, the ulnar nerve runs superficial to the flexor retinaculum and enters Guyon’s canal, where it divides into a superficial sensory and a deep motor branch. Compression here leads to Guyon’s canal syndrome."
     }
   },
   "nervus-radialis": {
     "2_axilla": {
-      cs: "N. radialis vznikĂˇ ze zadnĂ­ho svazku plexus brachialis. V axile leĹľĂ­ posteriornÄ› od a. axillaris a vstupuje do zadnĂ­ho kompartmentu paĹľe.",
+      cs: "N. radialis vzniká ze zadního svazku plexus brachialis. V axile leží posteriorně od a. axillaris a vstupuje do zadního kompartmentu paže.",
       en: "The radial nerve arises from the posterior cord of the brachial plexus. In the axilla it lies posterior to the axillary artery and enters the posterior arm compartment."
     },
     "1_arm": {
-      cs: "Nerv vstupuje do sulcus nervi radialis na humeru, kde probĂ­hĂˇ spoleÄŤnÄ› s a. profunda brachii mezi hlavami m. triceps brachii. V distĂˇlnĂ­ ÄŤĂˇsti paĹľe prorĂˇĹľĂ­ septum intermusculare laterale a pĹ™echĂˇzĂ­ do pĹ™ednĂ­ho kompartmentu.",
+      cs: "Nerv vstupuje do sulcus nervi radialis na humeru, kde probíhá společně s a. profunda brachii mezi hlavami m. triceps brachii. V distální části paže proráží septum intermusculare laterale a přechází do předního kompartmentu.",
       en: "The nerve enters the radial groove of the humerus, running with the profunda brachii artery between the heads of the triceps brachii. In the distal arm it pierces the lateral intermuscular septum and moves into the anterior compartment."
     },
     "3_elbow": {
-      cs: "V loketnĂ­ jamce probĂ­hĂˇ nerv mezi m. brachialis a m. brachioradialis a dÄ›lĂ­ se na povrchovou senzitivnĂ­ a hlubokou motorickou vÄ›tev â€“ n. interosseus posterior.",
-      en: "In the cubital fossa the nerve runs between the brachialis and brachioradialis muscles and divides into a superficial sensory branch and a deep motor branch â€“ the posterior interosseous nerve."
+      cs: "V loketní jamce probíhá nerv mezi m. brachialis a m. brachioradialis a dělí se na povrchovou senzitivní a hlubokou motorickou větev – n. interosseus posterior.",
+      en: "In the cubital fossa the nerve runs between the brachialis and brachioradialis muscles and divides into a superficial sensory branch and a deep motor branch – the posterior interosseous nerve."
     },
     "4_forearm": {
-      cs: "HlubokĂˇ vÄ›tev vstupuje do m. supinator pod vazivovĂ˝m obloukem (Arcade of Frohse), coĹľ je nejÄŤastÄ›jĹˇĂ­ mĂ­sto komprese, a distĂˇlnÄ› pokraÄŤuje jako n. interosseus posterior v zadnĂ­m kompartmentu. PovrchovĂˇ vÄ›tev pokraÄŤuje distĂˇlnÄ› pod m. brachioradialis spoleÄŤnÄ› s a. radialis.",
+      cs: "Hluboká větev vstupuje do m. supinator pod vazivovým obloukem (Arcade of Frohse), což je nejčastější místo komprese, a distálně pokračuje jako n. interosseus posterior v zadním kompartmentu. Povrchová větev pokračuje distálně pod m. brachioradialis společně s a. radialis.",
       en: "The deep branch enters the supinator under the fibrous arch (Arcade of Frohse), the most common compression site, and continues distally as the posterior interosseous nerve in the posterior compartment. The superficial branch continues distally beneath the brachioradialis with the radial artery."
     },
     "5_wrist": {
-      cs: "PovrchovĂˇ vÄ›tev n. radialis vystupuje mezi Ĺˇlachami m. brachioradialis a m. extensor carpi radialis longus, kde se stĂˇvĂˇ subkutĂˇnnĂ­, a distĂˇlnÄ› se vÄ›tvĂ­ pro dorzum ruky. V tĂ©to oblasti mĹŻĹľe dojĂ­t ke kompresi znĂˇmĂ© jako WartenbergĹŻv syndrom.",
+      cs: "Povrchová větev n. radialis vystupuje mezi šlachami m. brachioradialis a m. extensor carpi radialis longus, kde se stává subkutánní, a distálně se větví pro dorzum ruky. V této oblasti může dojít ke kompresi známé jako Wartenbergův syndrom.",
       en: "The superficial radial branch emerges between the tendons of the brachioradialis and extensor carpi radialis longus, becomes subcutaneous, and then branches to the dorsum of the hand. Compression here is known as Wartenberg syndrome."
     }
   }
@@ -885,38 +885,38 @@ const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescri
 const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = {
   "nervus-medianus": {
     cs: [
-      "PĹ™edloktĂ­: m. pronator teres, m. flexor carpi radialis, m. palmaris longus, m. flexor digitorum superficialis.",
-      "N. interosseus anterior: m. flexor pollicis longus, m. pronator quadratus, radiĂˇlnĂ­ polovina m. flexor digitorum profundus (prsty IIâ€“III).",
+      "Předloktí: m. pronator teres, m. flexor carpi radialis, m. palmaris longus, m. flexor digitorum superficialis.",
+      "N. interosseus anterior: m. flexor pollicis longus, m. pronator quadratus, radiální polovina m. flexor digitorum profundus (prsty II–III).",
       "Ruka (thenar): m. abductor pollicis brevis, m. opponens pollicis, m. flexor pollicis brevis (caput superficiale).",
-      "Ruka: mm. lumbricales Iâ€“II."
+      "Ruka: mm. lumbricales I–II."
     ],
     en: [
       "Forearm: pronator teres, flexor carpi radialis, palmaris longus, flexor digitorum superficialis.",
-      "Anterior interosseous nerve: flexor pollicis longus, pronator quadratus, radial half of flexor digitorum profundus (digits IIâ€“III).",
+      "Anterior interosseous nerve: flexor pollicis longus, pronator quadratus, radial half of flexor digitorum profundus (digits II–III).",
       "Hand (thenar): abductor pollicis brevis, opponens pollicis, flexor pollicis brevis (superficial head).",
-      "Hand: lumbricals Iâ€“II."
+      "Hand: lumbricals I–II."
     ]
   },
   "nervus-ulnaris": {
     cs: [
-      "PĹ™edloktĂ­: m. flexor carpi ulnaris, ulnĂˇrnĂ­ polovina m. flexor digitorum profundus (prsty IVâ€“V).",
+      "Předloktí: m. flexor carpi ulnaris, ulnární polovina m. flexor digitorum profundus (prsty IV–V).",
       "Ruka (hypothenar): m. abductor digiti minimi, m. flexor digiti minimi brevis, m. opponens digiti minimi, m. palmaris brevis.",
-      "Ruka: mm. interossei palmares et dorsales, mm. lumbricales IIIâ€“IV.",
-      "Ruka: m. adductor pollicis, hlubokĂˇ hlava m. flexor pollicis brevis."
+      "Ruka: mm. interossei palmares et dorsales, mm. lumbricales III–IV.",
+      "Ruka: m. adductor pollicis, hluboká hlava m. flexor pollicis brevis."
     ],
     en: [
-      "Forearm: flexor carpi ulnaris, ulnar half of flexor digitorum profundus (digits IVâ€“V).",
+      "Forearm: flexor carpi ulnaris, ulnar half of flexor digitorum profundus (digits IV–V).",
       "Hand (hypothenar): abductor digiti minimi, flexor digiti minimi brevis, opponens digiti minimi, palmaris brevis.",
-      "Hand: palmar and dorsal interossei, lumbricals IIIâ€“IV.",
+      "Hand: palmar and dorsal interossei, lumbricals III–IV.",
       "Hand: adductor pollicis, deep head of flexor pollicis brevis."
     ]
   },
   "nervus-radialis": {
     cs: [
-      "PaĹľe: m. triceps brachii, m. anconeus.",
-      "PĹ™edloktĂ­ (n. radialis a n. interosseus posterior): m. brachioradialis, m. extensor carpi radialis longus et brevis, m. supinator.",
-      "PĹ™edloktĂ­: m. extensor digitorum, m. extensor digiti minimi, m. extensor carpi ulnaris.",
-      "PĹ™edloktĂ­: m. abductor pollicis longus, m. extensor pollicis brevis, m. extensor pollicis longus, m. extensor indicis."
+      "Paže: m. triceps brachii, m. anconeus.",
+      "Předloktí (n. radialis a n. interosseus posterior): m. brachioradialis, m. extensor carpi radialis longus et brevis, m. supinator.",
+      "Předloktí: m. extensor digitorum, m. extensor digiti minimi, m. extensor carpi ulnaris.",
+      "Předloktí: m. abductor pollicis longus, m. extensor pollicis brevis, m. extensor pollicis longus, m. extensor indicis."
     ],
     en: [
       "Arm: triceps brachii, anconeus.",
@@ -927,9 +927,9 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   },
   "nervus-femoralis": {
     cs: [
-      "KyÄŤel a stehno: m. iliacus, m. pectineus (ÄŤĂˇsteÄŤnÄ›), m. sartorius.",
+      "Kyčel a stehno: m. iliacus, m. pectineus (částečně), m. sartorius.",
       "Quadriceps femoris: m. rectus femoris, m. vastus medialis, m. vastus lateralis, m. vastus intermedius.",
-      "PĹ™idruĹľenÄ›: m. articularis genus."
+      "Přidruženě: m. articularis genus."
     ],
     en: [
       "Hip and thigh: iliacus, pectineus (partial), sartorius.",
@@ -939,9 +939,9 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   },
   "nervus-ischiadicus": {
     cs: [
-      "ZadnĂ­ skupina stehna: m. semitendinosus, m. semimembranosus, m. biceps femoris (caput longum).",
-      "IschiokrurĂˇlnĂ­ ÄŤĂˇst m. adductor magnus.",
-      "Caput breve m. biceps femoris pĹ™es n. peroneus communis."
+      "Zadní skupina stehna: m. semitendinosus, m. semimembranosus, m. biceps femoris (caput longum).",
+      "Ischiokrurální část m. adductor magnus.",
+      "Caput breve m. biceps femoris přes n. peroneus communis."
     ],
     en: [
       "Posterior thigh: semitendinosus, semimembranosus, biceps femoris (long head).",
@@ -951,9 +951,9 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   },
   "nervus-tibialis": {
     cs: [
-      "BĂ©rec (zadnĂ­ kompartment): m. gastrocnemius, m. soleus, m. plantaris, m. popliteus.",
-      "BĂ©rec (hlubokĂˇ vrstva): m. tibialis posterior, m. flexor digitorum longus, m. flexor hallucis longus.",
-      "Noha (plantĂˇrnĂ­ svaly pĹ™es n. plantaris medialis et lateralis): m. abductor hallucis, m. flexor digitorum brevis, m. flexor hallucis brevis, m. quadratus plantae, mm. lumbricales, mm. interossei, m. adductor hallucis, m. abductor digiti minimi, m. flexor digiti minimi brevis."
+      "Bérec (zadní kompartment): m. gastrocnemius, m. soleus, m. plantaris, m. popliteus.",
+      "Bérec (hluboká vrstva): m. tibialis posterior, m. flexor digitorum longus, m. flexor hallucis longus.",
+      "Noha (plantární svaly přes n. plantaris medialis et lateralis): m. abductor hallucis, m. flexor digitorum brevis, m. flexor hallucis brevis, m. quadratus plantae, mm. lumbricales, mm. interossei, m. adductor hallucis, m. abductor digiti minimi, m. flexor digiti minimi brevis."
     ],
     en: [
       "Leg (posterior compartment): gastrocnemius, soleus, plantaris, popliteus.",
@@ -964,9 +964,9 @@ const motorInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = 
   "nervus-peroneus-communis": {
     cs: [
       "Stehno: m. biceps femoris (caput breve).",
-      "BĂ©rec (n. peroneus profundus): m. tibialis anterior, m. extensor hallucis longus, m. extensor digitorum longus, m. peroneus tertius.",
-      "BĂ©rec (n. peroneus superficialis): m. peroneus longus, m. peroneus brevis.",
-      "HĹ™bet nohy (n. peroneus profundus): m. extensor digitorum brevis, m. extensor hallucis brevis."
+      "Bérec (n. peroneus profundus): m. tibialis anterior, m. extensor hallucis longus, m. extensor digitorum longus, m. peroneus tertius.",
+      "Bérec (n. peroneus superficialis): m. peroneus longus, m. peroneus brevis.",
+      "Hřbet nohy (n. peroneus profundus): m. extensor digitorum brevis, m. extensor hallucis brevis."
     ],
     en: [
       "Thigh: biceps femoris (short head).",
@@ -988,26 +988,26 @@ const entrapmentSitesByNerve: Record<
     cs: [
       {
         title: "Struthersovo ligamentum",
-        description: "vazivovĂ˝ pruh u suprakondylĂˇrnĂ­ho vĂ˝bÄ›Ĺľku humeru, proximĂˇlnĂ­ Ăştlak n. medianus."
+        description: "vazivový pruh u suprakondylárního výběžku humeru, proximální útlak n. medianus."
       },
       {
         title: "Lacertus fibrosus",
-        description: "aponeurĂłza m. biceps brachii v loketnĂ­ jamce, mĹŻĹľe utlaÄŤovat nerv."
+        description: "aponeuróza m. biceps brachii v loketní jamce, může utlačovat nerv."
       },
-      { title: "M. pronator teres", description: "prĹŻchod mezi dvÄ›ma hlavami, typickĂ© mĂ­sto pronator syndromu." },
+      { title: "M. pronator teres", description: "průchod mezi dvěma hlavami, typické místo pronator syndromu." },
       {
         title: "Arcade of FDS",
-        description: "vazivovĂ˝ oblouk m. flexor digitorum superficialis mezi mediĂˇlnĂ­m epikondylem a radiem."
+        description: "vazivový oblouk m. flexor digitorum superficialis mezi mediálním epikondylem a radiem."
       },
       {
-        title: "GantzerĹŻv sval",
-        description: "akcesornĂ­ hlava m. flexor pollicis longus, mĹŻĹľe utlaÄŤit n. interosseus anterior."
+        title: "Gantzerův sval",
+        description: "akcesorní hlava m. flexor pollicis longus, může utlačit n. interosseus anterior."
       },
       {
-        title: "AINS (Kilohâ€‘Nevin)",
-        description: "neuropatie n. interosseus anterior se slabostĂ­ flexe palce a ukazovĂˇku."
+        title: "AINS (Kiloh‑Nevin)",
+        description: "neuropatie n. interosseus anterior se slabostí flexe palce a ukazováku."
       },
-      { title: "KarpĂˇlnĂ­ tunel", description: "prĹŻbÄ›h pod flexor retinaculum, nejÄŤastÄ›jĹˇĂ­ distĂˇlnĂ­ Ăştlak." }
+      { title: "Karpální tunel", description: "průběh pod flexor retinaculum, nejčastější distální útlak." }
     ],
     en: [
       {
@@ -1028,7 +1028,7 @@ const entrapmentSitesByNerve: Record<
         description: "accessory head of flexor pollicis longus, may compress the anterior interosseous nerve."
       },
       {
-        title: "AINS (Kilohâ€‘Nevin)",
+        title: "AINS (Kiloh‑Nevin)",
         description: "anterior interosseous neuropathy with weak thumb and index flexion."
       },
       { title: "Carpal tunnel", description: "course under the flexor retinaculum, most common distal compression." }
@@ -1037,28 +1037,28 @@ const entrapmentSitesByNerve: Record<
   "nervus-ulnaris": {
     cs: [
       {
-        title: "MediĂˇlnĂ­ intermusculĂˇrnĂ­ septum",
-        description: "prĹŻchod do zadnĂ­ho kompartmentu paĹľe, moĹľnost Ăştlaku."
+        title: "Mediální intermusculární septum",
+        description: "průchod do zadního kompartmentu paže, možnost útlaku."
       },
       {
-        title: "Struthersova arkĂˇda",
-        description: "vazivovĂ˝ pruh mezi mediĂˇlnĂ­ hlavou tricepsu a septem."
+        title: "Struthersova arkáda",
+        description: "vazivový pruh mezi mediální hlavou tricepsu a septem."
       },
       {
-        title: "OsbornĹŻv ligament",
-        description: "strop kubitĂˇlnĂ­ho tunelu za mediĂˇlnĂ­m epikondylem."
+        title: "Osbornův ligament",
+        description: "strop kubitálního tunelu za mediálním epikondylem."
       },
       {
         title: "Arcade of Osborne",
-        description: "fibrotickĂ˝ oblouk v kubitĂˇlnĂ­m tunelu, ÄŤastĂ© mĂ­sto komprese."
+        description: "fibrotický oblouk v kubitálním tunelu, časté místo komprese."
       },
       {
-        title: "Mezi dvÄ›ma hlavami m. flexor carpi ulnaris",
-        description: "vstup nervu do pĹ™edloktĂ­."
+        title: "Mezi dvěma hlavami m. flexor carpi ulnaris",
+        description: "vstup nervu do předloktí."
       },
       {
-        title: "GuyonĹŻv kanĂˇl",
-        description: "komprese v zĂˇpÄ›stĂ­ s poruchou senzitivity ÄŤi motoriky ruky."
+        title: "Guyonův kanál",
+        description: "komprese v zápěstí s poruchou senzitivity či motoriky ruky."
       }
     ],
     en: [
@@ -1085,26 +1085,26 @@ const entrapmentSitesByNerve: Record<
   "nervus-radialis": {
     cs: [
       {
-        title: "Sulcus nervi radialis (spirĂˇlnĂ­ ĹľlĂˇbek)",
-        description: "Ăştlak pĹ™i frakturĂˇch humeru ÄŤi tlaku."
+        title: "Sulcus nervi radialis (spirální žlábek)",
+        description: "útlak při frakturách humeru či tlaku."
       },
       {
-        title: "LaterĂˇlnĂ­ intermusculĂˇrnĂ­ septum",
-        description: "prĹŻchod do pĹ™ednĂ­ho kompartmentu paĹľe."
+        title: "Laterální intermusculární septum",
+        description: "průchod do předního kompartmentu paže."
       },
       {
         title: "Arcade of Frohse",
-        description: "vazivovĂ˝ oblouk supinĂˇtoru, nejÄŤastÄ›jĹˇĂ­ mĂ­sto Ăştlaku hlubokĂ© vÄ›tve."
+        description: "vazivový oblouk supinátoru, nejčastější místo útlaku hluboké větve."
       },
       {
         title: "Supinator tunnel (radial tunnel)",
-        description: "komprese hlubokĂ© vÄ›tve v supinĂˇtoru."
+        description: "komprese hluboké větve v supinátoru."
       },
       {
         title: "Fascie m. brachioradialis a m. extensor carpi radialis longus",
-        description: "Ăştlak povrchovĂ© vÄ›tve, WartenbergĹŻv syndrom."
+        description: "útlak povrchové větve, Wartenbergův syndrom."
       },
-      { title: "KĹ™Ă­ĹľenĂ­ s v. cephalica", description: "iritace/Ăştlak pĹ™i kanylace ÄŤi katĂ©tru." }
+      { title: "Křížení s v. cephalica", description: "iritace/útlak při kanylace či katétru." }
     ],
     en: [
       { title: "Radial groove", description: "compression with humeral fractures or external pressure." },
@@ -1135,21 +1135,21 @@ const entrapmentSitesByNerve: Record<
 const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> = {
   "nervus-medianus": {
     cs: [
-      "DlaĹ: radiĂˇlnĂ­ polovina dlanÄ›.",
-      "Prsty: palmar Iâ€“III a radiĂˇlnĂ­ polovina IV. prstu.",
-      "HĹ™bet prstĹŻ: distĂˇlnĂ­ ÄŤlĂˇnky Iâ€“III a radiĂˇlnĂ­ polovina IV. prstu."
+      "Dlaň: radiální polovina dlaně.",
+      "Prsty: palmar I–III a radiální polovina IV. prstu.",
+      "Hřbet prstů: distální články I–III a radiální polovina IV. prstu."
     ],
     en: [
       "Palm: radial half of the palm.",
-      "Digits: palmar Iâ€“III and radial half of digit IV.",
-      "Dorsal digits: distal phalanges of Iâ€“III and radial half of digit IV."
+      "Digits: palmar I–III and radial half of digit IV.",
+      "Dorsal digits: distal phalanges of I–III and radial half of digit IV."
     ]
   },
   "nervus-ulnaris": {
     cs: [
-      "DlaĹ: ulnĂˇrnĂ­ ÄŤĂˇst dlanÄ›.",
-      "Prsty: palmar i dorsĂˇlnĂ­ V. a ulnĂˇrnĂ­ polovina IV. prstu.",
-      "HĹ™bet ruky: ulnĂˇrnĂ­ ÄŤĂˇst hĹ™betu ruky."
+      "Dlaň: ulnární část dlaně.",
+      "Prsty: palmar i dorsální V. a ulnární polovina IV. prstu.",
+      "Hřbet ruky: ulnární část hřbetu ruky."
     ],
     en: [
       "Palm: ulnar part of the palm.",
@@ -1159,20 +1159,20 @@ const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> 
   },
   "nervus-radialis": {
     cs: [
-      "PaĹľe a pĹ™edloktĂ­: dorzĂˇlnĂ­/laterĂˇlnĂ­ ÄŤĂˇst.",
-      "HĹ™bet ruky: radiĂˇlnĂ­ ÄŤĂˇst hĹ™betu ruky.",
-      "Prsty: dorzĂˇlnĂ­ proximĂˇlnĂ­ ÄŤĂˇsti Iâ€“III a radiĂˇlnĂ­ polovina IV. prstu (bez bĹ™Ă­Ĺˇek)."
+      "Paže a předloktí: dorzální/laterální část.",
+      "Hřbet ruky: radiální část hřbetu ruky.",
+      "Prsty: dorzální proximální části I–III a radiální polovina IV. prstu (bez bříšek)."
     ],
     en: [
       "Arm and forearm: posterior/lateral skin.",
       "Dorsum of hand: radial aspect of the dorsum.",
-      "Digits: dorsal proximal parts of Iâ€“III and radial half of digit IV (not the fingertips)."
+      "Digits: dorsal proximal parts of I–III and radial half of digit IV (not the fingertips)."
     ]
   },
   "nervus-femoralis": {
     cs: [
-      "PĹ™ednĂ­ strana stehna (rr. cutanei anteriores).",
-      "MediĂˇlnĂ­ bĂ©rec a mediĂˇlnĂ­ okraj nohy pĹ™es n. saphenus."
+      "Přední strana stehna (rr. cutanei anteriores).",
+      "Mediální bérec a mediální okraj nohy přes n. saphenus."
     ],
     en: [
       "Anterior thigh (anterior cutaneous branches).",
@@ -1181,8 +1181,8 @@ const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> 
   },
   "nervus-ischiadicus": {
     cs: [
-      "PĹ™Ă­mĂˇ koĹľnĂ­ inervace nenĂ­ typickĂˇ.",
-      "SenzitivnĂ­ oblast zajiĹˇĹĄujĂ­ jeho vÄ›tve: n. tibialis a n. peroneus communis (bĂ©rce a nohy)."
+      "Přímá kožní inervace není typická.",
+      "Senzitivní oblast zajišťují jeho větve: n. tibialis a n. peroneus communis (bérce a nohy)."
     ],
     en: [
       "No typical direct cutaneous territory.",
@@ -1191,9 +1191,9 @@ const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> 
   },
   "nervus-tibialis": {
     cs: [
-      "BĂ©rec: posterolaterĂˇlnĂ­ ÄŤĂˇst pĹ™es n. suralis (spoluĂşÄŤast n. peroneus communis).",
+      "Bérec: posterolaterální část přes n. suralis (spoluúčast n. peroneus communis).",
       "Pata: rr. calcanei mediales.",
-      "Planta nohy: n. plantaris medialis et lateralis (vÄ›tĹˇina plosky)."
+      "Planta nohy: n. plantaris medialis et lateralis (většina plosky)."
     ],
     en: [
       "Leg: posterolateral skin via sural nerve (with common peroneal contribution).",
@@ -1203,10 +1203,10 @@ const sensoryInnervationByNerve: Record<string, { cs: string[]; en: string[] }> 
   },
   "nervus-peroneus-communis": {
     cs: [
-      "LaterĂˇlnĂ­ bĂ©rec: n. peroneus superficialis.",
-      "Dorzum nohy: n. peroneus superficialis (vÄ›tĹˇina hĹ™betu).",
-      "PrvnĂ­ meziprstnĂ­ prostor: n. peroneus profundus.",
-      "LaterĂˇlnĂ­ okraj nohy: pĹ™es n. suralis (spoluĂşÄŤast n. tibialis)."
+      "Laterální bérec: n. peroneus superficialis.",
+      "Dorzum nohy: n. peroneus superficialis (většina hřbetu).",
+      "První meziprstní prostor: n. peroneus profundus.",
+      "Laterální okraj nohy: přes n. suralis (spoluúčast n. tibialis)."
     ],
     en: [
       "Lateral leg: superficial peroneal nerve.",
@@ -1221,21 +1221,21 @@ const sensoryInnervationImages: Record<string, { baseName: string; alt: { cs: st
   "nervus-medianus": {
     baseName: "Median_senzory",
     alt: {
-      cs: "SenzitivnĂ­ inervace nervus medianus",
+      cs: "Senzitivní inervace nervus medianus",
       en: "Median nerve sensory innervation"
     }
   },
   "nervus-ulnaris": {
     baseName: "Ulnar_senzory",
     alt: {
-      cs: "SenzitivnĂ­ inervace nervus ulnaris",
+      cs: "Senzitivní inervace nervus ulnaris",
       en: "Ulnar nerve sensory innervation"
     }
   },
   "nervus-radialis": {
     baseName: "Radial_senzory",
     alt: {
-      cs: "SenzitivnĂ­ inervace nervus radialis",
+      cs: "Senzitivní inervace nervus radialis",
       en: "Radial nerve sensory innervation"
     }
   }
@@ -1244,158 +1244,158 @@ const sensoryInnervationImages: Record<string, { baseName: string; alt: { cs: st
 const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> = {
   "2_axilla": {
     cs: [
-      "D â€“ m. deltoideus",
-      "PM â€“ m. pectoralis major",
-      "LHBB â€“ caput longum m. biceps brachii",
-      "SHBB â€“ caput breve m. biceps brachii",
-      "CB â€“ m. coracobrachialis",
-      "mc â€“ n. musculocutaneus",
-      "M â€“ n. medianus",
-      "U â€“ n. ulnaris",
-      "R â€“ n. radialis",
-      "Tmaj â€“ m. teres major",
-      "TLa â€“ caput laterale m. triceps brachii",
-      "TLo â€“ caput longum m. triceps brachii",
-      "H â€“ humerus"
+      "D – m. deltoideus",
+      "PM – m. pectoralis major",
+      "LHBB – caput longum m. biceps brachii",
+      "SHBB – caput breve m. biceps brachii",
+      "CB – m. coracobrachialis",
+      "mc – n. musculocutaneus",
+      "M – n. medianus",
+      "U – n. ulnaris",
+      "R – n. radialis",
+      "Tmaj – m. teres major",
+      "TLa – caput laterale m. triceps brachii",
+      "TLo – caput longum m. triceps brachii",
+      "H – humerus"
     ],
     en: [
-      "D â€“ deltoid muscle",
-      "PM â€“ pectoralis major",
-      "LHBB â€“ long head of the biceps brachii",
-      "SHBB â€“ short head of the biceps brachii",
-      "CB â€“ coracobrachialis muscle",
-      "mc â€“ musculocutaneous nerve",
-      "M â€“ median nerve",
-      "U â€“ ulnar nerve",
-      "R â€“ radial nerve",
-      "Tmaj â€“ teres major muscle",
-      "TLa â€“ lateral head of the triceps brachii",
-      "TLo â€“ long head of the triceps brachii",
-      "H â€“ humerus"
+      "D – deltoid muscle",
+      "PM – pectoralis major",
+      "LHBB – long head of the biceps brachii",
+      "SHBB – short head of the biceps brachii",
+      "CB – coracobrachialis muscle",
+      "mc – musculocutaneous nerve",
+      "M – median nerve",
+      "U – ulnar nerve",
+      "R – radial nerve",
+      "Tmaj – teres major muscle",
+      "TLa – lateral head of the triceps brachii",
+      "TLo – long head of the triceps brachii",
+      "H – humerus"
     ]
   },
   "1_arm": {
     cs: [
-      "B â€“ m. biceps brachii",
-      "Br â€“ m. brachialis",
-      "CB â€“ m. coracobrachialis",
-      "H â€“ humerus",
-      "TLa â€“ caput laterale m. triceps brachii",
-      "TM â€“ caput mediale m. triceps brachii",
-      "TLo â€“ caput longum m. triceps brachii",
-      "R â€“ n. radialis",
-      "M â€“ n. medianus",
-      "U â€“ n. ulnaris"
+      "B – m. biceps brachii",
+      "Br – m. brachialis",
+      "CB – m. coracobrachialis",
+      "H – humerus",
+      "TLa – caput laterale m. triceps brachii",
+      "TM – caput mediale m. triceps brachii",
+      "TLo – caput longum m. triceps brachii",
+      "R – n. radialis",
+      "M – n. medianus",
+      "U – n. ulnaris"
     ],
     en: [
-      "B â€“ biceps brachii muscle",
-      "Br â€“ brachialis muscle",
-      "CB â€“ coracobrachialis muscle",
-      "H â€“ humerus",
-      "TLa â€“ lateral head of the triceps brachii",
-      "TM â€“ medial head of the triceps brachii",
-      "TLo â€“ long head of the triceps brachii",
-      "R â€“ radial nerve",
-      "M â€“ median nerve",
-      "U â€“ ulnar nerve"
+      "B – biceps brachii muscle",
+      "Br – brachialis muscle",
+      "CB – coracobrachialis muscle",
+      "H – humerus",
+      "TLa – lateral head of the triceps brachii",
+      "TM – medial head of the triceps brachii",
+      "TLo – long head of the triceps brachii",
+      "R – radial nerve",
+      "M – median nerve",
+      "U – ulnar nerve"
     ]
   },
   "3_elbow": {
     cs: [
-      "Br â€“ m. brachioradialis",
-      "ECRL â€“ m. extensor carpi radialis longus",
-      "ECRB â€“ m. extensor carpi radialis brevis",
-      "B â€“ Ĺˇlacha m. biceps brachii",
-      "S â€“ r. superficialis n. radialis",
-      "P â€“ r. profundus n. radialis (n. interosseus posterior)",
-      "M â€“ n. medianus",
-      "PT â€“ m. pronator teres",
-      "U â€“ n. ulnaris",
-      "FCU â€“ m. flexor carpi ulnaris",
-      "A â€“ m. anconeus"
+      "Br – m. brachioradialis",
+      "ECRL – m. extensor carpi radialis longus",
+      "ECRB – m. extensor carpi radialis brevis",
+      "B – šlacha m. biceps brachii",
+      "S – r. superficialis n. radialis",
+      "P – r. profundus n. radialis (n. interosseus posterior)",
+      "M – n. medianus",
+      "PT – m. pronator teres",
+      "U – n. ulnaris",
+      "FCU – m. flexor carpi ulnaris",
+      "A – m. anconeus"
     ],
     en: [
-      "Br â€“ brachioradialis muscle",
-      "ECRL â€“ extensor carpi radialis longus",
-      "ECRB â€“ extensor carpi radialis brevis",
-      "B â€“ biceps brachii tendon",
-      "S â€“ superficial branch of the radial nerve",
-      "P â€“ deep branch of the radial nerve (posterior interosseous nerve)",
-      "M â€“ median nerve",
-      "PT â€“ pronator teres muscle",
-      "U â€“ ulnar nerve",
-      "FCU â€“ flexor carpi ulnaris",
-      "A â€“ anconeus muscle"
+      "Br – brachioradialis muscle",
+      "ECRL – extensor carpi radialis longus",
+      "ECRB – extensor carpi radialis brevis",
+      "B – biceps brachii tendon",
+      "S – superficial branch of the radial nerve",
+      "P – deep branch of the radial nerve (posterior interosseous nerve)",
+      "M – median nerve",
+      "PT – pronator teres muscle",
+      "U – ulnar nerve",
+      "FCU – flexor carpi ulnaris",
+      "A – anconeus muscle"
     ]
   },
   "4_forearm": {
     cs: [
-      "Br â€“ m. brachioradialis",
-      "ECRL â€“ m. extensor carpi radialis longus",
-      "ECRB â€“ m. extensor carpi radialis brevis",
-      "EDC â€“ m. extensor digitorum communis",
-      "EDM â€“ m. extensor digiti minimi",
-      "ECU â€“ m. extensor carpi ulnaris",
-      "AbPL â€“ m. abductor pollicis longus",
-      "EPB â€“ m. extensor pollicis brevis",
-      "EPL â€“ m. extensor pollicis longus",
-      "FCR â€“ m. flexor carpi radialis",
-      "PL â€“ m. palmaris longus",
-      "FDS â€“ m. flexor digitorum superficialis",
-      "FPL â€“ m. flexor pollicis longus",
-      "FDP â€“ m. flexor digitorum profundus",
-      "FCU â€“ m. flexor carpi ulnaris",
-      "M â€“ n. medianus",
-      "U (nerv) â€“ n. ulnaris",
-      "Rs â€“ r. superficialis n. radialis",
-      "Rp â€“ r. profundus n. radialis (n. interosseus posterior)",
-      "AIN â€“ n. interosseus anterior",
-      "R â€“ radius",
-      "U (kost) â€“ ulna"
+      "Br – m. brachioradialis",
+      "ECRL – m. extensor carpi radialis longus",
+      "ECRB – m. extensor carpi radialis brevis",
+      "EDC – m. extensor digitorum communis",
+      "EDM – m. extensor digiti minimi",
+      "ECU – m. extensor carpi ulnaris",
+      "AbPL – m. abductor pollicis longus",
+      "EPB – m. extensor pollicis brevis",
+      "EPL – m. extensor pollicis longus",
+      "FCR – m. flexor carpi radialis",
+      "PL – m. palmaris longus",
+      "FDS – m. flexor digitorum superficialis",
+      "FPL – m. flexor pollicis longus",
+      "FDP – m. flexor digitorum profundus",
+      "FCU – m. flexor carpi ulnaris",
+      "M – n. medianus",
+      "U (nerv) – n. ulnaris",
+      "Rs – r. superficialis n. radialis",
+      "Rp – r. profundus n. radialis (n. interosseus posterior)",
+      "AIN – n. interosseus anterior",
+      "R – radius",
+      "U (kost) – ulna"
     ],
     en: [
-      "Br â€“ brachioradialis muscle",
-      "ECRL â€“ extensor carpi radialis longus",
-      "ECRB â€“ extensor carpi radialis brevis",
-      "EDC â€“ extensor digitorum communis",
-      "EDM â€“ extensor digiti minimi",
-      "ECU â€“ extensor carpi ulnaris",
-      "AbPL â€“ abductor pollicis longus",
-      "EPB â€“ extensor pollicis brevis",
-      "EPL â€“ extensor pollicis longus",
-      "FCR â€“ flexor carpi radialis",
-      "PL â€“ palmaris longus",
-      "FDS â€“ flexor digitorum superficialis",
-      "FPL â€“ flexor pollicis longus",
-      "FDP â€“ flexor digitorum profundus",
-      "FCU â€“ flexor carpi ulnaris",
-      "M â€“ median nerve",
-      "U (nerve) â€“ ulnar nerve",
-      "Rs â€“ superficial branch of the radial nerve",
-      "Rp â€“ deep branch of the radial nerve (posterior interosseous nerve)",
-      "AIN â€“ anterior interosseous nerve",
-      "R â€“ radius",
-      "U (bone) â€“ ulna"
+      "Br – brachioradialis muscle",
+      "ECRL – extensor carpi radialis longus",
+      "ECRB – extensor carpi radialis brevis",
+      "EDC – extensor digitorum communis",
+      "EDM – extensor digiti minimi",
+      "ECU – extensor carpi ulnaris",
+      "AbPL – abductor pollicis longus",
+      "EPB – extensor pollicis brevis",
+      "EPL – extensor pollicis longus",
+      "FCR – flexor carpi radialis",
+      "PL – palmaris longus",
+      "FDS – flexor digitorum superficialis",
+      "FPL – flexor pollicis longus",
+      "FDP – flexor digitorum profundus",
+      "FCU – flexor carpi ulnaris",
+      "M – median nerve",
+      "U (nerve) – ulnar nerve",
+      "Rs – superficial branch of the radial nerve",
+      "Rp – deep branch of the radial nerve (posterior interosseous nerve)",
+      "AIN – anterior interosseous nerve",
+      "R – radius",
+      "U (bone) – ulna"
     ]
   },
   "5_wrist": {
     cs: [
-      "FCR â€“ m. flexor carpi radialis",
-      "M â€“ n. medianus",
-      "U â€“ n. ulnaris",
-      "P â€“ os pisiforme",
-      "H â€“ os hamatum",
-      "C â€“ os capitatum",
-      "S â€“ os scaphoideum"
+      "FCR – m. flexor carpi radialis",
+      "M – n. medianus",
+      "U – n. ulnaris",
+      "P – os pisiforme",
+      "H – os hamatum",
+      "C – os capitatum",
+      "S – os scaphoideum"
     ],
     en: [
-      "FCR â€“ flexor carpi radialis",
-      "M â€“ median nerve",
-      "U â€“ ulnar nerve",
-      "P â€“ pisiform",
-      "H â€“ hamate",
-      "C â€“ capitate",
-      "S â€“ scaphoid"
+      "FCR – flexor carpi radialis",
+      "M – median nerve",
+      "U – ulnar nerve",
+      "P – pisiform",
+      "H – hamate",
+      "C – capitate",
+      "S – scaphoid"
     ]
   }
 };
@@ -1403,197 +1403,197 @@ const nerveAnatomyAbbreviations: Record<string, { cs: string[]; en: string[] }> 
 const jointProtocolExtraBullets: Record<string, Record<string, string[]>> = {
   loket: {
     "01_01": [
-      "PĹ™ednĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez loktem ukazuje distĂˇlnĂ­ epifĂ˝zu humeru s vrstvou kloubnĂ­ chrupavky.",
-      "V projekci jsou souÄŤasnÄ› dobĹ™e patrnĂ© neurovaskulĂˇrnĂ­ struktury a okolnĂ­ svalovĂ© skupiny."
+      "Přední příčný řez loktem ukazuje distální epifýzu humeru s vrstvou kloubní chrupavky.",
+      "V projekci jsou současně dobře patrné neurovaskulární struktury a okolní svalové skupiny."
     ],
     "02_02": [
-      "PodĂ©lnĂˇ radiĂˇlnĂ­ projekce zobrazuje radiohumerĂˇlnĂ­ skloubenĂ­, radiĂˇlnĂ­ jamku a pĹ™ednĂ­ recesus.",
-      "Je vhodnĂˇ pro detekci kloubnĂ­ tekutiny a synovitickĂ˝ch zmÄ›n."
+      "Podélná radiální projekce zobrazuje radiohumerální skloubení, radiální jamku a přední recesus.",
+      "Je vhodná pro detekci kloubní tekutiny a synovitických změn."
     ],
     "03_03": [
-      "PodĂ©lnĂˇ ulnĂˇrnĂ­ projekce zobrazuje humeroulnĂˇrnĂ­ skloubenĂ­, fossa coronoidea a pĹ™ednĂ­ synoviĂˇlnĂ­ recesus.",
-      "DoplĹuje ventrĂˇlnĂ­ hodnocenĂ­ o ulnĂˇrnĂ­ ÄŤĂˇst kloubu."
+      "Podélná ulnární projekce zobrazuje humeroulnární skloubení, fossa coronoidea a přední synoviální recesus.",
+      "Doplňuje ventrální hodnocení o ulnární část kloubu."
     ],
     "04_04": [
-      "Sonda je vedena v dlouhĂ© ose flexorovÄ›-pronĂˇtorovĂ© skupiny nad mediĂˇlnĂ­m epikondylem.",
-      "KlĂ­ÄŤovĂ˝ pohled pro mediĂˇlnĂ­ epikondylitidu, ĂşponovĂ© zmÄ›ny a hodnocenĂ­ MCL."
+      "Sonda je vedena v dlouhé ose flexorově-pronátorové skupiny nad mediálním epikondylem.",
+      "Klíčový pohled pro mediální epikondylitidu, úponové změny a hodnocení MCL."
     ],
     "01_05": [
-      "Sonda sleduje extenzorovĂ˝ aparĂˇt v dlouhĂ© ose od laterĂˇlnĂ­ho epikondylu.",
-      "Projekce je zĂˇsadnĂ­ pro diagnostiku laterĂˇlnĂ­ epikondylitidy a poranÄ›nĂ­ CET."
+      "Sonda sleduje extenzorový aparát v dlouhé ose od laterálního epikondylu.",
+      "Projekce je zásadní pro diagnostiku laterální epikondylitidy a poranění CET."
     ],
     "02_06": [
-      "ZadnĂ­ podĂ©lnĂˇ projekce pĹ™es olecranon a tricepsovou Ĺˇlachu hodnotĂ­ zadnĂ­ recesus.",
-      "VhodnĂˇ pro vĂ˝potek, burzitidu i poranÄ›nĂ­ Ĺˇlachy m. triceps brachii."
+      "Zadní podélná projekce přes olecranon a tricepsovou šlachu hodnotí zadní recesus.",
+      "Vhodná pro výpotek, burzitidu i poranění šlachy m. triceps brachii."
     ]
   },
   zapesti: {
     "01_Obrzek1_v2": [
-      "KlĂ­ÄŤovĂ© orientaÄŤnĂ­ body tvoĹ™Ă­ os pisiforme (ulnĂˇrnÄ›) a os scaphoideum (radiĂˇlnÄ›).",
-      "Projekce je zĂˇsadnĂ­ pro kompresi nervĹŻ, tenosynovitidu a gangliovĂ© cysty."
+      "Klíčové orientační body tvoří os pisiforme (ulnárně) a os scaphoideum (radiálně).",
+      "Projekce je zásadní pro kompresi nervů, tenosynovitidu a gangliové cysty."
     ],
     "02_Obrzek2": [
-      "Nerv je sledovĂˇn proximĂˇlnÄ› z karpĂˇlnĂ­ho tunelu do distĂˇlnĂ­ho pĹ™edloktĂ­ mezi FDS a FDP.",
-      "V tĂ©to Ăşrovni mĂˇ typickĂ˝ fascikulĂˇrnĂ­ (â€žvoĹˇtinovĂ˝â€ś) vzor."
+      "Nerv je sledován proximálně z karpálního tunelu do distálního předloktí mezi FDS a FDP.",
+      "V této úrovni má typický fascikulární („voštinový“) vzor."
     ],
     "03_Obrzek3": [
-      "PodĂ©lnÄ› je n. medianus patrnĂ˝ jako pruhovitĂˇ struktura s paralelnĂ­mi echogennĂ­mi liniemi.",
-      "HodnotĂ­ se kontinuita a zmÄ›ny prĹŻbÄ›hu pĹ™i vstupu do karpĂˇlnĂ­ho tunelu."
+      "Podélně je n. medianus patrný jako pruhovitá struktura s paralelními echogenními liniemi.",
+      "Hodnotí se kontinuita a změny průběhu při vstupu do karpálního tunelu."
     ],
     "04_Obrzek4": [
-      "Na Ăşrovni distĂˇlnĂ­ho radia lze zobrazit vĹˇech Ĺˇest extenzorovĂ˝ch kompartmentĹŻ.",
-      "Pohled je dĹŻleĹľitĂ˝ pro tenosynovitidy, subluxace a degenerativnĂ­ zmÄ›ny Ĺˇlach."
+      "Na úrovni distálního radia lze zobrazit všech šest extenzorových kompartmentů.",
+      "Pohled je důležitý pro tenosynovitidy, subluxace a degenerativní změny šlach."
     ],
     "05_Obrzek5": [
-      "DruhĂ˝ extenzorovĂ˝ kompartment leĹľĂ­ laterĂˇlnÄ› od Listerova hrbolku.",
-      "Obsahuje ECRL a ECRB a je ÄŤastĂ˝m mĂ­stem pĹ™etĂ­ĹľenĂ­."
+      "Druhý extenzorový kompartment leží laterálně od Listerova hrbolku.",
+      "Obsahuje ECRL a ECRB a je častým místem přetížení."
     ],
     "06_Obrzek6": [
-      "PrvnĂ­ extenzorovĂ˝ kompartment obsahuje APL a EPB ve spoleÄŤnĂ© pochvÄ›.",
-      "TypickĂˇ projekce pro De Quervainovu tenosynovitidu."
+      "První extenzorový kompartment obsahuje APL a EPB ve společné pochvě.",
+      "Typická projekce pro De Quervainovu tenosynovitidu."
     ],
     "07_Obrzek7": [
-      "Ĺ estĂ˝ extenzorovĂ˝ kompartment nad ulnou obsahuje Ĺˇlachu ECU.",
-      "VhodnĂ© pro hodnocenĂ­ tenosynovitidy, instability a subluxace ECU."
+      "Šestý extenzorový kompartment nad ulnou obsahuje šlachu ECU.",
+      "Vhodné pro hodnocení tenosynovitidy, instability a subluxace ECU."
     ],
     "08_Obrzek8": [
-      "PodĂ©lnĂˇ dorzĂˇlnĂ­ projekce pĹ™es extenzorovĂ© Ĺˇlachy a radiokarpĂˇlnĂ­ kloub.",
-      "UmoĹľnĂ­ detekovat vĂ˝potek, zĂˇnÄ›t i poruchu kontinuity Ĺˇlach."
+      "Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub.",
+      "Umožní detekovat výpotek, zánět i poruchu kontinuity šlach."
     ]
   },
   kycel: {
     "01_Obrzek1": [
-      "PovrchovÄ› je patrnĂ˝ m. sartorius, pod nĂ­m m. rectus femoris s centrĂˇlnĂ­ Ĺˇlachou.",
-      "VhodnĂ© pro hodnocenĂ­ myotendinĂłznĂ­ho pĹ™echodu a pĹ™etĂ­ĹľenĂ­ m. rectus femoris."
+      "Povrchově je patrný m. sartorius, pod ním m. rectus femoris s centrální šlachou.",
+      "Vhodné pro hodnocení myotendinózního přechodu a přetížení m. rectus femoris."
     ],
     "07_Obrzek3": [
-      "Jde o mapovĂˇnĂ­ popisu obrĂˇzku 2 na dalĹˇĂ­ pouĹľitĂ˝ snĂ­mek podle poĹľadovanĂ©ho posunu.",
-      "HodnotĂ­ se Ăşpon pĹ™Ă­mĂ© Ĺˇlachy na SIAI a moĹľnĂ© avulznĂ­/apofyzeĂˇlnĂ­ lĂ©ze."
+      "Jde o mapování popisu obrázku 2 na další použitý snímek podle požadovaného posunu.",
+      "Hodnotí se úpon přímé šlachy na SIAI a možné avulzní/apofyzeální léze."
     ],
     "08_Obrzek4": [
-      "Ĺ ikmĂˇ ventrĂˇlnĂ­ projekce zobrazuje femoroacetabulĂˇrnĂ­ kloub a acetabulĂˇrnĂ­ labrum.",
-      "DĹŻleĹľitĂˇ pro vĂ˝potek, degeneraci labra a impingement."
+      "Šikmá ventrální projekce zobrazuje femoroacetabulární kloub a acetabulární labrum.",
+      "Důležitá pro výpotek, degeneraci labra a impingement."
     ],
     "09_Obrzek5": [
-      "DistĂˇlnÄ›jĹˇĂ­ ĹˇikmĂ˝ Ĺ™ez pĹ™es pĹ™ednĂ­ pouzdro a recesus kyÄŤle.",
-      "VhodnĂ˝ pro synovitidu, vĂ˝potek a hodnocenĂ­ iliofemorĂˇlnĂ­ho vazu."
+      "Distálnější šikmý řez přes přední pouzdro a recesus kyčle.",
+      "Vhodný pro synovitidu, výpotek a hodnocení iliofemorálního vazu."
     ],
     "10_Obrzek6": [
-      "DistĂˇlnĂ­ laterĂˇlnĂ­ referenÄŤnĂ­ Ĺ™ez pĹ™es m. vastus lateralis a kortikalis femuru.",
-      "SlouĹľĂ­ k orientaci pĹ™ed proximĂˇlnĂ­m posunem k velkĂ©mu trochanteru."
+      "Distální laterální referenční řez přes m. vastus lateralis a kortikalis femuru.",
+      "Slouží k orientaci před proximálním posunem k velkému trochanteru."
     ],
     "11_Obrzek7": [
-      "PĹ™i proximĂˇlnĂ­m posunu se tvar kosti mÄ›nĂ­ na trojĂşhelnĂ­kovĂ˝ znak oblasti trochanteru.",
-      "PomĂˇhĂˇ sprĂˇvnÄ› lokalizovat trochanterickou oblast."
+      "Při proximálním posunu se tvar kosti mění na trojúhelníkový znak oblasti trochanteru.",
+      "Pomáhá správně lokalizovat trochanterickou oblast."
     ],
     "12_Obrzek8": [
-      "Ĺ ikmĂˇ laterĂˇlnĂ­ projekce na pĹ™ednĂ­ fasetu velkĂ©ho trochanteru.",
-      "HodnotĂ­ Ĺˇlachu m. gluteus minimus a zmÄ›ny typu tendinopatie."
+      "Šikmá laterální projekce na přední fasetu velkého trochanteru.",
+      "Hodnotí šlachu m. gluteus minimus a změny typu tendinopatie."
     ],
     "13_Obrzek9": [
-      "Detail trochanterickĂ© oblasti vhodnĂ˝ pro gluteĂˇlnĂ­ Ĺˇlachy a okolnĂ­ mÄ›kkĂ© tkĂˇnÄ›.",
-      "UĹľiteÄŤnĂ˝ pĹ™i laterĂˇlnĂ­ bolesti kyÄŤle."
+      "Detail trochanterické oblasti vhodný pro gluteální šlachy a okolní měkké tkáně.",
+      "Užitečný při laterální bolesti kyčle."
     ],
     "02_Obrzek10": [
-      "PĹ™Ă­ÄŤnĂ˝ dorzĂˇlnĂ­ Ĺ™ez se â€žwindmill signâ€ś pro lokalizaci n. ischiadicus.",
-      "Nerv je hodnocen mezi hamstringy s dnem tvoĹ™enĂ˝m m. adductor magnus."
+      "Příčný dorzální řez se „windmill sign“ pro lokalizaci n. ischiadicus.",
+      "Nerv je hodnocen mezi hamstringy s dnem tvořeným m. adductor magnus."
     ],
     "03_Obrzek11": [
-      "ProximĂˇlnÄ›jĹˇĂ­ Ĺ™ez pĹ™es tuber ischiadicum a spoleÄŤnĂ˝ Ăşpon hamstringĹŻ.",
-      "DĹŻleĹľitĂ˝ pro tendinopatii, parciĂˇlnĂ­ ruptury a avulznĂ­ poranÄ›nĂ­."
+      "Proximálnější řez přes tuber ischiadicum a společný úpon hamstringů.",
+      "Důležitý pro tendinopatii, parciální ruptury a avulzní poranění."
     ],
     "04_Obrzek12": [
-      "PodĂ©lnĂˇ projekce sedacĂ­ho nervu s fascikulĂˇrnĂ­ strukturou mezi svaly zadnĂ­ho stehna.",
-      "VhodnĂˇ pro kontinuity nervu a patologickĂ© zmÄ›ny."
+      "Podélná projekce sedacího nervu s fascikulární strukturou mezi svaly zadního stehna.",
+      "Vhodná pro kontinuity nervu a patologické změny."
     ],
     "05_Obrzek13": [
-      "PodĂ©lnĂ˝ pohled na Ăşpon hamstringĹŻ na tuber ischiadicum.",
-      "KlĂ­ÄŤovĂ˝ pro detekci tendinopatie, parciĂˇlnĂ­ch ruptur i kompletnĂ­ch avulzĂ­."
+      "Podélný pohled na úpon hamstringů na tuber ischiadicum.",
+      "Klíčový pro detekci tendinopatie, parciálních ruptur i kompletních avulzí."
     ]
   },
   koleno: {
     "01_Obrzek1": [
-      "PĹ™Ă­ÄŤnĂ˝ suprapatelĂˇrnĂ­ Ĺ™ez kvadricepsem nad femurem slouĹľĂ­ jako orientaÄŤnĂ­ start vyĹˇetĹ™enĂ­.",
-      "VhodnĂ˝ pro hodnocenĂ­ svalovĂ© struktury a poranÄ›nĂ­."
+      "Příčný suprapatelární řez kvadricepsem nad femurem slouží jako orientační start vyšetření.",
+      "Vhodný pro hodnocení svalové struktury a poranění."
     ],
     "02_Obrzek2": [
-      "PodĂ©lnĂ˝ suprapatelĂˇrnĂ­ Ĺ™ez pĹ™es Ĺˇlachu kvadricepsu a suprapatelĂˇrnĂ­ recesus.",
-      "KlĂ­ÄŤovĂ˝ pro vĂ˝potek, synoviĂˇlnĂ­ hypertrofii a zĂˇnÄ›tlivĂ© zmÄ›ny."
+      "Podélný suprapatelární řez přes šlachu kvadricepsu a suprapatelární recesus.",
+      "Klíčový pro výpotek, synoviální hypertrofii a zánětlivé změny."
     ],
     "03_Obrzek3": [
-      "PĹ™Ă­ÄŤnĂ˝ infrapatelĂˇrnĂ­ Ĺ™ez patelĂˇrnĂ­ Ĺˇlachou a HoffovĂ˝m tukovĂ˝m tÄ›lesem.",
-      "DĹŻleĹľitĂ˝ pro patelĂˇrnĂ­ tendinopatii a impingement tukovĂ©ho tÄ›lesa."
+      "Příčný infrapatelární řez patelární šlachou a Hoffovým tukovým tělesem.",
+      "Důležitý pro patelární tendinopatii a impingement tukového tělesa."
     ],
     "04_Obrzek4": [
-      "PodĂ©lnĂ˝ infrapatelĂˇrnĂ­ Ĺ™ez ligamentum patellae mezi patelou a tibiĂ­.",
-      "VhodnĂ˝ pro parciĂˇlnĂ­ ruptury, entezopatii a ĂşponovĂ© zmÄ›ny."
+      "Podélný infrapatelární řez ligamentum patellae mezi patelou a tibií.",
+      "Vhodný pro parciální ruptury, entezopatii a úponové změny."
     ],
     "05_Obrzek5": [
-      "MediĂˇlnĂ­ frontĂˇlnĂ­ projekce hodnotĂ­ MCL, mediĂˇlnĂ­ meniskus a mediĂˇlnĂ­ recesus.",
-      "DĹŻleĹľitĂˇ pro extruzi menisku a kapsulĂˇrnĂ­ zmÄ›ny."
+      "Mediální frontální projekce hodnotí MCL, mediální meniskus a mediální recesus.",
+      "Důležitá pro extruzi menisku a kapsulární změny."
     ],
     "06_Obrzek6": [
-      "LaterĂˇlnĂ­ frontĂˇlnĂ­ projekce zobrazuje LCL od femuru k hlaviÄŤce fibuly.",
-      "KlĂ­ÄŤovĂˇ pro poranÄ›nĂ­ LCL a fibulĂˇrnĂ­ho Ăşponu."
+      "Laterální frontální projekce zobrazuje LCL od femuru k hlavičce fibuly.",
+      "Klíčová pro poranění LCL a fibulárního úponu."
     ],
     "07_Obrzek7": [
-      "DorzĂˇlnĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez se znakem â€žcherry on topâ€ś pro orientaci semitendinosu.",
-      "UsnadĹuje navazujĂ­cĂ­ skenovĂˇnĂ­ mediĂˇlnĂ­ch hamstringĹŻ."
+      "Dorzální příčný řez se znakem „cherry on top“ pro orientaci semitendinosu.",
+      "Usnadňuje navazující skenování mediálních hamstringů."
     ],
     "08_Obrzek8": [
-      "DorzĂˇlnĂ­ distĂˇlnĂ­ Ĺ™ez mezi SM a mediĂˇlnĂ­ hlavou gastrocnemia.",
-      "TypickĂˇ lokalizace Bakerovy cysty a tekutinovĂ˝ch kolekcĂ­."
+      "Dorzální distální řez mezi SM a mediální hlavou gastrocnemia.",
+      "Typická lokalizace Bakerovy cysty a tekutinových kolekcí."
     ],
     "09_Obrzek9": [
-      "DorzĂˇlnĂ­ laterĂˇlnĂ­ Ĺ™ez v oblasti fossa poplitea pro tibiĂˇlnĂ­ a spoleÄŤnĂ˝ peroneĂˇlnĂ­ nerv.",
-      "DĹŻleĹľitĂ˝ pro ĂştlakovĂ© a traumatickĂ© neuropatie."
+      "Dorzální laterální řez v oblasti fossa poplitea pro tibiální a společný peroneální nerv.",
+      "Důležitý pro útlakové a traumatické neuropatie."
     ]
   },
   kotnik: {
     "01_Obrzek1": [
-      "PodĂ©lnĂˇ ventrĂˇlnĂ­ projekce pĹ™es EHL, pĹ™ednĂ­ recesus a chrupavku talu.",
-      "VhodnĂˇ pro vĂ˝potek, synoviĂˇlnĂ­ hypertrofii i hodnocenĂ­ chrupavky."
+      "Podélná ventrální projekce přes EHL, přední recesus a chrupavku talu.",
+      "Vhodná pro výpotek, synoviální hypertrofii i hodnocení chrupavky."
     ],
     "02_Obrzek2": [
-      "PĹ™Ă­ÄŤnĂ˝ ventrĂˇlnĂ­ Ĺ™ez zobrazuje TA, EHL a EDL nad klenbou talu.",
-      "KlĂ­ÄŤovĂ˝ pohled pro tenosynovitidy a tendinopatie extenzorĹŻ."
+      "Příčný ventrální řez zobrazuje TA, EHL a EDL nad klenbou talu.",
+      "Klíčový pohled pro tenosynovitidy a tendinopatie extenzorů."
     ],
     "03_Obrzek3": [
-      "MediĂˇlnĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez tarzĂˇlnĂ­m tunelem se Ĺˇlachami TP/FDL/FHL a neurovaskulĂˇrnĂ­m svazkem.",
-      "DĹŻleĹľitĂ˝ pro syndrom tarzĂˇlnĂ­ho tunelu a patologie flexorovĂ˝ch Ĺˇlach."
+      "Mediální příčný řez tarzálním tunelem se šlachami TP/FDL/FHL a neurovaskulárním svazkem.",
+      "Důležitý pro syndrom tarzálního tunelu a patologie flexorových šlach."
     ],
     "04_Obrzek4": [
-      "LaterĂˇlnĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez pĹ™es ATFL mezi fibulou a talem.",
-      "ZĂˇsadnĂ­ pro distorze laterĂˇlnĂ­ho hlezna a hodnocenĂ­ kontinuity vazu."
+      "Laterální příčný řez přes ATFL mezi fibulou a talem.",
+      "Zásadní pro distorze laterálního hlezna a hodnocení kontinuity vazu."
     ],
     "05_Obrzek5": [
-      "DorzĂˇlnĂ­ podĂ©lnĂˇ projekce Achillovy Ĺˇlachy nad KagerovĂ˝m tukovĂ˝m tÄ›lesem.",
-      "HodnotĂ­ tendinopatii, ruptury a retrocalcaneĂˇrnĂ­ burzitidu."
+      "Dorzální podélná projekce Achillovy šlachy nad Kagerovým tukovým tělesem.",
+      "Hodnotí tendinopatii, ruptury a retrocalcaneární burzitidu."
     ],
     "06_Obrzek6": [
-      "ProximĂˇlnÄ›jĹˇĂ­ podĂ©lnĂˇ projekce svalovĂ© skupiny triceps surae.",
-      "VhodnĂˇ pro svalovĂ© ruptury, hematomy a asymetrii svalĹŻ."
+      "Proximálnější podélná projekce svalové skupiny triceps surae.",
+      "Vhodná pro svalové ruptury, hematomy a asymetrii svalů."
     ],
     "07_Obrzek7": [
-      "DorzĂˇlnĂ­ pĹ™Ă­ÄŤnĂ˝ Ĺ™ez Achillovou Ĺˇlachou.",
-      "PomĂˇhĂˇ hodnotit ĹˇĂ­Ĺ™ku, echostrukturu i okolnĂ­ mÄ›kkĂ© tkĂˇnÄ›."
+      "Dorzální příčný řez Achillovou šlachou.",
+      "Pomáhá hodnotit šířku, echostrukturu i okolní měkké tkáně."
     ],
     "08_Obrzek8": [
-      "DorzĂˇlnĂ­ pĹ™Ă­ÄŤnĂ˝ pohled na svaly triceps surae.",
-      "VhodnĂ˝ pro myotendinĂłznĂ­ poranÄ›nĂ­, chronickou atrofii a fibrĂłzu."
+      "Dorzální příčný pohled na svaly triceps surae.",
+      "Vhodný pro myotendinózní poranění, chronickou atrofii a fibrózu."
     ]
   }
 };
 
 const probes: ProbeSection[] = [
   {
-    title: { cs: "VysokofrekvenÄŤnĂ­ sonda", en: "High-frequency probe" },
+    title: { cs: "Vysokofrekvenční sonda", en: "High-frequency probe" },
     image: makeResponsiveImage("Probes", "hockey stick probe"),
     body: {
       cs: [
-        "Varianta lineĂˇrnĂ­ sondy s velmi vysokou frekvencĂ­.",
-        "Pro detail povrchovĂ˝ch struktur: drobnĂ© Ĺˇlachy, vazy, nervy, kĹŻĹľe a malĂ© klouby.",
-        "NevĂ˝hoda: velmi omezenĂˇ hloubkovĂˇ penetrace."
+        "Varianta lineární sondy s velmi vysokou frekvencí.",
+        "Pro detail povrchových struktur: drobné šlachy, vazy, nervy, kůže a malé klouby.",
+        "Nevýhoda: velmi omezená hloubková penetrace."
       ],
       en: [
         "Linear-variant probe with very high frequency.",
@@ -1603,13 +1603,13 @@ const probes: ProbeSection[] = [
     }
   },
   {
-    title: { cs: "LineĂˇrnĂ­ sonda", en: "Linear probe" },
+    title: { cs: "Lineární sonda", en: "Linear probe" },
     image: makeResponsiveImage("Probes", "linear probe"),
     body: {
       cs: [
-        "NejÄŤastÄ›jĹˇĂ­ sonda v muskuloskeletĂˇlnĂ­ sonografii.",
-        "VysokĂ© rozliĹˇenĂ­ v povrchovĂ˝ch vrstvĂˇch: Ĺˇlachy, vazy, nervy, svaly a kloubnĂ­ pouzdra.",
-        "NevĂ˝hoda: slabĹˇĂ­ zobrazenĂ­ hluboko uloĹľenĂ˝ch struktur."
+        "Nejčastější sonda v muskuloskeletální sonografii.",
+        "Vysoké rozlišení v povrchových vrstvách: šlachy, vazy, nervy, svaly a kloubní pouzdra.",
+        "Nevýhoda: slabší zobrazení hluboko uložených struktur."
       ],
       en: [
         "Most commonly used probe in MSK ultrasound.",
@@ -1619,13 +1619,13 @@ const probes: ProbeSection[] = [
     }
   },
   {
-    title: { cs: "KonvexnĂ­ sonda", en: "Convex probe" },
+    title: { cs: "Konvexní sonda", en: "Convex probe" },
     image: makeResponsiveImage("Probes", "konex probe"),
     body: {
       cs: [
-        "ZakĹ™ivenĂ˝ tvar a ĹˇirĹˇĂ­ zornĂ© pole v hloubce.",
-        "VhodnĂˇ pro hlubĹˇĂ­ oblasti, objemnÄ›jĹˇĂ­ klouby a svalovĂ© skupiny.",
-        "NevĂ˝hoda: niĹľĹˇĂ­ rozliĹˇenĂ­ povrchovĂ˝ch jemnĂ˝ch struktur."
+        "Zakřivený tvar a širší zorné pole v hloubce.",
+        "Vhodná pro hlubší oblasti, objemnější klouby a svalové skupiny.",
+        "Nevýhoda: nižší rozlišení povrchových jemných struktur."
       ],
       en: [
         "Curved footprint and wider deep field of view.",
@@ -1638,13 +1638,13 @@ const probes: ProbeSection[] = [
 
 const movements: MovementSection[] = [
   {
-    title: { cs: "Sliding (klouzĂˇnĂ­)", en: "Sliding" },
+    title: { cs: "Sliding (klouzání)", en: "Sliding" },
     image: makeResponsiveImage("Probe movements", "01_slide"),
     body: {
       cs: [
-        "Posun sondy v dlouhĂ© ose bez zmÄ›ny orientace a nĂˇklonu.",
-        "Paprsek zĹŻstĂˇvĂˇ ve stejnĂ© rovinÄ›.",
-        "PouĹľitĂ­: trasovĂˇnĂ­ nervĹŻ, Ĺˇlach, svalĹŻ a cĂ©v."
+        "Posun sondy v dlouhé ose bez změny orientace a náklonu.",
+        "Paprsek zůstává ve stejné rovině.",
+        "Použití: trasování nervů, šlach, svalů a cév."
       ],
       en: [
         "Probe translation along the long axis without changing tilt or orientation.",
@@ -1658,9 +1658,9 @@ const movements: MovementSection[] = [
     image: makeResponsiveImage("Probe movements", "02_rock"),
     body: {
       cs: [
-        "NaklĂˇnÄ›nĂ­ na jednu a druhou hranu bez posunu po kĹŻĹľi.",
-        "MÄ›nĂ­ Ăşhel dopadu paprsku.",
-        "KlĂ­ÄŤovĂ© pro potlaÄŤenĂ­ anizotropie Ĺˇlach a vazĹŻ."
+        "Naklánění na jednu a druhou hranu bez posunu po kůži.",
+        "Mění úhel dopadu paprsku.",
+        "Klíčové pro potlačení anizotropie šlach a vazů."
       ],
       en: [
         "Tilting on alternating probe edges without skin translation.",
@@ -1670,13 +1670,13 @@ const movements: MovementSection[] = [
     }
   },
   {
-    title: { cs: "Sweeping (zametĂˇnĂ­)", en: "Sweeping" },
+    title: { cs: "Sweeping (zametání)", en: "Sweeping" },
     image: makeResponsiveImage("Probe movements", "03_sweep"),
     body: {
       cs: [
-        "Posun sondy v krĂˇtkĂ© ose kolmo k jejĂ­ dlouhĂ© ose.",
-        "VznikĂˇ sĂ©rie sousednĂ­ch Ĺ™ezĹŻ vyĹˇetĹ™ovanĂ© oblasti.",
-        "PouĹľitĂ­: systematickĂ© hledĂˇnĂ­ patologiĂ­ a porovnĂˇnĂ­ symetrickĂ˝ch oblastĂ­."
+        "Posun sondy v krátké ose kolmo k její dlouhé ose.",
+        "Vzniká série sousedních řezů vyšetřované oblasti.",
+        "Použití: systematické hledání patologií a porovnání symetrických oblastí."
       ],
       en: [
         "Short-axis probe translation perpendicular to the long axis.",
@@ -1686,13 +1686,13 @@ const movements: MovementSection[] = [
     }
   },
   {
-    title: { cs: "Fanning (vÄ›jĂ­Ĺ™ovitĂ˝ pohyb)", en: "Fanning" },
+    title: { cs: "Fanning (vějířovitý pohyb)", en: "Fanning" },
     image: makeResponsiveImage("Probe movements", "04_fan"),
     body: {
       cs: [
-        "NaklĂˇnÄ›nĂ­ v krĂˇtkĂ© ose pĹ™i zachovĂˇnĂ­ mĂ­sta kontaktu s kĹŻĹľĂ­.",
-        "MÄ›nĂ­ Ăşhel insonace ze strany na stranu.",
-        "PomĂˇhĂˇ potlaÄŤit anizotropii a zvĂ˝raznit kontinuitu vlĂˇken."
+        "Naklánění v krátké ose při zachování místa kontaktu s kůží.",
+        "Mění úhel insonace ze strany na stranu.",
+        "Pomáhá potlačit anizotropii a zvýraznit kontinuitu vláken."
       ],
       en: [
         "Short-axis tilting while keeping skin contact fixed.",
@@ -1706,9 +1706,9 @@ const movements: MovementSection[] = [
     image: makeResponsiveImage("Probe movements", "05_compression"),
     body: {
       cs: [
-        "ĹĂ­zenĂ˝ tlak sondou v ose Z kolmo do hloubky.",
-        "HodnocenĂ­ kompresibility a odliĹˇenĂ­ tekutinovĂ˝ch a solidnĂ­ch ĂştvarĹŻ.",
-        "UĹľiteÄŤnĂ© u burzitid, hematomĹŻ, cyst a ruptur Ĺˇlach."
+        "Řízený tlak sondou v ose Z kolmo do hloubky.",
+        "Hodnocení kompresibility a odlišení tekutinových a solidních útvarů.",
+        "Užitečné u burzitid, hematomů, cyst a ruptur šlach."
       ],
       en: [
         "Controlled pressure in the Z-axis.",
@@ -1722,9 +1722,9 @@ const movements: MovementSection[] = [
     image: makeResponsiveImage("Probe movements", "06_decompression"),
     body: {
       cs: [
-        "UvolnÄ›nĂ­ tlaku sondy v ose Z.",
-        "DĹŻleĹľitĂ© pĹ™i hodnocenĂ­ cĂ©v a Doppleru (prevence kolapsu cĂ©v).",
-        "ZlepĹˇuje detekci tekutinovĂ˝ch kolekcĂ­."
+        "Uvolnění tlaku sondy v ose Z.",
+        "Důležité při hodnocení cév a Doppleru (prevence kolapsu cév).",
+        "Zlepšuje detekci tekutinových kolekcí."
       ],
       en: [
         "Releasing pressure in the Z-axis.",
@@ -1734,13 +1734,13 @@ const movements: MovementSection[] = [
     }
   },
   {
-    title: { cs: "Rotace (helikoptĂ©ra)", en: "Rotation (helicopter)" },
+    title: { cs: "Rotace (helikoptéra)", en: "Rotation (helicopter)" },
     image: makeResponsiveImage("Probe movements", "07_helicopter"),
     body: {
       cs: [
-        "OtĂˇÄŤenĂ­ sondy kolem stĹ™edu bez posunu po kĹŻĹľi.",
-        "PlynulĂˇ zmÄ›na roviny zobrazenĂ­ (pĹ™Ă­ÄŤnĂˇ/podĂ©lnĂˇ).",
-        "SledovanĂˇ struktura zĹŻstĂˇvĂˇ ve stĹ™edu obrazu."
+        "Otáčení sondy kolem středu bez posunu po kůži.",
+        "Plynulá změna roviny zobrazení (příčná/podélná).",
+        "Sledovaná struktura zůstává ve středu obrazu."
       ],
       en: [
         "Probe rotation around its center without skin translation.",
@@ -1750,13 +1750,13 @@ const movements: MovementSection[] = [
     }
   },
   {
-    title: { cs: "Wiper (stÄ›raÄŤe, kruĹľĂ­tko)", en: "Wiper" },
+    title: { cs: "Wiper (stěrače, kružítko)", en: "Wiper" },
     image: makeResponsiveImage("Probe movements", "08_wiper"),
     body: {
       cs: [
-        "Jedna hrana sondy je fixovanĂˇ, druhĂˇ opisuje oblouk.",
-        "MÄ›nĂ­ Ăşhel insonace pĹ™i zachovĂˇnĂ­ orientaÄŤnĂ­ho bodu.",
-        "VhodnĂ© pro oblasti s komplexnĂ­ anatomiĂ­."
+        "Jedna hrana sondy je fixovaná, druhá opisuje oblouk.",
+        "Mění úhel insonace při zachování orientačního bodu.",
+        "Vhodné pro oblasti s komplexní anatomií."
       ],
       en: [
         "One probe edge stays fixed while the other moves in an arc.",
@@ -1772,7 +1772,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Power",
     title: { cs: "POWER", en: "POWER" },
     body: {
-      cs: "ZapnutĂ­, vypnutĂ­ nebo stand-by reĹľim pĹ™Ă­stroje.",
+      cs: "Zapnutí, vypnutí nebo stand-by režim přístroje.",
       en: "Turns the system on/off or enters standby mode."
     }
   },
@@ -1780,7 +1780,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Freeze",
     title: { cs: "FREEZE", en: "FREEZE" },
     body: {
-      cs: "ZmrazĂ­ ĹľivĂ˝ obraz pro analĂ˝zu, mÄ›Ĺ™enĂ­ a dokumentaci.",
+      cs: "Zmrazí živý obraz pro analýzu, měření a dokumentaci.",
       en: "Freezes live image for analysis, measurements, and documentation."
     }
   },
@@ -1788,7 +1788,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Probes",
     title: { cs: "PROBES", en: "PROBES" },
     body: {
-      cs: "VĂ˝bÄ›r a pĹ™epĂ­nĂˇnĂ­ mezi pĹ™ipojenĂ˝mi sondami.",
+      cs: "Výběr a přepínání mezi připojenými sondami.",
       en: "Selects and switches connected probes."
     }
   },
@@ -1796,7 +1796,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Store",
     title: { cs: "STORE", en: "STORE" },
     body: {
-      cs: "UloĹľĂ­ aktuĂˇlnĂ­ zmrazenĂ˝ obraz do pamÄ›ti pĹ™Ă­stroje.",
+      cs: "Uloží aktuální zmrazený obraz do paměti přístroje.",
       en: "Saves the current frozen image to system memory."
     }
   },
@@ -1804,7 +1804,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Print",
     title: { cs: "PRINT", en: "PRINT" },
     body: {
-      cs: "OkamĹľitĂ˝ tisk snĂ­mku nebo celĂ© obrazovky.",
+      cs: "Okamžitý tisk snímku nebo celé obrazovky.",
       en: "Prints the current image or entire screen."
     }
   },
@@ -1812,7 +1812,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Clip",
     title: { cs: "CLIP", en: "CLIP" },
     body: {
-      cs: "ZĂˇznam krĂˇtkĂ© dynamickĂ© sekvence z ĹľivĂ©ho obrazu.",
+      cs: "Záznam krátké dynamické sekvence z živého obrazu.",
       en: "Records a short dynamic clip from live imaging."
     }
   },
@@ -1820,7 +1820,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Gain",
     title: { cs: "GAIN", en: "GAIN" },
     body: {
-      cs: "NastavenĂ­ celkovĂ©ho zesĂ­lenĂ­ signĂˇlu (jas a kontrast).",
+      cs: "Nastavení celkového zesílení signálu (jas a kontrast).",
       en: "Adjusts overall signal amplification (brightness and contrast)."
     }
   },
@@ -1828,7 +1828,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Focus",
     title: { cs: "FOCUS", en: "FOCUS" },
     body: {
-      cs: "NastavenĂ­ ohniska do poĹľadovanĂ© hloubky.",
+      cs: "Nastavení ohniska do požadované hloubky.",
       en: "Sets the focal zone at the desired depth."
     }
   },
@@ -1836,7 +1836,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Frequency",
     title: { cs: "FREQUENCY", en: "FREQUENCY" },
     body: {
-      cs: "Volba frekvence: vyĹˇĹˇĂ­ detail vs. vÄ›tĹˇĂ­ hloubkovĂ˝ dosah.",
+      cs: "Volba frekvence: vyšší detail vs. větší hloubkový dosah.",
       en: "Frequency choice: higher detail vs deeper penetration."
     }
   },
@@ -1844,7 +1844,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Measure",
     title: { cs: "MEASURE", en: "MEASURE" },
     body: {
-      cs: "MÄ›Ĺ™enĂ­ vzdĂˇlenostĂ­, ploch a ĂşhlĹŻ na zmrazenĂ©m obraze.",
+      cs: "Měření vzdáleností, ploch a úhlů na zmrazeném obraze.",
       en: "Measures distances, areas, and angles on frozen image."
     }
   },
@@ -1852,7 +1852,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Pictogram",
     title: { cs: "PICTOGRAMS", en: "PICTOGRAMS" },
     body: {
-      cs: "VklĂˇdĂˇnĂ­ schĂ©matickĂ˝ch piktogramĹŻ vyĹˇetĹ™ovanĂ© oblasti.",
+      cs: "Vkládání schématických piktogramů vyšetřované oblasti.",
       en: "Adds body/region pictograms to documentation."
     }
   },
@@ -1860,7 +1860,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Depth",
     title: { cs: "DEPTH", en: "DEPTH" },
     body: {
-      cs: "NastavenĂ­ hloubky zobrazenĂ©ho pole.",
+      cs: "Nastavení hloubky zobrazeného pole.",
       en: "Adjusts the imaging depth."
     }
   },
@@ -1868,7 +1868,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Zoom",
     title: { cs: "ZOOM", en: "ZOOM" },
     body: {
-      cs: "ZvÄ›tĹˇenĂ­ vybranĂ© ÄŤĂˇsti obrazu pro detailnĂ­ posouzenĂ­.",
+      cs: "Zvětšení vybrané části obrazu pro detailní posouzení.",
       en: "Magnifies selected image region for detailed assessment."
     }
   },
@@ -1876,7 +1876,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Single screen",
     title: { cs: "SINGLE SCREEN", en: "SINGLE SCREEN" },
     body: {
-      cs: "ZobrazenĂ­ jednoho obrazu pĹ™es celou obrazovku.",
+      cs: "Zobrazení jednoho obrazu přes celou obrazovku.",
       en: "Shows one image on the full screen."
     }
   },
@@ -1884,7 +1884,7 @@ const knobologyItems: KnobologySection[] = [
     key: "Double screen",
     title: { cs: "DOUBLE SCREEN", en: "DOUBLE SCREEN" },
     body: {
-      cs: "RozdÄ›lenĂ­ obrazovky na dvÄ› zobrazovacĂ­ pole.",
+      cs: "Rozdělení obrazovky na dvě zobrazovací pole.",
       en: "Splits the screen into two display panes."
     }
   },
@@ -1892,7 +1892,7 @@ const knobologyItems: KnobologySection[] = [
     key: "PD",
     title: { cs: "POWER DOPPLER", en: "POWER DOPPLER" },
     body: {
-      cs: "CitlivĂ© zobrazenĂ­ intenzity prĹŻtoku bez informace o smÄ›ru.",
+      cs: "Citlivé zobrazení intenzity průtoku bez informace o směru.",
       en: "Sensitive display of flow intensity without direction information."
     }
   },
@@ -1900,7 +1900,7 @@ const knobologyItems: KnobologySection[] = [
     key: "CD",
     title: { cs: "COLOUR DOPPLER", en: "COLOUR DOPPLER" },
     body: {
-      cs: "BarevnĂ© zobrazenĂ­ smÄ›ru a rychlosti krevnĂ­ho toku.",
+      cs: "Barevné zobrazení směru a rychlosti krevního toku.",
       en: "Color display of blood flow direction and velocity."
     }
   },
@@ -1908,7 +1908,7 @@ const knobologyItems: KnobologySection[] = [
     key: "SWE",
     title: { cs: "SHEAR WAVE ELASTOGRAPHY", en: "SHEAR WAVE ELASTOGRAPHY" },
     body: {
-      cs: "KvantitativnĂ­ hodnocenĂ­ tuhosti tkĂˇnĂ­ pomocĂ­ smykovĂ˝ch vln.",
+      cs: "Kvantitativní hodnocení tuhosti tkání pomocí smykových vln.",
       en: "Quantitative tissue stiffness assessment using shear waves."
     }
   },
@@ -1916,7 +1916,7 @@ const knobologyItems: KnobologySection[] = [
     key: "ABC",
     title: { cs: "ABC", en: "ABC" },
     body: {
-      cs: "VklĂˇdĂˇnĂ­ textovĂ˝ch poznĂˇmek pĹ™Ă­mo do obrazu.",
+      cs: "Vkládání textových poznámek přímo do obrazu.",
       en: "Inserts text annotations directly into the image."
     }
   }
@@ -1928,15 +1928,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Predni pohled - transversalni rovina", en: "Anterior view - transverse plane" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
         bullets: [
-          "b: Ĺˇlacha dlouhĂ© hlavy bicepsu, TM: tuberculum majus, tm: tuberculum minus.",
-          "TM a tm jsou hlavnĂ­ palpaÄŤnĂ­ orientaÄŤnĂ­ body; mezi nimi je Ĺˇlacha dlouhĂ© hlavy bicepsu v intertuberkulĂˇrnĂ­m (bicipitĂˇlnĂ­m) sulku.",
-          "PĹ™i zvĂ˝ĹˇenĂ©m mnoĹľstvĂ­ tekutiny je nutnĂ© odliĹˇit fyziologickĂ© mnoĹľstvĂ­ od synovitidy ÄŤi jinĂ© patologie.",
-          "ViditelnĂˇ je i Ĺˇlacha m. subscapularis a povrchovĂˇ vrstva m. deltoideus jako orientaÄŤnĂ­ body pĹ™ednĂ­ ÄŤĂˇsti ramene."
+          "b: šlacha dlouhé hlavy bicepsu, TM: tuberculum majus, tm: tuberculum minus.",
+          "TM a tm jsou hlavní palpační orientační body; mezi nimi je šlacha dlouhé hlavy bicepsu v intertuberkulárním (bicipitálním) sulku.",
+          "Při zvýšeném množství tekutiny je nutné odlišit fyziologické množství od synovitidy či jiné patologie.",
+          "Viditelná je i šlacha m. subscapularis a povrchová vrstva m. deltoideus jako orientační body přední části ramene."
         ]
       },
-      en: { heading: "ObrĂˇzek 1. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 1. Ventrální pohled, transverzální rovina", bullets: [] }
     }
   },
   {
@@ -1944,14 +1944,14 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Predni pohled - transversalni rovina 2", en: "Anterior view - transverse plane 2" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 2. Ventrální pohled, transverzální rovina",
         bullets: [
-          "LHBB: dlouhĂˇ hlava bicepsu, SHBB: krĂˇtkĂˇ hlava bicepsu.",
-          "DistĂˇlnĂ­ posun sondy podĂ©l pĹ™ednĂ­ strany paĹľe umoĹľĹuje zhodnocenĂ­ svalovĂ©ho bĹ™Ă­Ĺˇka m. biceps brachii (caput breve i caput longum).",
-          "Projekce je vhodnĂˇ pro posouzenĂ­ struktury a symetrie svalovĂ©ho bĹ™Ă­Ĺˇka a detekci ruptur, hematomĹŻ ÄŤi atrofie."
+          "LHBB: dlouhá hlava bicepsu, SHBB: krátká hlava bicepsu.",
+          "Distální posun sondy podél přední strany paže umožňuje zhodnocení svalového bříška m. biceps brachii (caput breve i caput longum).",
+          "Projekce je vhodná pro posouzení struktury a symetrie svalového bříška a detekci ruptur, hematomů či atrofie."
         ]
       },
-      en: { heading: "ObrĂˇzek 2. VentrĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 2. Ventrální pohled, transverzální rovina", bullets: [] }
     }
   },
   {
@@ -1959,15 +1959,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Predni pohled - longitudinalni rovina", en: "Anterior view - longitudinal plane" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina",
+        heading: "Obrázek 3. Ventrální pohled, sagitální rovina",
         bullets: [
-          "b: Ĺˇlacha dlouhĂ© hlavy bicepsu.",
-          "PĹ™ednĂ­ Ăşsek ramene v podĂ©lnĂ© rovinÄ› po natoÄŤenĂ­ sondy o 90Â°; LHBB probĂ­hĂˇ v intertuberkulĂˇrnĂ­m (bicipitĂˇlnĂ­m) sulku.",
-          "Ĺ lacha mĂˇ lineĂˇrnĂ­ fibrilĂˇrnĂ­ (â€žĹˇpagetovitĂ˝â€ś) vzor odpovĂ­dajĂ­cĂ­ zdravĂ© a neporuĹˇenĂ© ĹˇlaĹˇe.",
-          "Projekce je vhodnĂˇ pro hodnocenĂ­ kontinuity a integrity Ĺˇlachy a detekci tekutiny, tenosynovitidy nebo parciĂˇlnĂ­ch ruptur."
+          "b: šlacha dlouhé hlavy bicepsu.",
+          "Přední úsek ramene v podélné rovině po natočení sondy o 90°; LHBB probíhá v intertuberkulárním (bicipitálním) sulku.",
+          "Šlacha má lineární fibrilární („špagetovitý“) vzor odpovídající zdravé a neporušené šlaše.",
+          "Projekce je vhodná pro hodnocení kontinuity a integrity šlachy a detekci tekutiny, tenosynovitidy nebo parciálních ruptur."
         ]
       },
-      en: { heading: "ObrĂˇzek 3. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 3. Ventrální pohled, sagitální rovina", bullets: [] }
     }
   },
   {
@@ -1975,15 +1975,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Predni pohled - longitudinalni rovina 2", en: "Anterior view - longitudinal plane 2" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 4. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina",
+        heading: "Obrázek 4. Ventrální pohled, sagitální rovina",
         bullets: [
-          "LHBB: myotendinĂłznĂ­ junkce dlouhĂ© hlavy bicepsu brachii.",
-          "Sonda je umĂ­stÄ›na distĂˇlnÄ›ji na pĹ™ednĂ­ stranÄ› paĹľe pro zobrazenĂ­ myotendinĂłznĂ­ho pĹ™echodu, ÄŤastĂ©ho mĂ­sta poranÄ›nĂ­.",
-          "Ĺ lacha pĹ™echĂˇzĂ­ z jasnĂ© fibrilĂˇrnĂ­ struktury do hypoechogennĂ­ svalovĂ© tkĂˇnÄ›.",
-          "Oblast je vĂ˝znamnĂˇ pro identifikaci parciĂˇlnĂ­ch ruptur, tendinopatie nebo svalovĂ©ho pĹ™epÄ›tĂ­."
+          "LHBB: myotendinózní junkce dlouhé hlavy bicepsu brachii.",
+          "Sonda je umístěna distálněji na přední straně paže pro zobrazení myotendinózního přechodu, častého místa poranění.",
+          "Šlacha přechází z jasné fibrilární struktury do hypoechogenní svalové tkáně.",
+          "Oblast je významná pro identifikaci parciálních ruptur, tendinopatie nebo svalového přepětí."
         ]
       },
-      en: { heading: "ObrĂˇzek 4. VentrĂˇlnĂ­ pohled, sagitĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 4. Ventrální pohled, sagitální rovina", bullets: [] }
     }
   },
   {
@@ -1991,15 +1991,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Lateralni pohled - transversalni rovina", en: "Lateral view - transverse plane" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 5. LaterĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 5. Laterální pohled, transverzální rovina",
         bullets: [
-          "KrĂˇtkĂˇ osa Ĺˇlachy rotĂˇtorovĂ© manĹľety (â€žobraz pneumatikyâ€ś).",
-          "Integrita Ĺˇlachy se hodnotĂ­ mĂ­rnĂ˝m tlakem sondou: zdravĂˇ Ĺˇlacha odolĂˇvĂˇ kompresi a zachovĂˇvĂˇ zaoblenĂ˝ tvar.",
-          "Ruptura je mÄ›kkĂˇ a snadno kompresibilnĂ­ (â€žvyfouklĂˇ pneumatikaâ€ś).",
-          "Je nutnĂ© zobrazit Ĺˇlachu v celĂ©m prĹŻbÄ›hu, protoĹľe ruptury nebo kalcifikace mohou bĂ˝t fokĂˇlnĂ­."
+          "Krátká osa šlachy rotátorové manžety („obraz pneumatiky“).",
+          "Integrita šlachy se hodnotí mírným tlakem sondou: zdravá šlacha odolává kompresi a zachovává zaoblený tvar.",
+          "Ruptura je měkká a snadno kompresibilní („vyfouklá pneumatika“).",
+          "Je nutné zobrazit šlachu v celém průběhu, protože ruptury nebo kalcifikace mohou být fokální."
         ]
       },
-      en: { heading: "ObrĂˇzek 5. LaterĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 5. Laterální pohled, transverzální rovina", bullets: [] }
     }
   },
   {
@@ -2007,15 +2007,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Lateralni pohled - longitudinalni rovina", en: "Lateral view - longitudinal plane" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 6. LaterĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina",
+        heading: "Obrázek 6. Laterální pohled, frontální rovina",
         bullets: [
-          "Akromion a velkĂ˝ hrbolek humeru jsou klĂ­ÄŤovĂ© kostnĂ­ orientaÄŤnĂ­ body.",
-          "V dlouhĂ© ose je zobrazena Ĺˇlacha m. supraspinatus s tvarem â€žptaÄŤĂ­ho zobĂˇkuâ€ś; pro kompletnĂ­ vyĹˇetĹ™enĂ­ je nutnĂ˝ anteroposteriornĂ­ pohyb sondy.",
-          "SubakromiĂˇlnÄ›-subdeltoidnĂ­ burza nad Ĺˇlachou mĹŻĹľe bĂ˝t pĹ™i zvÄ›tĹˇenĂ­ patrnĂˇ (burzitida nebo jinĂ© zĂˇnÄ›tlivĂ© stavy).",
-          "ZobrazenĂ­ je zĂˇsadnĂ­ pro hodnocenĂ­ tendinopatie, parciĂˇlnĂ­ch i full-thickness ruptur a subakromiĂˇlnĂ­ho impingementu."
+          "Akromion a velký hrbolek humeru jsou klíčové kostní orientační body.",
+          "V dlouhé ose je zobrazena šlacha m. supraspinatus s tvarem „ptačího zobáku“; pro kompletní vyšetření je nutný anteroposteriorní pohyb sondy.",
+          "Subakromiálně-subdeltoidní burza nad šlachou může být při zvětšení patrná (burzitida nebo jiné zánětlivé stavy).",
+          "Zobrazení je zásadní pro hodnocení tendinopatie, parciálních i full-thickness ruptur a subakromiálního impingementu."
         ]
       },
-      en: { heading: "ObrĂˇzek 6. LaterĂˇlnĂ­ pohled, frontĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 6. Laterální pohled, frontální rovina", bullets: [] }
     }
   },
   {
@@ -2023,15 +2023,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Posteriorni pohled - transversalni rovina", en: "Posterior view - transverse plane" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 7. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 7. Dorzální pohled, transverzální rovina",
         bullets: [
           "L: labrum glenoidale.",
-          "DorzĂˇlnĂ­ pohled se sondou pod hĹ™ebenem lopatky; hlavnĂ­ orientaÄŤnĂ­ body jsou hlavice humeru a glenoid.",
-          "V hornĂ­ ÄŤĂˇsti glenoidu je trojĂşhelnĂ­kovitĂˇ hyperechogennĂ­ struktura odpovĂ­dajĂ­cĂ­ glenoidĂˇlnĂ­mu labru.",
-          "PĹ™i zvĂ˝ĹˇenĂ©m mnoĹľstvĂ­ tekutiny mĹŻĹľe bĂ˝t tekutina v okolĂ­ labra, detekce se zvĂ˝razĹuje pĹ™i zevnĂ­ rotaci."
+          "Dorzální pohled se sondou pod hřebenem lopatky; hlavní orientační body jsou hlavice humeru a glenoid.",
+          "V horní části glenoidu je trojúhelníkovitá hyperechogenní struktura odpovídající glenoidálnímu labru.",
+          "Při zvýšeném množství tekutiny může být tekutina v okolí labra, detekce se zvýrazňuje při zevní rotaci."
         ]
       },
-      en: { heading: "ObrĂˇzek 7. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: [] }
     }
   },
   {
@@ -2039,15 +2039,15 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
     title: { cs: "Posteriorni pohled - transversalni rovina 2", en: "Posterior view - transverse plane 2" },
     caption: {
       cs: {
-        heading: "ObrĂˇzek 8. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina",
+        heading: "Obrázek 8. Dorzální pohled, transverzální rovina",
         bullets: [
-          "LaterĂˇlnĂ­ posun sondy zobrazuje Ĺˇlachu m. infraspinatus jako fibrilĂˇrnĂ­ strukturu pĹ™ekrĂ˝vajĂ­cĂ­ zadnĂ­ aspekt hlavice humeru.",
-          "ZobrazenĂ­ je dĹŻleĹľitĂ© pro hodnocenĂ­ integrity Ĺˇlachy pĹ™i podezĹ™enĂ­ na rupturu rotĂˇtorovĂ© manĹľety.",
-          "PĹ™i kaudĂˇlnĂ­m posunu se zobrazuje Ĺˇlacha m. teres minor uloĹľenĂˇ pod Ĺˇlachou m. infraspinatus.",
-          "SprĂˇvnĂˇ identifikace obou struktur je nutnĂˇ pro odliĹˇenĂ­ izolovanĂ˝ch ĹˇlachovĂ˝ch lĂ©zĂ­ od kombinovanĂ© patologie."
+          "Laterální posun sondy zobrazuje šlachu m. infraspinatus jako fibrilární strukturu překrývající zadní aspekt hlavice humeru.",
+          "Zobrazení je důležité pro hodnocení integrity šlachy při podezření na rupturu rotátorové manžety.",
+          "Při kaudálním posunu se zobrazuje šlacha m. teres minor uložená pod šlachou m. infraspinatus.",
+          "Správná identifikace obou struktur je nutná pro odlišení izolovaných šlachových lézí od kombinované patologie."
         ]
       },
-      en: { heading: "ObrĂˇzek 8. DorzĂˇlnĂ­ pohled, transverzĂˇlnĂ­ rovina", bullets: [] }
+      en: { heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: [] }
     }
   }
 ];
@@ -2055,16 +2055,16 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
 const shoulderProtocolSteps = {
   cs: [
     {
-      view: "VentrĂˇlnĂ­ pohled",
-      planes: ["TransverzĂˇlnĂ­ rovina", "SagitĂˇlnĂ­ rovina"]
+      view: "Ventrální pohled",
+      planes: ["Transverzální rovina", "Sagitální rovina"]
     },
     {
-      view: "LaterĂˇlnĂ­ pohled",
-      planes: ["TransverzĂˇlnĂ­ rovina", "FrontĂˇlnĂ­ rovina"]
+      view: "Laterální pohled",
+      planes: ["Transverzální rovina", "Frontální rovina"]
     },
     {
-      view: "DorzĂˇlnĂ­ pohled",
-      planes: ["TransverzĂˇlnĂ­ rovina"]
+      view: "Dorzální pohled",
+      planes: ["Transverzální rovina"]
     }
   ],
   en: [
@@ -2085,13 +2085,13 @@ const shoulderProtocolSteps = {
 
 const shoulderIntroPoints = {
   cs: [
-    "Ultrazvuk ramene je praktickĂˇ metoda pro detailnĂ­ hodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ v reĂˇlnĂ©m ÄŤase.",
-    "PĹ™i sprĂˇvnĂ© technice pĹ™esnÄ› hodnotĂ­ Ĺˇlachy rotĂˇtorovĂ© manĹľety, dlouhou hlavu bicepsu, burzy a svaly.",
-    "VĂ˝hodou je okamĹľitĂˇ korelace obrazu s bolestĂ­, funkÄŤnĂ­ manĂ©vry a porovnĂˇnĂ­ s kontralaterĂˇlnĂ­ stranou.",
-    "Kvalitu vyĹˇetĹ™enĂ­ podporuje standardizovanĂˇ poloha pacienta a systematickĂ˝ postup od kostnĂ­ch orientaÄŤnĂ­ch bodĹŻ.",
-    "SkenovĂˇnĂ­ mĂˇ probĂ­hat v podĂ©lnĂ© i pĹ™Ă­ÄŤnĂ© rovinÄ› s aktivnĂ­ pracĂ­ sondou (sliding, rocking, fanning) kvĹŻli kolmĂ© incidenci a minimalizaci anizotropie.",
-    "NedĂ­lnou souÄŤĂˇstĂ­ je dynamickĂ© vyĹˇetĹ™enĂ­ a komprese/dekomprese pĹ™i hodnocenĂ­ tekutinovĂ˝ch kolekcĂ­.",
-    "ZĂˇsadnĂ­ je sprĂˇvnĂ© nastavenĂ­ pĹ™Ă­stroje (hloubka, fokus, gain), pouĹľitĂ­ vysokofrekvenÄŤnĂ­ lineĂˇrnĂ­ sondy a prĹŻbÄ›ĹľnĂˇ Ăşprava podle oblasti."
+    "Ultrazvuk ramene je praktická metoda pro detailní hodnocení měkkých tkání v reálném čase.",
+    "Při správné technice přesně hodnotí šlachy rotátorové manžety, dlouhou hlavu bicepsu, burzy a svaly.",
+    "Výhodou je okamžitá korelace obrazu s bolestí, funkční manévry a porovnání s kontralaterální stranou.",
+    "Kvalitu vyšetření podporuje standardizovaná poloha pacienta a systematický postup od kostních orientačních bodů.",
+    "Skenování má probíhat v podélné i příčné rovině s aktivní prací sondou (sliding, rocking, fanning) kvůli kolmé incidenci a minimalizaci anizotropie.",
+    "Nedílnou součástí je dynamické vyšetření a komprese/dekomprese při hodnocení tekutinových kolekcí.",
+    "Zásadní je správné nastavení přístroje (hloubka, fokus, gain), použití vysokofrekvenční lineární sondy a průběžná úprava podle oblasti."
   ],
   en: [
     "Shoulder ultrasound is a practical real-time method for detailed evaluation of soft tissues.",
@@ -2106,10 +2106,10 @@ const shoulderIntroPoints = {
 
 const shoulderPathologyPoints = {
   cs: [
-    "NejÄŤastÄ›ji se nachĂˇzĂ­ postiĹľenĂ­ rotĂˇtorovĂ© manĹľety: tendinopatie m. supraspinatus, parciĂˇlnĂ­ i kompletnĂ­ ruptury.",
-    "ÄŚastĂ© je postiĹľenĂ­ Ĺˇlachy dlouhĂ© hlavy bicepsu vÄŤetnÄ› tenosynovitidy, subluxace a ruptury.",
-    "Velmi bÄ›ĹľnĂ˝m nĂˇlezem je subakromiĂˇlnÄ›-subdeltoidnĂ­ burzitida, ÄŤasto spolu s impingement syndromem.",
-    "DalĹˇĂ­ nĂˇlezy zahrnujĂ­ kalcifikujĂ­cĂ­ tendinitidu, synovitidu, kloubnĂ­ vĂ˝potek a u chronickĂ˝ch potĂ­ĹľĂ­ degenerativnĂ­ zmÄ›ny, entezopatie, atrofii ÄŤi tukovou infiltraci svalĹŻ."
+    "Nejčastěji se nachází postižení rotátorové manžety: tendinopatie m. supraspinatus, parciální i kompletní ruptury.",
+    "Časté je postižení šlachy dlouhé hlavy bicepsu včetně tenosynovitidy, subluxace a ruptury.",
+    "Velmi běžným nálezem je subakromiálně-subdeltoidní burzitida, často spolu s impingement syndromem.",
+    "Další nálezy zahrnují kalcifikující tendinitidu, synovitidu, kloubní výpotek a u chronických potíží degenerativní změny, entezopatie, atrofii či tukovou infiltraci svalů."
   ],
   en: [
     "Most common findings involve rotator cuff disease: supraspinatus tendinopathy and partial or full-thickness tears.",
@@ -2120,19 +2120,19 @@ const shoulderPathologyPoints = {
 };
 
 const shoulderAnatomyIntro = {
-  cs: "Rameno je nejpohyblivÄ›jĹˇĂ­ kloubnĂ­ komplex v tÄ›le. VelkĂ˝ rozsah pohybu zlepĹˇuje funkci, ale zĂˇroveĹ sniĹľuje stabilitu, proto je rameno ÄŤastĂ˝m mĂ­stem poranÄ›nĂ­. Pro ultrazvuk je zĂˇsadnĂ­ orientace v kostnĂ­ch bodech a Ăşponech Ĺˇlach.",
+  cs: "Rameno je nejpohyblivější kloubní komplex v těle. Velký rozsah pohybu zlepšuje funkci, ale zároveň snižuje stabilitu, proto je rameno častým místem poranění. Pro ultrazvuk je zásadní orientace v kostních bodech a úponech šlach.",
   en: "The shoulder is the most mobile joint complex in the body. This range of motion supports function but reduces stability, making shoulder injury common. In ultrasound, clear orientation to bony landmarks and tendon insertions is essential."
 };
 
 const shoulderAnatomyLandmarks = {
   cs: [
-    "KlĂ­ÄŤnĂ­ kost - pĹ™ednĂ­ opora, orientace pro AC a SC skloubenĂ­.",
-    "Akromion - hornĂ­ kostÄ›nĂ˝ strop ramene.",
-    "Processus coracoideus - pĹ™ednĂ­ orientaÄŤnĂ­ bod pro biceps a subscapularis.",
-    "Tuberculum majus - Ăşpon supraspinatu, infraspinatu a teres minor.",
-    "Tuberculum minus - Ăşpon subscapularis.",
-    "Sulcus intertubercularis (bicipital groove) - prĹŻbÄ›h dlouhĂ© hlavy bicepsu.",
-    "Spina scapulae - zadnĂ­ orientaÄŤnĂ­ hrana lopatky."
+    "Klíční kost - přední opora, orientace pro AC a SC skloubení.",
+    "Akromion - horní kostěný strop ramene.",
+    "Processus coracoideus - přední orientační bod pro biceps a subscapularis.",
+    "Tuberculum majus - úpon supraspinatu, infraspinatu a teres minor.",
+    "Tuberculum minus - úpon subscapularis.",
+    "Sulcus intertubercularis (bicipital groove) - průběh dlouhé hlavy bicepsu.",
+    "Spina scapulae - zadní orientační hrana lopatky."
   ],
   en: [
     "Clavicle - anterior support and a guide for AC and SC joints.",
@@ -2148,14 +2148,14 @@ const shoulderAnatomyLandmarks = {
 const shoulderAnatomyMuscles = {
   cs: {
     cuff: [
-      "Subscapularis - vnitĹ™nĂ­ rotace.",
-      "Supraspinatus - zahĂˇjenĂ­ abdukce.",
-      "Infraspinatus - zevnĂ­ rotace.",
-      "Teres minor - zevnĂ­ rotace a addukce."
+      "Subscapularis - vnitřní rotace.",
+      "Supraspinatus - zahájení abdukce.",
+      "Infraspinatus - zevní rotace.",
+      "Teres minor - zevní rotace a addukce."
     ],
     other: [
-      "Deltoideus - hlavnĂ­ abdukce, podĂ­l na flexi a extenzi podle ÄŤĂˇsti svalu.",
-      "DlouhĂˇ hlava bicepsu - stabilizace ramene, flexe a supinace."
+      "Deltoideus - hlavní abdukce, podíl na flexi a extenzi podle části svalu.",
+      "Dlouhá hlava bicepsu - stabilizace ramene, flexe a supinace."
     ]
   },
   en: {
@@ -2196,7 +2196,7 @@ const shoulderAnatomyMuscleGallery = [
 ] as const;
 
 const shoulderPositioningZoomCaption = {
-  cs: "ObrĂˇzek 1. PolohovĂˇnĂ­ pacienta pĹ™i vyĹˇetĹ™enĂ­ ramennĂ­ho kloubu. 1: zĂˇkladnĂ­ pozice pro vyĹˇetĹ™enĂ­ ventrĂˇlnĂ­ho pohledu, 2: pozice k vyĹˇetĹ™enĂ­ m. subscapularis - ventrĂˇlnĂ­ pohled, 3: Crass position - pozice k vyĹˇetĹ™enĂ­ rotĂˇtorovĂ© manĹľety - laterĂˇlnĂ­ pohled, 4: modified Crass position - pozice k vyĹˇetĹ™enĂ­ rotĂˇtorovĂ© manĹľety - laterĂˇlnĂ­ pohled, 5: pozice k vyĹˇetĹ™enĂ­ dorzĂˇlnĂ­ho pohledu.",
+  cs: "Obrázek 1. Polohování pacienta při vyšetření ramenního kloubu. 1: základní pozice pro vyšetření ventrálního pohledu, 2: pozice k vyšetření m. subscapularis - ventrální pohled, 3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 5: pozice k vyšetření dorzálního pohledu.",
   en: "Figure 1. Patient positioning for shoulder ultrasound. 1: baseline position for ventral view, 2: subscapularis position - ventral view, 3: Crass position - rotator cuff, lateral view, 4: modified Crass position - rotator cuff, lateral view, 5: position for dorsal view."
 } as const;
 
@@ -2214,13 +2214,13 @@ const renderAnatomyListItem = (item: string) => {
 const jointIntroCopy = {
   cs: (
     <>
-      MSK ultrazvuk kloubĹŻ je v PMR mimoĹ™ĂˇdnÄ› cennĂ˝, protoĹľe pĹ™inĂˇĹˇĂ­{" "}
-      <strong>rychlĂ©, cĂ­lenĂ© a dynamickĂ©</strong> zhodnocenĂ­ mÄ›kkĂ˝ch tkĂˇnĂ­ pĹ™Ă­mo u lĹŻĹľka nebo v ambulanci. UmoĹľĹuje{" "}
-      <strong>okamĹľitÄ› propojit bolest s obrazem</strong> pĹ™i aktivnĂ­m pohybu, zachytit patologie Ĺˇlach, burz, pouzder ÄŤi
-      ligament a porovnat nĂˇlez s kontralaterĂˇlnĂ­ stranou. V rehabilitaÄŤnĂ­ medicĂ­nÄ› je dĹŻleĹľitĂ©, Ĺľe vyĹˇetĹ™enĂ­ podporuje{" "}
-      <strong>funkÄŤnĂ­ klinickĂ© rozhodovĂˇnĂ­ v reĂˇlnĂ©m ÄŤase</strong>: pomĂˇhĂˇ upĹ™esnit diagnĂłzu, lĂ©pe zacĂ­lit terapii, monitorovat
-      efekt lĂ©ÄŤby a bezpeÄŤnÄ› plĂˇnovat intervence. VĂ˝hodou je takĂ© <strong>absence ionizujĂ­cĂ­ho zĂˇĹ™enĂ­</strong>, moĹľnost
-      opakovanĂ©ho sledovĂˇnĂ­ a vysokĂˇ dostupnost v kaĹľdodennĂ­ praxi PMR.
+      MSK ultrazvuk kloubů je v PMR mimořádně cenný, protože přináší{" "}
+      <strong>rychlé, cílené a dynamické</strong> zhodnocení měkkých tkání přímo u lůžka nebo v ambulanci. Umožňuje{" "}
+      <strong>okamžitě propojit bolest s obrazem</strong> při aktivním pohybu, zachytit patologie šlach, burz, pouzder či
+      ligament a porovnat nález s kontralaterální stranou. V rehabilitační medicíně je důležité, že vyšetření podporuje{" "}
+      <strong>funkční klinické rozhodování v reálném čase</strong>: pomáhá upřesnit diagnózu, lépe zacílit terapii, monitorovat
+      efekt léčby a bezpečně plánovat intervence. Výhodou je také <strong>absence ionizujícího záření</strong>, možnost
+      opakovaného sledování a vysoká dostupnost v každodenní praxi PMR.
     </>
   ),
   en: (
@@ -2235,10 +2235,10 @@ const jointIntroCopy = {
 const jointIntroImageBySlug = {
   rameno: { fileName: "01_Shoulder.png", alt: { cs: "Anatomie ramene", en: "Shoulder anatomy" } },
   loket: { fileName: "02_Elbow.png", alt: { cs: "Anatomie lokte", en: "Elbow anatomy" } },
-  zapesti: { fileName: "03_Wrist.png", alt: { cs: "Anatomie zĂˇpÄ›stĂ­", en: "Wrist anatomy" } },
-  kycel: { fileName: "04_Hip.png", alt: { cs: "Anatomie kyÄŤle", en: "Hip anatomy" } },
+  zapesti: { fileName: "03_Wrist.png", alt: { cs: "Anatomie zápěstí", en: "Wrist anatomy" } },
+  kycel: { fileName: "04_Hip.png", alt: { cs: "Anatomie kyčle", en: "Hip anatomy" } },
   koleno: { fileName: "05_Knee.png", alt: { cs: "Anatomie kolene", en: "Knee anatomy" } },
-  kotnik: { fileName: "06_Ankle.png", alt: { cs: "Anatomie kotnĂ­ku", en: "Ankle anatomy" } }
+  kotnik: { fileName: "06_Ankle.png", alt: { cs: "Anatomie kotníku", en: "Ankle anatomy" } }
 } as const;
 
 function ResponsiveImage({
@@ -2289,7 +2289,7 @@ function ResponsiveImage({
         <div className={styles.imageZoomOverlay} role="dialog" aria-modal="true" onClick={handleClose}>
           <div className={styles.imageZoomContent} onClick={(event) => event.stopPropagation()}>
             <button type="button" className={styles.imageZoomClose} onClick={handleClose} aria-label="Close">
-              Ă—
+              ×
             </button>
             <img className={styles.imageZoomImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
             {caption ? <p className={styles.imageZoomCaption}>{caption}</p> : null}
@@ -2430,7 +2430,7 @@ export default function ContentPage({ path }: ContentPageProps) {
       {previousTarget ? (
         <Link to={previousTarget.path} className={`${styles.chapterLink} ${styles.chapterPrev}`} onClick={markCurrentDone}>
           <span className={styles.chapterArrow} aria-hidden="true">
-            â€ą
+            ‹
           </span>
           <span className={styles.chapterText}>
             <span className={styles.chapterLabel}>{previousLabel}</span>
@@ -2440,7 +2440,7 @@ export default function ContentPage({ path }: ContentPageProps) {
       ) : (
         <span className={`${styles.chapterLink} ${styles.chapterDisabled}`} aria-disabled="true">
           <span className={styles.chapterArrow} aria-hidden="true">
-            â€ą
+            ‹
           </span>
           <span className={styles.chapterText}>
             <span className={styles.chapterLabel}>{t("previousChapter")}</span>
@@ -2454,7 +2454,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             <span className={styles.chapterTitle}>{localize(nextTarget.title, lang)}</span>
           </span>
           <span className={styles.chapterArrow} aria-hidden="true">
-            â€ş
+            ›
           </span>
         </Link>
       ) : (
@@ -2463,7 +2463,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             <span className={styles.chapterLabel}>{t("nextChapter")}</span>
           </span>
           <span className={styles.chapterArrow} aria-hidden="true">
-            â€ş
+            ›
           </span>
         </span>
       )}
@@ -2541,7 +2541,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
-              ? "Tato ÄŤĂˇst je zatĂ­m pĹ™ipravena jako prĂˇzdnĂˇ a obsah bude doplnÄ›n."
+              ? "Tato část je zatím připravena jako prázdná a obsah bude doplněn."
               : "This section is currently a placeholder and content will be added soon."}
           </p>
         </section>
@@ -2612,11 +2612,11 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "MĂ­sta Ăştlaku" : "Entrapment sites"}</h2>
+          <h2>{lang === "cs" ? "Místa útlaku" : "Entrapment sites"}</h2>
           <ol className={styles.compactList}>
             {entrapmentSites[lang].map((item) => (
               <li key={`${item.title}-${item.description}`}>
-                <strong>{item.title}</strong> â€“ {item.description}
+                <strong>{item.title}</strong> – {item.description}
               </li>
             ))}
           </ol>
@@ -2632,7 +2632,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "MotorickĂˇ inervace" : "Motor innervation"}</h2>
+          <h2>{lang === "cs" ? "Motorická inervace" : "Motor innervation"}</h2>
           <ul className={styles.compactList}>
             {motorInnervation[lang].map((item) => (
               <li key={item}>{item}</li>
@@ -2650,7 +2650,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "SenzitivnĂ­ inervace" : "Sensory innervation"}</h2>
+          <h2>{lang === "cs" ? "Senzitivní inervace" : "Sensory innervation"}</h2>
           <ul className={styles.compactList}>
             {sensoryInnervation[lang].map((item) => (
               <li key={item}>{item}</li>
@@ -2678,7 +2678,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
-              ? "V muskuloskeletĂˇlnĂ­ sonografii se pouĹľĂ­vajĂ­ tĹ™i zĂˇkladnĂ­ typy sond: lineĂˇrnĂ­, konvexnĂ­ a vysokofrekvenÄŤnĂ­. Volba sondy pĹ™Ă­mo ovlivĹuje kvalitu obrazu i sprĂˇvnou interpretaci nĂˇlezu."
+              ? "V muskuloskeletální sonografii se používají tři základní typy sond: lineární, konvexní a vysokofrekvenční. Volba sondy přímo ovlivňuje kvalitu obrazu i správnou interpretaci nálezu."
               : "In musculoskeletal ultrasound, three core probe types are used: linear, convex, and high-frequency. Probe choice directly affects image quality and interpretation."}
           </p>
           <div className={styles.articleGrid}>
@@ -2738,7 +2738,7 @@ export default function ContentPage({ path }: ContentPageProps) {
           <p>{probeGripCopy[lang].intro}</p>
           <ResponsiveImage
             image={probeGripImage}
-            alt={lang === "cs" ? "Typy drĹľenĂ­ sondy" : "Probe grip types"}
+            alt={lang === "cs" ? "Typy držení sondy" : "Probe grip types"}
             wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.probeGripRoundedWrap}`}
             enableMobileZoom
           />
@@ -2761,7 +2761,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <section className={styles.articleBox}>
           <p>
             {lang === "cs"
-              ? "SprĂˇvnĂˇ knobologie je zĂˇklad kvalitnĂ­ho obrazu."
+              ? "Správná knobologie je základ kvalitního obrazu."
               : "Proper knobology is essential for image quality. Each card includes a brief practical note on when and why to use the setting."}
           </p>
           <div className={styles.knobologyGrid}>
@@ -2796,9 +2796,9 @@ export default function ContentPage({ path }: ContentPageProps) {
           <p>{ultrasoundBasicsCopy[lang][2]}</p>
           <ResponsiveImage
             image={ultrasoundBasicsImage}
-            alt={lang === "cs" ? "Ultrazvuk v medicĂ­nskĂ©m zobrazovĂˇnĂ­" : "Ultrasound in medical imaging"}
+            alt={lang === "cs" ? "Ultrazvuk v medicínském zobrazování" : "Ultrasound in medical imaging"}
             enableMobileZoom
-            caption={lang === "cs" ? "ObrĂˇzek 1: Ultrazvuk v medicĂ­nskĂ©m zobrazovĂˇnĂ­." : "Figure 1: Ultrasound in medical imaging."}
+            caption={lang === "cs" ? "Obrázek 1: Ultrazvuk v medicínském zobrazování." : "Figure 1: Ultrasound in medical imaging."}
             wrapClassName={styles.shoulderUltrasoundImageWrap}
           />
           <p>{ultrasoundBasicsCopy[lang][3]}</p>
@@ -2818,9 +2818,9 @@ export default function ContentPage({ path }: ContentPageProps) {
           <p>{soundWaveCopy[lang][1]}</p>
           <ResponsiveImage
             image={soundWaveImage}
-            alt={lang === "cs" ? "SchĂ©ma podĂ©lnĂ© zvukovĂ© vlny" : "Longitudinal sound wave diagram"}
+            alt={lang === "cs" ? "Schéma podélné zvukové vlny" : "Longitudinal sound wave diagram"}
             enableMobileZoom
-            caption={lang === "cs" ? "ObrĂˇzek 2: PodĂ©lnĂˇ zvukovĂˇ vlna â€“ komprese a rarefakce." : "Figure 2: Longitudinal sound wave â€“ compression and rarefaction."}
+            caption={lang === "cs" ? "Obrázek 2: Podélná zvuková vlna – komprese a rarefakce." : "Figure 2: Longitudinal sound wave – compression and rarefaction."}
             wrapClassName={styles.shoulderUltrasoundImageWrap}
           />
           <p>{soundWaveCopy[lang][2]}</p>
@@ -2901,10 +2901,10 @@ export default function ContentPage({ path }: ContentPageProps) {
           <p>{echogenicityCopy[lang][1]}</p>
           <ResponsiveImage
             image={echogenicityImage}
-            alt={lang === "cs" ? "Echogenita â€“ srovnĂˇnĂ­ jasovĂ˝ch ĂşrovnĂ­" : "Echogenicity â€“ comparison of brightness levels"}
+            alt={lang === "cs" ? "Echogenita – srovnání jasových úrovní" : "Echogenicity – comparison of brightness levels"}
             wrapClassName={styles.shoulderUltrasoundImageWrap}
             enableMobileZoom
-            caption={lang === "cs" ? "ObrĂˇzek: ZĂˇkladnĂ­ ĂşrovnÄ› echogenity." : "Figure: Basic echogenicity levels."}
+            caption={lang === "cs" ? "Obrázek: Základní úrovně echogenity." : "Figure: Basic echogenicity levels."}
           />
           <p>{echogenicityCopy[lang][2]}</p>
           <p>{echogenicityCopy[lang][3]}</p>
@@ -2925,7 +2925,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             image={makeResponsiveImagePhone("Positioning", jointPositioning.imageBaseName)}
             alt={
               lang === "cs"
-                ? `PolohovĂˇnĂ­ pacienta: ${localize(node.title, lang)}`
+                ? `Polohování pacienta: ${localize(node.title, lang)}`
                 : `Patient positioning: ${localize(node.title, lang)}`
             }
             wrapClassName={styles.shoulderUltrasoundImageWrap}
@@ -2934,11 +2934,11 @@ export default function ContentPage({ path }: ContentPageProps) {
               jointPositioning.imageBaseName === "rameno"
                 ? shoulderPositioningZoomCaption[lang]
                 : lang === "cs"
-                  ? `PolohovĂˇnĂ­ pacienta - ${localize(node.title, lang)}`
+                  ? `Polohování pacienta - ${localize(node.title, lang)}`
                   : `Patient positioning - ${localize(node.title, lang)}`
             }
           />
-          <h2>{lang === "cs" ? "Pozice a jejich vyuĹľitĂ­" : "Positions and their use"}</h2>
+          <h2>{lang === "cs" ? "Pozice a jejich využití" : "Positions and their use"}</h2>
           <ul className={styles.compactList}>
             {jointPositioning.positions[lang].map((item) => (
               <li key={item}>{item}</li>
@@ -2956,7 +2956,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "VyĹˇetĹ™ovacĂ­ protokol" : "Examination protocol"}</h2>
+          <h2>{lang === "cs" ? "Vyšetřovací protokol" : "Examination protocol"}</h2>
           <ol className={styles.compactList}>
             {shoulderProtocolSteps[lang].map((step) => (
               <li key={step.view}>
@@ -3002,7 +3002,7 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{localized("VyĹˇetĹ™ovacĂ­ protokol")[lang]}</h2>
+          <h2>{localized("Vyšetřovací protokol")[lang]}</h2>
           <ol className={styles.compactList}>
             {jointContent.protocolSteps.map((step) => (
               <li key={step.view}>
@@ -3065,13 +3065,13 @@ export default function ContentPage({ path }: ContentPageProps) {
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Ăšvod" : "Introduction"}</h2>
+          <h2>{lang === "cs" ? "Úvod" : "Introduction"}</h2>
           <ul className={styles.compactList}>
             {shoulderIntroPoints[lang].map((point) => (
               <li key={point}>{point}</li>
             ))}
           </ul>
-          <h2>{lang === "cs" ? "NejÄŤastÄ›jĹˇĂ­ patologie" : "Most common pathologies"}</h2>
+          <h2>{lang === "cs" ? "Nejčastější patologie" : "Most common pathologies"}</h2>
           <ul className={styles.compactList}>
             {shoulderPathologyPoints[lang].map((point) => (
               <li key={point}>{point}</li>
@@ -3106,13 +3106,13 @@ export default function ContentPage({ path }: ContentPageProps) {
           </section>
           <section className={styles.anatomyCard}>
             <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
-            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "RotĂˇtorovĂˇ manĹľeta" : "Rotator cuff"}</h3>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
             <ul className={styles.compactList}>
               {shoulderAnatomyMuscles[lang].cuff.map((item) => (
                 renderAnatomyListItem(item)
               ))}
             </ul>
-            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "DalĹˇĂ­ dĹŻleĹľitĂ© svaly" : "Other key muscles"}</h3>
+            <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Další důležité svaly" : "Other key muscles"}</h3>
             <ul className={styles.compactList}>
               {shoulderAnatomyMuscles[lang].other.map((item) => (
                 renderAnatomyListItem(item)
@@ -3120,7 +3120,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             </ul>
             <div
               className={`${styles.swipeGallery} ${styles.anatomyGallery}`}
-              aria-label={lang === "cs" ? "Galerie svalĹŻ ramene" : "Shoulder muscle gallery"}
+              aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}
             >
               {shoulderAnatomyMuscleGallery.map((item, index) => (
                 <article key={item.fileName} className={styles.swipeGalleryItem}>
@@ -3154,7 +3154,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                 onClick={() => setActiveShoulderMuscleImageIndex(null)}
                 aria-label="Close"
               >
-                Ă—
+                ×
               </button>
               <button
                 type="button"
@@ -3164,9 +3164,9 @@ export default function ContentPage({ path }: ContentPageProps) {
                     prev === null ? 0 : (prev - 1 + shoulderAnatomyMuscleGallery.length) % shoulderAnatomyMuscleGallery.length
                   )
                 }
-                aria-label={lang === "cs" ? "PĹ™edchozĂ­ obrĂˇzek" : "Previous image"}
+                aria-label={lang === "cs" ? "Předchozí obrázek" : "Previous image"}
               >
-                â€ą
+                ‹
               </button>
               <img
                 className={styles.imageZoomImage}
@@ -3183,9 +3183,9 @@ export default function ContentPage({ path }: ContentPageProps) {
                     prev === null ? 0 : (prev + 1) % shoulderAnatomyMuscleGallery.length
                   )
                 }
-                aria-label={lang === "cs" ? "DalĹˇĂ­ obrĂˇzek" : "Next image"}
+                aria-label={lang === "cs" ? "Další obrázek" : "Next image"}
               >
-                â€ş
+                ›
               </button>
               <p className={styles.imageZoomCaption}>
                 {activeShoulderMuscleImage.alt[lang]} ({(activeShoulderMuscleImageIndex ?? 0) + 1}/{shoulderAnatomyMuscleGallery.length})
