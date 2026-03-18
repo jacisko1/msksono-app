@@ -332,6 +332,8 @@
 
 .shoulderUltrasoundGrid {
   grid-template-columns: 1fr;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--divider-line);
 }
 
 .shoulderUltrasoundCard {
@@ -347,7 +349,7 @@
 
 .shoulderProtocolCard + .shoulderProtocolCard {
   padding-top: 0.7rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-top: 1px solid var(--divider-line);
 }
 
 .shoulderProtocolText {
@@ -356,7 +358,7 @@
 
 .nerveSectionCard {
   padding-top: 0.7rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-top: 1px solid var(--divider-line);
   border-radius: 0;
 }
 
@@ -411,7 +413,7 @@
   gap: 0.45rem;
   padding: 0.75rem 0 0;
   border: 0;
-  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
+  border-top: 1px solid var(--divider-line);
   border-radius: 0;
   background: transparent;
 }
