@@ -2470,9 +2470,10 @@ const jointIntroCopy = {
   zapesti: {
     cs: (
       <>
-        U <strong>zápěstního kloubu</strong> je klíčové vyšetření flexorových a extenzorových kompartmentů, retinakul, radiokarpálního
-        kloubu a karpálního tunelu. Typickými nálezy jsou tenosynovitidy, ganglia, synovitidy drobných karpálních kloubů a změny
-        n. medianus při syndromu karpálního tunelu.
+        Ultrazvuk <strong>zápěstního kloubu</strong> je velmi užitečný při bolestech po přetížení i po úrazu, protože umožňuje přesně
+        zhodnotit šlachové kompartmenty, retinakula, radiokarpální oblast i karpální tunel. V klinické praxi se nejčastěji zaměřujeme
+        na flexorové a extenzorové šlachy, synovii a n. medianus, zejména při podezření na tenosynovitidu, ganglion nebo syndrom
+        karpálního tunelu. Výhodou je možnost dynamického vyšetření a přímé korelace nálezu s bolestí při pohybu prstů a zápěstí.
       </>
     ),
     en: (
@@ -2486,9 +2487,10 @@ const jointIntroCopy = {
   kycel: {
     cs: (
       <>
-        U <strong>kyčelního kloubu</strong> se sonograficky hodnotí přední recesus s možným výpotkem, iliopsoas, přímý sval stehenní,
-        adduktory a abduktorový aparát v oblasti velkého trochanteru. Vyšetření je zásadní při bolesti třísla a laterální kyčle,
-        kde odlišuje intraartikulární synovitidu od tendinopatie gluteálních šlach nebo trochanterické burzitidy.
+        Ultrazvuk <strong>kyčelního kloubu</strong> má v PMR důležité místo hlavně při bolestech třísla a laterální strany kyčle, kde
+        pomáhá rychle odlišit intraartikulární a periartikulární příčiny potíží. Prakticky se zaměřujeme na přední recesus s možným
+        výpotkem, iliopsoas, přímý sval stehenní, adduktorový a abduktorový aparát včetně trochanterických burz. Vyšetření tak dobře
+        rozlišuje synovitidu a kloubní výpotek od tendinopatií gluteálních šlach, burzitid nebo entezopatií v trochanterické oblasti.
       </>
     ),
     en: (
@@ -2502,9 +2504,10 @@ const jointIntroCopy = {
   koleno: {
     cs: (
       <>
-        U <strong>kolenního kloubu</strong> je hlavní cíl suprapatelární recesus, kvadricepsová a patelární šlacha, mediální/laterální
-        kolaterální vaz a periartikulární burzy. Ultrazvuk rychle prokáže výpotek, synovitidu nebo Bakerovu cystu a upřesní, zda je
-        zdrojem bolesti entezopatie patelární šlachy, pes anserinus bursitida nebo postižení kolaterálních vazů.
+        Ultrazvuk <strong>kolenního kloubu</strong> je velmi efektivní metoda pro rychlé zhodnocení přední, mediální i laterální bolesti
+        kolene. Standardně hodnotíme suprapatelární recesus, kvadricepsovou a patelární šlachu, kolaterální vazy a periartikulární
+        burzy, případně i podkolenní oblast s Bakerovou cystou. Přínosem je rychlá detekce výpotku a synovitidy a zároveň upřesnění,
+        zda jsou potíže dány tendinopatií, entezopatií, bursitidou nebo vazivovým postižením.
       </>
     ),
     en: (
@@ -2518,9 +2521,10 @@ const jointIntroCopy = {
   kotnik: {
     cs: (
       <>
-        U <strong>hlezenního kloubu (kotníku)</strong> se vyšetřuje laterální vazivový komplex (ATFL, CFL), mediální deltový vaz,
-        peroneální šlachy, tibialis posterior a přední recesus hlezna. Sonografie je velmi přínosná po distorzích, protože dynamicky
-        posoudí stabilitu vazů, subluxaci peroneálních šlach i přítomnost výpotku či synovitidy.
+        Ultrazvuk <strong>hlezenního kloubu (kotníku)</strong> je zásadní zejména po distorzích a při chronické nestabilitě, protože
+        umožňuje dynamicky zhodnotit vazivové i šlachové struktury. V praxi se vyšetřuje laterální vazivový komplex (ATFL, CFL),
+        mediální deltový vaz, peroneální šlachy, tibialis posterior a přední recesus hlezna. Metoda pomáhá odlišit parciální ruptury
+        vazů, tendinopatie, subluxace šlach, synovitidu i kloubní výpotek a přesněji zacílit další léčebný postup.
       </>
     ),
     en: (
