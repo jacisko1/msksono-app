@@ -2342,84 +2342,76 @@ const shoulderAnatomyMuscleGallery = [
 ] as const;
 
 const elbowAnatomyIntro = {
-  cs: "Loket je převážně kladkový kloubní komplex, který kombinuje dobrou stabilitu se středním rozsahem pohybu nutným pro přesné nastavení ruky při běžných i sportovních aktivitách. Oproti rameni je stabilnější, ale často trpí přetížením, mikrotraumaty a opakovanou zátěží. Pro přesné ultrazvukové hodnocení je zásadní orientace ve vztahu humeru, radia a ulny, kloubních recesů, šlach, vazů a nervově-cévních struktur.",
-  en: "The elbow is primarily a hinge-type joint complex that combines stability with a moderate range of motion needed for functional hand positioning in daily and athletic tasks. Compared with the shoulder, it is generally more stable but still vulnerable to overuse and repetitive strain. Accurate ultrasound interpretation requires clear spatial orientation of the humerus, radius, and ulna together with recesses, tendons, ligaments, and neurovascular structures."
+  cs: "Loket je stabilní kloubní komplex s menším, ale velmi funkčním rozsahem pohybu. Pro ultrazvuk je zásadní orientace mezi humerem, radiem a ulnou a znalost vztahu kloubních recesů, šlach, vazů a nervů. Přesná anatomická orientace zvyšuje kvalitu vyšetření i klinickou interpretaci nálezu.",
+  en: "The elbow is a relatively stable joint complex with a moderate but highly functional range of motion. In ultrasound, clear orientation among the humerus, radius, and ulna and understanding of recesses, tendons, ligaments, and nerves are essential for accurate assessment."
 };
 
 const elbowAnatomyJoints = {
   cs: [
-    "Humeroulnární kloub - kladkový kloub mezi trochleou humeru a incisura trochlearis ulny; umožňuje flexi a extenzi.",
-    "Humeroradiální kloub - spojení capitulum humeri s hlavicí radia; podílí se na stabilitě lokte.",
-    "Proximální radioulnární kloub - čepový kloub mezi hlavicí radia a incisura radialis ulny; umožňuje pronaci a supinaci předloktí."
+    "Humeroulnární kloub - hlavní kladkový kloub lokte, flexe a extenze.",
+    "Humeroradiální kloub - kontakt capitulum humeri a hlavičky radia, podíl na stabilitě.",
+    "Proximální radioulnární kloub - čepový kloub pro pronaci a supinaci předloktí."
   ],
   en: [
-    "Humeroulnar joint - hinge articulation between the humeral trochlea and ulnar trochlear notch, enabling flexion and extension.",
-    "Humeroradial joint - articulation of the capitulum and radial head, contributing to elbow stability.",
-    "Proximal radioulnar joint - pivot articulation between the radial head and radial notch of the ulna, enabling pronation and supination."
+    "Humeroulnar joint - primary hinge articulation responsible for flexion and extension.",
+    "Humeroradial joint - capitulum-radial head articulation contributing to stability.",
+    "Proximal radioulnar joint - pivot articulation enabling pronation and supination."
   ]
 };
 
 const elbowAnatomyUltrasoundFocus = {
-  cs: "V ultrazvuku se loket cíleně hodnotí v oblasti společného extenzorového a flexorového úponu, distální šlachy bicepsu a tricepsu, n. medianus a kloubních recesů. Dobrá anatomická orientace je klíčem k odlišení fyziologického nálezu od patologie.",
-  en: "Elbow ultrasound primarily focuses on the common extensor and flexor origins, distal biceps and triceps tendons, median nerve, and joint recesses. A strong anatomical framework is essential to distinguish normal findings from pathology."
+  cs: "V ultrazvuku se nejčastěji hodnotí společný extenzorový a flexorový úpon, distální šlacha bicepsu a tricepsu, n. medianus a kloubní recesy.",
+  en: "Elbow ultrasound mainly focuses on common extensor/flexor origins, distal biceps and triceps tendons, the median nerve, and joint recesses."
 };
 
 const elbowAnatomyLandmarkLead = {
-  cs: "Palpačně i sonograficky rozpoznatelné kostní body slouží jako pevné orientační body pro vedení sondy a interpretaci nálezu. Jejich správná identifikace zvyšuje přesnost vyšetření a usnadňuje odlišení normální anatomie od patologických změn.",
-  en: "Palpable and sonographically recognizable bony landmarks are fixed reference points for probe positioning and image interpretation. Mastering them improves examination accuracy and supports differentiation between normal anatomy and abnormalities."
+  cs: "Kostní landmarky jsou základní orientační body při skenování. Pomáhají správně vést sondu a rychle rozlišit normální anatomii od patologie.",
+  en: "Bony landmarks are the key orientation points during elbow scanning and improve both probe guidance and interpretation."
 };
 
 const elbowAnatomyLandmarks = {
   cs: [
-    "Mediální epikondyl humeru - výrazný mediální kostní výběžek; začátek společného flexorového úponu, orientační bod pro flexorový aparát a n. ulnaris.",
-    "Laterální epikondyl humeru - laterální kostní prominence; začátek společného extenzorového úponu a důležitý bod pro hodnocení radiálního kolaterálního komplexu.",
-    "Olecranon - proximální hrot ulny tvořící kostní špičku lokte; klíčový bod pro zadní přístup a hodnocení distální šlachy tricepsu a olekranové burzy.",
-    "Hlavička radia - leží distálně od laterálního epikondylu a artikuluje s capitulem; důležitá pro hodnocení proximálního radioulnárního kloubu."
+    "Mediální epikondyl - orientace pro společný flexorový úpon a n. ulnaris.",
+    "Laterální epikondyl - orientace pro společný extenzorový úpon.",
+    "Olecranon - hlavní bod zadního přístupu, hodnocení tricepsu a burzy.",
+    "Hlavička radia - orientace pro humeroradiální a proximální radioulnární skloubení."
   ],
   en: [
-    "Medial epicondyle of the humerus - prominent medial projection; origin of the common flexor tendon and key landmark for flexor structures and the ulnar nerve.",
-    "Lateral epicondyle of the humerus - lateral prominence; origin of the common extensor tendon and reference point for the radial collateral complex.",
-    "Olecranon - proximal pointed ulna forming the bony tip of the elbow; central posterior landmark for distal triceps tendon and olecranon bursa assessment.",
-    "Radial head - located distal to the lateral epicondyle and articulating with the capitulum; important for proximal radioulnar joint evaluation."
+    "Medial epicondyle - landmark for common flexor origin and ulnar nerve region.",
+    "Lateral epicondyle - landmark for common extensor origin.",
+    "Olecranon - key posterior landmark for triceps tendon and olecranon bursa.",
+    "Radial head - landmark for humeroradial and proximal radioulnar articulations."
   ]
 };
 
 const elbowAnatomyMuscles = {
   cs: {
     primary: [
-      "Biceps brachii - začátek: caput longum (tuberculum supraglenoidale), caput breve (processus coracoideus); úpon: tuberositas radii + aponeuróza; funkce: flexe lokte, supinace; UZ relevance: hodnocení parciálních i kompletních ruptur distální šlachy.",
-      "Brachialis - začátek: distální přední plocha humeru; úpon: processus coronoideus a tuberositas ulnae; funkce: hlavní flexor lokte nezávisle na poloze předloktí; UZ relevance: diferenciální diagnostika přední bolesti lokte.",
-      "Triceps brachii - začátek: caput longum (tuberculum infraglenoidale), caput laterale a mediale (zadní humerus); úpon: olecranon; funkce: extenze lokte; UZ relevance: zadní přístup k distální šlaše tricepsu a olekranové burze.",
-      "Společný flexor-pronátorový komplex - zahrnuje pronator teres, flexor carpi radialis, palmaris longus, flexor digitorum superficialis, flexor carpi ulnaris; začátek: mediální epikondyl; UZ relevance: typická oblast mediální epikondylopatie.",
-      "Společný extenzor-supinátorový komplex - zahrnuje zejména extensor carpi radialis brevis, extensor digitorum, extensor carpi ulnaris; začátek: laterální epikondyl; UZ relevance: klíčová struktura u laterální epikondylopatie."
+      "Biceps brachii - flexe lokte a supinace; v UZ klíčová distální šlacha.",
+      "Brachialis - hlavní flexor lokte; důležitý při přední bolesti lokte.",
+      "Triceps brachii - extenze lokte; hodnocení distální šlachy a olekranové burzy.",
+      "Společný flexor-pronátorový komplex - mediální strana lokte; typická oblast mediální epikondylopatie.",
+      "Společný extenzor-supinátorový komplex - laterální strana lokte; typická oblast laterální epikondylopatie."
     ],
     other: [
-      "Anconeus - začátek: laterální epikondyl; úpon: laterální část olecranu a proximální ulna; funkce: pomocná extenze a stabilizace lokte; UZ relevance: důležitý při zadně-laterální bolesti.",
-      "Supinator - začátek: laterální epikondyl, radiální kolaterální vaz a crista musculi supinatoris ulny; úpon: proximální třetina radia; funkce: supinace předloktí; UZ relevance: vyšetření při podezření na útlak radiálního nervu."
+      "Anconeus - pomocná extenze a stabilizace lokte.",
+      "Supinator - supinace předloktí; význam při podezření na útlak radiálního nervu."
     ]
   },
   en: {
     primary: [
-      "Biceps brachii - origin: long head (supraglenoid tubercle), short head (coracoid process); insertion: radial tuberosity and bicipital aponeurosis; function: elbow flexion and supination; ultrasound relevance: distal tendon tears.",
-      "Brachialis - origin: distal anterior humerus; insertion: coronoid process and ulnar tuberosity; function: primary elbow flexor regardless of forearm position; ultrasound relevance: anterior elbow pain differential.",
-      "Triceps brachii - origin: long, lateral, and medial heads from scapula/posterior humerus; insertion: olecranon; function: elbow extension; ultrasound relevance: distal triceps tendon and olecranon bursa assessment.",
-      "Common flexor-pronator group - includes pronator teres, FCR, palmaris longus, FDS, FCU; origin at the medial epicondyle; ultrasound relevance: medial epicondylitis.",
-      "Common extensor-supinator group - includes ECRB, extensor digitorum, ECU and others; origin at the lateral epicondyle; ultrasound relevance: lateral epicondylitis."
+      "Biceps brachii - elbow flexion and supination; distal tendon is a key ultrasound target.",
+      "Brachialis - primary elbow flexor; relevant in anterior elbow pain.",
+      "Triceps brachii - elbow extension; assessment of distal tendon and olecranon bursa.",
+      "Common flexor-pronator group - medial elbow, key in medial epicondylitis.",
+      "Common extensor-supinator group - lateral elbow, key in lateral epicondylitis."
     ],
     other: [
-      "Anconeus - origin: lateral epicondyle; insertion: lateral olecranon and proximal ulna; function: assists extension and stabilizes the elbow; ultrasound relevance: posterior-lateral elbow assessment.",
-      "Supinator - origin: lateral epicondyle, radial collateral ligament, and supinator crest of ulna; insertion: proximal radius; function: forearm supination; ultrasound relevance: radial nerve entrapment workup."
+      "Anconeus - assists elbow extension and contributes to stability.",
+      "Supinator - forearm supination; relevant in radial nerve entrapment workup."
     ]
   }
 };
-
-const elbowAnatomyLandmarkImage = {
-  fileName: "02_Elbow.png",
-  alt: {
-    cs: "Anatomie lokte",
-    en: "Elbow anatomy"
-  }
-} as const;
 
 const shoulderPositioningZoomCaption = {
   cs: "Obrázek 1. Polohování pacienta při vyšetření ramenního kloubu. 1: základní pozice pro vyšetření ventrálního pohledu, 2: pozice k vyšetření m. subscapularis - ventrální pohled, 3: Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 4: modified Crass position - pozice k vyšetření rotátorové manžety - laterální pohled, 5: pozice k vyšetření dorzálního pohledu.",
@@ -3562,12 +3554,6 @@ export default function ContentPage({ path }: ContentPageProps) {
                 renderAnatomyListItem(item)
               ))}
             </ul>
-            <ResponsiveImage
-              image={makeSingleImage("Anatomy", elbowAnatomyLandmarkImage.fileName)}
-              alt={elbowAnatomyLandmarkImage.alt[lang]}
-              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyImageWrap}`}
-              enableMobileZoom
-            />
           </section>
           <section className={styles.anatomyCard}>
             <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
