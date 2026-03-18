@@ -351,9 +351,8 @@
 
 .anatomyLead {
   margin: 0;
-  padding: 0.1rem 0 0.35rem 0.75rem;
+  padding: 0.1rem 0 0.25rem;
   border: 0;
-  border-left: 3px solid color-mix(in srgb, var(--text) 18%, var(--border));
   border-radius: 0;
   background: transparent;
   color: var(--text-soft);
@@ -362,16 +361,11 @@
 .anatomyCard {
   display: grid;
   gap: 0.45rem;
-  padding: 0.2rem 0 0;
+  padding: 0.75rem 0 0;
   border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
   border-radius: 0;
   background: transparent;
-}
-
-.anatomyCard + .anatomyCard {
-  margin-top: 0.2rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 72%, white);
 }
 
 .anatomyCard h2 {
@@ -386,8 +380,8 @@
 }
 
 .anatomyImageWrap {
-  max-width: 100%;
-  margin: 0.2rem 0 0;
+  max-width: 680px;
+  margin: 0.25rem auto 0;
   background: #fff;
 }
 
@@ -484,6 +478,10 @@
 }
 
 @media (min-width: 1025px) {
+  .anatomyImageWrap {
+    max-width: 620px;
+  }
+
   .swipeGallery {
     grid-auto-columns: minmax(48%, 1fr);
   }
