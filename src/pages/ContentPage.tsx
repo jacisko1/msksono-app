@@ -2433,10 +2433,11 @@ const jointIntroCopy = {
   rameno: {
     cs: (
       <>
-        U <strong>ramenního kloubu</strong> se ultrazvuk zaměřuje hlavně na šlachy rotátorové manžety (supraspinatus, infraspinatus,
-        subscapularis), šlachu dlouhé hlavy bicepsu a SASD burzu. Typicky řeší bolest při abdukci a práci nad hlavou, kde pomáhá
-        odlišit impingement, tendinopatii, parciální/kompletní rupturu i burzitidu. Důležité jsou dynamické testy při abdukci,
-        zevní a vnitřní rotaci.
+        Ultrazvuk <strong>ramenního kloubu</strong> je v PMR velmi cenný, protože umožňuje rychle propojit klinický obraz s nálezem
+        při pohybu. Nejčastěji se zaměřujeme na šlachy rotátorové manžety (supraspinatus, infraspinatus, subscapularis), šlachu
+        dlouhé hlavy bicepsu, subakromiálně-subdeltoidní burzu a zadní recesus glenohumerálního kloubu. Právě tyto struktury bývají
+        nejčastějším zdrojem bolesti při abdukci, práci nad hlavou a při rotačních pohybech. Výhodou je dynamické vyšetření, které
+        pomáhá rozlišit impingement, tendinopatii, parciální či kompletní ruptury a zánětlivé změny burzy nebo synovie.
       </>
     ),
     en: (
@@ -2451,9 +2452,11 @@ const jointIntroCopy = {
   loket: {
     cs: (
       <>
-        U <strong>loketního kloubu</strong> se hodnotí zejména oblast mediálního a laterálního epikondylu, úpony flexorů/extenzorů,
-        kolaterální vazy a průběh n. ulnaris v kubitálním tunelu. Nejčastěji se vyšetřuje bolest při úchopu, extenzi zápěstí a
-        flexi lokte, kde ultrazvuk odliší epikondylopatii, parciální ruptury, synovitidu i kompresi ulnárního nervu.
+        Ultrazvuk <strong>loketního kloubu</strong> je ideální pro cílené hodnocení přetěžovaných struktur v oblasti mediálního a
+        laterálního epikondylu, společného flexorového a extenzorového úponu, kolaterálních vazů, distálních šlach bicepsu a
+        tricepsu i průběhu n. ulnaris v kubitálním tunelu. V praxi je velmi přínosný při bolesti při úchopu, extenzi zápěstí,
+        flexi lokte nebo při paresteziích v ulnární oblasti. Umožňuje odlišit epikondylopatii, parciální ruptury, synovitidu,
+        kloubní výpotek, burzitidu i kompresní neuropatii a zároveň porovnat nález s druhostranným loktem.
       </>
     ),
     en: (
