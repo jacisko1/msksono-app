@@ -2054,49 +2054,49 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
 
 const shoulderProtocolCopyOverrides: Record<string, { heading: string; legend: string; description: string }> = {
   "01_anterior_view_transverse_plane": {
-    heading: "Obrázek 1: Ventrální pohled, transverzální rovina",
+    heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
     legend: "b: šlacha dlouhé hlavy bicepsu, TM: tuberculum majus, tm: tuberculum minus.",
     description:
       "TM a tm jsou hlavní orientační body. Mezi nimi je LHBB v bicipitálním sulku, kde se často zachytí tekutina. Hodnoťte i šlachu m. subscapularis, m. deltoideus a množství tekutiny (fyziologické vs. synovitida)."
   },
   "02_anterior_view_transverse_plane_2": {
-    heading: "Obrázek 2: Ventrální pohled, transverzální rovina",
+    heading: "Obrázek 2. Ventrální pohled, transverzální rovina",
     legend: "LHBB: dlouhá hlava bicepsu, SHBB: krátká hlava bicepsu.",
     description:
       "Distální posun sondy hodnotí svalové bříško m. biceps brachii (caput longum i breve). Projekce je vhodná pro posouzení symetrie, ruptur, hematomu a atrofie."
   },
   "03_anterior_view_longitudinal_plane": {
-    heading: "Obrázek 3: Ventrální pohled, sagitální rovina",
+    heading: "Obrázek 3. Ventrální pohled, sagitální rovina",
     legend: "b: šlacha dlouhé hlavy bicepsu.",
     description:
       "Podélný řez (otočení sondy o 90°) ukazuje LHBB v bicipitálním sulku. Zdravá šlacha má lineární fibrilární vzhled; projekce je vhodná pro posouzení kontinuity, tenosynovitidy, tekutiny a parciálních ruptur."
   },
   "04_anterior_view_longitudinal_plane_2": {
-    heading: "Obrázek 4: Ventrální pohled, sagitální rovina",
+    heading: "Obrázek 4. Ventrální pohled, sagitální rovina",
     legend: "LHBB: myotendinózní junkce dlouhé hlavy bicepsu brachii.",
     description:
       "Distálnější poloha sondy zobrazuje myotendinózní přechod, časté místo poranění. Sledujte přechod fibrilární šlachy do hypoechogenní svaloviny a známky tendinopatie, parciální ruptury nebo přetížení."
   },
   "05_lateral_view_transverse_plane": {
-    heading: "Obrázek 5: Laterální pohled, transverzální rovina",
+    heading: "Obrázek 5. Laterální pohled, transverzální rovina",
     legend: "Krátká osa šlachy rotátorové manžety („obraz pneumatiky“).",
     description:
       "Mírným tlakem hodnotíme integritu: zdravá šlacha je pevná, ruptura je měkká a kompresibilní („vyfouklá pneumatika“). Šlachu vždy sledujte v celé délce kvůli fokálním lézím a kalcifikacím."
   },
   "06_lateral_view_longitudinal_plane": {
-    heading: "Obrázek 6: Laterální pohled, frontální rovina",
+    heading: "Obrázek 6. Laterální pohled, frontální rovina",
     legend: "Akromion, tuberculum majus a šlacha m. supraspinatus („ptačí zobák“).",
     description:
       "Pohybujte sondou anteroposteriorně pro kompletní zobrazení supraspinatu. Sledujte i SASD burzu; projekce je klíčová pro tendinopatii, parciální/full-thickness ruptury a subakromiální impingement."
   },
   "07_posterior_view_transverse_plane": {
-    heading: "Obrázek 7: Dorzální pohled, transverzální rovina",
+    heading: "Obrázek 7. Dorzální pohled, transverzální rovina",
     legend: "L: labrum glenoidale.",
     description:
       "Sonda pod hřebenem lopatky: orientační body jsou hlavice humeru a glenoid. V horní části glenoidu je patrné labrum. Tekutina kolem labra je lépe detekovatelná při zevní rotaci."
   },
   "08_posterior_view_transverse_plane_2": {
-    heading: "Obrázek 8: Dorzální pohled, transverzální rovina",
+    heading: "Obrázek 8. Dorzální pohled, transverzální rovina",
     legend: "Šlacha m. infraspinatus; při kaudálním posunu i šlacha m. teres minor.",
     description:
       "Laterální posun sondy hodnotí integritu infraspinatu při podezření na rupturu manžety. Kaudální posun přidá teres minor a pomáhá odlišit izolované a kombinované léze."
@@ -2149,49 +2149,49 @@ const shoulderProtocolCopyOverridesCsExtended: Record<string, { heading: string;
 
 const shoulderProtocolCopyOverridesEn: Record<string, { heading: string; legend: string; description: string }> = {
   "01_anterior_view_transverse_plane": {
-    heading: "Figure 1: Ventral view, transverse plane",
+    heading: "Figure 1. Ventral view, transverse plane",
     legend: "b: long head of biceps tendon, TM: greater tubercle, tm: lesser tubercle.",
     description:
       "TM and tm are the main anterior bony landmarks. The LHBB runs between them in the bicipital groove, a common location for detectable fluid because the tendon sheath communicates with the glenohumeral joint. In this view, also assess the subscapularis tendon, superficial deltoid layer, and fluid amount (physiologic versus synovitis)."
   },
   "02_anterior_view_transverse_plane_2": {
-    heading: "Figure 2: Ventral view, transverse plane",
+    heading: "Figure 2. Ventral view, transverse plane",
     legend: "LHBB: long head of biceps, SHBB: short head of biceps.",
     description:
       "A distal probe shift along the anterior arm evaluates the biceps brachii muscle belly with both heads clearly visible. This view is useful for muscle symmetry assessment and for detecting pathology such as partial or complete tears, hematoma, or atrophic change."
   },
   "03_anterior_view_longitudinal_plane": {
-    heading: "Figure 3: Ventral view, sagittal plane",
+    heading: "Figure 3. Ventral view, sagittal plane",
     legend: "b: long head of biceps tendon.",
     description:
       "After rotating the probe by 90 degrees, the LHBB is visualized in long axis within the bicipital groove. A healthy tendon has a linear fibrillar appearance; this plane is ideal for continuity assessment and for detecting fluid, tenosynovitis, and partial tears in anterior shoulder pain."
   },
   "04_anterior_view_longitudinal_plane_2": {
-    heading: "Figure 4: Ventral view, sagittal plane",
+    heading: "Figure 4. Ventral view, sagittal plane",
     legend: "LHBB: myotendinous junction of the long head of biceps brachii.",
     description:
       "With a more distal probe position, the myotendinous transition of the long head of biceps is shown, which is a frequent injury zone. Evaluate the transition from bright fibrillar tendon to hypoechoic muscle and look for tendinopathy, partial tearing, or overload, especially after acute trauma."
   },
   "05_lateral_view_transverse_plane": {
-    heading: "Figure 5: Lateral view, transverse plane",
+    heading: "Figure 5. Lateral view, transverse plane",
     legend: "Short-axis rotator cuff tendon image (\"tire sign\").",
     description:
       "Short-axis imaging allows integrity testing with gentle probe compression. A healthy tendon is firm and resistant to compression, while a tear appears soft and compressible (\"flat tire\"). Sweep the tendon across its full course, because tears and calcifications can be focal."
   },
   "06_lateral_view_longitudinal_plane": {
-    heading: "Figure 6: Lateral view, frontal plane",
+    heading: "Figure 6. Lateral view, frontal plane",
     legend: "Acromion, greater tubercle, and supraspinatus tendon (\"bird's beak\").",
     description:
       "The acromion and greater tubercle are key bony landmarks. The supraspinatus tendon is seen in long axis between them, and because it is about 4 cm wide, an anteroposterior sweep is required for full evaluation. Also assess the SASD bursa and signs of tendinopathy, partial/full-thickness tears, and subacromial impingement."
   },
   "07_posterior_view_transverse_plane": {
-    heading: "Figure 7: Dorsal view, transverse plane",
+    heading: "Figure 7. Dorsal view, transverse plane",
     legend: "L: glenoid labrum.",
     description:
       "In the posterior projection with the probe below the scapular spine, the humeral head and glenoid serve as main landmarks. The superior glenoid labrum appears as a triangular hyperechoic structure that contributes to joint stability. Perilabral fluid is often easier to detect during external rotation."
   },
   "08_posterior_view_transverse_plane_2": {
-    heading: "Figure 8: Dorsal view, transverse plane",
+    heading: "Figure 8. Dorsal view, transverse plane",
     legend: "Infraspinatus tendon; with caudal shift, teres minor tendon.",
     description:
       "A lateral probe shift visualizes the infraspinatus tendon over the posterior humeral head; a caudal shift brings teres minor into view. Correct identification of both structures is important to distinguish isolated lesions from combined posterior rotator cuff pathology."
@@ -3147,6 +3147,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                             {legend ? ` ${legend}` : ""}
                           </p>
                         ) : null}
+                        {heading || legend ? (description ? <div className={styles.figureTextSpacer} aria-hidden="true" /> : null) : null}
                         {description ? <p className={styles.shoulderProtocolText}>{description}</p> : null}
                       </div>
                     </>
