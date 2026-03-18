@@ -146,7 +146,7 @@
 
 .protocolPlaneList {
   margin: 0.2rem 0 0;
-  padding-left: 1.1rem;
+  padding-left: 1.5rem;
   color: var(--text-soft);
   display: grid;
   gap: 0.2rem;

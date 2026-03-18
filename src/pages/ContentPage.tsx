@@ -3106,7 +3106,7 @@ export default function ContentPage({ path }: ContentPageProps) {
           <ul className={styles.protocolViewList}>
             {shoulderProtocolSteps[lang].map((step, index) => (
               <li key={step.view}>
-                <strong>{`${index + 1} ${step.view}`}</strong>
+                <strong>{`${index + 1}. ${step.view}`}</strong>
                 <ol type="A" className={styles.protocolPlaneList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
@@ -3167,7 +3167,7 @@ export default function ContentPage({ path }: ContentPageProps) {
           <ul className={styles.protocolViewList}>
             {jointContent.protocolSteps.map((step, index) => (
               <li key={step.view}>
-                <strong>{`${index + 1} ${step.view}`}</strong>
+                <strong>{`${index + 1}. ${step.view}`}</strong>
                 <ol type="A" className={styles.protocolPlaneList}>
                   {step.planes.map((plane) => (
                     <li key={plane}>{plane}</li>
