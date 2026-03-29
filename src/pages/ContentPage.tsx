@@ -3140,6 +3140,15 @@ export default function ContentPage({ path }: ContentPageProps) {
                         {lang === "cs" ? "Obrázek 3" : "Figure 3"}
                       </button>
                     </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={ulnarSwipePosition}
+                      onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
+                      className={styles.ulnarSwipeRange}
+                      aria-label={ulnarInteractiveSections[1].caption[lang]}
+                    />
                     <p className={styles.ulnarSwipeHint}>
                       {lang === "cs" ? "Přejeď prstem doleva nebo doprava." : "Swipe left or right."}
                     </p>
