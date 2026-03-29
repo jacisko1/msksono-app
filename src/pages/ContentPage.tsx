@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ContentPlaceholder } from "../components/ContentPlaceholder";
 import { PageHeader } from "../components/PageHeader";
-import { type CSSProperties, useEffect, useMemo, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "../data/language";
 import { findNavItem, getSiblingNavigation, localize, type NavItem } from "../data/navigation";
 import { PROGRESS_STORAGE_KEY, PROGRESS_UPDATED_EVENT, readProgress, writeProgress } from "../data/progress";
@@ -2672,6 +2672,9 @@ export default function ContentPage({ path }: ContentPageProps) {
   const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
   const [activeUlnarCompareIndex, setActiveUlnarCompareIndex] = useState(0);
   const [ulnarSwipePosition, setUlnarSwipePosition] = useState(60);
+  const [isUlnarSwipeDragging, setIsUlnarSwipeDragging] = useState(false);
+  const ulnarFigureTouchStartX = useRef<number | null>(null);
+  const ulnarSwipeCompareRef = useRef<HTMLDivElement | null>(null);
   const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
@@ -2756,6 +2759,63 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isEchogenicityPage = path === "/basics/ultrazvukovy-obraz/echogenita";
   const activeShoulderMuscleImage =
     activeShoulderMuscleImageIndex !== null ? shoulderAnatomyMuscleGallery[activeShoulderMuscleImageIndex] : null;
+
+  const handleUlnarFigureTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    ulnarFigureTouchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleUlnarFigureTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const startX = ulnarFigureTouchStartX.current;
+    const endX = event.changedTouches[0]?.clientX;
+    ulnarFigureTouchStartX.current = null;
+
+    if (startX === null || endX === undefined) {
+      return;
+    }
+
+    const deltaX = endX - startX;
+    if (Math.abs(deltaX) < 40) {
+      return;
+    }
+
+    setActiveUlnarCompareIndex(deltaX < 0 ? 1 : 0);
+  };
+
+  const updateUlnarSwipePosition = (clientX: number) => {
+    const container = ulnarSwipeCompareRef.current;
+    if (!container) {
+      return;
+    }
+
+    const rect = container.getBoundingClientRect();
+    if (rect.width <= 0) {
+      return;
+    }
+
+    const nextPosition = ((clientX - rect.left) / rect.width) * 100;
+    setUlnarSwipePosition(Math.min(100, Math.max(0, nextPosition)));
+  };
+
+  const handleUlnarSwipePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    setIsUlnarSwipeDragging(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updateUlnarSwipePosition(event.clientX);
+  };
+
+  const handleUlnarSwipePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!isUlnarSwipeDragging) {
+      return;
+    }
+
+    updateUlnarSwipePosition(event.clientX);
+  };
+
+  const handleUlnarSwipePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    setIsUlnarSwipeDragging(false);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -3053,7 +3113,11 @@ export default function ContentPage({ path }: ContentPageProps) {
                     <div className={styles.articleBody}>
                       <h3>{ulnarInteractiveSections[0].title[lang]}</h3>
                     </div>
-                    <div className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarInteractiveWrap}`}>
+                    <div
+                      className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarInteractiveWrap}`}
+                      onTouchStart={handleUlnarFigureTouchStart}
+                      onTouchEnd={handleUlnarFigureTouchEnd}
+                    >
                       <ResponsivePicture
                         image={ulnarSwipeImages[activeUlnarCompareIndex]}
                         alt={ulnarInteractiveSections[0].caption[lang]}
@@ -3076,6 +3140,9 @@ export default function ContentPage({ path }: ContentPageProps) {
                         {lang === "cs" ? "Obrázek 3" : "Figure 3"}
                       </button>
                     </div>
+                    <p className={styles.ulnarSwipeHint}>
+                      {lang === "cs" ? "Přejeď prstem doleva nebo doprava." : "Swipe left or right."}
+                    </p>
                     <p className={styles.figureCaption}>
                       <strong>{ulnarInteractiveSections[0].caption[lang]}</strong>
                     </p>
@@ -3086,7 +3153,15 @@ export default function ContentPage({ path }: ContentPageProps) {
                     <div className={styles.articleBody}>
                       <h3>{ulnarInteractiveSections[1].title[lang]}</h3>
                     </div>
-                    <div className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarSwipeCompareWrap}`}>
+                    <div
+                      ref={ulnarSwipeCompareRef}
+                      className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarSwipeCompareWrap}`}
+                      onPointerDown={handleUlnarSwipePointerDown}
+                      onPointerMove={handleUlnarSwipePointerMove}
+                      onPointerUp={handleUlnarSwipePointerUp}
+                      onPointerCancel={handleUlnarSwipePointerUp}
+                      onPointerLeave={handleUlnarSwipePointerUp}
+                    >
                       <div className={styles.ulnarSwipeImageBase}>
                         <ResponsivePicture
                           image={ulnarSwipeImages[0]}
@@ -3094,7 +3169,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                           className={styles.inlineImage}
                         />
                       </div>
-                      <div className={styles.ulnarSwipeOverlay} style={{ width: `${ulnarSwipePosition}%` }}>
+                      <div className={styles.ulnarSwipeReveal} style={{ clipPath: `inset(0 0 0 ${ulnarSwipePosition}%)` }}>
                         <ResponsivePicture
                           image={ulnarSwipeImages[1]}
                           alt={lang === "cs" ? "Obrázek 3" : "Figure 3"}
@@ -3109,19 +3184,10 @@ export default function ContentPage({ path }: ContentPageProps) {
                       <span>{lang === "cs" ? "Obrázek 2" : "Figure 2"}</span>
                       <span>{lang === "cs" ? "Obrázek 3" : "Figure 3"}</span>
                     </div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={ulnarSwipePosition}
-                      onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
-                      className={styles.ulnarSwipeRange}
-                      aria-label={ulnarInteractiveSections[1].caption[lang]}
-                    />
                     <p className={styles.ulnarSwipeHint}>
                       {lang === "cs"
                         ? "Táhni prstem po linii doprava a doleva."
-                        : "Drag your finger along the divider left and right."}
+                        : "Drag the center handle with arrows left and right."}
                     </p>
                     <p className={styles.figureCaption}>
                       <strong>{ulnarInteractiveSections[1].caption[lang]}</strong>
