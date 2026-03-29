@@ -77,6 +77,11 @@ interface NerveUltrasoundSection {
   caption: { cs: string; en: string };
 }
 
+interface NerveUltrasoundInteractiveSection {
+  title: { cs: string; en: string };
+  caption: { cs: string; en: string };
+}
+
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
 
@@ -2650,11 +2655,23 @@ function ResponsiveImage({
   );
 }
 
+function ResponsivePicture({ image, alt, className }: { image: ResponsiveImageSet; alt: string; className?: string }) {
+  return (
+    <picture>
+      <source media="(max-width: 640px)" srcSet={image.mobile} />
+      <source media="(max-width: 1024px)" srcSet={image.tablet} />
+      <img className={className ?? styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+    </picture>
+  );
+}
+
 export default function ContentPage({ path }: ContentPageProps) {
   const { lang, t } = useLanguage();
   const node = findNavItem(path);
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
   const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
+  const [activeUlnarCompareIndex, setActiveUlnarCompareIndex] = useState(0);
+  const [ulnarSwipePosition, setUlnarSwipePosition] = useState(60);
   const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
@@ -2685,6 +2702,26 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
   const nerveUltrasoundKey = nerveUltrasoundMatch?.[1];
   const nerveUltrasoundContent = nerveUltrasoundKey ? nerveUltrasoundByNerve[nerveUltrasoundKey] : undefined;
+  const ulnarInteractiveSections: NerveUltrasoundInteractiveSection[] =
+    nerveUltrasoundKey === "nervus-ulnaris"
+      ? [
+          {
+            title: { cs: "Obrázek 5", en: "Figure 5" },
+            caption: { cs: "Obrázek 5. Listování mezi obrázkem 2 a 3.", en: "Figure 5. Swipe-through between figure 2 and 3." }
+          },
+          {
+            title: { cs: "Obrázek 6", en: "Figure 6" },
+            caption: {
+              cs: "Obrázek 6. Porovnání obrázku 2 a 3 posunutím prstu po dělící linii.",
+              en: "Figure 6. Comparison of figure 2 and 3 by dragging along the divider."
+            }
+          }
+        ]
+      : [];
+  const ulnarSwipeImages =
+    nerveUltrasoundKey === "nervus-ulnaris"
+      ? [makeResponsiveImagePhone("Ulnar nerve", "UN2"), makeResponsiveImagePhone("Ulnar nerve", "UN3")]
+      : [];
   const entrapmentSitesKey = entrapmentSitesMatch?.[1];
   const entrapmentSites = entrapmentSitesKey ? entrapmentSitesByNerve[entrapmentSitesKey] : undefined;
   const motorInnervationKey = motorInnervationMatch?.[1];
@@ -3011,6 +3048,86 @@ export default function ContentPage({ path }: ContentPageProps) {
                     </p>
                   </article>
                 ))}
+                {ulnarInteractiveSections[0] && ulnarSwipeImages.length === 2 ? (
+                  <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                    <div className={styles.articleBody}>
+                      <h3>{ulnarInteractiveSections[0].title[lang]}</h3>
+                    </div>
+                    <div className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarInteractiveWrap}`}>
+                      <ResponsivePicture
+                        image={ulnarSwipeImages[activeUlnarCompareIndex]}
+                        alt={ulnarInteractiveSections[0].caption[lang]}
+                        className={styles.inlineImage}
+                      />
+                    </div>
+                    <div className={styles.ulnarToggleRow}>
+                      <button
+                        type="button"
+                        className={`${styles.ulnarToggleButton} ${activeUlnarCompareIndex === 0 ? styles.ulnarToggleButtonActive : ""}`}
+                        onClick={() => setActiveUlnarCompareIndex(0)}
+                      >
+                        {lang === "cs" ? "Obrázek 2" : "Figure 2"}
+                      </button>
+                      <button
+                        type="button"
+                        className={`${styles.ulnarToggleButton} ${activeUlnarCompareIndex === 1 ? styles.ulnarToggleButtonActive : ""}`}
+                        onClick={() => setActiveUlnarCompareIndex(1)}
+                      >
+                        {lang === "cs" ? "Obrázek 3" : "Figure 3"}
+                      </button>
+                    </div>
+                    <p className={styles.figureCaption}>
+                      <strong>{ulnarInteractiveSections[0].caption[lang]}</strong>
+                    </p>
+                  </article>
+                ) : null}
+                {ulnarInteractiveSections[1] && ulnarSwipeImages.length === 2 ? (
+                  <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                    <div className={styles.articleBody}>
+                      <h3>{ulnarInteractiveSections[1].title[lang]}</h3>
+                    </div>
+                    <div className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarSwipeCompareWrap}`}>
+                      <div className={styles.ulnarSwipeImageBase}>
+                        <ResponsivePicture
+                          image={ulnarSwipeImages[0]}
+                          alt={lang === "cs" ? "Obrázek 2" : "Figure 2"}
+                          className={styles.inlineImage}
+                        />
+                      </div>
+                      <div className={styles.ulnarSwipeOverlay} style={{ width: `${ulnarSwipePosition}%` }}>
+                        <ResponsivePicture
+                          image={ulnarSwipeImages[1]}
+                          alt={lang === "cs" ? "Obrázek 3" : "Figure 3"}
+                          className={styles.inlineImage}
+                        />
+                      </div>
+                      <div className={styles.ulnarSwipeDivider} style={{ left: `${ulnarSwipePosition}%` }}>
+                        <span className={styles.ulnarSwipeHandle} />
+                      </div>
+                    </div>
+                    <div className={styles.ulnarSwipeLabels}>
+                      <span>{lang === "cs" ? "Obrázek 2" : "Figure 2"}</span>
+                      <span>{lang === "cs" ? "Obrázek 3" : "Figure 3"}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={ulnarSwipePosition}
+                      onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
+                      className={styles.ulnarSwipeRange}
+                      aria-label={ulnarInteractiveSections[1].caption[lang]}
+                    />
+                    <p className={styles.ulnarSwipeHint}>
+                      {lang === "cs"
+                        ? "Táhni prstem po linii doprava a doleva."
+                        : "Drag your finger along the divider left and right."}
+                    </p>
+                    <p className={styles.figureCaption}>
+                      <strong>{ulnarInteractiveSections[1].caption[lang]}</strong>
+                    </p>
+                  </article>
+                ) : null}
               </div>
             </>
           ) : (
