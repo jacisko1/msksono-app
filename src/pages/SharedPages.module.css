@@ -584,6 +584,10 @@
   accent-color: #d2be00;
 }
 
+.ulnarSwipeControls {
+  margin: 0.7rem auto 0;
+}
+
 .ulnarSwipeHint {
   margin: 0.35rem 0 0;
   font-size: 0.84rem;

@@ -3163,15 +3163,26 @@ export default function ContentPage({ path }: ContentPageProps) {
                         <span className={styles.ulnarSwipeHandle} />
                       </div>
                     </div>
-                    <div className={styles.ulnarSwipeLabels}>
-                      <span>{lang === "cs" ? "Obrázek 2" : "Figure 2"}</span>
-                      <span>{lang === "cs" ? "Obrázek 3" : "Figure 3"}</span>
+                    <div className={`${styles.nerveImageWrap} ${styles.ulnarSwipeControls}`}>
+                      <div className={styles.ulnarSwipeLabels}>
+                        <span>{lang === "cs" ? "Obrázek 2" : "Figure 2"}</span>
+                        <span>{lang === "cs" ? "Obrázek 3" : "Figure 3"}</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={ulnarSwipePosition}
+                        onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
+                        className={styles.ulnarSwipeRange}
+                        aria-label={ulnarInteractiveSections[1].caption[lang]}
+                      />
+                      <p className={styles.ulnarSwipeHint}>
+                        {lang === "cs"
+                          ? "Táhni za středovou značku se šipkami doprava a doleva."
+                          : "Drag the center handle with arrows left and right."}
+                      </p>
                     </div>
-                    <p className={styles.ulnarSwipeHint}>
-                      {lang === "cs"
-                        ? "Táhni prstem po linii doprava a doleva."
-                        : "Drag the center handle with arrows left and right."}
-                    </p>
                     <p className={styles.figureCaption}>
                       <strong>{ulnarInteractiveSections[1].caption[lang]}</strong>
                     </p>
@@ -3839,3 +3850,4 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
+
