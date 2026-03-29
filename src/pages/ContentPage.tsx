@@ -2709,14 +2709,14 @@ export default function ContentPage({ path }: ContentPageProps) {
     nerveUltrasoundKey === "nervus-ulnaris"
       ? [
           {
-            title: { cs: "Obrázek 5", en: "Figure 5" },
-            caption: { cs: "Obrázek 5. Listování mezi obrázkem 2 a 3.", en: "Figure 5. Swipe-through between figure 2 and 3." }
+            title: { cs: "Obrázek 1", en: "Figure 1" },
+            caption: { cs: "Obrázek 1. Listování mezi obrázkem 2 a 3.", en: "Figure 1. Swipe-through between figure 2 and 3." }
           },
           {
-            title: { cs: "Obrázek 6", en: "Figure 6" },
+            title: { cs: "Obrázek 2", en: "Figure 2" },
             caption: {
-              cs: "Obrázek 6. Porovnání obrázku 2 a 3 posunutím prstu po dělící linii.",
-              en: "Figure 6. Comparison of figure 2 and 3 by dragging along the divider."
+              cs: "Obrázek 2. Porovnání obrázku 2 a 3 posunutím prstu po dělící linii.",
+              en: "Figure 2. Comparison of figure 2 and 3 by dragging along the divider."
             }
           }
         ]
@@ -3091,23 +3091,6 @@ export default function ContentPage({ path }: ContentPageProps) {
             <>
               <p>{nerveUltrasoundContent.intro[lang]}</p>
               <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-                {nerveUltrasoundContent.sections.map((item) => (
-                  <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
-                    <div className={styles.articleBody}>
-                      <h3>{item.title[lang]}</h3>
-                    </div>
-                    <ResponsiveImage
-                      image={makeResponsiveImagePhone("Ulnar nerve", item.key)}
-                      alt={item.caption[lang]}
-                      wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
-                      enableMobileZoom
-                      caption={item.caption[lang]}
-                    />
-                    <p className={styles.figureCaption}>
-                      <strong>{item.caption[lang]}</strong>
-                    </p>
-                  </article>
-                ))}
                 {ulnarInteractiveSections[0] && ulnarSwipeImages.length === 2 ? (
                   <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
                     <div className={styles.articleBody}>
@@ -3140,15 +3123,6 @@ export default function ContentPage({ path }: ContentPageProps) {
                         {lang === "cs" ? "Obrázek 3" : "Figure 3"}
                       </button>
                     </div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="100"
-                      value={ulnarSwipePosition}
-                      onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
-                      className={styles.ulnarSwipeRange}
-                      aria-label={ulnarInteractiveSections[1].caption[lang]}
-                    />
                     <p className={styles.ulnarSwipeHint}>
                       {lang === "cs" ? "Přejeď prstem doleva nebo doprava." : "Swipe left or right."}
                     </p>
