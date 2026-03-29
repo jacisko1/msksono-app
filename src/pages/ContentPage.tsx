@@ -72,7 +72,7 @@ interface NerveAnatomyDescription {
 }
 
 interface NerveUltrasoundSection {
-  fileName: string;
+  key: string;
   title: { cs: string; en: string };
   caption: { cs: string; en: string };
 }
@@ -832,27 +832,18 @@ const nerveUltrasoundByNerve: Record<
       en: "Below are ultrasound images of the ulnar nerve arranged in the same visual format as the other image-based subsections."
     },
     sections: [
-      {
-        fileName: "ulnar nerve.png",
-        title: { cs: "Obrázek 1", en: "Figure 1" },
-        caption: { cs: "Obrázek 1. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 1. Ulnar nerve ultrasound examination." }
-      },
-      {
-        fileName: "ulnar nerve 1.png",
-        title: { cs: "Obrázek 2", en: "Figure 2" },
-        caption: { cs: "Obrázek 2. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 2. Ulnar nerve ultrasound examination." }
-      },
-      {
-        fileName: "ulnar nerve 2.png",
-        title: { cs: "Obrázek 3", en: "Figure 3" },
-        caption: { cs: "Obrázek 3. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 3. Ulnar nerve ultrasound examination." }
-      },
-      {
-        fileName: "ulnar nerve 3.png",
-        title: { cs: "Obrázek 4", en: "Figure 4" },
-        caption: { cs: "Obrázek 4. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 4. Ulnar nerve ultrasound examination." }
+      "UN1",
+      "UN2",
+      "UN3",
+      "UN4"
+    ].map((key, index) => ({
+      key,
+      title: { cs: `Obrázek ${index + 1}`, en: `Figure ${index + 1}` },
+      caption: {
+        cs: `Obrázek ${index + 1}. Ultrazvukové vyšetření n. ulnaris.`,
+        en: `Figure ${index + 1}. Ulnar nerve ultrasound examination.`
       }
-    ]
+    }))
   }
 };
 
@@ -3004,12 +2995,12 @@ export default function ContentPage({ path }: ContentPageProps) {
               <p>{nerveUltrasoundContent.intro[lang]}</p>
               <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
                 {nerveUltrasoundContent.sections.map((item) => (
-                  <article key={item.fileName} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                  <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
                     <div className={styles.articleBody}>
                       <h3>{item.title[lang]}</h3>
                     </div>
                     <ResponsiveImage
-                      image={makeSingleImage("Ulnar nerve", item.fileName)}
+                      image={makeResponsiveImagePhone("Ulnar nerve", item.key)}
                       alt={item.caption[lang]}
                       wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
                       enableMobileZoom
