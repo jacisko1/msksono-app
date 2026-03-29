@@ -71,6 +71,12 @@ interface NerveAnatomyDescription {
   en: string;
 }
 
+interface NerveUltrasoundSection {
+  fileName: string;
+  title: { cs: string; en: string };
+  caption: { cs: string; en: string };
+}
+
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
 
@@ -811,6 +817,43 @@ const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
   "3_elbow": { cs: "Řez loktem", en: "Elbow section" },
   "4_forearm": { cs: "Řez předloktím", en: "Forearm section" },
   "5_wrist": { cs: "Řez zápěstím", en: "Wrist section" }
+};
+
+const nerveUltrasoundByNerve: Record<
+  string,
+  {
+    intro: { cs: string; en: string };
+    sections: NerveUltrasoundSection[];
+  }
+> = {
+  "nervus-ulnaris": {
+    intro: {
+      cs: "Níže jsou ultrazvukové obrazy n. ulnaris vložené ve stejném přehledném formátu jako v ostatních obrazových podkapitolách.",
+      en: "Below are ultrasound images of the ulnar nerve arranged in the same visual format as the other image-based subsections."
+    },
+    sections: [
+      {
+        fileName: "ulnar nerve.png",
+        title: { cs: "Obrázek 1", en: "Figure 1" },
+        caption: { cs: "Obrázek 1. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 1. Ulnar nerve ultrasound examination." }
+      },
+      {
+        fileName: "ulnar nerve 1.png",
+        title: { cs: "Obrázek 2", en: "Figure 2" },
+        caption: { cs: "Obrázek 2. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 2. Ulnar nerve ultrasound examination." }
+      },
+      {
+        fileName: "ulnar nerve 2.png",
+        title: { cs: "Obrázek 3", en: "Figure 3" },
+        caption: { cs: "Obrázek 3. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 3. Ulnar nerve ultrasound examination." }
+      },
+      {
+        fileName: "ulnar nerve 3.png",
+        title: { cs: "Obrázek 4", en: "Figure 4" },
+        caption: { cs: "Obrázek 4. Ultrazvukové vyšetření n. ulnaris.", en: "Figure 4. Ulnar nerve ultrasound examination." }
+      }
+    ]
+  }
 };
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
@@ -2621,6 +2664,7 @@ export default function ContentPage({ path }: ContentPageProps) {
   const node = findNavItem(path);
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
   const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
+  const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
@@ -2634,6 +2678,9 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/anatomicky-prubeh$/
   );
+  const nerveUltrasoundMatch = normalizedPath.match(
+    /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/ultrazvukove-vysetreni$/
+  );
   const entrapmentSitesMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/mista-utlaku$/
   );
@@ -2645,6 +2692,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   );
   const nerveKey = nerveAnatomyMatch?.[1];
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
+  const nerveUltrasoundKey = nerveUltrasoundMatch?.[1];
+  const nerveUltrasoundContent = nerveUltrasoundKey ? nerveUltrasoundByNerve[nerveUltrasoundKey] : undefined;
   const entrapmentSitesKey = entrapmentSitesMatch?.[1];
   const entrapmentSites = entrapmentSitesKey ? entrapmentSitesByNerve[entrapmentSitesKey] : undefined;
   const motorInnervationKey = motorInnervationMatch?.[1];
@@ -2652,7 +2701,6 @@ export default function ContentPage({ path }: ContentPageProps) {
   const sensoryInnervationKey = sensoryInnervationMatch?.[1];
   const sensoryInnervation = sensoryInnervationKey ? sensoryInnervationByNerve[sensoryInnervationKey] : undefined;
   const sensoryInnervationImage = sensoryInnervationKey ? sensoryInnervationImages[sensoryInnervationKey] : undefined;
-  const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const isShoulderUltrasoundPage = normalizedPath === "/klouby/rameno/vysetrovaci-protokol";
   const isShoulderIntroPage = normalizedPath === "/klouby/rameno/uvod";
   const isShoulderAnatomyPage = normalizedPath === "/klouby/rameno/anatomie";
@@ -2939,6 +2987,48 @@ export default function ContentPage({ path }: ContentPageProps) {
               </li>
             ))}
           </ol>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (nerveUltrasoundMatch) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          {nerveUltrasoundContent ? (
+            <>
+              <p>{nerveUltrasoundContent.intro[lang]}</p>
+              <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
+                {nerveUltrasoundContent.sections.map((item) => (
+                  <article key={item.fileName} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                    <div className={styles.articleBody}>
+                      <h3>{item.title[lang]}</h3>
+                    </div>
+                    <ResponsiveImage
+                      image={makeSingleImage("Ulnar nerve", item.fileName)}
+                      alt={item.caption[lang]}
+                      wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
+                      enableMobileZoom
+                      caption={item.caption[lang]}
+                    />
+                    <p className={styles.figureCaption}>
+                      <strong>{item.caption[lang]}</strong>
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p>
+              {lang === "cs"
+                ? "Tato část je zatím připravena jako prázdná a obsah bude doplněn."
+                : "This section is currently a placeholder and content will be added soon."}
+            </p>
+          )}
         </section>
         {chapterNav}
       </section>
