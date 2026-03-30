@@ -769,7 +769,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .shoulderProtocolCard {
+  .shoulderProtocolCard + .shoulderProtocolCard {
     padding-top: 0;
     border-top: 0;
   }
