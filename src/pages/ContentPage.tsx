@@ -84,11 +84,6 @@ interface NerveUltrasoundSection {
   caption: { cs: string; en: string };
 }
 
-interface NerveUltrasoundInteractiveSection {
-  title: { cs: string; en: string };
-  caption: { cs: string; en: string };
-}
-
 interface SwipeCompareImageProps {
   baseImage: ResponsiveImageSet;
   overlayImage: ResponsiveImageSet;
@@ -575,6 +570,29 @@ const ankleSwipeCompareImages: JointProtocolCompareImage[] = [
   overlayImage: makeResponsiveImagePhone("06_Ankle/protokol", key)
 }));
 
+const ulnarNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ length: 14 }, (_, index) => {
+  const figureNumber = index + 1;
+  const key = `${String(figureNumber).padStart(2, "0")}_Obrzek${figureNumber}`;
+  return {
+    key,
+    baseImage: makeResponsiveImagePhone("Nerves/Ulnar nerve", `${key}_basic`),
+    overlayImage: makeResponsiveImagePhone("Nerves/Ulnar nerve", key)
+  };
+});
+
+const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 14 }, (_, index) => {
+  const figureNumber = index + 1;
+  const key = `${String(figureNumber).padStart(2, "0")}_Obrzek${figureNumber}`;
+  return {
+    key,
+    title: { cs: `ObrĂˇzek ${figureNumber}`, en: `Figure ${figureNumber}` },
+    caption: {
+      cs: `ObrĂˇzek ${figureNumber}. UltrazvukovĂ© vyĹˇetĹ™enĂ­ n. ulnaris.`,
+      en: `Figure ${figureNumber}. Ulnar nerve ultrasound examination.`
+    }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -940,7 +958,9 @@ const nerveUltrasoundByNerve: Record<
   string,
   {
     intro: { cs: string; en: string };
+    folder?: string;
     sections: NerveUltrasoundSection[];
+    swipeCompareImages?: JointProtocolCompareImage[];
   }
 > = {
   "nervus-ulnaris": {
@@ -2897,11 +2917,6 @@ export default function ContentPage({ path }: ContentPageProps) {
   const node = findNavItem(path);
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
   const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
-  const [activeUlnarCompareIndex, setActiveUlnarCompareIndex] = useState(0);
-  const [ulnarSwipePosition, setUlnarSwipePosition] = useState(60);
-  const [isUlnarSwipeDragging, setIsUlnarSwipeDragging] = useState(false);
-  const ulnarFigureTouchStartX = useRef<number | null>(null);
-  const ulnarSwipeCompareRef = useRef<HTMLDivElement | null>(null);
   const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
@@ -2932,26 +2947,15 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
   const nerveUltrasoundKey = nerveUltrasoundMatch?.[1];
   const nerveUltrasoundContent = nerveUltrasoundKey ? nerveUltrasoundByNerve[nerveUltrasoundKey] : undefined;
-  const ulnarInteractiveSections: NerveUltrasoundInteractiveSection[] =
-    nerveUltrasoundKey === "nervus-ulnaris"
-      ? [
-          {
-            title: { cs: "Obrázek 1", en: "Figure 1" },
-            caption: { cs: "Obrázek 1. Listování mezi obrázkem 2 a 3.", en: "Figure 1. Swipe-through between figure 2 and 3." }
-          },
-          {
-            title: { cs: "Obrázek 2", en: "Figure 2" },
-            caption: {
-              cs: "Obrázek 2. Porovnání obrázku 2 a 3 posunutím prstu po dělící linii.",
-              en: "Figure 2. Comparison of figure 2 and 3 by dragging along the divider."
-            }
-          }
-        ]
-      : [];
-  const ulnarSwipeImages =
-    nerveUltrasoundKey === "nervus-ulnaris"
-      ? [makeResponsiveImagePhone("Ulnar nerve", "UN2"), makeResponsiveImagePhone("Ulnar nerve", "UN3")]
-      : [];
+  const resolvedNerveUltrasoundContent =
+    nerveUltrasoundKey === "nervus-ulnaris" && nerveUltrasoundContent
+      ? {
+          ...nerveUltrasoundContent,
+          folder: "Nerves/Ulnar nerve",
+          sections: ulnarNerveUltrasoundSections,
+          swipeCompareImages: ulnarNerveSwipeCompareImages
+        }
+      : nerveUltrasoundContent;
   const entrapmentSitesKey = entrapmentSitesMatch?.[1];
   const entrapmentSites = entrapmentSitesKey ? entrapmentSitesByNerve[entrapmentSitesKey] : undefined;
   const motorInnervationKey = motorInnervationMatch?.[1];
@@ -2986,72 +2990,6 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isEchogenicityPage = path === "/basics/ultrazvukovy-obraz/echogenita";
   const activeShoulderMuscleImage =
     activeShoulderMuscleImageIndex !== null ? shoulderAnatomyMuscleGallery[activeShoulderMuscleImageIndex] : null;
-
-  const handleUlnarFigureTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    ulnarFigureTouchStartX.current = event.touches[0]?.clientX ?? null;
-  };
-
-  const handleUlnarFigureTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
-    const startX = ulnarFigureTouchStartX.current;
-    const endX = event.changedTouches[0]?.clientX;
-    ulnarFigureTouchStartX.current = null;
-
-    if (startX === null || endX === undefined) {
-      return;
-    }
-
-    const deltaX = endX - startX;
-    if (Math.abs(deltaX) < 40) {
-      return;
-    }
-
-    setActiveUlnarCompareIndex(deltaX < 0 ? 1 : 0);
-  };
-
-  const updateUlnarSwipePosition = (clientX: number) => {
-    const container = ulnarSwipeCompareRef.current;
-    if (!container) {
-      return;
-    }
-
-    const rect = container.getBoundingClientRect();
-    if (rect.width <= 0) {
-      return;
-    }
-
-    const nextPosition = ((clientX - rect.left) / rect.width) * 100;
-    setUlnarSwipePosition(Math.min(100, Math.max(0, nextPosition)));
-  };
-
-  const handleUlnarSwipePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse" && event.button !== 0) {
-      return;
-    }
-
-    event.preventDefault();
-    setIsUlnarSwipeDragging(true);
-    event.currentTarget.setPointerCapture(event.pointerId);
-    updateUlnarSwipePosition(event.clientX);
-  };
-
-  const handleUlnarSwipePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!isUlnarSwipeDragging) {
-      return;
-    }
-
-    updateUlnarSwipePosition(event.clientX);
-  };
-
-  const handleUlnarSwipePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    setIsUlnarSwipeDragging(false);
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-  };
-
-  const handleUlnarSwipeLostPointerCapture = () => {
-    setIsUlnarSwipeDragging(false);
-  };
 
   useEffect(() => {
     const syncProgress = () => setDoneByPath(readProgress());
@@ -3323,105 +3261,41 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          {nerveUltrasoundContent ? (
+          {resolvedNerveUltrasoundContent ? (
             <>
-              <p>{nerveUltrasoundContent.intro[lang]}</p>
-              <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-                {false && ulnarInteractiveSections[0] && ulnarSwipeImages.length === 2 ? (
-                  <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
-                    <div className={styles.articleBody}>
-                      <h3>{ulnarInteractiveSections[0].title[lang]}</h3>
-                    </div>
-                    <div
-                      className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarInteractiveWrap}`}
-                      onTouchStart={handleUlnarFigureTouchStart}
-                      onTouchEnd={handleUlnarFigureTouchEnd}
-                    >
-                      <ResponsivePicture
-                        image={ulnarSwipeImages[activeUlnarCompareIndex]}
-                        alt={ulnarInteractiveSections[0].caption[lang]}
-                        className={styles.inlineImage}
-                      />
-                    </div>
-                    <div className={styles.ulnarToggleRow}>
-                      <button
-                        type="button"
-                        className={`${styles.ulnarToggleButton} ${activeUlnarCompareIndex === 0 ? styles.ulnarToggleButtonActive : ""}`}
-                        onClick={() => setActiveUlnarCompareIndex(0)}
-                      >
-                        {lang === "cs" ? "Obrázek 2" : "Figure 2"}
-                      </button>
-                      <button
-                        type="button"
-                        className={`${styles.ulnarToggleButton} ${activeUlnarCompareIndex === 1 ? styles.ulnarToggleButtonActive : ""}`}
-                        onClick={() => setActiveUlnarCompareIndex(1)}
-                      >
-                        {lang === "cs" ? "Obrázek 3" : "Figure 3"}
-                      </button>
-                    </div>
-                    <p className={styles.ulnarSwipeHint}>
-                      {lang === "cs" ? "Přejeď prstem doleva nebo doprava." : "Swipe left or right."}
-                    </p>
-                    <p className={styles.figureCaption}>
-                      <strong>{ulnarInteractiveSections[0].caption[lang]}</strong>
-                    </p>
-                  </article>
-                ) : null}
-                {ulnarInteractiveSections[1] && ulnarSwipeImages.length === 2 ? (
-                  <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
-                    <div
-                      ref={ulnarSwipeCompareRef}
-                      className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarSwipeCompareWrap}`}
-                      onPointerDown={handleUlnarSwipePointerDown}
-                      onPointerMove={handleUlnarSwipePointerMove}
-                      onPointerUp={handleUlnarSwipePointerUp}
-                      onPointerCancel={handleUlnarSwipePointerUp}
-                      onLostPointerCapture={handleUlnarSwipeLostPointerCapture}
-                    >
-                      <div className={styles.ulnarSwipeImageBase}>
-                        <ResponsivePicture
-                          image={ulnarSwipeImages[0]}
-                          alt={lang === "cs" ? "Obrázek 2" : "Figure 2"}
-                          className={styles.inlineImage}
+              <p>{resolvedNerveUltrasoundContent.intro[lang]}</p>
+              <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid} ${styles.protocolImageGrid}`}>
+                {resolvedNerveUltrasoundContent.sections.map((item) => {
+                  const compareImages = resolvedNerveUltrasoundContent.swipeCompareImages?.find((imageSet) => imageSet.key === item.key);
+                  const imageAlt = item.caption[lang];
+
+                  return (
+                    <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                      {compareImages ? (
+                        <SwipeCompareImage
+                          baseImage={compareImages.baseImage}
+                          overlayImage={compareImages.overlayImage}
+                          baseAlt={imageAlt}
+                          overlayAlt={imageAlt}
+                          ariaLabel={imageAlt}
+                          wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap} ${styles.shoulderSwipeCompareWrap}`}
+                          showRange
+                          controlsClassName={styles.shoulderSwipeControls}
+                          rangeColor={node.color}
                         />
-                      </div>
-                      <div className={styles.ulnarSwipeReveal} style={{ clipPath: `inset(0 0 0 ${ulnarSwipePosition}%)` }}>
-                        <ResponsivePicture
-                          image={ulnarSwipeImages[1]}
-                          alt={lang === "cs" ? "Obrázek 3" : "Figure 3"}
-                          className={styles.inlineImage}
+                      ) : resolvedNerveUltrasoundContent.folder ? (
+                        <ResponsiveImage
+                          image={makeResponsiveImagePhone(resolvedNerveUltrasoundContent.folder, item.key)}
+                          alt={imageAlt}
+                          wrapClassName={styles.shoulderUltrasoundImageWrap}
                         />
+                      ) : null}
+                      <div className={styles.articleBody}>
+                        <h3>{item.title[lang]}</h3>
                       </div>
-                      <div className={styles.ulnarSwipeDivider} style={{ left: `${ulnarSwipePosition}%` }}>
-                        <span className={styles.ulnarSwipeHandle} />
-                      </div>
-                    </div>
-                    <div className={`${styles.nerveImageWrap} ${styles.ulnarSwipeControls}`}>
-                      <div className={styles.ulnarSwipeLabels}>
-                        <span>{lang === "cs" ? "Obrázek 2" : "Figure 2"}</span>
-                        <span>{lang === "cs" ? "Obrázek 3" : "Figure 3"}</span>
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={ulnarSwipePosition}
-                        onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
-                        className={styles.ulnarSwipeRange}
-                        style={{ "--ulnar-swipe-position": `${ulnarSwipePosition}%` } as CSSProperties}
-                        aria-label={ulnarInteractiveSections[1].caption[lang]}
-                      />
-                      <p className={styles.ulnarSwipeHint}>
-                        {lang === "cs"
-                          ? "Táhni za středovou značku se šipkami doprava a doleva."
-                          : "Drag the center handle with arrows left and right."}
-                      </p>
-                    </div>
-                    <p className={styles.figureCaption}>
-                      <strong>{ulnarInteractiveSections[1].caption[lang].replace(/^Figure\s+\d+\.\s*/, "").replace(/^Obr.*?\.\s*/, "")}</strong>
-                    </p>
-                  </article>
-                ) : null}
+                    </article>
+                  );
+                })}
               </div>
             </>
           ) : (
@@ -4118,4 +3992,5 @@ export default function ContentPage({ path }: ContentPageProps) {
     </section>
   );
 }
+
 
