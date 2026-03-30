@@ -582,6 +582,29 @@ const kneeSwipeCompareImages: JointProtocolCompareImage[] = [
   };
 });
 
+const ankleSwipeCompareImages: JointProtocolCompareImage[] = [
+  ["01_Obrzek1", "Ankle Basic.png", "Snímek1.PNG"],
+  ["02_Obrzek2", "Ankle Basic(1).png", "Snímek2.PNG"],
+  ["03_Obrzek3", "Ankle Basic(2).png", "Snímek3.PNG"],
+  ["04_Obrzek4", "Ankle Basic(3).png", "Snímek4.PNG"],
+  ["05_Obrzek5", "Ankle Basic(4).png", "Snímek5.PNG"],
+  ["06_Obrzek6", "Ankle Basic(5).png", "Snímek6.PNG"],
+  ["07_Obrzek7", "Ankle Basic(6).png", "Snímek7.PNG"],
+  ["08_Obrzek8", "Ankle Basic(7).png", "Snímek8.PNG"],
+  ["09_Obrzek9", "Ankle Basic(8).png", "Snímek9.PNG"],
+  ["10_Obrzek10", "Ankle Basic(9).png", "Snímek10.PNG"],
+  ["11_Obrzek11", "Ankle Basic(10).png", "Snímek11.PNG"]
+].map(([key, baseFileName, overlayFileName]) => {
+  const baseSrc = assetPath("06_Ankle/protokol", baseFileName);
+  const overlaySrc = assetPath("06_Ankle/protokol", overlayFileName);
+
+  return {
+    key,
+    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
+    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -754,6 +777,7 @@ const jointContentBySlug: Record<string, JointContent> = {
   },
   kotnik: {
     folder: "06_Ankle/protokol",
+    swipeCompareImages: ankleSwipeCompareImages,
     introPoints: [
       "Ultrazvuk hlezna je praktická metoda pro hodnocení měkkých tkání v reálném čase; přináší informace o synovii, vazech, burzách a šlachách (Achillova, peroneální, tibiální).",
       "Pro kvalitní vyšetření je důležitý systematický postup od orientačních bodů (malleoly, talus, calcaneus, distální tibie/fibula) v podélné i příčné rovině.",
@@ -780,7 +804,10 @@ const jointContentBySlug: Record<string, JointContent> = {
       { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce Achillovy šlachy nad Kagerovým tukovým tělesem pro tendinopatii a retrocalcaneární burzitidu."] },
       { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, sagitální rovina", bullets: ["Proximálnější podélná projekce m. triceps surae pro hodnocení svalové symetrie, ruptur a hematomů."] },
       { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["TA: Achillova šlacha. Příčný řez Achillovou šlachou s hodnocením kontinuity a okolních měkkých tkání."] },
-      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["Příčný pohled svaly triceps surae vhodný pro myotendinózní poranění, atrofii a fibrotické změny."] }
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, transverzální rovina", bullets: ["Příčný pohled svaly triceps surae vhodný pro myotendinózní poranění, atrofii a fibrotické změny."] },
+      { key: "09_Obrzek9", heading: "Obrázek 9.", bullets: [] },
+      { key: "10_Obrzek10", heading: "Obrázek 10.", bullets: [] },
+      { key: "11_Obrzek11", heading: "Obrázek 11.", bullets: [] }
     ]
   }
 };
