@@ -82,6 +82,16 @@ interface NerveUltrasoundInteractiveSection {
   caption: { cs: string; en: string };
 }
 
+interface SwipeCompareImageProps {
+  baseImage: ResponsiveImageSet;
+  overlayImage: ResponsiveImageSet;
+  baseAlt: string;
+  overlayAlt: string;
+  ariaLabel: string;
+  wrapClassName?: string;
+  initialPosition?: number;
+}
+
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
 
@@ -2091,6 +2101,21 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
   }
 ];
 
+const makeStaticResponsiveImage = (folder: string, fileName: string): ResponsiveImageSet => ({
+  pc: assetPath(folder, fileName),
+  tablet: assetPath(folder, fileName),
+  mobile: assetPath(folder, fileName)
+});
+
+const shoulderSwipeCompareImages = shoulderUltrasoundImages.map((item, index) => {
+  const number = String(index + 1).padStart(3, "0");
+  return {
+    key: item.key,
+    baseImage: makeStaticResponsiveImage("shoulder", `Shoulder Basic_${number}.jpg`),
+    overlayImage: makeStaticResponsiveImage("shoulder", `${number}.jpg`)
+  };
+});
+
 const shoulderProtocolCopyOverrides: Record<string, { heading: string; legend: string; description: string }> = {
   "01_anterior_view_transverse_plane": {
     heading: "Obrázek 1. Ventrální pohled, transverzální rovina",
@@ -2662,6 +2687,88 @@ function ResponsivePicture({ image, alt, className }: { image: ResponsiveImageSe
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
       <img className={className ?? styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" draggable={false} />
     </picture>
+  );
+}
+
+function SwipeCompareImage({
+  baseImage,
+  overlayImage,
+  baseAlt,
+  overlayAlt,
+  ariaLabel,
+  wrapClassName,
+  initialPosition = 60
+}: SwipeCompareImageProps) {
+  const [swipePosition, setSwipePosition] = useState(initialPosition);
+  const [isDragging, setIsDragging] = useState(false);
+  const compareRef = useRef<HTMLDivElement | null>(null);
+
+  const updateSwipePosition = (clientX: number) => {
+    const container = compareRef.current;
+    if (!container) {
+      return;
+    }
+
+    const rect = container.getBoundingClientRect();
+    if (rect.width <= 0) {
+      return;
+    }
+
+    const nextPosition = ((clientX - rect.left) / rect.width) * 100;
+    setSwipePosition(Math.min(100, Math.max(0, nextPosition)));
+  };
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    event.preventDefault();
+    setIsDragging(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updateSwipePosition(event.clientX);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) {
+      return;
+    }
+
+    updateSwipePosition(event.clientX);
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  const handleLostPointerCapture = () => {
+    setIsDragging(false);
+  };
+
+  return (
+    <div
+      ref={compareRef}
+      className={wrapClassName ?? styles.ulnarSwipeCompareWrap}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onLostPointerCapture={handleLostPointerCapture}
+      aria-label={ariaLabel}
+    >
+      <div className={styles.ulnarSwipeImageBase}>
+        <ResponsivePicture image={baseImage} alt={baseAlt} className={styles.inlineImage} />
+      </div>
+      <div className={styles.ulnarSwipeReveal} style={{ clipPath: `inset(0 0 0 ${swipePosition}%)` }}>
+        <ResponsivePicture image={overlayImage} alt={overlayAlt} className={styles.inlineImage} />
+      </div>
+      <div className={styles.ulnarSwipeDivider} style={{ left: `${swipePosition}%` }}>
+        <span className={styles.ulnarSwipeHandle} />
+      </div>
+    </div>
   );
 }
 
@@ -3561,6 +3668,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                 {(() => {
                   const override =
                     lang === "cs" ? shoulderProtocolCopyOverridesCsExtended[item.key] : shoulderProtocolCopyOverridesEn[item.key];
+                  const compareImages = shoulderSwipeCompareImages.find((imageSet) => imageSet.key === item.key);
                   const heading = override?.heading ?? item.caption[lang].heading;
                   const legend = override?.legend ?? item.caption[lang].bullets[0] ?? "";
                   const description = override?.description ?? item.caption[lang].bullets.slice(1).join(" ");
@@ -3569,13 +3677,24 @@ export default function ContentPage({ path }: ContentPageProps) {
 
                   return (
                     <>
-                      <ResponsiveImage
-                        image={makeResponsiveImage("shoulder", item.key)}
-                        alt={item.title[lang]}
-                        wrapClassName={styles.shoulderUltrasoundImageWrap}
-                        enableMobileZoom
-                        caption={zoomCaption}
-                      />
+                      {compareImages ? (
+                        <SwipeCompareImage
+                          baseImage={compareImages.baseImage}
+                          overlayImage={compareImages.overlayImage}
+                          baseAlt={item.title[lang]}
+                          overlayAlt={item.title[lang]}
+                          ariaLabel={zoomCaption || item.title[lang]}
+                          wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap}`}
+                        />
+                      ) : (
+                        <ResponsiveImage
+                          image={makeResponsiveImage("shoulder", item.key)}
+                          alt={item.title[lang]}
+                          wrapClassName={styles.shoulderUltrasoundImageWrap}
+                          enableMobileZoom
+                          caption={zoomCaption}
+                        />
+                      )}
                       <div className={styles.articleBody}>
                         {heading || legend ? (
                           <p className={styles.figureCaption}>
