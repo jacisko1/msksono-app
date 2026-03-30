@@ -3710,7 +3710,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                           baseAlt={item.title[lang]}
                           overlayAlt={item.title[lang]}
                           ariaLabel={zoomCaption || item.title[lang]}
-                          wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap}`}
+                          wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap} ${styles.shoulderSwipeCompareWrap}`}
                           showRange
                           controlsClassName={styles.shoulderSwipeControls}
                           rangeColor={node.color}

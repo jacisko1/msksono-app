@@ -541,8 +541,8 @@
   object-fit: contain;
 }
 
-.shoulderUltrasoundImageWrap.ulnarSwipeCompareWrap picture,
-.shoulderUltrasoundImageWrap.ulnarSwipeCompareWrap .inlineImage {
+.shoulderSwipeCompareWrap picture,
+.shoulderSwipeCompareWrap .inlineImage {
   height: 100%;
 }
 
