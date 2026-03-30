@@ -673,6 +673,11 @@
   .shoulderUltrasoundGrid {
     grid-template-columns: 1fr;
   }
+
+  .shoulderProtocolCard .ulnarSwipeCompareWrap {
+    max-width: 460px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 741px) {
