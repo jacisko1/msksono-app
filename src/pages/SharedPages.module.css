@@ -587,12 +587,21 @@
   appearance: none;
   -webkit-appearance: none;
   background: transparent;
+  --ulnar-swipe-position: 60%;
+  --ulnar-swipe-fill: #d2be00;
+  --ulnar-swipe-track: color-mix(in srgb, #d2be00 16%, white);
 }
 
 .ulnarSwipeRange::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 999px;
-  background: color-mix(in srgb, #d2be00 16%, white);
+  background: linear-gradient(
+    to right,
+    var(--ulnar-swipe-fill) 0,
+    var(--ulnar-swipe-fill) var(--ulnar-swipe-position),
+    var(--ulnar-swipe-track) var(--ulnar-swipe-position),
+    var(--ulnar-swipe-track) 100%
+  );
 }
 
 .ulnarSwipeRange::-webkit-slider-thumb {
@@ -610,13 +619,13 @@
 .ulnarSwipeRange::-moz-range-track {
   height: 8px;
   border-radius: 999px;
-  background: color-mix(in srgb, #d2be00 16%, white);
-}
-
-.ulnarSwipeRange::-moz-range-progress {
-  height: 8px;
-  border-radius: 999px;
-  background: #d2be00;
+  background: linear-gradient(
+    to right,
+    var(--ulnar-swipe-fill) 0,
+    var(--ulnar-swipe-fill) var(--ulnar-swipe-position),
+    var(--ulnar-swipe-track) var(--ulnar-swipe-position),
+    var(--ulnar-swipe-track) 100%
+  );
 }
 
 .ulnarSwipeRange::-moz-range-thumb {

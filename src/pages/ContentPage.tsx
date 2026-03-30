@@ -3288,6 +3288,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                         value={ulnarSwipePosition}
                         onChange={(event) => setUlnarSwipePosition(Number(event.target.value))}
                         className={styles.ulnarSwipeRange}
+                        style={{ "--ulnar-swipe-position": `${ulnarSwipePosition}%` } as CSSProperties}
                         aria-label={ulnarInteractiveSections[1].caption[lang]}
                       />
                       <p className={styles.ulnarSwipeHint}>
