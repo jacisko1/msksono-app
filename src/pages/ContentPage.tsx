@@ -495,115 +495,83 @@ const jointVideoBySlug = {
   }
 } as const;
 
-const elbowSwipeCompareImages: JointProtocolCompareImage[] = [
-  ["01_01", "Elbow Basic.jpg", "Snímek1.PNG"],
-  ["02_02", "Elbow Basic(1).jpg", "Snímek2.PNG"],
-  ["03_03", "Elbow Basic(2).jpg", "Snímek3.PNG"],
-  ["04_04", "Elbow Basic(3).jpg", "Snímek4.PNG"],
-  ["01_05", "Elbow Basic(4).jpg", "Snímek5.PNG"],
-  ["02_06", "Elbow Basic(5).jpg", "Snímek6.PNG"]
-].map(([key, baseFileName, overlayFileName]) => {
-  const baseSrc = assetPath("02_Elbow/protokol", baseFileName);
-  const overlaySrc = assetPath("02_Elbow/protokol", overlayFileName);
-
-  return {
-    key,
-    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
-    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
-  };
-});
+const elbowSwipeCompareImages: JointProtocolCompareImage[] = ["01_01", "02_02", "03_03", "04_04", "01_05", "02_06"].map((key) => ({
+  key,
+  baseImage: makeResponsiveImagePhone("02_Elbow/protokol", `${key}_basic`),
+  overlayImage: makeResponsiveImagePhone("02_Elbow/protokol", key)
+}));
 
 const wristSwipeCompareImages: JointProtocolCompareImage[] = [
-  ["01_Obrzek1_v2", "Wrist_Basic1.png", "Snímek1.PNG"],
-  ["02_Obrzek2", "Wrist_Basic2.png", "Snímek2.PNG"],
-  ["03_Obrzek3", "Wrist_Basic3.png", "Snímek3.PNG"],
-  ["04_Obrzek4", "Wrist_Basic4.png", "Snímek4.PNG"],
-  ["05_Obrzek5", "Wrist_Basic5.png", "Snímek5.PNG"],
-  ["06_Obrzek6", "Wrist_Basic6.png", "Snímek6.PNG"],
-  ["07_Obrzek7", "Wrist_Basic7.png", "Snímek7.PNG"],
-  ["08_Obrzek8", "Wrist_Basic8.png", "Snímek8.PNG"],
-  ["09_Obrzek9", "Wrist_Basic9.png", "Snímek9.PNG"],
-  ["10_Obrzek10", "Wrist_Basic10.png", "Snímek10.PNG"],
-  ["11_Obrzek11", "Wrist_Basic11.png", "Snímek11.PNG"]
-].map(([key, baseFileName, overlayFileName]) => {
-  const baseSrc = assetPath("03_Wrist/protokol", baseFileName);
-  const overlaySrc = assetPath("03_Wrist/protokol", overlayFileName);
-
-  return {
-    key,
-    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
-    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
-  };
-});
+  "01_Obrzek1_v2",
+  "02_Obrzek2",
+  "03_Obrzek3",
+  "04_Obrzek4",
+  "05_Obrzek5",
+  "06_Obrzek6",
+  "07_Obrzek7",
+  "08_Obrzek8",
+  "09_Obrzek9",
+  "10_Obrzek10",
+  "11_Obrzek11"
+].map((key) => ({
+  key,
+  baseImage: makeResponsiveImagePhone("03_Wrist/protokol", `${key}_basic`),
+  overlayImage: makeResponsiveImagePhone("03_Wrist/protokol", key)
+}));
 
 const hipSwipeCompareImages: JointProtocolCompareImage[] = [
-  ["01_Obrzek1", "HIP basic.png", "Snímek1.PNG"],
-  ["07_Obrzek3", "HIP basic(1).png", "Snímek2.PNG"],
-  ["08_Obrzek4", "HIP basic(2).png", "Snímek3.PNG"],
-  ["09_Obrzek5", "HIP basic(3).png", "Snímek4.PNG"],
-  ["10_Obrzek6", "HIP basic(4).png", "Snímek5.PNG"],
-  ["11_Obrzek7", "HIP basic(5).png", "Snímek6.PNG"],
-  ["12_Obrzek8", "HIP basic(6).png", "Snímek7.PNG"],
-  ["13_Obrzek9", "HIP basic(7).png", "Snímek8.PNG"],
-  ["02_Obrzek10", "HIP basic(8).png", "Snímek9.PNG"],
-  ["03_Obrzek11", "HIP basic(9).png", "Snímek10.PNG"],
-  ["04_Obrzek12", "HIP basic(10).png", "Snímek11.PNG"],
-  ["05_Obrzek13", "HIP basic(11).png", "Snímek12.PNG"],
-  ["06_Obrzek2", "HIP basic(13).png", "Snímek13.PNG"]
-].map(([key, baseFileName, overlayFileName]) => {
-  const baseSrc = assetPath("04_Hip/protokol", baseFileName);
-  const overlaySrc = assetPath("04_Hip/protokol", overlayFileName);
-
-  return {
-    key,
-    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
-    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
-  };
-});
+  "01_Obrzek1",
+  "07_Obrzek3",
+  "08_Obrzek4",
+  "09_Obrzek5",
+  "10_Obrzek6",
+  "11_Obrzek7",
+  "12_Obrzek8",
+  "13_Obrzek9",
+  "02_Obrzek10",
+  "03_Obrzek11",
+  "04_Obrzek12",
+  "05_Obrzek13",
+  "06_Obrzek2"
+].map((key) => ({
+  key,
+  baseImage: makeResponsiveImagePhone("04_Hip/protokol", `${key}_basic`),
+  overlayImage: makeResponsiveImagePhone("04_Hip/protokol", key)
+}));
 
 const kneeSwipeCompareImages: JointProtocolCompareImage[] = [
-  ["01_Obrzek1", "Knee Basic.png", "Snímek1.PNG"],
-  ["02_Obrzek2", "Knee Basic(1).png", "Snímek2.PNG"],
-  ["03_Obrzek3", "Knee Basic(2).png", "Snímek3.PNG"],
-  ["04_Obrzek4", "Knee Basic(3).png", "Snímek4.PNG"],
-  ["05_Obrzek5", "Knee Basic(4).png", "Snímek5.PNG"],
-  ["06_Obrzek6", "Knee Basic(5).png", "Snímek6.PNG"],
-  ["07_Obrzek7", "Knee Basic(6).png", "Snímek7.PNG"],
-  ["08_Obrzek8", "Knee Basic(7).png", "Snímek8.PNG"],
-  ["09_Obrzek9", "Knee Basic(8).png", "Snímek9.PNG"]
-].map(([key, baseFileName, overlayFileName]) => {
-  const baseSrc = assetPath("05_Knee/protokol", baseFileName);
-  const overlaySrc = assetPath("05_Knee/protokol", overlayFileName);
-
-  return {
-    key,
-    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
-    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
-  };
-});
+  "01_Obrzek1",
+  "02_Obrzek2",
+  "03_Obrzek3",
+  "04_Obrzek4",
+  "05_Obrzek5",
+  "06_Obrzek6",
+  "07_Obrzek7",
+  "08_Obrzek8",
+  "09_Obrzek9"
+].map((key) => ({
+  key,
+  baseImage: makeResponsiveImagePhone("05_Knee/protokol", `${key}_basic`),
+  overlayImage: makeResponsiveImagePhone("05_Knee/protokol", key)
+}));
 
 const ankleSwipeCompareImages: JointProtocolCompareImage[] = [
-  ["01_Obrzek1", "Ankle Basic.png", "Snímek1.PNG"],
-  ["02_Obrzek2", "Ankle Basic(1).png", "Snímek2.PNG"],
-  ["03_Obrzek3", "Ankle Basic(2).png", "Snímek3.PNG"],
-  ["04_Obrzek4", "Ankle Basic(3).png", "Snímek4.PNG"],
-  ["05_Obrzek5", "Ankle Basic(4).png", "Snímek5.PNG"],
-  ["06_Obrzek6", "Ankle Basic(5).png", "Snímek6.PNG"],
-  ["07_Obrzek7", "Ankle Basic(6).png", "Snímek7.PNG"],
-  ["08_Obrzek8", "Ankle Basic(7).png", "Snímek8.PNG"],
-  ["09_Obrzek9", "Ankle Basic(8).png", "Snímek9.PNG"],
-  ["10_Obrzek10", "Ankle Basic(9).png", "Snímek10.PNG"],
-  ["11_Obrzek11", "Ankle Basic(10).png", "Snímek11.PNG"]
-].map(([key, baseFileName, overlayFileName]) => {
-  const baseSrc = assetPath("06_Ankle/protokol", baseFileName);
-  const overlaySrc = assetPath("06_Ankle/protokol", overlayFileName);
-
-  return {
-    key,
-    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
-    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
-  };
-});
+  "01_Obrzek1",
+  "02_Obrzek2",
+  "03_Obrzek3",
+  "04_Obrzek4",
+  "05_Obrzek5",
+  "06_Obrzek6",
+  "07_Obrzek7",
+  "08_Obrzek8",
+  "09_Obrzek9",
+  "10_Obrzek10",
+  "11_Obrzek11"
+].map((key) => ({
+  key,
+  baseImage: makeResponsiveImagePhone("06_Ankle/protokol", `${key}_basic`),
+  overlayImage: makeResponsiveImagePhone("06_Ankle/protokol", key)
+}));
 
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
@@ -2233,18 +2201,11 @@ const shoulderUltrasoundImages: ShoulderUltrasoundImage[] = [
   }
 ];
 
-const makeStaticResponsiveImage = (folder: string, fileName: string): ResponsiveImageSet => ({
-  pc: assetPath(folder, fileName),
-  tablet: assetPath(folder, fileName),
-  mobile: assetPath(folder, fileName)
-});
-
 const shoulderSwipeCompareImages = shoulderUltrasoundImages.map((item, index) => {
-  const number = String(index + 1).padStart(3, "0");
   return {
     key: item.key,
-    baseImage: makeStaticResponsiveImage("shoulder", `Shoulder Basic_${number}.jpg`),
-    overlayImage: makeStaticResponsiveImage("shoulder", `${number}.jpg`)
+    baseImage: makeResponsiveImage("shoulder", `${item.key}_basic`),
+    overlayImage: makeResponsiveImage("shoulder", item.key)
   };
 });
 
