@@ -102,8 +102,10 @@ interface SwipeCompareImageProps {
   rangeColor?: string;
 }
 
+const ASSET_VERSION = "2026-03-30-2";
+
 const assetPath = (folder: string, file: string) =>
-  `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}`;
+  `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}?v=${ASSET_VERSION}`;
 
 const makeResponsiveImage = (folder: string, baseName: string): ResponsiveImageSet => ({
   mobile: assetPath(folder, `${baseName}_mobile.webp`),
