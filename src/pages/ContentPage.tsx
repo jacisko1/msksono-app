@@ -971,8 +971,8 @@ const ulnarNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ l
 
   return {
     key: imageKey,
-    baseImage: makeSingleImage("Nerves/Ulnar nerve", `${imageKey}_basic.png`),
-    overlayImage: makeSingleImage("Nerves/Ulnar nerve", `${imageKey}.png`)
+    baseImage: makeResponsiveImagePhone("Nerves/Ulnar nerve", `${imageKey}_basic`),
+    overlayImage: makeResponsiveImagePhone("Nerves/Ulnar nerve", imageKey)
   };
 });
 
