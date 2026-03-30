@@ -92,6 +92,7 @@ interface SwipeCompareImageProps {
   initialPosition?: number;
   showRange?: boolean;
   controlsClassName?: string;
+  rangeColor?: string;
 }
 
 const assetPath = (folder: string, file: string) =>
@@ -2701,7 +2702,8 @@ function SwipeCompareImage({
   wrapClassName,
   initialPosition = 60,
   showRange = false,
-  controlsClassName
+  controlsClassName,
+  rangeColor = "#d2be00"
 }: SwipeCompareImageProps) {
   const [swipePosition, setSwipePosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -2783,7 +2785,13 @@ function SwipeCompareImage({
             value={swipePosition}
             onChange={(event) => setSwipePosition(Number(event.target.value))}
             className={styles.ulnarSwipeRange}
-            style={{ "--ulnar-swipe-position": `${swipePosition}%` } as CSSProperties}
+            style={
+              {
+                "--ulnar-swipe-position": `${swipePosition}%`,
+                "--ulnar-swipe-fill": rangeColor,
+                "--ulnar-swipe-track": `color-mix(in srgb, ${rangeColor} 16%, white)`
+              } as CSSProperties
+            }
             aria-label={ariaLabel}
           />
         </div>
@@ -3705,6 +3713,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                           wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap}`}
                           showRange
                           controlsClassName={styles.shoulderSwipeControls}
+                          rangeColor={node.color}
                         />
                       ) : (
                         <ResponsiveImage
