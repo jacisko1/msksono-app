@@ -3207,7 +3207,7 @@ export default function ContentPage({ path }: ContentPageProps) {
             <>
               <p>{nerveUltrasoundContent.intro[lang]}</p>
               <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
-                {ulnarInteractiveSections[0] && ulnarSwipeImages.length === 2 ? (
+                {false && ulnarInteractiveSections[0] && ulnarSwipeImages.length === 2 ? (
                   <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
                     <div className={styles.articleBody}>
                       <h3>{ulnarInteractiveSections[0].title[lang]}</h3>
@@ -3249,9 +3249,6 @@ export default function ContentPage({ path }: ContentPageProps) {
                 ) : null}
                 {ulnarInteractiveSections[1] && ulnarSwipeImages.length === 2 ? (
                   <article className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
-                    <div className={styles.articleBody}>
-                      <h3>{ulnarInteractiveSections[1].title[lang]}</h3>
-                    </div>
                     <div
                       ref={ulnarSwipeCompareRef}
                       className={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.ulnarSwipeCompareWrap}`}
@@ -3300,7 +3297,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                       </p>
                     </div>
                     <p className={styles.figureCaption}>
-                      <strong>{ulnarInteractiveSections[1].caption[lang]}</strong>
+                      <strong>{ulnarInteractiveSections[1].caption[lang].replace(/^Figure\s+\d+\.\s*/, "").replace(/^Obr.*?\.\s*/, "")}</strong>
                     </p>
                   </article>
                 ) : null}
