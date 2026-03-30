@@ -513,6 +513,26 @@ const elbowSwipeCompareImages: JointProtocolCompareImage[] = [
   };
 });
 
+const wristSwipeCompareImages: JointProtocolCompareImage[] = [
+  ["01_Obrzek1_v2", "Wrist_Basic1.png", "Snímek1.PNG"],
+  ["02_Obrzek2", "Wrist_Basic2.png", "Snímek2.PNG"],
+  ["03_Obrzek3", "Wrist_Basic3.png", "Snímek3.PNG"],
+  ["04_Obrzek4", "Wrist_Basic4.png", "Snímek4.PNG"],
+  ["05_Obrzek5", "Wrist_Basic5.png", "Snímek5.PNG"],
+  ["06_Obrzek6", "Wrist_Basic6.png", "Snímek6.PNG"],
+  ["07_Obrzek7", "Wrist_Basic7.png", "Snímek7.PNG"],
+  ["08_Obrzek8", "Wrist_Basic8.png", "Snímek8.PNG"]
+].map(([key, baseFileName, overlayFileName]) => {
+  const baseSrc = assetPath("03_Wrist/protokol", baseFileName);
+  const overlaySrc = assetPath("03_Wrist/protokol", overlayFileName);
+
+  return {
+    key,
+    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
+    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -582,6 +602,7 @@ const jointContentBySlug: Record<string, JointContent> = {
   },
   zapesti: {
     folder: "03_Wrist/protokol",
+    swipeCompareImages: wristSwipeCompareImages,
     introPoints: [
       "Ultrazvuk zápěstí umožňuje detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí flexorové a extenzorové šlachy, vazy, nervy i synoviální pochvy.",
       "Zásadní je standardizovaná poloha pacienta a systematické skenování od kostních orientačních bodů (distální radius/ulna, karpální kosti, karpální tunel) v podélné i příčné rovině s aktivní prací se sondou pro omezení anizotropie.",
