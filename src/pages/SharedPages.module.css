@@ -579,13 +579,16 @@
 }
 
 .ulnarSwipeRange {
+  display: block;
   width: 100%;
   margin-top: 0.55rem;
   accent-color: #d2be00;
+  box-sizing: border-box;
 }
 
 .ulnarSwipeControls {
   margin: 0.7rem auto 0;
+  width: 100%;
 }
 
 .ulnarSwipeHint {
