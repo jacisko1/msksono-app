@@ -52,12 +52,19 @@ interface JointProtocolImage {
   bullets: string[];
 }
 
+interface JointProtocolCompareImage {
+  key: string;
+  baseImage: ResponsiveImageSet;
+  overlayImage: ResponsiveImageSet;
+}
+
 interface JointContent {
   folder: string;
   introPoints: string[];
   pathologyPoints: string[];
   protocolSteps: ProtocolStep[];
   protocolImages: JointProtocolImage[];
+  swipeCompareImages?: JointProtocolCompareImage[];
 }
 
 interface JointPositioningContent {
@@ -488,9 +495,28 @@ const jointVideoBySlug = {
   }
 } as const;
 
+const elbowSwipeCompareImages: JointProtocolCompareImage[] = [
+  ["01_01", "Elbow Basic.jpg", "Snímek1.PNG"],
+  ["02_02", "Elbow Basic(1).jpg", "Snímek2.PNG"],
+  ["03_03", "Elbow Basic(2).jpg", "Snímek3.PNG"],
+  ["04_04", "Elbow Basic(3).jpg", "Snímek4.PNG"],
+  ["01_05", "Elbow Basic(4).jpg", "Snímek5.PNG"],
+  ["02_06", "Elbow Basic(5).jpg", "Snímek6.PNG"]
+].map(([key, baseFileName, overlayFileName]) => {
+  const baseSrc = assetPath("02_Elbow/protokol", baseFileName);
+  const overlaySrc = assetPath("02_Elbow/protokol", overlayFileName);
+
+  return {
+    key,
+    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
+    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
+    swipeCompareImages: elbowSwipeCompareImages,
     introPoints: [
       "Ultrazvukové vyšetření loketního kloubu je praktická metoda pro detailní hodnocení měkkých tkání v reálném čase; při správné technice přesně hodnotí šlachy flexorového i extenzorového aparátu, vazy, nervy i burzy a umožňuje přímou korelaci nálezu s bolestí a porovnání s druhou stranou.",
       "Kvalitní vyšetření vyžaduje standardizovanou polohu pacienta, systematický postup od kostních orientačních bodů (epikondyly humeru, olecranon, hlavice radia) a skenování v podélné i příčné rovině s aktivní prací se sondou (sliding, rocking, fanning) pro minimalizaci anizotropie.",
@@ -3768,11 +3794,30 @@ export default function ContentPage({ path }: ContentPageProps) {
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid} ${styles.protocolImageGrid}`}>
             {jointContent.protocolImages.map((item) => (
               <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard}`}>
-                <ResponsiveImage
-                  image={makeResponsiveImagePhone(jointContent.folder, item.key)}
-                  alt={`${localize(node.title, lang)} ${item.key}`}
-                  wrapClassName={styles.shoulderUltrasoundImageWrap}
-                />
+                {(() => {
+                  const compareImages = jointContent.swipeCompareImages?.find((imageSet) => imageSet.key === item.key);
+                  const imageAlt = `${localize(node.title, lang)} ${item.key}`;
+
+                  return compareImages ? (
+                    <SwipeCompareImage
+                      baseImage={compareImages.baseImage}
+                      overlayImage={compareImages.overlayImage}
+                      baseAlt={imageAlt}
+                      overlayAlt={imageAlt}
+                      ariaLabel={item.heading}
+                      wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap} ${styles.shoulderSwipeCompareWrap}`}
+                      showRange
+                      controlsClassName={styles.shoulderSwipeControls}
+                      rangeColor={node.color}
+                    />
+                  ) : (
+                    <ResponsiveImage
+                      image={makeResponsiveImagePhone(jointContent.folder, item.key)}
+                      alt={imageAlt}
+                      wrapClassName={styles.shoulderUltrasoundImageWrap}
+                    />
+                  );
+                })()}
                 <div className={styles.articleBody}>
                   <h3>{item.heading}</h3>
                   <ul className={styles.compactList}>
