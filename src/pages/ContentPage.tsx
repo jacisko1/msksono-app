@@ -521,7 +521,10 @@ const wristSwipeCompareImages: JointProtocolCompareImage[] = [
   ["05_Obrzek5", "Wrist_Basic5.png", "Snímek5.PNG"],
   ["06_Obrzek6", "Wrist_Basic6.png", "Snímek6.PNG"],
   ["07_Obrzek7", "Wrist_Basic7.png", "Snímek7.PNG"],
-  ["08_Obrzek8", "Wrist_Basic8.png", "Snímek8.PNG"]
+  ["08_Obrzek8", "Wrist_Basic8.png", "Snímek8.PNG"],
+  ["09_Obrzek9", "Wrist_Basic9.png", "Snímek9.PNG"],
+  ["10_Obrzek10", "Wrist_Basic10.png", "Snímek10.PNG"],
+  ["11_Obrzek11", "Wrist_Basic11.png", "Snímek11.PNG"]
 ].map(([key, baseFileName, overlayFileName]) => {
   const baseSrc = assetPath("03_Wrist/protokol", baseFileName);
   const overlaySrc = assetPath("03_Wrist/protokol", overlayFileName);
@@ -628,7 +631,10 @@ const jointContentBySlug: Record<string, JointContent> = {
       { key: "05_Obrzek5", heading: "Obrázek 5. Dorzální pohled, transverzální rovina", bullets: ["ECRB, ECRL. Druhý extenzorový kompartment laterálně od Listerova hrbolku, vhodný pro tenosynovitidu a přetížení."] },
       { key: "06_Obrzek6", heading: "Obrázek 6. Dorzální pohled, transverzální rovina", bullets: ["EPB, APL. První extenzorový kompartment, typická projekce pro De Quervainovu tenosynovitidu."] },
       { key: "07_Obrzek7", heading: "Obrázek 7. Dorzální pohled, transverzální rovina", bullets: ["ECU: extensor carpi ulnaris. Šestý extenzorový kompartment pro hodnocení instability/subluxace ECU a tenosynovitidy."] },
-      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, sagitální rovina", bullets: ["Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub s hodnocením tekutiny, zánětu a kontinuity šlach."] }
+      { key: "08_Obrzek8", heading: "Obrázek 8. Dorzální pohled, sagitální rovina", bullets: ["Podélná dorzální projekce přes extenzorové šlachy a radiokarpální kloub s hodnocením tekutiny, zánětu a kontinuity šlach."] },
+      { key: "09_Obrzek9", heading: "Obrázek 9.", bullets: [] },
+      { key: "10_Obrzek10", heading: "Obrázek 10.", bullets: [] },
+      { key: "11_Obrzek11", heading: "Obrázek 11.", bullets: [] }
     ]
   },
   kycel: {

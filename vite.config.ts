@@ -48,7 +48,10 @@ export default defineConfig({
         clientsClaim: true,
         skipWaiting: true,
         globPatterns: ["**/*.{js,css,html,svg,png,ico,json}"],
-        globIgnores: ["assets/03_Wrist/protokol/Wrist_Basic*.png"],
+        globIgnores: [
+          "assets/03_Wrist/protokol/Wrist_Basic*.png",
+          "assets/03_Wrist/protokol/Snímek*.PNG"
+        ],
         navigateFallback: "/index.html"
       },
       devOptions: {
