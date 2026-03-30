@@ -536,6 +536,31 @@ const wristSwipeCompareImages: JointProtocolCompareImage[] = [
   };
 });
 
+const hipSwipeCompareImages: JointProtocolCompareImage[] = [
+  ["01_Obrzek1", "HIP basic.png", "Snímek1.PNG"],
+  ["07_Obrzek3", "HIP basic(1).png", "Snímek2.PNG"],
+  ["08_Obrzek4", "HIP basic(2).png", "Snímek3.PNG"],
+  ["09_Obrzek5", "HIP basic(3).png", "Snímek4.PNG"],
+  ["10_Obrzek6", "HIP basic(4).png", "Snímek5.PNG"],
+  ["11_Obrzek7", "HIP basic(5).png", "Snímek6.PNG"],
+  ["12_Obrzek8", "HIP basic(6).png", "Snímek7.PNG"],
+  ["13_Obrzek9", "HIP basic(7).png", "Snímek8.PNG"],
+  ["02_Obrzek10", "HIP basic(8).png", "Snímek9.PNG"],
+  ["03_Obrzek11", "HIP basic(9).png", "Snímek10.PNG"],
+  ["04_Obrzek12", "HIP basic(10).png", "Snímek11.PNG"],
+  ["05_Obrzek13", "HIP basic(11).png", "Snímek12.PNG"],
+  ["06_Obrzek2", "HIP basic(13).png", "Snímek13.PNG"]
+].map(([key, baseFileName, overlayFileName]) => {
+  const baseSrc = assetPath("04_Hip/protokol", baseFileName);
+  const overlaySrc = assetPath("04_Hip/protokol", overlayFileName);
+
+  return {
+    key,
+    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
+    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -639,6 +664,7 @@ const jointContentBySlug: Record<string, JointContent> = {
   },
   kycel: {
     folder: "04_Hip/protokol",
+    swipeCompareImages: hipSwipeCompareImages,
     introPoints: [
       "Ultrazvuk kyčle umožňuje hodnocení měkkých tkání v reálném čase a přináší informace o kloubním pouzdru, synovii, burzách, svalech a šlachách, zejména flexorového a abduktorového aparátu.",
       "Pro kvalitní vyšetření je zásadní systematický postup od kostních orientačních bodů (hlavice/krček femuru, acetabulum, velký trochanter) a skenování v podélné i příčné rovině se správnou prací se sondou.",
@@ -668,7 +694,8 @@ const jointContentBySlug: Record<string, JointContent> = {
       { key: "02_Obrzek10", heading: "Obrázek 9. Dorzální pohled, transverzální rovina", bullets: ["N: nervus ischiadicus. Příčný řez se „windmill sign“ mezi hamstringy pro lokalizaci sedacího nervu."] },
       { key: "03_Obrzek11", heading: "Obrázek 10. Dorzální pohled, transverzální rovina", bullets: ["T: šlacha hamstringů. Proximální řez u tuber ischiadicum pro tendinopatii či avulzi hamstringů."] },
       { key: "04_Obrzek12", heading: "Obrázek 11. Dorzální pohled, sagitální rovina", bullets: ["Podélná projekce sedacího nervu s hodnocením kontinuity, fascikulární struktury a pohyblivosti."] },
-      { key: "05_Obrzek13", heading: "Obrázek 12. Dorzální pohled, sagitální rovina", bullets: ["T: šlacha hamstringů. Podélný pohled na úpon hamstringů na tuber ischiadicum pro hodnocení ruptur a tendinopatie."] }
+      { key: "05_Obrzek13", heading: "Obrázek 12. Dorzální pohled, sagitální rovina", bullets: ["T: šlacha hamstringů. Podélný pohled na úpon hamstringů na tuber ischiadicum pro hodnocení ruptur a tendinopatie."] },
+      { key: "06_Obrzek2", heading: "Obrázek 13.", bullets: [] }
     ]
   },
   koleno: {
