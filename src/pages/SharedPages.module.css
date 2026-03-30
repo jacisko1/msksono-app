@@ -699,6 +699,12 @@
   grid-template-columns: 1fr;
 }
 
+@media (min-width: 1025px) {
+  .knobologyGrid.shoulderUltrasoundGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .chapterNav {
   margin-top: 1.2rem;
   display: grid;
