@@ -561,6 +561,27 @@ const hipSwipeCompareImages: JointProtocolCompareImage[] = [
   };
 });
 
+const kneeSwipeCompareImages: JointProtocolCompareImage[] = [
+  ["01_Obrzek1", "Knee Basic.png", "Snímek1.PNG"],
+  ["02_Obrzek2", "Knee Basic(1).png", "Snímek2.PNG"],
+  ["03_Obrzek3", "Knee Basic(2).png", "Snímek3.PNG"],
+  ["04_Obrzek4", "Knee Basic(3).png", "Snímek4.PNG"],
+  ["05_Obrzek5", "Knee Basic(4).png", "Snímek5.PNG"],
+  ["06_Obrzek6", "Knee Basic(5).png", "Snímek6.PNG"],
+  ["07_Obrzek7", "Knee Basic(6).png", "Snímek7.PNG"],
+  ["08_Obrzek8", "Knee Basic(7).png", "Snímek8.PNG"],
+  ["09_Obrzek9", "Knee Basic(8).png", "Snímek9.PNG"]
+].map(([key, baseFileName, overlayFileName]) => {
+  const baseSrc = assetPath("05_Knee/protokol", baseFileName);
+  const overlaySrc = assetPath("05_Knee/protokol", overlayFileName);
+
+  return {
+    key,
+    baseImage: { pc: baseSrc, tablet: baseSrc, mobile: baseSrc },
+    overlayImage: { pc: overlaySrc, tablet: overlaySrc, mobile: overlaySrc }
+  };
+});
+
 const jointContentBySlug: Record<string, JointContent> = {
   loket: {
     folder: "02_Elbow/protokol",
@@ -700,6 +721,7 @@ const jointContentBySlug: Record<string, JointContent> = {
   },
   koleno: {
     folder: "05_Knee/protokol",
+    swipeCompareImages: kneeSwipeCompareImages,
     introPoints: [
       "Ultrazvuk kolene je praktická metoda pro hodnocení měkkých tkání v reálném čase, zejména extenzorového aparátu, burz, synovie a periartikulárních struktur.",
       "Kvalitní vyšetření vyžaduje systematický postup od orientačních bodů (patela, femorální kondyly, tibiální plato, tuberositas tibiae) a vyšetření v podélné i příčné rovině.",

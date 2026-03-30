@@ -51,7 +51,8 @@ export default defineConfig({
         globIgnores: [
           "assets/03_Wrist/protokol/Wrist_Basic*.png",
           "assets/03_Wrist/protokol/Snímek*.PNG",
-          "assets/04_Hip/protokol/HIP basic*.png"
+          "assets/04_Hip/protokol/HIP basic*.png",
+          "assets/05_Knee/protokol/Knee Basic*.png"
         ],
         navigateFallback: "/index.html"
       },
