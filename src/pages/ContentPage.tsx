@@ -90,6 +90,8 @@ interface SwipeCompareImageProps {
   ariaLabel: string;
   wrapClassName?: string;
   initialPosition?: number;
+  showRange?: boolean;
+  controlsClassName?: string;
 }
 
 const assetPath = (folder: string, file: string) =>
@@ -2697,7 +2699,9 @@ function SwipeCompareImage({
   overlayAlt,
   ariaLabel,
   wrapClassName,
-  initialPosition = 60
+  initialPosition = 60,
+  showRange = false,
+  controlsClassName
 }: SwipeCompareImageProps) {
   const [swipePosition, setSwipePosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -2749,26 +2753,42 @@ function SwipeCompareImage({
   };
 
   return (
-    <div
-      ref={compareRef}
-      className={wrapClassName ?? styles.ulnarSwipeCompareWrap}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-      onLostPointerCapture={handleLostPointerCapture}
-      aria-label={ariaLabel}
-    >
-      <div className={styles.ulnarSwipeImageBase}>
-        <ResponsivePicture image={baseImage} alt={baseAlt} className={styles.inlineImage} />
+    <>
+      <div
+        ref={compareRef}
+        className={wrapClassName ?? styles.ulnarSwipeCompareWrap}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onLostPointerCapture={handleLostPointerCapture}
+        aria-label={ariaLabel}
+      >
+        <div className={styles.ulnarSwipeImageBase}>
+          <ResponsivePicture image={baseImage} alt={baseAlt} className={styles.inlineImage} />
+        </div>
+        <div className={styles.ulnarSwipeReveal} style={{ clipPath: `inset(0 0 0 ${swipePosition}%)` }}>
+          <ResponsivePicture image={overlayImage} alt={overlayAlt} className={styles.inlineImage} />
+        </div>
+        <div className={styles.ulnarSwipeDivider} style={{ left: `${swipePosition}%` }}>
+          <span className={styles.ulnarSwipeHandle} />
+        </div>
       </div>
-      <div className={styles.ulnarSwipeReveal} style={{ clipPath: `inset(0 0 0 ${swipePosition}%)` }}>
-        <ResponsivePicture image={overlayImage} alt={overlayAlt} className={styles.inlineImage} />
-      </div>
-      <div className={styles.ulnarSwipeDivider} style={{ left: `${swipePosition}%` }}>
-        <span className={styles.ulnarSwipeHandle} />
-      </div>
-    </div>
+      {showRange ? (
+        <div className={controlsClassName ?? styles.ulnarSwipeControls}>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={swipePosition}
+            onChange={(event) => setSwipePosition(Number(event.target.value))}
+            className={styles.ulnarSwipeRange}
+            style={{ "--ulnar-swipe-position": `${swipePosition}%` } as CSSProperties}
+            aria-label={ariaLabel}
+          />
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -3683,6 +3703,8 @@ export default function ContentPage({ path }: ContentPageProps) {
                           overlayAlt={item.title[lang]}
                           ariaLabel={zoomCaption || item.title[lang]}
                           wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.ulnarSwipeCompareWrap}`}
+                          showRange
+                          controlsClassName={styles.shoulderSwipeControls}
                         />
                       ) : (
                         <ResponsiveImage
