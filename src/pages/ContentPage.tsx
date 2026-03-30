@@ -2660,7 +2660,7 @@ function ResponsivePicture({ image, alt, className }: { image: ResponsiveImageSe
     <picture>
       <source media="(max-width: 640px)" srcSet={image.mobile} />
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
-      <img className={className ?? styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+      <img className={className ?? styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" draggable={false} />
     </picture>
   );
 }
@@ -2797,6 +2797,11 @@ export default function ContentPage({ path }: ContentPageProps) {
   };
 
   const handleUlnarSwipePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    event.preventDefault();
     setIsUlnarSwipeDragging(true);
     event.currentTarget.setPointerCapture(event.pointerId);
     updateUlnarSwipePosition(event.clientX);
@@ -2815,6 +2820,10 @@ export default function ContentPage({ path }: ContentPageProps) {
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
+  };
+
+  const handleUlnarSwipeLostPointerCapture = () => {
+    setIsUlnarSwipeDragging(false);
   };
 
   useEffect(() => {
@@ -3143,7 +3152,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                       onPointerMove={handleUlnarSwipePointerMove}
                       onPointerUp={handleUlnarSwipePointerUp}
                       onPointerCancel={handleUlnarSwipePointerUp}
-                      onPointerLeave={handleUlnarSwipePointerUp}
+                      onLostPointerCapture={handleUlnarSwipeLostPointerCapture}
                     >
                       <div className={styles.ulnarSwipeImageBase}>
                         <ResponsivePicture
