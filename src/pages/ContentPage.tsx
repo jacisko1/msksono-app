@@ -1000,6 +1000,14 @@ const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ leng
   };
 });
 
+const radialNerveSwipeCompareImages: JointProtocolCompareImage[] = [
+  {
+    key: "01_Obrzek1",
+    baseImage: makeResponsiveImagePhone("Nerves/Radial nerve", "01_Obrzek1"),
+    overlayImage: makeResponsiveImagePhone("Nerves/Radial nerve", "02_Obrzek2")
+  }
+];
+
 const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 32 }, (_, index) => {
   const imageNumber = index + 1;
 
@@ -1014,7 +1022,7 @@ const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ len
       en: `Figure ${imageNumber}. Radial nerve ultrasound examination.`
     }
   };
-});
+}).filter((section) => section.key !== "02_Obrzek2");
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
   "nervus-medianus": {
@@ -3001,7 +3009,8 @@ export default function ContentPage({ path }: ContentPageProps) {
         ? {
             ...nerveUltrasoundContent,
             folder: "Nerves/Radial nerve",
-            sections: radialNerveUltrasoundSections
+            sections: radialNerveUltrasoundSections,
+            swipeCompareImages: radialNerveSwipeCompareImages
           }
       : nerveUltrasoundContent;
   const ulnarInteractiveSections: NerveUltrasoundInteractiveSection[] =
