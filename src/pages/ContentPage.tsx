@@ -1000,13 +1000,18 @@ const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ leng
   };
 });
 
-const radialNerveSwipeCompareImages: JointProtocolCompareImage[] = [
-  {
-    key: "01_Obrzek1",
-    baseImage: makeResponsiveImagePhone("Nerves/Radial nerve", "01_Obrzek1"),
-    overlayImage: makeResponsiveImagePhone("Nerves/Radial nerve", "02_Obrzek2")
-  }
-];
+const radialNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ length: 16 }, (_, index) => {
+  const baseImageNumber = index * 2 + 1;
+  const overlayImageNumber = baseImageNumber + 1;
+  const baseImageKey = `${String(baseImageNumber).padStart(2, "0")}_Obrzek${baseImageNumber}`;
+  const overlayImageKey = `${String(overlayImageNumber).padStart(2, "0")}_Obrzek${overlayImageNumber}`;
+
+  return {
+    key: baseImageKey,
+    baseImage: makeResponsiveImagePhone("Nerves/Radial nerve", baseImageKey),
+    overlayImage: makeResponsiveImagePhone("Nerves/Radial nerve", overlayImageKey)
+  };
+});
 
 const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 32 }, (_, index) => {
   const imageNumber = index + 1;
@@ -1022,7 +1027,7 @@ const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ len
       en: `Figure ${imageNumber}. Radial nerve ultrasound examination.`
     }
   };
-}).filter((section) => section.key !== "02_Obrzek2");
+}).filter((section) => Number(section.key.split("_")[0]) % 2 === 1);
 
 const nerveAnatomyDescriptions: Record<string, Record<string, NerveAnatomyDescription>> = {
   "nervus-medianus": {
