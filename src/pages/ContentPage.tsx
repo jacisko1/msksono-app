@@ -965,6 +965,14 @@ const nerveUltrasoundByNerve: Record<string, NerveUltrasoundContent> = {
   }
 };
 
+const radialNerveUltrasoundContent: NerveUltrasoundContent = {
+  intro: {
+    cs: "N\u00ed\u017ee jsou ultrazvukov\u00e9 obrazy n. radialis vlo\u017een\u00e9 ve stejn\u00e9m p\u0159ehledn\u00e9m form\u00e1tu jako v ostatn\u00edch obrazov\u00fdch podkapitol\u00e1ch.",
+    en: "Below are ultrasound images of the radial nerve arranged in the same visual format as the other image-based subsections."
+  },
+  sections: []
+};
+
 const ulnarNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ length: 14 }, (_, index) => {
   const imageNumber = index + 1;
   const imageKey = `${String(imageNumber).padStart(2, "0")}_Obrzek${imageNumber}`;
@@ -988,6 +996,22 @@ const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ leng
     caption: {
       cs: `Obr\u00e1zek ${imageNumber}. Ultrazvukov\u00e9 vy\u0161et\u0159en\u00ed n. ulnaris.`,
       en: `Figure ${imageNumber}. Ulnar nerve ultrasound examination.`
+    }
+  };
+});
+
+const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 32 }, (_, index) => {
+  const imageNumber = index + 1;
+
+  return {
+    key: `${String(imageNumber).padStart(2, "0")}_Obrzek${imageNumber}`,
+    title: {
+      cs: `Obr\u00e1zek ${imageNumber}`,
+      en: `Figure ${imageNumber}`
+    },
+    caption: {
+      cs: `Obr\u00e1zek ${imageNumber}. Ultrazvukov\u00e9 vy\u0161et\u0159en\u00ed n. radialis.`,
+      en: `Figure ${imageNumber}. Radial nerve ultrasound examination.`
     }
   };
 });
@@ -2959,7 +2983,12 @@ export default function ContentPage({ path }: ContentPageProps) {
   const nerveKey = nerveAnatomyMatch?.[1];
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
   const nerveUltrasoundKey = nerveUltrasoundMatch?.[1];
-  const nerveUltrasoundContent = nerveUltrasoundKey ? nerveUltrasoundByNerve[nerveUltrasoundKey] : undefined;
+  const nerveUltrasoundContent =
+    nerveUltrasoundKey === "nervus-radialis"
+      ? radialNerveUltrasoundContent
+      : nerveUltrasoundKey
+        ? nerveUltrasoundByNerve[nerveUltrasoundKey]
+        : undefined;
   const resolvedNerveUltrasoundContent =
     nerveUltrasoundKey === "nervus-ulnaris" && nerveUltrasoundContent
       ? {
@@ -2968,6 +2997,12 @@ export default function ContentPage({ path }: ContentPageProps) {
           sections: ulnarNerveUltrasoundSections,
           swipeCompareImages: ulnarNerveSwipeCompareImages
         }
+      : nerveUltrasoundKey === "nervus-radialis" && nerveUltrasoundContent
+        ? {
+            ...nerveUltrasoundContent,
+            folder: "Nerves/Radial nerve",
+            sections: radialNerveUltrasoundSections
+          }
       : nerveUltrasoundContent;
   const ulnarInteractiveSections: NerveUltrasoundInteractiveSection[] =
     nerveUltrasoundKey === "nervus-ulnaris"
