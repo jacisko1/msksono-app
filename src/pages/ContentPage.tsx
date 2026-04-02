@@ -1069,7 +1069,74 @@ const radialNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ 
   };
 });
 
-const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 16 }, (_, index) => {
+const radialNerveUltrasoundCaptions = [
+  {
+    cs: "Obr\u00e1zek 1. Axilla: Nervus radialis je ulo\u017een dorz\u00e1ln\u011b od arteria axillaris.",
+    en: "Figure 1. Axilla: The radial nerve is positioned dorsal to the axillary artery."
+  },
+  {
+    cs: "Obr\u00e1zek 2. Brachium: Nervus radialis prob\u00edh\u00e1 mezi dlouhou a medi\u00e1ln\u00ed hlavou musculus triceps brachii.",
+    en: "Figure 2. Arm: The radial nerve runs between the long and medial heads of the triceps brachii muscle."
+  },
+  {
+    cs: "Obr\u00e1zek 3. Brachium: Nervus radialis prob\u00edh\u00e1 v sulcus nervi radialis mezi medi\u00e1ln\u00ed a later\u00e1ln\u00ed hlavou musculus triceps brachii.",
+    en: "Figure 3. Arm: The radial nerve runs in the radial groove between the medial and lateral heads of the triceps brachii muscle."
+  },
+  {
+    cs: "Obr\u00e1zek 4. Brachium: Nervus radialis proch\u00e1z\u00ed later\u00e1ln\u00edm intermuskul\u00e1rn\u00edm septem a p\u0159ech\u00e1z\u00ed ventr\u00e1ln\u011b.",
+    en: "Figure 4. Arm: The radial nerve passes through the lateral intermuscular septum and moves ventrally."
+  },
+  {
+    cs: "Obr\u00e1zek 5. Brachium: Nervus radialis je ulo\u017een mezi musculus brachioradialis a musculus biceps brachii.",
+    en: "Figure 5. Arm: The radial nerve is located between the brachioradialis and biceps brachii muscles."
+  },
+  {
+    cs: "Obr\u00e1zek 6. Cubitum: Nervus radialis prob\u00edh\u00e1 mezi musculus brachioradialis a musculus brachialis a d\u011bl\u00ed se na hlubokou a povrchovou v\u011btev.",
+    en: "Figure 6. Elbow: The radial nerve runs between the brachioradialis and brachialis muscles and divides into deep and superficial branches."
+  },
+  {
+    cs: "Obr\u00e1zek 7. Cubitum: V oblasti lokte se nervus radialis d\u011bl\u00ed mezi musculus brachioradialis a musculus brachialis na hlubokou a povrchovou v\u011btev.",
+    en: "Figure 7. Elbow: At the elbow, the radial nerve divides between the brachioradialis and brachialis muscles into deep and superficial branches."
+  },
+  {
+    cs: "Obr\u00e1zek 8. Antebrachium: Povrchov\u00e1 v\u011btev nervus radialis prob\u00edh\u00e1 pod musculus brachioradialis.",
+    en: "Figure 8. Forearm: The superficial branch of the radial nerve runs beneath the brachioradialis muscle."
+  },
+  {
+    cs: "Obr\u00e1zek 9. Antebrachium: Povrchov\u00e1 v\u011btev nervus radialis perforuje fascii mezi musculus brachioradialis a musculus extensor carpi radialis longus.",
+    en: "Figure 9. Forearm: The superficial branch of the radial nerve perforates the fascia between the brachioradialis and extensor carpi radialis longus muscles."
+  },
+  {
+    cs: "Obr\u00e1zek 10. Carpus: Povrchov\u00e1 v\u011btev nervus radialis prob\u00edh\u00e1 mezi 1. a 2. dorz\u00e1ln\u00edm kompartmentem z\u00e1p\u011bst\u00ed, vstupuje do foveola radialis, je k\u0159\u00ed\u017eena vena cephalica a zaji\u0161\u0165uje senzitivn\u00ed inervaci dorz\u00e1ln\u00ed oblasti.",
+    en: "Figure 10. Wrist: The superficial branch of the radial nerve runs between the first and second dorsal wrist compartments, enters the radial fossa, is crossed by the cephalic vein, and provides sensory innervation to the dorsal region."
+  },
+  {
+    cs: "Obr\u00e1zek 11. Cubitum: Hlubok\u00e1 v\u011btev nervus radialis prob\u00edh\u00e1 mezi musculus brachioradialis a musculus brachialis v m\u00edst\u011b d\u011blen\u00ed nervu.",
+    en: "Figure 11. Elbow: The deep branch of the radial nerve runs between the brachioradialis and brachialis muscles at the site of nerve division."
+  },
+  {
+    cs: "Obr\u00e1zek 12. Proxim\u00e1ln\u00ed \u010d\u00e1st antebrachia: Hlubok\u00e1 v\u011btev nervus radialis prob\u00edh\u00e1 pod Frohseho ark\u00e1dou.",
+    en: "Figure 12. Proximal forearm: The deep branch of the radial nerve passes beneath the arcade of Frohse."
+  },
+  {
+    cs: "Obr\u00e1zek 13. Proxim\u00e1ln\u00ed \u010d\u00e1st antebrachia: Hlubok\u00e1 v\u011btev vstupuje do supin\u00e1torov\u00e9ho kan\u00e1lu a pokra\u010duje jako nervus interosseus posterior.",
+    en: "Figure 13. Proximal forearm: The deep branch enters the supinator canal and continues as the posterior interosseous nerve."
+  },
+  {
+    cs: "Obr\u00e1zek 14. Proxim\u00e1ln\u00ed \u010d\u00e1st antebrachia: Nervus interosseus posterior vystupuje ze supin\u00e1torov\u00e9ho kan\u00e1lu.",
+    en: "Figure 14. Proximal forearm: The posterior interosseous nerve emerges from the supinator canal."
+  },
+  {
+    cs: "Obr\u00e1zek 15. St\u0159edn\u00ed \u010d\u00e1st antebrachia: Nervus interosseus posterior prob\u00edh\u00e1 mezi povrchovou a hlubokou svalovou vrstvou, d\u00e1le hluboko mezi musculus abductor pollicis longus a musculus extensor pollicis longus, dosahuje membrana interossea dist\u00e1ln\u011b k z\u00e1p\u011bst\u00ed a kon\u010d\u00ed senzitivn\u011b v dorz\u00e1ln\u00edm pouzd\u0159e z\u00e1p\u011bst\u00ed. V oblasti karpu prob\u00edh\u00e1 pod 4. dorz\u00e1ln\u00edm kompartmentem.",
+    en: "Figure 15. Mid-forearm: The posterior interosseous nerve runs between the superficial and deep muscle layers, then deep between the abductor pollicis longus and extensor pollicis longus muscles, reaches the interosseous membrane distally toward the wrist, and ends with sensory fibers in the dorsal wrist capsule. At the carpus it passes beneath the fourth dorsal compartment."
+  },
+  {
+    cs: "Obr\u00e1zek 16. Carpus: Nervus interosseus posterior kon\u010d\u00ed senzitivn\u011b v dorz\u00e1ln\u00edm pouzd\u0159e z\u00e1p\u011bst\u00ed a prob\u00edh\u00e1 pod 4. dorz\u00e1ln\u00edm kompartmentem.",
+    en: "Figure 16. Wrist: The posterior interosseous nerve ends with sensory fibers in the dorsal wrist capsule and passes beneath the fourth dorsal compartment."
+  }
+];
+
+const radialNerveUltrasoundSections: NerveUltrasoundSection[] = radialNerveUltrasoundCaptions.map((caption, index) => {
   const imageNumber = index + 1;
   const keyNumber = index * 2 + 1;
 
@@ -1079,10 +1146,7 @@ const radialNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ len
       cs: `Obr\u00e1zek ${imageNumber}`,
       en: `Figure ${imageNumber}`
     },
-    caption: {
-      cs: `Obr\u00e1zek ${imageNumber}. Ultrazvukov\u00e9 vy\u0161et\u0159en\u00ed n. radialis.`,
-      en: `Figure ${imageNumber}. Radial nerve ultrasound examination.`
-    }
+    caption
   };
 });
 
