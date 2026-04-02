@@ -3510,7 +3510,6 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Místa útlaku" : "Entrapment sites"}</h2>
           <ol className={styles.compactList}>
             {entrapmentSites[lang].map((item) => (
               <li key={`${item.title}-${item.description}`}>
@@ -3689,7 +3688,6 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Motorická inervace" : "Motor innervation"}</h2>
           <ul className={styles.compactList}>
             {motorInnervation[lang].map((item) => (
               <li key={item}>{item}</li>
@@ -3707,7 +3705,6 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <h2>{lang === "cs" ? "Senzitivní inervace" : "Sensory innervation"}</h2>
           <ul className={styles.compactList}>
             {sensoryInnervation[lang].map((item) => (
               <li key={item}>{item}</li>
