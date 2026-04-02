@@ -3473,9 +3473,11 @@ export default function ContentPage({ path }: ContentPageProps) {
                 {resolvedNerveUltrasoundContent.sections.map((item) => {
                   const compareImages = resolvedNerveUltrasoundContent.swipeCompareImages?.find((imageSet) => imageSet.key === item.key);
                   const imageAlt = item.caption[lang];
-                  const captionMatch = item.caption[lang].match(/^(.*?:)\s*(.*)$/);
-                  const captionHeading = captionMatch?.[1] ?? item.caption[lang];
-                  const captionBody = captionMatch?.[2] ?? "";
+                  const captionSeparatorIndex = item.caption[lang].indexOf(":");
+                  const captionHeading =
+                    captionSeparatorIndex >= 0 ? item.caption[lang].slice(0, captionSeparatorIndex + 1) : item.caption[lang];
+                  const captionBody =
+                    captionSeparatorIndex >= 0 ? item.caption[lang].slice(captionSeparatorIndex + 1).trim() : "";
 
                   return (
                     <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
