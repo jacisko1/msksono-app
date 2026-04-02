@@ -984,7 +984,66 @@ const ulnarNerveSwipeCompareImages: JointProtocolCompareImage[] = Array.from({ l
   };
 });
 
-const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ length: 14 }, (_, index) => {
+const ulnarNerveUltrasoundCaptions = [
+  {
+    cs: "Obr\u00e1zek 1. Axilla: Nervus ulnaris ulo\u017een medi\u00e1ln\u011b a dorz\u00e1ln\u011b od arteria axillaris.",
+    en: "Figure 1. Axilla: The ulnar nerve is positioned medial and dorsal to the axillary artery."
+  },
+  {
+    cs: "Obr\u00e1zek 2. Brachium: Nervus ulnaris prob\u00edh\u00e1 medi\u00e1ln\u011b, povrchov\u011b, p\u0159ilo\u017een\u00fd k medi\u00e1ln\u00ed hlav\u011b musculus triceps brachii.",
+    en: "Figure 2. Arm: The ulnar nerve runs medially and superficially, adjacent to the medial head of the triceps brachii muscle."
+  },
+  {
+    cs: "Obr\u00e1zek 3. Brachium: Nervus ulnaris se st\u00e1\u010d\u00ed dorz\u00e1ln\u011b, perforuje medi\u00e1ln\u00ed intermuskul\u00e1rn\u00ed septum a v dist\u00e1ln\u00ed t\u0159etin\u011b pa\u017ee prob\u00edh\u00e1 pod Struthersov\u00fdm ark\u00e1dov\u00fdm pruhem.",
+    en: "Figure 3. Arm: The ulnar nerve turns dorsally, perforates the medial intermuscular septum, and in the distal third of the arm passes beneath the Struthers arcade."
+  },
+  {
+    cs: "Obr\u00e1zek 4. Cubitum: Nervus ulnaris prob\u00edh\u00e1 dorz\u00e1ln\u011b za medi\u00e1ln\u00edm epikondylem humeru.",
+    en: "Figure 4. Elbow: The ulnar nerve courses dorsally behind the medial epicondyle of the humerus."
+  },
+  {
+    cs: "Obr\u00e1zek 5. Cubitum: Kubit\u00e1ln\u00ed tunel - nervus ulnaris prob\u00edh\u00e1 pod Osborneov\u00fdm ligamentem.",
+    en: "Figure 5. Elbow: Cubital tunnel - the ulnar nerve passes beneath Osborne's ligament."
+  },
+  {
+    cs: "Obr\u00e1zek 6. Cubitum: Nervus ulnaris prob\u00edh\u00e1 pod ligamentum arcuatum.",
+    en: "Figure 6. Elbow: The ulnar nerve passes beneath the arcuate ligament."
+  },
+  {
+    cs: "Obr\u00e1zek 7. Antebrachium: Nervus ulnaris prob\u00edh\u00e1 mezi hlavami musculus flexor carpi ulnaris, d\u00e1le pod t\u00edmto svalem.",
+    en: "Figure 7. Forearm: The ulnar nerve passes between the heads of the flexor carpi ulnaris muscle and then continues beneath this muscle."
+  },
+  {
+    cs: "Obr\u00e1zek 8. Antebrachium: Nervus ulnaris prob\u00edh\u00e1 mezi musculus flexor digitorum profundus a musculus flexor digitorum superficialis; dist\u00e1ln\u011b je doprov\u00e1zen arteria ulnaris.",
+    en: "Figure 8. Forearm: The ulnar nerve runs between the flexor digitorum profundus and flexor digitorum superficialis muscles; distally it is accompanied by the ulnar artery."
+  },
+  {
+    cs: "Obr\u00e1zek 9. Carpus: Nervus ulnaris v Guyonov\u011b kan\u00e1lu.",
+    en: "Figure 9. Wrist: The ulnar nerve in Guyon's canal."
+  },
+  {
+    cs: "Obr\u00e1zek 10. Dist\u00e1ln\u00ed t\u0159etina p\u0159edlokt\u00ed: pr\u016fb\u011bh nervus ulnaris.",
+    en: "Figure 10. Distal third of the forearm: Course of the ulnar nerve."
+  },
+  {
+    cs: "Obr\u00e1zek 11. Dist\u00e1ln\u00ed t\u0159etina p\u0159edlokt\u00ed: dorz\u00e1ln\u00ed ko\u017en\u00ed v\u011btev nervus ulnaris v \u00faroovni musculus pronator quadratus, mezi musculus pronator quadratus a musculus flexor carpi ulnaris.",
+    en: "Figure 11. Distal third of the forearm: The dorsal cutaneous branch of the ulnar nerve at the level of the pronator quadratus, between the pronator quadratus and flexor carpi ulnaris muscles."
+  },
+  {
+    cs: "Obr\u00e1zek 12. Dist\u00e1ln\u00ed t\u0159etina p\u0159edlokt\u00ed: dorz\u00e1ln\u00ed ko\u017en\u00ed v\u011btev nervus ulnaris obkru\u017euje dors\u00e1ln\u011b ulnu.",
+    en: "Figure 12. Distal third of the forearm: The dorsal cutaneous branch of the ulnar nerve winds dorsally around the ulna."
+  },
+  {
+    cs: "Obr\u00e1zek 13. Carpus: Nervus ulnaris v \u00faroovni karpu v Guyonov\u011b kan\u00e1lu.",
+    en: "Figure 13. Wrist: The ulnar nerve at the carpal level in Guyon's canal."
+  },
+  {
+    cs: "Obr\u00e1zek 14. Carpus: Nervus ulnaris se d\u011bl\u00ed na povrchovou senzitivn\u00ed a hlubokou motorickou v\u011btev, kter\u00e1 vstupuje do hloubky v \u00faroovni hamulus ossis hamati.",
+    en: "Figure 14. Wrist: The ulnar nerve divides into a superficial sensory branch and a deep motor branch, which dives deep at the level of the hook of the hamate."
+  }
+];
+
+const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = ulnarNerveUltrasoundCaptions.map((caption, index) => {
   const imageNumber = index + 1;
 
   return {
@@ -993,10 +1052,7 @@ const ulnarNerveUltrasoundSections: NerveUltrasoundSection[] = Array.from({ leng
       cs: `Obr\u00e1zek ${imageNumber}`,
       en: `Figure ${imageNumber}`
     },
-    caption: {
-      cs: `Obr\u00e1zek ${imageNumber}. Ultrazvukov\u00e9 vy\u0161et\u0159en\u00ed n. ulnaris.`,
-      en: `Figure ${imageNumber}. Ulnar nerve ultrasound examination.`
-    }
+    caption
   };
 });
 
