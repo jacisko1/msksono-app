@@ -3503,7 +3503,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                       <div className={styles.articleBody}>
                         <p className={styles.figureCaption}>
                           <strong>{captionHeading}</strong>
-                          {captionBody ? ` ${captionBody}` : ""}
+                          {captionBody ? <span className={styles.figureCaptionBody}> {captionBody}</span> : ""}
                         </p>
                       </div>
                     </article>

@@ -161,6 +161,10 @@
   color: color-mix(in srgb, var(--text-soft) 92%, #000);
 }
 
+.figureCaptionBody {
+  font-weight: 400;
+}
+
 .figureCaption + p {
   margin-top: 0.85rem;
 }
