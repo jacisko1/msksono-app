@@ -504,6 +504,24 @@ const jointVideoBySlug = {
   }
 } as const;
 
+const nerveVideoBySlug = {
+  "nervus-medianus": {
+    kind: "embed",
+    src: "https://www.youtube-nocookie.com/embed/WmzHNPNkBx0",
+    title: { cs: "Nervus medianus video tutorial", en: "Median nerve video tutorial" }
+  },
+  "nervus-ulnaris": {
+    kind: "file",
+    src: assetPath("Ulnar nerve", "Ulnar nerve.mp4"),
+    title: { cs: "Nervus ulnaris video tutorial", en: "Ulnar nerve video tutorial" }
+  },
+  "nervus-radialis": {
+    kind: "file",
+    src: assetPath("Radial nerve", "Radial nerve.mp4"),
+    title: { cs: "Nervus radialis video tutorial", en: "Radial nerve video tutorial" }
+  }
+} as const;
+
 const elbowSwipeCompareImages: JointProtocolCompareImage[] = ["01_01", "02_02", "03_03", "04_04", "01_05", "02_06"].map((key) => ({
   key,
   baseImage: makeResponsiveImagePhone("02_Elbow/protokol", `${key}_basic`),
@@ -3092,7 +3110,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
   const isBicepsVideo = path === "/svaly/biceps-brachii/video-tutorial";
-  const isMedianNerveVideo = path === "/periferni-nervy/nervus-medianus/video-tutorial";
+  const nerveVideoMatch = path.match(/^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis)\/video-tutorial$/);
+  const nerveVideo = nerveVideoMatch ? nerveVideoBySlug[nerveVideoMatch[1] as keyof typeof nerveVideoBySlug] : undefined;
   const nerveIntroMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/uvod$/
   );
@@ -3410,20 +3429,26 @@ export default function ContentPage({ path }: ContentPageProps) {
     );
   }
 
-  if (isMedianNerveVideo) {
+  if (nerveVideo) {
     return (
       <section className={styles.stack}>
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.videoBox}>
           <div className={styles.videoWrap}>
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/WmzHNPNkBx0"
-              title={lang === "cs" ? "Nervus medianus video tutorial" : "Median nerve video tutorial"}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            {nerveVideo.kind === "embed" ? (
+              <iframe
+                src={nerveVideo.src}
+                title={nerveVideo.title[lang]}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            ) : (
+              <video controls preload="metadata" playsInline>
+                <source src={nerveVideo.src} type="video/mp4" />
+              </video>
+            )}
           </div>
         </section>
         {chapterNav}

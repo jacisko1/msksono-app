@@ -55,6 +55,14 @@
   border: 0;
 }
 
+.videoWrap video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #0f2428;
+}
+
 .videoLink {
   justify-self: start;
   padding: 0.5rem 0.8rem;
