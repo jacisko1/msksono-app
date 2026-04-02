@@ -3498,6 +3498,9 @@ export default function ContentPage({ path }: ContentPageProps) {
                       <div className={styles.articleBody}>
                         <h3>{item.title[lang]}</h3>
                       </div>
+                      <p className={styles.figureCaption}>
+                        <strong>{item.caption[lang]}</strong>
+                      </p>
                     </article>
                   );
                 })}
