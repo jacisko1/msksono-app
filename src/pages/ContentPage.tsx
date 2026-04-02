@@ -3473,6 +3473,9 @@ export default function ContentPage({ path }: ContentPageProps) {
                 {resolvedNerveUltrasoundContent.sections.map((item) => {
                   const compareImages = resolvedNerveUltrasoundContent.swipeCompareImages?.find((imageSet) => imageSet.key === item.key);
                   const imageAlt = item.caption[lang];
+                  const captionMatch = item.caption[lang].match(/^(.*?:)\s*(.*)$/);
+                  const captionHeading = captionMatch?.[1] ?? item.caption[lang];
+                  const captionBody = captionMatch?.[2] ?? "";
 
                   return (
                     <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
@@ -3496,11 +3499,11 @@ export default function ContentPage({ path }: ContentPageProps) {
                         />
                       ) : null}
                       <div className={styles.articleBody}>
-                        <h3>{item.title[lang]}</h3>
+                        <p className={styles.figureCaption}>
+                          <strong>{captionHeading}</strong>
+                          {captionBody ? ` ${captionBody}` : ""}
+                        </p>
                       </div>
-                      <p className={styles.figureCaption}>
-                        <strong>{item.caption[lang]}</strong>
-                      </p>
                     </article>
                   );
                 })}
