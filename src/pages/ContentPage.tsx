@@ -1127,8 +1127,8 @@ const radialNerveUltrasoundCaptions = [
     en: "Figure 14. Proximal forearm: The posterior interosseous nerve emerges from the supinator canal."
   },
   {
-    cs: "Obr\u00e1zek 15. St\u0159edn\u00ed \u010d\u00e1st antebrachia: Nervus interosseus posterior prob\u00edh\u00e1 mezi povrchovou a hlubokou svalovou vrstvou, d\u00e1le hluboko mezi musculus abductor pollicis longus a musculus extensor pollicis longus, dosahuje membrana interossea dist\u00e1ln\u011b k z\u00e1p\u011bst\u00ed a kon\u010d\u00ed senzitivn\u011b v dorz\u00e1ln\u00edm pouzd\u0159e z\u00e1p\u011bst\u00ed. V oblasti karpu prob\u00edh\u00e1 pod 4. dorz\u00e1ln\u00edm kompartmentem.",
-    en: "Figure 15. Mid-forearm: The posterior interosseous nerve runs between the superficial and deep muscle layers, then deep between the abductor pollicis longus and extensor pollicis longus muscles, reaches the interosseous membrane distally toward the wrist, and ends with sensory fibers in the dorsal wrist capsule. At the carpus it passes beneath the fourth dorsal compartment."
+    cs: "Obr\u00e1zek 15. St\u0159edn\u00ed \u010d\u00e1st antebrachia: Nervus interosseus posterior prob\u00edh\u00e1 mezi povrchovou a hlubokou svalovou vrstvou, d\u00e1le hluboko mezi musculus abductor pollicis longus a musculus extensor pollicis longus a dosahuje membrana interossea dist\u00e1ln\u011b k z\u00e1p\u011bst\u00ed.",
+    en: "Figure 15. Mid-forearm: The posterior interosseous nerve runs between the superficial and deep muscle layers, then deep between the abductor pollicis longus and extensor pollicis longus muscles, and reaches the interosseous membrane distally toward the wrist."
   },
   {
     cs: "Obr\u00e1zek 16. Carpus: Nervus interosseus posterior kon\u010d\u00ed senzitivn\u011b v dorz\u00e1ln\u00edm pouzd\u0159e z\u00e1p\u011bst\u00ed a prob\u00edh\u00e1 pod 4. dorz\u00e1ln\u00edm kompartmentem.",
