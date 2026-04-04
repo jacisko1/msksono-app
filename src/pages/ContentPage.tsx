@@ -3627,7 +3627,10 @@ export default function ContentPage({ path }: ContentPageProps) {
               const zoomCaption = combinedCaptionLine;
 
               return (
-                <article key={item.key} className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard}`}>
+                <article
+                  key={item.key}
+                  className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard} ${styles.nerveAnatomyCard}`}
+                >
                   <div className={styles.articleBody}>
                     <h3>{item.title[lang]}</h3>
                     {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
