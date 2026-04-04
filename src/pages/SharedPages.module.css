@@ -416,6 +416,16 @@
   grid-area: caption;
 }
 
+.nerveAnatomyCaptionDesktop {
+  margin: 0;
+  display: none;
+}
+
+.nerveAnatomyCaptionMobile {
+  margin: 0;
+  grid-area: caption;
+}
+
 .nerveAnatomyImageWrap {
   grid-area: image;
 }
@@ -851,6 +861,14 @@
 @media (min-width: 741px) {
   .nerveAnatomyStack {
     grid-template-columns: 1fr;
+  }
+
+  .nerveAnatomyCaptionDesktop {
+    display: block;
+  }
+
+  .nerveAnatomyCaptionMobile {
+    display: none;
   }
 
   .nerveAnatomyIntroLayout {

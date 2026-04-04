@@ -3636,6 +3636,12 @@ export default function ContentPage({ path }: ContentPageProps) {
                   <div className={`${styles.articleBody} ${styles.nerveAnatomyTextBlock}`}>
                     <h3>{item.title[lang]}</h3>
                     {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
+                    {combinedCaptionLine ? (
+                      <p className={`${styles.figureCaption} ${styles.nerveAnatomyCaptionDesktop}`}>
+                        {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
+                        {abbreviationLine ? ` ${abbreviationLine}` : ""}
+                      </p>
+                    ) : null}
                   </div>
                   <ResponsiveImage
                     image={makeResponsiveImagePhone("CS", item.key)}
@@ -3645,7 +3651,7 @@ export default function ContentPage({ path }: ContentPageProps) {
                     caption={zoomCaption}
                   />
                   {combinedCaptionLine ? (
-                    <p className={`${styles.figureCaption} ${styles.nerveAnatomyCaption}`}>
+                    <p className={`${styles.figureCaption} ${styles.nerveAnatomyCaptionMobile}`}>
                       {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
                       {abbreviationLine ? ` ${abbreviationLine}` : ""}
                     </p>
