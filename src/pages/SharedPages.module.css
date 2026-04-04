@@ -440,16 +440,7 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.nerveIntroMedia > .imageZoomButton > picture,
-.nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap,
-.nerveIntroMedia > .imageZoomButton .inlineImageWrap,
-.nerveIntroMedia > .imageZoomButton .inlineImage {
-  display: block;
-  border-radius: 12px;
+  border-radius: inherit;
   overflow: hidden;
 }
 
@@ -465,6 +456,7 @@
 }
 
 .nerveIntroImageWrap .inlineImage {
+  display: block;
   width: 100%;
   height: 100%;
   max-height: none;

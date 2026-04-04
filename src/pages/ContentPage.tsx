@@ -115,7 +115,7 @@ interface SwipeCompareImageProps {
   rangeColor?: string;
 }
 
-const ASSET_VERSION = "2026-04-04-nerve-intro-1";
+const ASSET_VERSION = "2026-04-04-nerve-intro-2";
 
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}?v=${ASSET_VERSION}`;
@@ -3609,9 +3609,9 @@ export default function ContentPage({ path }: ContentPageProps) {
               style={nerveIntroMediaHeight ? ({ height: `${nerveIntroMediaHeight}px` } as CSSProperties) : undefined}
             >
               <ResponsiveImage
-                image={makeResponsiveImagePhone("Nerves/Anatomy", nerveIntroContent.imageBaseName)}
+                image={makeSingleImage("Nerves/Anatomy", `${nerveIntroContent.imageBaseName}_pc.webp`)}
                 alt={nerveIntroContent.alt[lang]}
-                wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveIntroImageWrap}`}
+                wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.probeGripRoundedWrap} ${styles.nerveIntroImageWrap}`}
                 enableMobileZoom
                 caption={nerveIntroContent.alt[lang]}
               />
