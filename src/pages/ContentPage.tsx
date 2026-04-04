@@ -4363,20 +4363,28 @@ export default function ContentPage({ path }: ContentPageProps) {
         <section className={`${styles.articleBox} ${styles.anatomyLayout}`}>
           <p className={styles.anatomyLead}>{shoulderAnatomyIntro[lang]}</p>
           <section className={styles.anatomyCard}>
-            <h2>{lang === "cs" ? "Landmarky" : "Landmarks"}</h2>
-            <ul className={styles.compactList}>
-              {shoulderAnatomyLandmarks[lang].map((item) => (
-                renderAnatomyListItem(item)
-              ))}
-            </ul>
-            <ResponsiveImage
-              image={makeSingleImage("Anatomy/Shoulder", shoulderAnatomyLandmarkImage.fileName)}
-              alt={shoulderAnatomyLandmarkImage.alt[lang]}
-              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyImageWrap}`}
-              enableMobileZoom
-            />
+            <div className={styles.anatomySplitCard}>
+              <div className={styles.anatomySplitText}>
+                <h2>{lang === "cs" ? "Landmarky" : "Landmarks"}</h2>
+                <ul className={styles.compactList}>
+                  {shoulderAnatomyLandmarks[lang].map((item) => (
+                    renderAnatomyListItem(item)
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.anatomySplitMedia}>
+                <ResponsiveImage
+                  image={makeSingleImage("Anatomy/Shoulder", shoulderAnatomyLandmarkImage.fileName)}
+                  alt={shoulderAnatomyLandmarkImage.alt[lang]}
+                  wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.anatomyImageWrap}`}
+                  enableMobileZoom
+                />
+              </div>
+            </div>
           </section>
           <section className={styles.anatomyCard}>
+            <div className={styles.anatomySplitCard}>
+              <div className={styles.anatomySplitText}>
             <h2>{lang === "cs" ? "Svaly" : "Muscles"}</h2>
             <h3 className={styles.anatomySubheading}>{lang === "cs" ? "Rotátorová manžeta" : "Rotator cuff"}</h3>
             <ul className={styles.compactList}>
@@ -4390,6 +4398,8 @@ export default function ContentPage({ path }: ContentPageProps) {
                 renderAnatomyListItem(item)
               ))}
             </ul>
+              </div>
+              <div className={styles.anatomySplitMedia}>
             <div
               className={`${styles.swipeGallery} ${styles.anatomyGallery}`}
               aria-label={lang === "cs" ? "Galerie svalů ramene" : "Shoulder muscle gallery"}
@@ -4414,6 +4424,8 @@ export default function ContentPage({ path }: ContentPageProps) {
                   </button>
                 </article>
               ))}
+            </div>
+              </div>
             </div>
           </section>
         </section>

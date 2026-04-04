@@ -551,6 +551,21 @@
   background: transparent;
 }
 
+.anatomySplitCard {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.anatomySplitText {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+.anatomySplitMedia {
+  min-width: 0;
+}
+
 .anatomyCard h2 {
   margin: 0;
   font-size: clamp(1rem, 2.4vw, 1.16rem);
@@ -786,6 +801,22 @@
 }
 
 @media (min-width: 741px) {
+  .anatomySplitCard {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .anatomySplitMedia .anatomyImageWrap {
+    max-width: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  .anatomySplitMedia .anatomyGallery {
+    grid-auto-columns: minmax(100%, 1fr);
+    margin-top: 0;
+  }
+
   .swipeGallery {
     grid-auto-columns: minmax(62%, 1fr);
   }
