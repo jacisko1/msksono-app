@@ -3605,13 +3605,15 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <p>{nerveAnatomyIntroCopy[lang]}</p>
-          <ResponsiveImage
-            image={makeResponsiveImagePhone("CS", "cross_sections")}
-            alt={nerveAnatomyIntroAlt[lang]}
-            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
-            enableMobileZoom
-          />
+          <div className={styles.nerveAnatomyIntroLayout}>
+            <p>{nerveAnatomyIntroCopy[lang]}</p>
+            <ResponsiveImage
+              image={makeResponsiveImagePhone("CS", "cross_sections")}
+              alt={nerveAnatomyIntroAlt[lang]}
+              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.nerveAnatomyIntroImageWrap}`}
+              enableMobileZoom
+            />
+          </div>
           <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
             {nerveAnatomyImages.map((item, index) => {
               const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
@@ -3631,9 +3633,15 @@ export default function ContentPage({ path }: ContentPageProps) {
                   key={item.key}
                   className={`${styles.knobologyCard} ${styles.shoulderUltrasoundCard} ${styles.nerveSectionCard} ${styles.nerveAnatomyCard}`}
                 >
-                  <div className={styles.articleBody}>
+                  <div className={`${styles.articleBody} ${styles.nerveAnatomyTextBlock}`}>
                     <h3>{item.title[lang]}</h3>
                     {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
+                    {combinedCaptionLine ? (
+                      <p className={styles.figureCaption}>
+                        {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
+                        {abbreviationLine ? ` ${abbreviationLine}` : ""}
+                      </p>
+                    ) : null}
                   </div>
                   <ResponsiveImage
                     image={makeResponsiveImagePhone("CS", item.key)}
@@ -3642,12 +3650,6 @@ export default function ContentPage({ path }: ContentPageProps) {
                     enableMobileZoom
                     caption={zoomCaption}
                   />
-                  {combinedCaptionLine ? (
-                    <p className={styles.figureCaption}>
-                      {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
-                      {abbreviationLine ? ` ${abbreviationLine}` : ""}
-                    </p>
-                  ) : null}
                 </article>
               );
             })}

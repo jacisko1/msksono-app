@@ -392,6 +392,20 @@
   gap: 0.8rem;
 }
 
+.nerveAnatomyIntroLayout {
+  display: grid;
+  gap: 1rem;
+}
+
+.nerveAnatomyTextBlock {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.nerveAnatomyTextBlock .figureCaption {
+  margin: 0;
+}
+
 .shoulderUltrasoundImageWrap {
   min-height: 0;
   height: auto;
@@ -821,13 +835,29 @@
 }
 
 @media (min-width: 1025px) {
+  .nerveAnatomyIntroLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    align-items: start;
+  }
+
+  .nerveAnatomyIntroLayout > p {
+    margin: 0;
+  }
+
+  .nerveAnatomyIntroImageWrap {
+    justify-self: end;
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+  }
+
   .nerveAnatomyCard {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
     align-items: start;
   }
 
-  .nerveAnatomyCard .figureCaption {
-    grid-column: 1 / -1;
+  .nerveAnatomyTextBlock {
+    align-content: start;
   }
 
   .nerveAnatomyCard .nerveImageWrap {
