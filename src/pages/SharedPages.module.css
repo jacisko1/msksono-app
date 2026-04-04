@@ -445,9 +445,12 @@
 }
 
 .nerveIntroMedia > .imageZoomButton > picture,
+.nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap,
 .nerveIntroMedia > .imageZoomButton .inlineImageWrap,
 .nerveIntroMedia > .imageZoomButton .inlineImage {
-  border-radius: inherit;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .nerveIntroImageWrap {
