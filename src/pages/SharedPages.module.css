@@ -420,7 +420,7 @@
 
 .nerveIntroText {
   display: grid;
-  align-content: center;
+  align-content: start;
 }
 
 .nerveIntroText p {
@@ -817,7 +817,7 @@
 
 @media (min-width: 1025px) {
   .nerveIntroLayout {
-    grid-template-columns: minmax(0, 0.76fr) minmax(0, 1.24fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   .nerveIntroMedia {
