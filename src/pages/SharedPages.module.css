@@ -449,9 +449,21 @@
 }
 
 .jointIntroImageWrap {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   background: #fff;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.jointIntroImageWrap .inlineImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  border-radius: inherit;
 }
 
 .nerveIntroLayout {

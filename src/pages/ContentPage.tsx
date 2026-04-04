@@ -4312,14 +4312,20 @@ export default function ContentPage({ path }: ContentPageProps) {
         <PageHeader title={localize(node.title, lang)} color={node.color} />
         {progressBar}
         <section className={styles.articleBox}>
-          <p>{jointIntroContent[lang]}</p>
-          <ResponsiveImage
-            image={makeSingleImage("Anatomy", jointIntroImage.fileName)}
-            alt={jointIntroImage.alt[lang]}
-            wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.jointIntroImageWrap}`}
-            enableMobileZoom
-            caption={jointIntroImage.alt[lang]}
-          />
+          <div className={styles.nerveIntroLayout}>
+            <div className={styles.nerveIntroText}>
+              <p>{jointIntroContent[lang]}</p>
+            </div>
+            <div className={styles.nerveIntroMedia}>
+              <ResponsiveImage
+                image={makeSingleImage("Anatomy", jointIntroImage.fileName)}
+                alt={jointIntroImage.alt[lang]}
+                wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.jointIntroImageWrap}`}
+                enableMobileZoom
+                caption={jointIntroImage.alt[lang]}
+              />
+            </div>
+          </div>
         </section>
         {chapterNav}
       </section>
