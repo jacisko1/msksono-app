@@ -939,10 +939,18 @@
   grid-template-columns: 1fr;
 }
 
+.knobologyGrid.shoulderUltrasoundGrid.nerveAnatomyStack {
+  grid-template-columns: 1fr;
+}
+
 @media (min-width: 1025px) {
   .knobologyGrid.shoulderUltrasoundGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+  }
+
+  .knobologyGrid.shoulderUltrasoundGrid.nerveAnatomyStack {
+    grid-template-columns: 1fr;
   }
 
   .shoulderProtocolCard + .shoulderProtocolCard {
