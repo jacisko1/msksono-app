@@ -844,7 +844,7 @@
   }
 
   .nerveAnatomyIntroLayout {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: start;
   }
 
@@ -853,14 +853,13 @@
   }
 
   .nerveAnatomyIntroImageWrap {
-    justify-self: end;
     width: 100%;
-    max-width: 420px;
+    max-width: none;
     margin: 0;
   }
 
   .nerveAnatomyCard {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: start;
   }
 
@@ -869,9 +868,8 @@
   }
 
   .nerveAnatomyCard .nerveImageWrap {
-    justify-self: end;
     width: 100%;
-    max-width: 420px;
+    max-width: none;
     margin: 0;
   }
 
