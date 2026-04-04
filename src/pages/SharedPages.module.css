@@ -390,6 +390,10 @@
 .nerveAnatomyCard {
   display: grid;
   gap: 0.8rem;
+  grid-template-areas:
+    "text"
+    "image"
+    "caption";
 }
 
 .nerveAnatomyStack {
@@ -404,10 +408,16 @@
 .nerveAnatomyTextBlock {
   display: grid;
   gap: 0.6rem;
+  grid-area: text;
 }
 
-.nerveAnatomyTextBlock .figureCaption {
+.nerveAnatomyCaption {
   margin: 0;
+  grid-area: caption;
+}
+
+.nerveAnatomyImageWrap {
+  grid-area: image;
 }
 
 .shoulderUltrasoundImageWrap {
@@ -838,7 +848,7 @@
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 741px) {
   .nerveAnatomyStack {
     grid-template-columns: 1fr;
   }
@@ -860,6 +870,9 @@
 
   .nerveAnatomyCard {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "text image"
+      "caption image";
     align-items: start;
   }
 
@@ -872,7 +885,9 @@
     max-width: none;
     margin: 0;
   }
+}
 
+@media (min-width: 1025px) {
   .nerveIntroLayout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }

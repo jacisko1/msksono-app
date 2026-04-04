@@ -3636,20 +3636,20 @@ export default function ContentPage({ path }: ContentPageProps) {
                   <div className={`${styles.articleBody} ${styles.nerveAnatomyTextBlock}`}>
                     <h3>{item.title[lang]}</h3>
                     {nerveAnatomyCopy?.[item.key] ? <p>{nerveAnatomyCopy[item.key][lang]}</p> : null}
-                    {combinedCaptionLine ? (
-                      <p className={styles.figureCaption}>
-                        {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
-                        {abbreviationLine ? ` ${abbreviationLine}` : ""}
-                      </p>
-                    ) : null}
                   </div>
                   <ResponsiveImage
                     image={makeResponsiveImagePhone("CS", item.key)}
                     alt={item.title[lang]}
-                    wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap}`}
+                    wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.nerveAnatomyImageWrap}`}
                     enableMobileZoom
                     caption={zoomCaption}
                   />
+                  {combinedCaptionLine ? (
+                    <p className={`${styles.figureCaption} ${styles.nerveAnatomyCaption}`}>
+                      {figureCaptionWithPeriod ? <strong>{figureCaptionWithPeriod}</strong> : null}
+                      {abbreviationLine ? ` ${abbreviationLine}` : ""}
+                    </p>
+                  ) : null}
                 </article>
               );
             })}
