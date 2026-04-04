@@ -215,26 +215,6 @@ export const navigationTree: NavItem[] = [
         title: { cs: "Nervus radialis", en: "Radial nerve" },
         path: "/periferni-nervy/nervus-radialis",
         children: nerveChildren("/periferni-nervy/nervus-radialis")
-      },
-      {
-        title: { cs: "Nervus femoralis", en: "Femoral nerve" },
-        path: "/periferni-nervy/nervus-femoralis",
-        children: nerveChildren("/periferni-nervy/nervus-femoralis")
-      },
-      {
-        title: { cs: "Nervus ischiadicus", en: "Sciatic nerve" },
-        path: "/periferni-nervy/nervus-ischiadicus",
-        children: nerveChildren("/periferni-nervy/nervus-ischiadicus")
-      },
-      {
-        title: { cs: "Nervus tibialis", en: "Tibial nerve" },
-        path: "/periferni-nervy/nervus-tibialis",
-        children: nerveChildren("/periferni-nervy/nervus-tibialis")
-      },
-      {
-        title: { cs: "Nervus peroneus communis", en: "Common peroneal nerve" },
-        path: "/periferni-nervy/nervus-peroneus-communis",
-        children: nerveChildren("/periferni-nervy/nervus-peroneus-communis")
       }
     ])
   },
