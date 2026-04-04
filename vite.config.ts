@@ -1,65 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: [
-        "icons/logo.png",
-        "icons/icon-192.png",
-        "icons/icon-512.png",
-        "icons/icon-maskable.png",
-        "apple-touch-icon.png"
-      ],
-      manifest: {
-        name: "MSK Ultrasound Academy",
-        short_name: "MSK US",
-        description: "Progressive Web App for musculoskeletal ultrasound education.",
-        theme_color: "#00626c",
-        background_color: "#ffffff",
-        display: "standalone",
-        id: "/",
-        scope: "/",
-        start_url: "/",
-        icons: [
-          {
-            src: "icons/icon-192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "icons/icon-512.png",
-            sizes: "512x512",
-            type: "image/png"
-          },
-          {
-            src: "icons/icon-maskable.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "maskable"
-          }
-        ]
-      },
-      workbox: {
-        cleanupOutdatedCaches: true,
-        clientsClaim: true,
-        skipWaiting: true,
-        globPatterns: ["**/*.{js,css,html,svg,png,ico,json}"],
-        globIgnores: [
-          "assets/03_Wrist/protokol/Wrist_Basic*.png",
-          "assets/03_Wrist/protokol/Snímek*.PNG",
-          "assets/04_Hip/protokol/HIP basic*.png",
-          "assets/05_Knee/protokol/Knee Basic*.png",
-          "assets/06_Ankle/protokol/Ankle Basic*.png"
-        ],
-        navigateFallback: "/index.html"
-      },
-      devOptions: {
-        enabled: true
-      }
-    })
-  ]
+  plugins: [react()]
 });
