@@ -444,6 +444,12 @@
   overflow: hidden;
 }
 
+.nerveIntroMedia > .imageZoomButton > picture,
+.nerveIntroMedia > .imageZoomButton .inlineImageWrap,
+.nerveIntroMedia > .imageZoomButton .inlineImage {
+  border-radius: inherit;
+}
+
 .nerveIntroImageWrap {
   max-width: none;
   margin: 0;
