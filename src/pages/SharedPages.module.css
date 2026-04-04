@@ -428,13 +428,11 @@
 }
 
 .nerveIntroMedia {
-  position: relative;
-  display: block;
+  display: grid;
   min-height: 0;
   height: 100%;
   border-radius: 12px;
   overflow: hidden;
-  clip-path: inset(0 round 12px);
 }
 
 .nerveIntroMedia > .imageZoomButton {
@@ -444,17 +442,6 @@
   cursor: pointer;
   border-radius: 12px;
   overflow: hidden;
-  clip-path: inset(0 round 12px);
-}
-
-.nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap {
-  position: absolute;
-  inset: 0;
-}
-
-.nerveIntroMedia > .nerveIntroImageWrap {
-  position: absolute;
-  inset: 0;
 }
 
 .nerveIntroImageWrap {
@@ -466,7 +453,6 @@
   background: transparent;
   border-radius: 12px;
   overflow: hidden;
-  clip-path: inset(0 round 12px);
 }
 
 .nerveIntroImageWrap .inlineImage {
@@ -786,11 +772,6 @@
 
   .nerveIntroMedia > .imageZoomButton {
     height: auto;
-  }
-
-  .nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap,
-  .nerveIntroMedia > .nerveIntroImageWrap {
-    position: static;
   }
 
   .inlineImageWrap {
