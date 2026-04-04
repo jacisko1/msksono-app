@@ -392,6 +392,10 @@
   gap: 0.8rem;
 }
 
+.nerveAnatomyStack {
+  grid-template-columns: 1fr;
+}
+
 .nerveAnatomyIntroLayout {
   display: grid;
   gap: 1rem;
@@ -835,7 +839,7 @@
 }
 
 @media (min-width: 1025px) {
-  .knobologyGrid.shoulderUltrasoundGrid:has(.nerveAnatomyCard) {
+  .nerveAnatomyStack {
     grid-template-columns: 1fr;
   }
 

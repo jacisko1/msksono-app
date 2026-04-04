@@ -3614,7 +3614,7 @@ export default function ContentPage({ path }: ContentPageProps) {
               enableMobileZoom
             />
           </div>
-          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid}`}>
+          <div className={`${styles.knobologyGrid} ${styles.shoulderUltrasoundGrid} ${styles.nerveAnatomyStack}`}>
             {nerveAnatomyImages.map((item, index) => {
               const abbreviationSet = nerveAnatomyAbbreviations[item.key]?.[lang];
               const abbreviationLine = abbreviationSet ? abbreviationSet.join(", ") : undefined;
