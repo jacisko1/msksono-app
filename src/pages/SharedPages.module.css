@@ -428,9 +428,29 @@
 }
 
 .nerveIntroMedia {
-  display: flex;
+  position: relative;
+  display: block;
   min-height: 0;
   height: 100%;
+}
+
+.nerveIntroMedia > .imageZoomButton {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.nerveIntroMedia > .nerveIntroImageWrap {
+  position: absolute;
+  inset: 0;
 }
 
 .nerveIntroImageWrap {
@@ -441,12 +461,14 @@
   width: 100%;
   background: transparent;
   border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .nerveIntroImageWrap .inlineImage {
   width: 100%;
   height: 100%;
   max-height: none;
+  border-radius: inherit;
 }
 
 .probeGripRoundedWrap {
@@ -750,6 +772,20 @@
   .nerveIntroLayout {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .nerveIntroMedia {
+    height: auto;
+    min-height: 0;
+  }
+
+  .nerveIntroMedia > .imageZoomButton {
+    height: auto;
+  }
+
+  .nerveIntroMedia > .imageZoomButton .nerveIntroImageWrap,
+  .nerveIntroMedia > .nerveIntroImageWrap {
+    position: static;
   }
 
   .inlineImageWrap {
