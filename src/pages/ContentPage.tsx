@@ -96,6 +96,12 @@ interface NerveUltrasoundInteractiveSection {
   caption: { cs: string; en: string };
 }
 
+interface NerveIntroContent {
+  text: { cs: JSX.Element; en: JSX.Element };
+  imageBaseName: string;
+  alt: { cs: string; en: string };
+}
+
 interface SwipeCompareImageProps {
   baseImage: ResponsiveImageSet;
   overlayImage: ResponsiveImageSet;
@@ -959,6 +965,86 @@ const nerveAnatomyFigureCaptions: Record<string, { cs: string; en: string }> = {
   "3_elbow": { cs: "Řez loktem", en: "Elbow section" },
   "4_forearm": { cs: "Řez předloktím", en: "Forearm section" },
   "5_wrist": { cs: "Řez zápěstím", en: "Wrist section" }
+};
+
+const nerveIntroBySlug: Record<string, NerveIntroContent> = {
+  "nervus-medianus": {
+    text: {
+      cs: (
+        <>
+          Ultrazvuk <strong>n. medianus</strong> je v PMR zásadní hlavně při potížích v oblasti karpálního tunelu, předloktí a
+          loketní jamky, protože umožňuje rychle ověřit <strong>změnu kalibru nervu</strong>, ztrátu fascikulární kresby i vztah
+          k okolním šlachám a retinakulu. Pomáhá odlišit syndrom karpálního tunelu od proximálnější komprese, zachytit
+          zánětlivé či posttraumatické změny a přesněji zacílit další rehabilitační, intervenční nebo chirurgický postup.
+        </>
+      ),
+      en: (
+        <>
+          Ultrasound of the <strong>median nerve</strong> is especially important in PMR when symptoms arise around the carpal
+          tunnel, forearm, or cubital fossa, because it quickly shows <strong>nerve caliber change</strong>, loss of fascicular
+          pattern, and the nerve&apos;s relation to nearby tendons and retinaculum. It helps distinguish carpal tunnel syndrome
+          from more proximal compression, detect inflammatory or post-traumatic changes, and better guide rehabilitation,
+          injection, or surgical planning.
+        </>
+      )
+    },
+    imageBaseName: "median",
+    alt: {
+      cs: "Anatomický přehled průběhu nervus medianus",
+      en: "Anatomical overview of the median nerve course"
+    }
+  },
+  "nervus-ulnaris": {
+    text: {
+      cs: (
+        <>
+          Ultrazvuk <strong>n. ulnaris</strong> má velký význam zejména v oblasti mediálního lokte a Guyonova kanálu, kde je nerv
+          často vystaven <strong>kompresi nebo dynamické iritaci</strong>. Vyšetření v reálném čase umožňuje sledovat průběh nervu
+          přes kubitální tunel, posoudit ztluštění, změny echogenity, subluxaci při flexi lokte i vztah k retinakulu a FCU, a
+          tím lépe rozlišit, zda jsou příznaky dány útlakem, přetížením nebo následkem úrazu.
+        </>
+      ),
+      en: (
+        <>
+          Ultrasound of the <strong>ulnar nerve</strong> is highly valuable, especially at the medial elbow and in Guyon&apos;s canal,
+          where the nerve is commonly affected by <strong>compression or dynamic irritation</strong>. Real-time imaging allows us
+          to follow the nerve through the cubital tunnel, assess thickening, echotexture change, subluxation during elbow
+          flexion, and its relationship to the retinaculum and FCU, helping separate entrapment from overload or post-traumatic
+          pathology.
+        </>
+      )
+    },
+    imageBaseName: "ulnar",
+    alt: {
+      cs: "Anatomický přehled průběhu nervus ulnaris",
+      en: "Anatomical overview of the ulnar nerve course"
+    }
+  },
+  "nervus-radialis": {
+    text: {
+      cs: (
+        <>
+          Ultrazvuk <strong>n. radialis</strong> je velmi užitečný při bolestech laterálního lokte, slabosti extenzorů i po úrazech
+          paže, protože přesně ukazuje průběh nervu v <strong>sulcus nervi radialis</strong>, místo dělení v loketní jamce i hlubokou
+          větev pod Frohseho arkádou. Díky tomu lze lépe odhalit útlak, trakční poškození nebo jizevnaté změny a odlišit
+          neuropatii radiálního nervu od samotné tendinopatie v oblasti laterálního epikondylu.
+        </>
+      ),
+      en: (
+        <>
+          Ultrasound of the <strong>radial nerve</strong> is very useful in lateral elbow pain, extensor weakness, and after arm
+          trauma because it clearly shows the nerve in the <strong>radial groove</strong>, the division point in the cubital fossa,
+          and the deep branch beneath the arcade of Frohse. This helps reveal entrapment, traction injury, or scarring and also
+          distinguish radial neuropathy from isolated lateral epicondylar tendinopathy.
+        </>
+      )
+    },
+    imageBaseName: "radial",
+    alt: {
+      cs: "Anatomický přehled průběhu nervus radialis",
+      en: "Anatomical overview of the radial nerve course"
+    }
+  }
 };
 
 const nerveUltrasoundByNerve: Record<string, NerveUltrasoundContent> = {
@@ -3133,6 +3219,8 @@ export default function ContentPage({ path }: ContentPageProps) {
   const sensoryInnervationMatch = path.match(
     /^\/periferni-nervy\/(nervus-medianus|nervus-ulnaris|nervus-radialis|nervus-femoralis|nervus-ischiadicus|nervus-tibialis|nervus-peroneus-communis)\/senzitivni-inervace$/
   );
+  const nerveIntroKey = nerveIntroMatch?.[1];
+  const nerveIntroContent = nerveIntroKey ? nerveIntroBySlug[nerveIntroKey] : undefined;
   const nerveKey = nerveAnatomyMatch?.[1];
   const nerveAnatomyCopy = nerveKey ? nerveAnatomyDescriptions[nerveKey] : undefined;
   const nerveUltrasoundKey = nerveUltrasoundMatch?.[1];
@@ -3450,6 +3538,30 @@ export default function ContentPage({ path }: ContentPageProps) {
               </video>
             )}
           </div>
+        </section>
+        {chapterNav}
+      </section>
+    );
+  }
+
+  if (nerveIntroMatch && nerveIntroContent) {
+    return (
+      <section className={styles.stack}>
+        <PageHeader title={localize(node.title, lang)} color={node.color} />
+        {progressBar}
+        <section className={styles.articleBox}>
+          <article className={`${styles.articleCard} ${styles.nerveIntroCard}`}>
+            <div className={styles.nerveIntroText}>
+              <p>{nerveIntroContent.text[lang]}</p>
+            </div>
+            <ResponsiveImage
+              image={makeResponsiveImagePhone("Nerves/Anatomy", nerveIntroContent.imageBaseName)}
+              alt={nerveIntroContent.alt[lang]}
+              wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveIntroImageWrap}`}
+              enableMobileZoom
+              caption={nerveIntroContent.alt[lang]}
+            />
+          </article>
         </section>
         {chapterNav}
       </section>

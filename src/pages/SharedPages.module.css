@@ -411,6 +411,26 @@
   background: #fff;
 }
 
+.nerveIntroCard {
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  align-items: center;
+}
+
+.nerveIntroText {
+  display: grid;
+  align-content: center;
+}
+
+.nerveIntroText p {
+  margin: 0;
+}
+
+.nerveIntroImageWrap {
+  max-width: none;
+  margin: 0;
+  background: #fff;
+}
+
 .probeGripRoundedWrap {
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -698,6 +718,10 @@
   .jointIntroImageWrap .inlineImage {
     max-height: 520px;
   }
+
+  .nerveIntroImageWrap .inlineImage {
+    max-height: 520px;
+  }
 }
 
 @media (max-width: 740px) {
@@ -733,6 +757,15 @@
   .jointIntroImageWrap .inlineImage {
     max-height: 360px;
   }
+
+  .nerveIntroImageWrap {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .nerveIntroImageWrap .inlineImage {
+    max-height: 360px;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -765,6 +798,10 @@
 @media (max-width: 1024px) and (min-width: 741px) {
   .articleCard {
     grid-template-columns: 220px 1fr;
+  }
+
+  .nerveIntroCard {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
   }
 
   .inlineImageWrap {
