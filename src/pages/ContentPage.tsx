@@ -3200,12 +3200,10 @@ export default function ContentPage({ path }: ContentPageProps) {
   const [doneByPath, setDoneByPath] = useState<Record<string, boolean>>({});
   const [activeShoulderMuscleImageIndex, setActiveShoulderMuscleImageIndex] = useState<number | null>(null);
   const [activeUlnarCompareIndex, setActiveUlnarCompareIndex] = useState(0);
-  const [nerveIntroMediaHeight, setNerveIntroMediaHeight] = useState<number | null>(null);
   const [ulnarSwipePosition, setUlnarSwipePosition] = useState(60);
   const [isUlnarSwipeDragging, setIsUlnarSwipeDragging] = useState(false);
   const ulnarFigureTouchStartX = useRef<number | null>(null);
   const ulnarSwipeCompareRef = useRef<HTMLDivElement | null>(null);
-  const nerveIntroTextRef = useRef<HTMLDivElement | null>(null);
   const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
   const jointVideoMatch = path.match(/^\/klouby\/(rameno|loket|zapesti|kycel|koleno|kotnik)\/video-tutorial$/);
   const jointVideo = jointVideoMatch ? jointVideoBySlug[jointVideoMatch[1] as keyof typeof jointVideoBySlug] : undefined;
@@ -3314,42 +3312,6 @@ export default function ContentPage({ path }: ContentPageProps) {
   const isEchogenicityPage = path === "/basics/ultrazvukovy-obraz/echogenita";
   const activeShoulderMuscleImage =
     activeShoulderMuscleImageIndex !== null ? shoulderAnatomyMuscleGallery[activeShoulderMuscleImageIndex] : null;
-
-  useEffect(() => {
-    if (!nerveIntroMatch || !nerveIntroContent) {
-      setNerveIntroMediaHeight(null);
-      return;
-    }
-
-    const updateHeight = () => {
-      if (typeof window === "undefined" || window.innerWidth <= 740) {
-        setNerveIntroMediaHeight(null);
-        return;
-      }
-
-      setNerveIntroMediaHeight(nerveIntroTextRef.current?.offsetHeight ?? null);
-    };
-
-    updateHeight();
-
-    const textElement = nerveIntroTextRef.current;
-    const resizeObserver =
-      typeof ResizeObserver !== "undefined" && textElement
-        ? new ResizeObserver(() => {
-            updateHeight();
-          })
-        : null;
-
-    if (resizeObserver && textElement) {
-      resizeObserver.observe(textElement);
-    }
-    window.addEventListener("resize", updateHeight);
-
-    return () => {
-      resizeObserver?.disconnect();
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, [lang, nerveIntroContent, nerveIntroMatch]);
 
   const handleUlnarFigureTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     ulnarFigureTouchStartX.current = event.touches[0]?.clientX ?? null;
@@ -3601,13 +3563,10 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <article className={styles.nerveIntroLayout}>
-            <div ref={nerveIntroTextRef} className={styles.nerveIntroText}>
+            <div className={styles.nerveIntroText}>
               <p>{nerveIntroContent.text[lang]}</p>
             </div>
-            <div
-              className={styles.nerveIntroMedia}
-              style={nerveIntroMediaHeight ? ({ height: `${nerveIntroMediaHeight}px` } as CSSProperties) : undefined}
-            >
+            <div className={styles.nerveIntroMedia}>
               <ResponsiveImage
                 image={makeSingleImage("Nerves/Anatomy", `${nerveIntroContent.imageBaseName}_pc.webp`)}
                 alt={nerveIntroContent.alt[lang]}
