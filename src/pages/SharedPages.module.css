@@ -817,7 +817,7 @@
 
 @media (min-width: 1025px) {
   .nerveIntroLayout {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
   }
 
   .anatomyImageWrap {
