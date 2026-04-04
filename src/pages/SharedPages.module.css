@@ -835,6 +835,10 @@
 }
 
 @media (min-width: 1025px) {
+  .knobologyGrid.shoulderUltrasoundGrid:has(.nerveAnatomyCard) {
+    grid-template-columns: 1fr;
+  }
+
   .nerveAnatomyIntroLayout {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
     align-items: start;
