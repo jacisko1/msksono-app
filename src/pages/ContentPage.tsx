@@ -4155,11 +4155,11 @@ export default function ContentPage({ path }: ContentPageProps) {
             }
           />
           <h2>{lang === "cs" ? "Pozice a jejich využití" : "Positions and their use"}</h2>
-          <ul className={styles.compactList}>
+          <ol className={styles.compactList}>
             {jointPositioning.positions[lang].map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>{item.replace(/^\d+\.\s*/, "")}</li>
             ))}
-          </ul>
+          </ol>
         </section>
         {chapterNav}
       </section>
