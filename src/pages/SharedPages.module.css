@@ -438,8 +438,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  cursor: zoom-in;
-  border-radius: var(--radius-lg);
+  cursor: pointer;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -460,7 +460,7 @@
   height: 100%;
   width: 100%;
   background: transparent;
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   overflow: hidden;
 }
 
