@@ -3606,10 +3606,14 @@ export default function ContentPage({ path }: ContentPageProps) {
         {progressBar}
         <section className={styles.articleBox}>
           <div className={styles.nerveAnatomyIntroLayout}>
-            <p>{nerveAnatomyIntroCopy[lang]}</p>
+            <p>
+              {lang === "cs"
+                ? "Průřezová anatomie je klíčová pro porozumění sonografickému obrazu, protože ultrazvuk zobrazuje struktury v jednotlivých řezech. Níže projdeme pět klíčových úrovní průřezového zobrazení, které budeme na nervu sledovat."
+                : nerveAnatomyIntroCopy[lang]}
+            </p>
             <ResponsiveImage
               image={makeResponsiveImagePhone("CS", "cross_sections")}
-              alt={nerveAnatomyIntroAlt[lang]}
+              alt={lang === "cs" ? "Přehled klíčových průřezů" : nerveAnatomyIntroAlt[lang]}
               wrapClassName={`${styles.shoulderUltrasoundImageWrap} ${styles.nerveImageWrap} ${styles.nerveAnatomyIntroImageWrap}`}
               enableMobileZoom
             />
