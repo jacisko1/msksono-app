@@ -1,0 +1,332 @@
+{
+  "title": {
+    "cs": "Kvíz: Rameno",
+    "en": "Quiz: Shoulder"
+  },
+  "questions": [
+    {
+      "id": "q01_deltoid",
+      "image": "/assets/quiz/shoulder/q01_deltoid.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        }
+      ]
+    },
+    {
+      "id": "q02_humerus",
+      "image": "/assets/quiz/shoulder/q02_humerus.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus"
+      },
+      "options": [
+        {
+          "cs": "glenoid",
+          "en": "glenoid"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        }
+      ]
+    },
+    {
+      "id": "q03_subscapularis",
+      "image": "/assets/quiz/shoulder/q03_subscapularis.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "m. subscapularis",
+        "en": "subscapularis"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        }
+      ]
+    },
+    {
+      "id": "q04_lhbb",
+      "image": "/assets/quiz/shoulder/q04_lhbb.png",
+      "revealImage": "/assets/shoulder/002.jpg",
+      "answer": {
+        "cs": "dlouhá hlava bicepsu",
+        "en": "long head of biceps"
+      },
+      "options": [
+        {
+          "cs": "krátká hlava bicepsu",
+          "en": "short head of biceps"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps"
+        },
+        {
+          "cs": "šlacha",
+          "en": "tendon"
+        }
+      ]
+    },
+    {
+      "id": "q05_shbb",
+      "image": "/assets/quiz/shoulder/q05_shbb.png",
+      "revealImage": "/assets/shoulder/002.jpg",
+      "answer": {
+        "cs": "krátká hlava bicepsu",
+        "en": "short head of biceps"
+      },
+      "options": [
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid"
+        },
+        {
+          "cs": "krátká hlava bicepsu",
+          "en": "short head of biceps"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus"
+        }
+      ]
+    },
+    {
+      "id": "q06_tendon",
+      "image": "/assets/quiz/shoulder/q06_tendon.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "šlacha",
+        "en": "tendon"
+      },
+      "options": [
+        {
+          "cs": "šlacha",
+          "en": "tendon"
+        },
+        {
+          "cs": "sval",
+          "en": "muscle"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        }
+      ]
+    },
+    {
+      "id": "q07_muscle",
+      "image": "/assets/quiz/shoulder/q07_muscle.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "sval",
+        "en": "muscle"
+      },
+      "options": [
+        {
+          "cs": "šlacha",
+          "en": "tendon"
+        },
+        {
+          "cs": "sval",
+          "en": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus"
+        }
+      ]
+    },
+    {
+      "id": "q08_bursa",
+      "image": "/assets/quiz/shoulder/q08_bursa.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "burza",
+        "en": "bursa"
+      },
+      "options": [
+        {
+          "cs": "akromion",
+          "en": "acromion"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        }
+      ]
+    },
+    {
+      "id": "q09_rotator_cuff",
+      "image": "/assets/quiz/shoulder/q09_rotator_cuff.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "rotátorová manžeta",
+        "en": "rotator cuff"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps"
+        }
+      ]
+    },
+    {
+      "id": "q10_acromion",
+      "image": "/assets/quiz/shoulder/q10_acromion.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "akromion",
+        "en": "acromion"
+      },
+      "options": [
+        {
+          "cs": "glenoid",
+          "en": "glenoid"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        }
+      ]
+    },
+    {
+      "id": "q11_infraspinatus",
+      "image": "/assets/quiz/shoulder/q11_infraspinatus.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "m. infraspinatus",
+        "en": "infraspinatus"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus"
+        }
+      ]
+    },
+    {
+      "id": "q12_glenoid",
+      "image": "/assets/quiz/shoulder/q12_glenoid.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "glenoid",
+        "en": "glenoid"
+      },
+      "options": [
+        {
+          "cs": "humerus",
+          "en": "humerus"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa"
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ const HomePage = lazy(() => import("../pages/HomePage"));
 const SectionPage = lazy(() => import("../pages/SectionPage"));
 const ContentPage = lazy(() => import("../pages/ContentPage"));
 const AccountPage = lazy(() => import("../pages/AccountPage"));
+const QuizPage = lazy(() => import("../pages/QuizPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const OfflinePage = lazy(() => import("../pages/OfflinePage"));
 
@@ -17,6 +18,10 @@ function LoadingFallback() {
 }
 
 function RoutedPage({ path }: { path: string }) {
+  if (path === "/quiz") {
+    return <QuizPage />;
+  }
+
   const node = findNavItem(path);
 
   if (!node) {
