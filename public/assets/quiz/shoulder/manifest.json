@@ -5,326 +5,1122 @@
   },
   "questions": [
     {
-      "id": "q01_deltoid",
-      "image": "/assets/quiz/shoulder/q01_deltoid.png",
+      "id": "01_01_deltoid",
+      "image": "/assets/quiz/shoulder/01_01_deltoid.png",
       "revealImage": "/assets/shoulder/001.jpg",
       "answer": {
         "cs": "deltový sval",
-        "en": "deltoid"
+        "en": "deltoid",
+        "pool": "muscle"
       },
       "options": [
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis"
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
         },
         {
           "cs": "deltový sval",
-          "en": "deltoid"
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
           "cs": "m. infraspinatus",
-          "en": "infraspinatus"
+          "en": "infraspinatus",
+          "pool": "muscle"
         },
         {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q02_humerus",
-      "image": "/assets/quiz/shoulder/q02_humerus.png",
+      "id": "01_02_biceps_tendon",
+      "image": "/assets/quiz/shoulder/01_02_biceps_tendon.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "šlacha dlouhé hlavy bicepsu",
+        "en": "long head biceps tendon",
+        "pool": "soft"
+      },
+      "options": [
+        {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha",
+          "en": "tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa",
+          "pool": "soft"
+        },
+        {
+          "cs": "labrum",
+          "en": "labrum",
+          "pool": "soft"
+        }
+      ]
+    },
+    {
+      "id": "01_03_tuberculum_minus",
+      "image": "/assets/quiz/shoulder/01_03_tuberculum_minus.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "tuberculum minus",
+        "en": "tuberculum minus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "01_04_tuberculum_majus",
+      "image": "/assets/quiz/shoulder/01_04_tuberculum_majus.png",
+      "revealImage": "/assets/shoulder/001.jpg",
+      "answer": {
+        "cs": "tuberculum majus",
+        "en": "tuberculum majus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum majus",
+          "en": "tuberculum majus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "01_05_humerus",
+      "image": "/assets/quiz/shoulder/01_05_humerus.png",
       "revealImage": "/assets/shoulder/001.jpg",
       "answer": {
         "cs": "humerus",
-        "en": "humerus"
+        "en": "humerus",
+        "pool": "bone"
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid"
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
         },
         {
-          "cs": "humerus",
-          "en": "humerus"
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
         },
         {
           "cs": "akromion",
-          "en": "acromion"
-        },
-        {
-          "cs": "burza",
-          "en": "bursa"
+          "en": "acromion",
+          "pool": "bone"
         }
       ]
     },
     {
-      "id": "q03_subscapularis",
-      "image": "/assets/quiz/shoulder/q03_subscapularis.png",
+      "id": "01_06_subscapularis",
+      "image": "/assets/quiz/shoulder/01_06_subscapularis.png",
       "revealImage": "/assets/shoulder/001.jpg",
       "answer": {
         "cs": "m. subscapularis",
-        "en": "subscapularis"
+        "en": "subscapularis",
+        "pool": "muscle"
       },
       "options": [
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis"
-        },
-        {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus"
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
         },
         {
           "cs": "deltový sval",
-          "en": "deltoid"
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q04_lhbb",
-      "image": "/assets/quiz/shoulder/q04_lhbb.png",
+      "id": "02_01_deltoid",
+      "image": "/assets/quiz/shoulder/02_01_deltoid.png",
+      "revealImage": "/assets/shoulder/002.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "02_02_lhbb",
+      "image": "/assets/quiz/shoulder/02_02_lhbb.png",
       "revealImage": "/assets/shoulder/002.jpg",
       "answer": {
         "cs": "dlouhá hlava bicepsu",
-        "en": "long head of biceps"
+        "en": "long head of biceps",
+        "pool": "muscle"
       },
       "options": [
         {
-          "cs": "krátká hlava bicepsu",
-          "en": "short head of biceps"
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
           "cs": "m. subscapularis",
-          "en": "subscapularis"
-        },
-        {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps"
-        },
-        {
-          "cs": "šlacha",
-          "en": "tendon"
+          "en": "subscapularis",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q05_shbb",
-      "image": "/assets/quiz/shoulder/q05_shbb.png",
+      "id": "02_03_shbb",
+      "image": "/assets/quiz/shoulder/02_03_shbb.png",
       "revealImage": "/assets/shoulder/002.jpg",
       "answer": {
         "cs": "krátká hlava bicepsu",
-        "en": "short head of biceps"
+        "en": "short head of biceps",
+        "pool": "muscle"
       },
       "options": [
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps"
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
         },
         {
-          "cs": "deltový sval",
-          "en": "deltoid"
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
         },
         {
           "cs": "krátká hlava bicepsu",
-          "en": "short head of biceps"
-        },
-        {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus"
-        }
-      ]
-    },
-    {
-      "id": "q06_tendon",
-      "image": "/assets/quiz/shoulder/q06_tendon.png",
-      "revealImage": "/assets/shoulder/004.jpg",
-      "answer": {
-        "cs": "šlacha",
-        "en": "tendon"
-      },
-      "options": [
-        {
-          "cs": "šlacha",
-          "en": "tendon"
-        },
-        {
-          "cs": "sval",
-          "en": "muscle"
-        },
-        {
-          "cs": "burza",
-          "en": "bursa"
-        },
-        {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
-        }
-      ]
-    },
-    {
-      "id": "q07_muscle",
-      "image": "/assets/quiz/shoulder/q07_muscle.png",
-      "revealImage": "/assets/shoulder/004.jpg",
-      "answer": {
-        "cs": "sval",
-        "en": "muscle"
-      },
-      "options": [
-        {
-          "cs": "šlacha",
-          "en": "tendon"
-        },
-        {
-          "cs": "sval",
-          "en": "muscle"
+          "en": "short head of biceps",
+          "pool": "muscle"
         },
         {
           "cs": "deltový sval",
-          "en": "deltoid"
-        },
-        {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus"
+          "en": "deltoid",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q08_bursa",
-      "image": "/assets/quiz/shoulder/q08_bursa.png",
-      "revealImage": "/assets/shoulder/005.jpg",
+      "id": "02_04_humerus",
+      "image": "/assets/quiz/shoulder/02_04_humerus.png",
+      "revealImage": "/assets/shoulder/002.jpg",
       "answer": {
-        "cs": "burza",
-        "en": "bursa"
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
       },
       "options": [
         {
-          "cs": "akromion",
-          "en": "acromion"
-        },
-        {
-          "cs": "burza",
-          "en": "bursa"
-        },
-        {
           "cs": "glenoid",
-          "en": "glenoid"
+          "en": "glenoid",
+          "pool": "bone"
         },
         {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
         }
       ]
     },
     {
-      "id": "q09_rotator_cuff",
-      "image": "/assets/quiz/shoulder/q09_rotator_cuff.png",
-      "revealImage": "/assets/shoulder/005.jpg",
+      "id": "03_01_lhbb",
+      "image": "/assets/quiz/shoulder/03_01_lhbb.png",
+      "revealImage": "/assets/shoulder/003.jpg",
       "answer": {
-        "cs": "rotátorová manžeta",
-        "en": "rotator cuff"
+        "cs": "dlouhá hlava bicepsu",
+        "en": "long head of biceps",
+        "pool": "muscle"
       },
       "options": [
         {
           "cs": "m. subscapularis",
-          "en": "subscapularis"
+          "en": "subscapularis",
+          "pool": "muscle"
         },
         {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
-          "cs": "burza",
-          "en": "bursa"
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
         },
         {
           "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps"
+          "en": "long head of biceps",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q10_acromion",
-      "image": "/assets/quiz/shoulder/q10_acromion.png",
-      "revealImage": "/assets/shoulder/006.jpg",
+      "id": "03_02_deltoid",
+      "image": "/assets/quiz/shoulder/03_02_deltoid.png",
+      "revealImage": "/assets/shoulder/003.jpg",
       "answer": {
-        "cs": "akromion",
-        "en": "acromion"
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid"
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
         },
         {
-          "cs": "humerus",
-          "en": "humerus"
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
         },
         {
-          "cs": "akromion",
-          "en": "acromion"
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
-          "cs": "burza",
-          "en": "bursa"
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q11_infraspinatus",
-      "image": "/assets/quiz/shoulder/q11_infraspinatus.png",
-      "revealImage": "/assets/shoulder/007.jpg",
+      "id": "03_03_humerus",
+      "image": "/assets/quiz/shoulder/03_03_humerus.png",
+      "revealImage": "/assets/shoulder/003.jpg",
       "answer": {
-        "cs": "m. infraspinatus",
-        "en": "infraspinatus"
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "04_01_deltoid",
+      "image": "/assets/quiz/shoulder/04_01_deltoid.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "04_02_tendon",
+      "image": "/assets/quiz/shoulder/04_02_tendon.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "šlacha",
+        "en": "tendon",
+        "pool": "soft"
+      },
+      "options": [
+        {
+          "cs": "labrum",
+          "en": "labrum",
+          "pool": "soft"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha",
+          "en": "tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        }
+      ]
+    },
+    {
+      "id": "04_03_lhbb",
+      "image": "/assets/quiz/shoulder/04_03_lhbb.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "dlouhá hlava bicepsu",
+        "en": "long head of biceps",
+        "pool": "muscle"
       },
       "options": [
         {
           "cs": "m. subscapularis",
-          "en": "subscapularis"
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
         },
         {
           "cs": "deltový sval",
-          "en": "deltoid"
-        },
-        {
-          "cs": "rotátorová manžeta",
-          "en": "rotator cuff"
+          "en": "deltoid",
+          "pool": "muscle"
         },
         {
           "cs": "m. infraspinatus",
-          "en": "infraspinatus"
+          "en": "infraspinatus",
+          "pool": "muscle"
         }
       ]
     },
     {
-      "id": "q12_glenoid",
-      "image": "/assets/quiz/shoulder/q12_glenoid.png",
-      "revealImage": "/assets/shoulder/007.jpg",
+      "id": "04_04_muscle",
+      "image": "/assets/quiz/shoulder/04_04_muscle.png",
+      "revealImage": "/assets/shoulder/004.jpg",
       "answer": {
-        "cs": "glenoid",
-        "en": "glenoid"
+        "cs": "sval",
+        "en": "muscle",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "sval",
+          "en": "muscle",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "04_05_humerus",
+      "image": "/assets/quiz/shoulder/04_05_humerus.png",
+      "revealImage": "/assets/shoulder/004.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "05_01_deltoid",
+      "image": "/assets/quiz/shoulder/05_01_deltoid.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "05_02_bursa",
+      "image": "/assets/quiz/shoulder/05_02_bursa.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "burza",
+        "en": "bursa",
+        "pool": "soft"
+      },
+      "options": [
+        {
+          "cs": "burza",
+          "en": "bursa",
+          "pool": "soft"
+        },
+        {
+          "cs": "labrum",
+          "en": "labrum",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha",
+          "en": "tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        }
+      ]
+    },
+    {
+      "id": "05_03_rotator_cuff",
+      "image": "/assets/quiz/shoulder/05_03_rotator_cuff.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "rotátorová manžeta",
+        "en": "rotator cuff",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "05_04_humerus",
+      "image": "/assets/quiz/shoulder/05_04_humerus.png",
+      "revealImage": "/assets/shoulder/005.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
       },
       "options": [
         {
           "cs": "humerus",
-          "en": "humerus"
+          "en": "humerus",
+          "pool": "bone"
         },
         {
           "cs": "glenoid",
-          "en": "glenoid"
+          "en": "glenoid",
+          "pool": "bone"
         },
         {
           "cs": "akromion",
-          "en": "acromion"
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "06_01_deltoid",
+      "image": "/assets/quiz/shoulder/06_01_deltoid.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "06_02_bursa",
+      "image": "/assets/quiz/shoulder/06_02_bursa.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "burza",
+        "en": "bursa",
+        "pool": "soft"
+      },
+      "options": [
+        {
+          "cs": "šlacha",
+          "en": "tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "labrum",
+          "en": "labrum",
+          "pool": "soft"
         },
         {
           "cs": "burza",
-          "en": "bursa"
+          "en": "bursa",
+          "pool": "soft"
+        }
+      ]
+    },
+    {
+      "id": "06_03_rotator_cuff",
+      "image": "/assets/quiz/shoulder/06_03_rotator_cuff.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "rotátorová manžeta",
+        "en": "rotator cuff",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "rotátorová manžeta",
+          "en": "rotator cuff",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "06_04_acromion",
+      "image": "/assets/quiz/shoulder/06_04_acromion.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "akromion",
+        "en": "acromion",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "06_05_humerus",
+      "image": "/assets/quiz/shoulder/06_05_humerus.png",
+      "revealImage": "/assets/shoulder/006.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "07_01_deltoid",
+      "image": "/assets/quiz/shoulder/07_01_deltoid.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "07_02_infraspinatus",
+      "image": "/assets/quiz/shoulder/07_02_infraspinatus.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "m. infraspinatus",
+        "en": "infraspinatus",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "07_03_labrum",
+      "image": "/assets/quiz/shoulder/07_03_labrum.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "labrum",
+        "en": "labrum",
+        "pool": "soft"
+      },
+      "options": [
+        {
+          "cs": "labrum",
+          "en": "labrum",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "šlacha",
+          "en": "tendon",
+          "pool": "soft"
+        },
+        {
+          "cs": "burza",
+          "en": "bursa",
+          "pool": "soft"
+        }
+      ]
+    },
+    {
+      "id": "07_04_glenoid",
+      "image": "/assets/quiz/shoulder/07_04_glenoid.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "glenoid",
+        "en": "glenoid",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "07_05_humerus",
+      "image": "/assets/quiz/shoulder/07_05_humerus.png",
+      "revealImage": "/assets/shoulder/007.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        }
+      ]
+    },
+    {
+      "id": "08_01_deltoid",
+      "image": "/assets/quiz/shoulder/08_01_deltoid.png",
+      "revealImage": "/assets/shoulder/008.jpg",
+      "answer": {
+        "cs": "deltový sval",
+        "en": "deltoid",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "08_02_infraspinatus",
+      "image": "/assets/quiz/shoulder/08_02_infraspinatus.png",
+      "revealImage": "/assets/shoulder/008.jpg",
+      "answer": {
+        "cs": "m. infraspinatus",
+        "en": "infraspinatus",
+        "pool": "muscle"
+      },
+      "options": [
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        }
+      ]
+    },
+    {
+      "id": "08_03_humerus",
+      "image": "/assets/quiz/shoulder/08_03_humerus.png",
+      "revealImage": "/assets/shoulder/008.jpg",
+      "answer": {
+        "cs": "humerus",
+        "en": "humerus",
+        "pool": "bone"
+      },
+      "options": [
+        {
+          "cs": "akromion",
+          "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
         }
       ]
     }

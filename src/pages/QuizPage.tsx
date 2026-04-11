@@ -21,7 +21,15 @@ interface QuizManifest {
   questions: QuizQuestion[];
 }
 
-function shuffleOptions<T>(items: T[]) {
+interface AnswerState {
+  questionId: string;
+  selected: string;
+  correct: string;
+  revealImage: string;
+  promptImage: string;
+}
+
+function shuffle<T>(items: T[]) {
   const array = [...items];
 
   for (let index = array.length - 1; index > 0; index -= 1) {
@@ -35,9 +43,11 @@ function shuffleOptions<T>(items: T[]) {
 export default function QuizPage() {
   const { lang } = useLanguage();
   const [manifest, setManifest] = useState<QuizManifest | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [shuffledOptions, setShuffledOptions] = useState<LocalizedText[]>([]);
+  const [answers, setAnswers] = useState<AnswerState[]>([]);
+  const [finished, setFinished] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -58,133 +68,191 @@ export default function QuizPage() {
     };
   }, []);
 
-  const question = manifest?.questions[activeIndex];
-  const correctAnswer = question?.answer[lang] ?? "";
-  const answered = selectedOption !== null;
-  const isCorrect = answered && selectedOption === correctAnswer;
+  const startNewTest = () => {
+    if (!manifest) {
+      return;
+    }
+
+    setQuestions(shuffle(manifest.questions).slice(0, 10));
+    setCurrentIndex(0);
+    setSelectedOption(null);
+    setAnswers([]);
+    setFinished(false);
+  };
 
   useEffect(() => {
-    if (!question) {
+    if (manifest && questions.length === 0) {
+      startNewTest();
+    }
+  }, [manifest]);
+
+  const question = questions[currentIndex];
+  const correctAnswer = question?.answer[lang] ?? "";
+  const answered = selectedOption !== null;
+  const isLastQuestion = currentIndex === questions.length - 1;
+  const correctCount = useMemo(() => answers.filter((item) => item.selected === item.correct).length, [answers]);
+
+  const submitAnswer = (option: string) => {
+    if (!question || answered) {
       return;
     }
 
-    setShuffledOptions(shuffleOptions(question.options));
-    setSelectedOption(null);
-  }, [question?.id]);
-
-  const progressLabel = useMemo(() => {
-    if (!manifest) {
-      return "";
-    }
-
-    return lang === "cs"
-      ? `Otázka ${activeIndex + 1} z ${manifest.questions.length}`
-      : `Question ${activeIndex + 1} of ${manifest.questions.length}`;
-  }, [activeIndex, lang, manifest]);
-
-  const nextQuestion = () => {
-    if (!manifest?.questions.length) {
-      return;
-    }
-
-    let nextIndex = activeIndex;
-
-    if (manifest.questions.length > 1) {
-      while (nextIndex === activeIndex) {
-        nextIndex = Math.floor(Math.random() * manifest.questions.length);
+    setSelectedOption(option);
+    setAnswers((prev) => [
+      ...prev,
+      {
+        questionId: question.id,
+        selected: option,
+        correct: correctAnswer,
+        revealImage: question.revealImage,
+        promptImage: question.image
       }
+    ]);
+  };
+
+  const nextStep = () => {
+    if (!answered) {
+      return;
     }
 
-    setActiveIndex(nextIndex);
+    if (isLastQuestion) {
+      setFinished(true);
+      return;
+    }
+
+    setCurrentIndex((prev) => prev + 1);
+    setSelectedOption(null);
   };
+
+  const currentAnswer = answers.find((item) => item.questionId === question?.id);
 
   return (
     <section className={styles.wrap}>
       <PageHeader title={lang === "cs" ? "Kvíz" : "Quiz"} color="#7b3ff2" />
 
-      <article className={styles.card}>
-        <div className={styles.head}>
-          <div>
-            <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
-            <h2 className={styles.heading}>
-              {lang === "cs" ? "Poznej označenou strukturu" : "Identify the highlighted structure"}
-            </h2>
+      {!finished ? (
+        <article className={styles.card}>
+          <div className={styles.head}>
+            <div>
+              <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
+              <h2 className={styles.heading}>
+                {lang === "cs" ? "Poznej označenou strukturu" : "Identify the marked structure"}
+              </h2>
+            </div>
+            <strong className={styles.progress}>
+              {questions.length ? (lang === "cs" ? `Otázka ${currentIndex + 1}/10` : `Question ${currentIndex + 1}/10`) : ""}
+            </strong>
           </div>
-          {manifest ? <strong className={styles.progress}>{progressLabel}</strong> : null}
-        </div>
 
-        <p className={styles.copy}>
-          {lang === "cs"
-            ? "Na obrázku je zvýrazněna jedna struktura. Vyber správnou možnost. Po odpovědi se zobrazí celý overlay s popisky."
-            : "One structure is highlighted in the image. Choose the correct option. After answering, the full labeled overlay is shown."}
-        </p>
+          <p className={styles.copy}>
+            {lang === "cs"
+              ? "Na každém obrázku šipka ukazuje na jednu strukturu. Po zodpovězení se zobrazí původní overlay."
+              : "In each image the arrow points to a single structure. After answering, the original labeled overlay is shown."}
+          </p>
 
-        {question ? (
-          <>
-            <div className={styles.imageFrame}>
-              <img
-                className={styles.image}
-                src={answered ? question.revealImage : question.image}
-                alt={answered ? (lang === "cs" ? "Overlay s popisky" : "Labeled overlay") : correctAnswer}
-              />
-            </div>
-
-            <div className={styles.options}>
-              {shuffledOptions.map((option, index) => {
-                const optionText = option[lang];
-                const isSelected = selectedOption === optionText;
-                const isAnswer = answered && optionText === correctAnswer;
-                const stateClass = !answered
-                  ? ""
-                  : isAnswer
-                    ? styles.optionCorrect
-                    : isSelected
-                      ? styles.optionWrong
-                      : styles.optionIdle;
-
-                return (
-                  <button
-                    key={`${question.id}-${optionText}`}
-                    type="button"
-                    className={`${styles.option} ${stateClass}`.trim()}
-                    onClick={() => {
-                      if (!answered) {
-                        setSelectedOption(optionText);
-                      }
-                    }}
-                    disabled={answered}
-                  >
-                    <span className={styles.optionKey}>{String.fromCharCode(65 + index)}</span>
-                    <span>{optionText}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className={styles.footer}>
-              <div className={styles.feedback}>
-                {answered ? (
-                  <strong className={isCorrect ? styles.feedbackCorrect : styles.feedbackWrong}>
-                    {isCorrect
-                      ? lang === "cs"
-                        ? "Správně"
-                        : "Correct"
-                      : lang === "cs"
-                        ? `Nesprávně. Správná odpověď je ${correctAnswer}.`
-                        : `Incorrect. The correct answer is ${correctAnswer}.`}
-                  </strong>
-                ) : (
-                  <span>{lang === "cs" ? "Vyber jednu z možností A-D." : "Choose one of the A-D options."}</span>
-                )}
+          {question ? (
+            <>
+              <div className={styles.imageFrame}>
+                <img
+                  className={styles.image}
+                  src={answered ? question.revealImage : question.image}
+                  alt={answered ? (lang === "cs" ? "Overlay s popisky" : "Labeled overlay") : correctAnswer}
+                />
               </div>
 
-              <button type="button" className={styles.nextButton} onClick={nextQuestion} disabled={!manifest}>
-                {lang === "cs" ? "Další otázka" : "Next question"}
-              </button>
-            </div>
-          </>
-        ) : null}
-      </article>
+              <div className={styles.options}>
+                {question.options.map((option, index) => {
+                  const optionText = option[lang];
+                  const isSelected = selectedOption === optionText;
+                  const isCorrect = optionText === correctAnswer;
+                  const stateClass = !answered
+                    ? ""
+                    : isCorrect
+                      ? styles.optionCorrect
+                      : isSelected
+                        ? styles.optionWrong
+                        : styles.optionIdle;
+
+                  return (
+                    <button
+                      key={`${question.id}-${optionText}`}
+                      type="button"
+                      className={`${styles.option} ${stateClass}`.trim()}
+                      onClick={() => submitAnswer(optionText)}
+                      disabled={answered}
+                    >
+                      <span className={styles.optionKey}>{String.fromCharCode(65 + index)}</span>
+                      <span>{optionText}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className={styles.footer}>
+                <div className={styles.feedback}>
+                  {answered ? (
+                    <strong
+                      className={
+                        currentAnswer?.selected === currentAnswer?.correct ? styles.feedbackCorrect : styles.feedbackWrong
+                      }
+                    >
+                      {currentAnswer?.selected === currentAnswer?.correct
+                        ? lang === "cs"
+                          ? "Správně"
+                          : "Correct"
+                        : lang === "cs"
+                          ? `Nesprávně. Správná odpověď: ${correctAnswer}.`
+                          : `Incorrect. Correct answer: ${correctAnswer}.`}
+                    </strong>
+                  ) : (
+                    <span>{lang === "cs" ? "Vyber jednu možnost A-D." : "Choose one option A-D."}</span>
+                  )}
+                </div>
+
+                <button type="button" className={styles.nextButton} onClick={nextStep} disabled={!answered}>
+                  {isLastQuestion ? (lang === "cs" ? "Vyhodnotit test" : "Finish test") : lang === "cs" ? "Další otázka" : "Next question"}
+                </button>
+              </div>
+            </>
+          ) : null}
+        </article>
+      ) : (
+        <article className={styles.card}>
+          <div className={styles.summaryHead}>
+            <p className={styles.eyebrow}>{manifest?.title[lang]}</p>
+            <h2 className={styles.heading}>{lang === "cs" ? "Vyhodnocení testu" : "Test results"}</h2>
+            <p className={styles.score}>
+              {lang === "cs"
+                ? `Skóre ${correctCount} / ${answers.length}`
+                : `Score ${correctCount} / ${answers.length}`}
+            </p>
+          </div>
+
+          <div className={styles.summaryList}>
+            {answers.map((item, index) => (
+              <article key={item.questionId} className={styles.reviewCard}>
+                <img className={styles.reviewImage} src={item.revealImage} alt={item.correct} />
+                <div className={styles.reviewBody}>
+                  <strong>{lang === "cs" ? `Otázka ${index + 1}` : `Question ${index + 1}`}</strong>
+                  <span className={item.selected === item.correct ? styles.feedbackCorrect : styles.feedbackWrong}>
+                    {item.selected === item.correct
+                      ? lang === "cs"
+                        ? `Správně: ${item.correct}`
+                        : `Correct: ${item.correct}`
+                      : lang === "cs"
+                        ? `Tvoje odpověď: ${item.selected} | Správně: ${item.correct}`
+                        : `Your answer: ${item.selected} | Correct: ${item.correct}`}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <button type="button" className={styles.nextButton} onClick={startNewTest}>
+            {lang === "cs" ? "Spustit nový test" : "Start new test"}
+          </button>
+        </article>
+      )}
     </section>
   );
 }

@@ -126,6 +126,47 @@
   gap: 1rem;
 }
 
+.summaryHead {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.score {
+  margin: 0;
+  color: #321b56;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.summaryList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.reviewCard {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background: rgba(123, 63, 242, 0.04);
+  border: 1px solid rgba(123, 63, 242, 0.12);
+}
+
+.reviewImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.8rem;
+  background: #000;
+}
+
+.reviewBody {
+  display: grid;
+  align-content: center;
+  gap: 0.35rem;
+  color: #3f3550;
+}
+
 .feedback {
   min-height: 1.5rem;
   color: #514564;
@@ -171,6 +212,10 @@
   }
 
   .options {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewCard {
     grid-template-columns: 1fr;
   }
 }
