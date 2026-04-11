@@ -1,4 +1,4 @@
-import { readdir, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { Jimp, intToRGBA, rgbaToInt } from "jimp";
 
@@ -79,9 +79,11 @@ const questionSpecs = [
 
 const width = 1280;
 const height = 720;
-const arrowColor = { r: 38, g: 231, b: 255 };
-const arrowShadow = { r: 0, g: 0, b: 0 };
-const targetRingColor = { r: 255, g: 243, b: 86 };
+const arrowColor = { r: 84, g: 226, b: 255 };
+const arrowOutline = { r: 255, g: 255, b: 255 };
+const arrowShadow = { r: 16, g: 20, b: 28 };
+const targetRingColor = { r: 255, g: 235, b: 86 };
+const badgeColor = { r: 123, g: 63, b: 242 };
 
 async function ensureEmptyDir(dir) {
   await rm(dir, { recursive: true, force: true });
@@ -141,6 +143,12 @@ function drawLine(image, start, end, color, thickness, alpha = 1) {
   }
 }
 
+function drawPolyline(image, points, color, thickness, alpha = 1) {
+  for (let index = 0; index < points.length - 1; index += 1) {
+    drawLine(image, points[index], points[index + 1], color, thickness, alpha);
+  }
+}
+
 function drawArrowHead(image, from, to, color) {
   const [x1, y1] = from;
   const [x2, y2] = to;
@@ -149,10 +157,27 @@ function drawArrowHead(image, from, to, color) {
   const left = [x2 - size * Math.cos(angle - Math.PI / 6), y2 - size * Math.sin(angle - Math.PI / 6)];
   const right = [x2 - size * Math.cos(angle + Math.PI / 6), y2 - size * Math.sin(angle + Math.PI / 6)];
 
-  drawLine(image, to, left, arrowShadow, 10, 0.55);
-  drawLine(image, to, right, arrowShadow, 10, 0.55);
-  drawLine(image, to, left, color, 6, 1);
-  drawLine(image, to, right, color, 6, 1);
+  drawLine(image, to, left, arrowShadow, 12, 0.35);
+  drawLine(image, to, right, arrowShadow, 12, 0.35);
+  drawLine(image, to, left, arrowOutline, 8, 0.95);
+  drawLine(image, to, right, arrowOutline, 8, 0.95);
+  drawLine(image, to, left, color, 4, 1);
+  drawLine(image, to, right, color, 4, 1);
+}
+
+function createBendPoint(start, end) {
+  const horizontal = Math.abs(end[0] - start[0]) > Math.abs(end[1] - start[1]);
+  if (horizontal) {
+    return [Math.round(start[0] + (end[0] - start[0]) * 0.58), start[1]];
+  }
+
+  return [start[0], Math.round(start[1] + (end[1] - start[1]) * 0.58)];
+}
+
+function drawBadge(image, x, y) {
+  drawCircle(image, x, y, 18, arrowShadow, 0.28);
+  drawCircle(image, x, y, 14, arrowOutline, 0.92);
+  drawCircle(image, x, y, 9, badgeColor, 1);
 }
 
 async function renderQuestionImage(spec) {
@@ -161,21 +186,23 @@ async function renderQuestionImage(spec) {
 
   const start = spec.base;
   const end = spec.tip;
+  const bend = createBendPoint(start, end);
+  const shaftEnd = [
+    Math.round(end[0] - (end[0] - bend[0]) * 0.18),
+    Math.round(end[1] - (end[1] - bend[1]) * 0.18)
+  ];
+  const pathPoints = [start, bend, shaftEnd];
 
-  drawLine(image, start, end, arrowShadow, 12, 0.55);
-  drawLine(image, start, end, arrowColor, 7, 1);
-  drawArrowHead(image, start, end, arrowColor);
-  drawCircle(image, end[0], end[1], 12, arrowShadow, 0.55);
-  drawCircle(image, end[0], end[1], 8, targetRingColor, 1);
-  drawCircle(image, start[0], start[1], 11, arrowShadow, 0.55);
-  drawCircle(image, start[0], start[1], 7, arrowColor, 1);
+  drawPolyline(image, pathPoints, arrowShadow, 16, 0.22);
+  drawPolyline(image, pathPoints, arrowOutline, 10, 0.95);
+  drawPolyline(image, pathPoints, arrowColor, 5, 1);
+  drawArrowHead(image, bend, end, arrowColor);
+  drawCircle(image, end[0], end[1], 15, arrowShadow, 0.2);
+  drawCircle(image, end[0], end[1], 10, arrowOutline, 0.95);
+  drawCircle(image, end[0], end[1], 6, targetRingColor, 1);
+  drawBadge(image, start[0], start[1]);
 
   return image;
-}
-
-async function removeExistingFiles(dir) {
-  const files = await readdir(dir);
-  await Promise.all(files.map((file) => rm(path.join(dir, file), { force: true })));
 }
 
 function buildManifest() {

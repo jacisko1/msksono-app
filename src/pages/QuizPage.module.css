@@ -14,6 +14,11 @@
   box-shadow: 0 22px 44px rgba(72, 33, 141, 0.12);
 }
 
+.startCard {
+  justify-items: start;
+  gap: 1.15rem;
+}
+
 .head {
   display: flex;
   align-items: flex-start;
@@ -191,11 +196,31 @@
   box-shadow: 0 12px 24px rgba(123, 63, 242, 0.22);
 }
 
+.startButton {
+  padding: 0.95rem 1.35rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7b3ff2, #5f28ca);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(123, 63, 242, 0.24);
+}
+
 .nextButton:hover:not(:disabled) {
   background: #6d35db;
 }
 
+.startButton:hover:not(:disabled) {
+  filter: brightness(1.03);
+}
+
 .nextButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.startButton:disabled {
   opacity: 0.5;
   cursor: default;
 }
