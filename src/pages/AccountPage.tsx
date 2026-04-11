@@ -130,7 +130,9 @@ export default function AccountPage() {
 
   const sectionProgress = useMemo<SectionProgress[]>(
     () =>
-      navigationTree.map((section) => {
+      navigationTree
+        .filter((section) => Boolean(section.children?.length))
+        .map((section) => {
         const leaves = getLeafNodes(section.children ?? []);
         const total = leaves.length;
         const done = leaves.filter((item) => Boolean(doneByPath[item.path])).length;
@@ -144,7 +146,7 @@ export default function AccountPage() {
           total,
           percent
         };
-      }),
+        }),
     [doneByPath, lang]
   );
 

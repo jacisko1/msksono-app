@@ -3401,6 +3401,10 @@ export default function ContentPage({ path }: ContentPageProps) {
     return <ContentPlaceholder title={t("pageNotFound")} />;
   }
 
+  if (path === "/quiz") {
+    return <ContentPlaceholder title={localize(node.title, lang)} />;
+  }
+
   const { previous, next, parent } = getSiblingNavigation(path);
   const parentFromPath = useMemo(() => {
     const segments = path.split("/").filter(Boolean);

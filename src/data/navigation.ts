@@ -1,6 +1,6 @@
 import type { Locale } from "./language";
 
-export type SectionKey = "basics" | "klouby" | "periferni-nervy" | "svaly";
+export type SectionKey = "basics" | "klouby" | "periferni-nervy" | "svaly" | "quiz";
 
 export interface LocalizedLabel {
   cs: string;
@@ -237,6 +237,12 @@ export const navigationTree: NavItem[] = [
         ]
       }
     ])
+  },
+  {
+    title: { cs: "Kvíz", en: "Quiz" },
+    path: "/quiz",
+    section: "quiz",
+    color: "#7b3ff2"
   }
 ];
 
