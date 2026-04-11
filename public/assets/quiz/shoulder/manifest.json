@@ -15,13 +15,8 @@
       },
       "options": [
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         },
         {
@@ -30,8 +25,13 @@
           "pool": "muscle"
         },
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -47,6 +47,11 @@
       },
       "options": [
         {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
           "cs": "labrum",
           "en": "labrum",
           "pool": "soft"
@@ -59,11 +64,6 @@
         {
           "cs": "šlacha",
           "en": "tendon",
-          "pool": "soft"
-        },
-        {
-          "cs": "šlacha dlouhé hlavy bicepsu",
-          "en": "long head biceps tendon",
           "pool": "soft"
         }
       ]
@@ -84,8 +84,8 @@
           "pool": "bone"
         },
         {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         },
         {
@@ -94,8 +94,8 @@
           "pool": "bone"
         },
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         }
       ]
@@ -111,13 +111,13 @@
       },
       "options": [
         {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "tuberculum majus",
+          "en": "tuberculum majus",
           "pool": "bone"
         },
         {
-          "cs": "tuberculum majus",
-          "en": "tuberculum majus",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         },
         {
@@ -126,8 +126,8 @@
           "pool": "bone"
         },
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         }
       ]
@@ -143,11 +143,6 @@
       },
       "options": [
         {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
-          "pool": "bone"
-        },
-        {
           "cs": "glenoid",
           "en": "glenoid",
           "pool": "bone"
@@ -160,6 +155,11 @@
         {
           "cs": "akromion",
           "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
           "pool": "bone"
         }
       ]
@@ -175,8 +175,13 @@
       },
       "options": [
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         },
         {
@@ -185,13 +190,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
-          "pool": "muscle"
-        },
-        {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -207,8 +207,8 @@
       },
       "options": [
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
           "pool": "muscle"
         },
         {
@@ -217,13 +217,13 @@
           "pool": "muscle"
         },
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
           "pool": "muscle"
         },
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -244,6 +244,11 @@
           "pool": "muscle"
         },
         {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
           "cs": "dlouhá hlava bicepsu",
           "en": "long head of biceps",
           "pool": "muscle"
@@ -251,11 +256,6 @@
         {
           "cs": "deltový sval",
           "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -276,13 +276,13 @@
           "pool": "muscle"
         },
         {
-          "cs": "krátká hlava bicepsu",
-          "en": "short head of biceps",
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         },
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
+          "cs": "krátká hlava bicepsu",
+          "en": "short head of biceps",
           "pool": "muscle"
         },
         {
@@ -303,6 +303,11 @@
       },
       "options": [
         {
+          "cs": "humerus",
+          "en": "humerus",
+          "pool": "bone"
+        },
+        {
           "cs": "tuberculum minus",
           "en": "tuberculum minus",
           "pool": "bone"
@@ -310,11 +315,6 @@
         {
           "cs": "glenoid",
           "en": "glenoid",
-          "pool": "bone"
-        },
-        {
-          "cs": "humerus",
-          "en": "humerus",
           "pool": "bone"
         },
         {
@@ -335,16 +335,6 @@
       },
       "options": [
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
-          "pool": "muscle"
-        },
-        {
-          "cs": "deltový sval",
-          "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
           "cs": "m. subscapularis",
           "en": "subscapularis",
           "pool": "muscle"
@@ -352,6 +342,16 @@
         {
           "cs": "m. infraspinatus",
           "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -372,8 +372,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
           "pool": "muscle"
         },
         {
@@ -382,8 +382,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -399,8 +399,8 @@
       },
       "options": [
         {
-          "cs": "humerus",
-          "en": "humerus",
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
           "pool": "bone"
         },
         {
@@ -409,8 +409,8 @@
           "pool": "bone"
         },
         {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
+          "cs": "humerus",
+          "en": "humerus",
           "pool": "bone"
         },
         {
@@ -431,13 +431,8 @@
       },
       "options": [
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
-          "pool": "muscle"
-        },
-        {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
           "pool": "muscle"
         },
         {
@@ -446,8 +441,13 @@
           "pool": "muscle"
         },
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -463,6 +463,11 @@
       },
       "options": [
         {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
           "cs": "labrum",
           "en": "labrum",
           "pool": "soft"
@@ -470,11 +475,6 @@
         {
           "cs": "burza",
           "en": "bursa",
-          "pool": "soft"
-        },
-        {
-          "cs": "šlacha dlouhé hlavy bicepsu",
-          "en": "long head biceps tendon",
           "pool": "soft"
         },
         {
@@ -527,23 +527,23 @@
       },
       "options": [
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
-          "pool": "muscle"
-        },
-        {
           "cs": "sval",
           "en": "muscle",
           "pool": "muscle"
         },
         {
+          "cs": "deltový sval",
+          "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
           "cs": "m. infraspinatus",
           "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -569,13 +569,13 @@
           "pool": "bone"
         },
         {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
           "pool": "bone"
         },
         {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         }
       ]
@@ -591,13 +591,13 @@
       },
       "options": [
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
           "pool": "muscle"
         },
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
           "pool": "muscle"
         },
         {
@@ -606,8 +606,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -628,8 +628,8 @@
           "pool": "soft"
         },
         {
-          "cs": "šlacha dlouhé hlavy bicepsu",
-          "en": "long head biceps tendon",
+          "cs": "burza",
+          "en": "bursa",
           "pool": "soft"
         },
         {
@@ -638,8 +638,8 @@
           "pool": "soft"
         },
         {
-          "cs": "burza",
-          "en": "bursa",
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
           "pool": "soft"
         }
       ]
@@ -655,6 +655,11 @@
       },
       "options": [
         {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
           "cs": "rotátorová manžeta",
           "en": "rotator cuff",
           "pool": "muscle"
@@ -667,11 +672,6 @@
         {
           "cs": "m. subscapularis",
           "en": "subscapularis",
-          "pool": "muscle"
-        },
-        {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
           "pool": "muscle"
         }
       ]
@@ -687,8 +687,8 @@
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         },
         {
@@ -697,8 +697,8 @@
           "pool": "bone"
         },
         {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         },
         {
@@ -724,6 +724,11 @@
           "pool": "muscle"
         },
         {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
           "cs": "m. infraspinatus",
           "en": "infraspinatus",
           "pool": "muscle"
@@ -731,11 +736,6 @@
         {
           "cs": "deltový sval",
           "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
           "pool": "muscle"
         }
       ]
@@ -756,8 +756,8 @@
           "pool": "soft"
         },
         {
-          "cs": "labrum",
-          "en": "labrum",
+          "cs": "burza",
+          "en": "bursa",
           "pool": "soft"
         },
         {
@@ -766,8 +766,8 @@
           "pool": "soft"
         },
         {
-          "cs": "burza",
-          "en": "bursa",
+          "cs": "labrum",
+          "en": "labrum",
           "pool": "soft"
         }
       ]
@@ -783,16 +783,6 @@
       },
       "options": [
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
-          "pool": "muscle"
-        },
-        {
-          "cs": "deltový sval",
-          "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
           "cs": "rotátorová manžeta",
           "en": "rotator cuff",
           "pool": "muscle"
@@ -800,6 +790,16 @@
         {
           "cs": "m. subscapularis",
           "en": "subscapularis",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -815,16 +815,6 @@
       },
       "options": [
         {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
-          "pool": "bone"
-        },
-        {
-          "cs": "glenoid",
-          "en": "glenoid",
-          "pool": "bone"
-        },
-        {
           "cs": "humerus",
           "en": "humerus",
           "pool": "bone"
@@ -832,6 +822,16 @@
         {
           "cs": "akromion",
           "en": "acromion",
+          "pool": "bone"
+        },
+        {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         }
       ]
@@ -847,6 +847,11 @@
       },
       "options": [
         {
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
           "cs": "humerus",
           "en": "humerus",
           "pool": "bone"
@@ -854,11 +859,6 @@
         {
           "cs": "glenoid",
           "en": "glenoid",
-          "pool": "bone"
-        },
-        {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
           "pool": "bone"
         },
         {
@@ -879,16 +879,6 @@
       },
       "options": [
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
-          "pool": "muscle"
-        },
-        {
-          "cs": "deltový sval",
-          "en": "deltoid",
-          "pool": "muscle"
-        },
-        {
           "cs": "m. subscapularis",
           "en": "subscapularis",
           "pool": "muscle"
@@ -896,6 +886,16 @@
         {
           "cs": "m. infraspinatus",
           "en": "infraspinatus",
+          "pool": "muscle"
+        },
+        {
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
+          "pool": "muscle"
+        },
+        {
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         }
       ]
@@ -911,8 +911,8 @@
       },
       "options": [
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "deltový sval",
+          "en": "deltoid",
           "pool": "muscle"
         },
         {
@@ -921,13 +921,13 @@
           "pool": "muscle"
         },
         {
-          "cs": "m. infraspinatus",
-          "en": "infraspinatus",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
           "pool": "muscle"
         },
         {
-          "cs": "deltový sval",
-          "en": "deltoid",
+          "cs": "m. infraspinatus",
+          "en": "infraspinatus",
           "pool": "muscle"
         }
       ]
@@ -948,6 +948,11 @@
           "pool": "soft"
         },
         {
+          "cs": "šlacha dlouhé hlavy bicepsu",
+          "en": "long head biceps tendon",
+          "pool": "soft"
+        },
+        {
           "cs": "šlacha",
           "en": "tendon",
           "pool": "soft"
@@ -955,11 +960,6 @@
         {
           "cs": "burza",
           "en": "bursa",
-          "pool": "soft"
-        },
-        {
-          "cs": "šlacha dlouhé hlavy bicepsu",
-          "en": "long head biceps tendon",
           "pool": "soft"
         }
       ]
@@ -975,8 +975,13 @@
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "tuberculum minus",
+          "en": "tuberculum minus",
+          "pool": "bone"
+        },
+        {
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         },
         {
@@ -985,13 +990,8 @@
           "pool": "bone"
         },
         {
-          "cs": "tuberculum minus",
-          "en": "tuberculum minus",
-          "pool": "bone"
-        },
-        {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         }
       ]
@@ -1007,13 +1007,13 @@
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "akromion",
+          "en": "acromion",
           "pool": "bone"
         },
         {
-          "cs": "akromion",
-          "en": "acromion",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         },
         {
@@ -1039,11 +1039,6 @@
       },
       "options": [
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
-          "pool": "muscle"
-        },
-        {
           "cs": "m. infraspinatus",
           "en": "infraspinatus",
           "pool": "muscle"
@@ -1051,6 +1046,11 @@
         {
           "cs": "deltový sval",
           "en": "deltoid",
+          "pool": "muscle"
+        },
+        {
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         },
         {
@@ -1076,8 +1076,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "m. subscapularis",
-          "en": "subscapularis",
+          "cs": "dlouhá hlava bicepsu",
+          "en": "long head of biceps",
           "pool": "muscle"
         },
         {
@@ -1086,8 +1086,8 @@
           "pool": "muscle"
         },
         {
-          "cs": "dlouhá hlava bicepsu",
-          "en": "long head of biceps",
+          "cs": "m. subscapularis",
+          "en": "subscapularis",
           "pool": "muscle"
         }
       ]
@@ -1103,13 +1103,13 @@
       },
       "options": [
         {
-          "cs": "glenoid",
-          "en": "glenoid",
+          "cs": "humerus",
+          "en": "humerus",
           "pool": "bone"
         },
         {
-          "cs": "humerus",
-          "en": "humerus",
+          "cs": "glenoid",
+          "en": "glenoid",
           "pool": "bone"
         },
         {

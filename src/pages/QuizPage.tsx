@@ -121,40 +121,40 @@ export default function QuizPage() {
 
   return (
     <section className={styles.wrap}>
-      <PageHeader title={lang === "cs" ? "Kviz" : "Quiz"} color="#7b3ff2" />
+      <PageHeader title={lang === "cs" ? "Kvíz" : "Quiz"} color="#7b3ff2" />
 
       {!hasStarted ? (
         <article className={`${styles.card} ${styles.startCard}`}>
-          <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Nacitani..." : "Loading...")}</p>
+          <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
           <h2 className={styles.heading}>
-            {lang === "cs" ? "Poznavani struktur z UZ obrazu" : "Identify structures from ultrasound images"}
+            {lang === "cs" ? "Poznávání struktur z UZ obrazů" : "Identify structures from ultrasound images"}
           </h2>
           <p className={styles.copy}>
             {lang === "cs"
-              ? "Kviz obsahuje 10 nahodne vybranych otazek. V kazde otazce sipka ukazuje na jednu strukturu a po odpovedi se zobrazi puvodni overlay."
+              ? "Kvíz obsahuje 10 náhodně vybraných otázek. V každé otázce šipka ukazuje na jednu strukturu a po odpovědi se zobrazí původní overlay."
               : "The quiz contains 10 randomly selected questions. In each question the arrow points to one structure and the original overlay is shown after answering."}
           </p>
           <button type="button" className={styles.startButton} onClick={startNewTest} disabled={!manifest}>
-            {lang === "cs" ? "Zahajit kviz" : "Start quiz"}
+            {lang === "cs" ? "Zahájit kvíz" : "Start quiz"}
           </button>
         </article>
       ) : !finished ? (
         <article className={styles.card}>
           <div className={styles.head}>
             <div>
-              <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Nacitani..." : "Loading...")}</p>
+              <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
               <h2 className={styles.heading}>
-                {lang === "cs" ? "Poznej oznacenou strukturu" : "Identify the marked structure"}
+                {lang === "cs" ? "Poznej označenou strukturu" : "Identify the marked structure"}
               </h2>
             </div>
             <strong className={styles.progress}>
-              {questions.length ? (lang === "cs" ? `Otazka ${currentIndex + 1}/10` : `Question ${currentIndex + 1}/10`) : ""}
+              {questions.length ? (lang === "cs" ? `Otázka ${currentIndex + 1}/10` : `Question ${currentIndex + 1}/10`) : ""}
             </strong>
           </div>
 
           <p className={styles.copy}>
             {lang === "cs"
-              ? "Na kazdem obrazku sipka ukazuje na jednu strukturu. Po zodpovezeni se zobrazi puvodni overlay."
+              ? "Na každém obrázku šipka ukazuje na jednu strukturu. Po zodpovězení se zobrazí původní overlay."
               : "In each image the arrow points to a single structure. After answering, the original labeled overlay is shown."}
           </p>
 
@@ -206,19 +206,19 @@ export default function QuizPage() {
                     >
                       {currentAnswer?.selected === currentAnswer?.correct
                         ? lang === "cs"
-                          ? "Spravne"
+                          ? "Správně"
                           : "Correct"
                         : lang === "cs"
-                          ? `Nespravne. Spravna odpoved: ${correctAnswer}.`
+                          ? `Nesprávně. Správná odpověď: ${correctAnswer}.`
                           : `Incorrect. Correct answer: ${correctAnswer}.`}
                     </strong>
                   ) : (
-                    <span>{lang === "cs" ? "Vyber jednu moznost A-D." : "Choose one option A-D."}</span>
+                    <span>{lang === "cs" ? "Vyber jednu možnost A-D." : "Choose one option A-D."}</span>
                   )}
                 </div>
 
                 <button type="button" className={styles.nextButton} onClick={nextStep} disabled={!answered}>
-                  {isLastQuestion ? (lang === "cs" ? "Vyhodnotit test" : "Finish test") : lang === "cs" ? "Dalsi otazka" : "Next question"}
+                  {isLastQuestion ? (lang === "cs" ? "Vyhodnotit test" : "Finish test") : lang === "cs" ? "Další otázka" : "Next question"}
                 </button>
               </div>
             </>
@@ -228,9 +228,9 @@ export default function QuizPage() {
         <article className={styles.card}>
           <div className={styles.summaryHead}>
             <p className={styles.eyebrow}>{manifest?.title[lang]}</p>
-            <h2 className={styles.heading}>{lang === "cs" ? "Vyhodnoceni testu" : "Test results"}</h2>
+            <h2 className={styles.heading}>{lang === "cs" ? "Vyhodnocení testu" : "Test results"}</h2>
             <p className={styles.score}>
-              {lang === "cs" ? `Skore ${correctCount} / ${answers.length}` : `Score ${correctCount} / ${answers.length}`}
+              {lang === "cs" ? `Skóre ${correctCount} / ${answers.length}` : `Score ${correctCount} / ${answers.length}`}
             </p>
           </div>
 
@@ -239,14 +239,14 @@ export default function QuizPage() {
               <article key={item.questionId} className={styles.reviewCard}>
                 <img className={styles.reviewImage} src={item.revealImage} alt={item.correct} />
                 <div className={styles.reviewBody}>
-                  <strong>{lang === "cs" ? `Otazka ${index + 1}` : `Question ${index + 1}`}</strong>
+                  <strong>{lang === "cs" ? `Otázka ${index + 1}` : `Question ${index + 1}`}</strong>
                   <span className={item.selected === item.correct ? styles.feedbackCorrect : styles.feedbackWrong}>
                     {item.selected === item.correct
                       ? lang === "cs"
-                        ? `Spravne: ${item.correct}`
+                        ? `Správně: ${item.correct}`
                         : `Correct: ${item.correct}`
                       : lang === "cs"
-                        ? `Tvoje odpoved: ${item.selected} | Spravne: ${item.correct}`
+                        ? `Tvoje odpověď: ${item.selected} | Správně: ${item.correct}`
                         : `Your answer: ${item.selected} | Correct: ${item.correct}`}
                   </span>
                 </div>
@@ -255,7 +255,7 @@ export default function QuizPage() {
           </div>
 
           <button type="button" className={styles.nextButton} onClick={startNewTest}>
-            {lang === "cs" ? "Spustit novy test" : "Start new test"}
+            {lang === "cs" ? "Spustit nový test" : "Start new test"}
           </button>
         </article>
       )}

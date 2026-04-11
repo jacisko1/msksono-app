@@ -39,39 +39,32 @@ const questionSpecs = [
   { id: "01_04_tuberculum_majus", overlayFile: "001.jpg", basicFile: "Shoulder Basic_001.jpg", answer: "tuberculumMajus", tip: [250, 360], base: [210, 350] },
   { id: "01_05_humerus", overlayFile: "001.jpg", basicFile: "Shoulder Basic_001.jpg", answer: "humerus", tip: [505, 500], base: [360, 465] },
   { id: "01_06_subscapularis", overlayFile: "001.jpg", basicFile: "Shoulder Basic_001.jpg", answer: "subscapularis", tip: [900, 360], base: [760, 360] },
-
   { id: "02_01_deltoid", overlayFile: "002.jpg", basicFile: "Shoulder Basic_002.jpg", answer: "deltoid", tip: [335, 150], base: [195, 245] },
   { id: "02_02_lhbb", overlayFile: "002.jpg", basicFile: "Shoulder Basic_002.jpg", answer: "lhbb", tip: [505, 345], base: [430, 350] },
   { id: "02_03_shbb", overlayFile: "002.jpg", basicFile: "Shoulder Basic_002.jpg", answer: "shbb", tip: [820, 300], base: [750, 305] },
   { id: "02_04_humerus", overlayFile: "002.jpg", basicFile: "Shoulder Basic_002.jpg", answer: "humerus", tip: [365, 520], base: [310, 555] },
-
   { id: "03_01_lhbb", overlayFile: "003.jpg", basicFile: "Shoulder Basic_003.jpg", answer: "lhbb", tip: [115, 155], base: [160, 145] },
   { id: "03_02_deltoid", overlayFile: "003.jpg", basicFile: "Shoulder Basic_003.jpg", answer: "deltoid", tip: [510, 110], base: [450, 95] },
   { id: "03_03_humerus", overlayFile: "003.jpg", basicFile: "Shoulder Basic_003.jpg", answer: "humerus", tip: [245, 430], base: [295, 455] },
-
   { id: "04_01_deltoid", overlayFile: "004.jpg", basicFile: "Shoulder Basic_004.jpg", answer: "deltoid", tip: [300, 145], base: [285, 130] },
   { id: "04_02_tendon", overlayFile: "004.jpg", basicFile: "Shoulder Basic_004.jpg", answer: "tendon", tip: [165, 350], base: [120, 340] },
   { id: "04_03_lhbb", overlayFile: "004.jpg", basicFile: "Shoulder Basic_004.jpg", answer: "lhbb", tip: [480, 350], base: [430, 345] },
   { id: "04_04_muscle", overlayFile: "004.jpg", basicFile: "Shoulder Basic_004.jpg", answer: "muscle", tip: [900, 345], base: [835, 340] },
   { id: "04_05_humerus", overlayFile: "004.jpg", basicFile: "Shoulder Basic_004.jpg", answer: "humerus", tip: [175, 505], base: [145, 555] },
-
   { id: "05_01_deltoid", overlayFile: "005.jpg", basicFile: "Shoulder Basic_005.jpg", answer: "deltoid", tip: [470, 145], base: [455, 125] },
   { id: "05_02_bursa", overlayFile: "005.jpg", basicFile: "Shoulder Basic_005.jpg", answer: "bursa", tip: [330, 300], base: [265, 285] },
   { id: "05_03_rotator_cuff", overlayFile: "005.jpg", basicFile: "Shoulder Basic_005.jpg", answer: "rotatorCuff", tip: [420, 395], base: [420, 390] },
   { id: "05_04_humerus", overlayFile: "005.jpg", basicFile: "Shoulder Basic_005.jpg", answer: "humerus", tip: [520, 560], base: [495, 535] },
-
   { id: "06_01_deltoid", overlayFile: "006.jpg", basicFile: "Shoulder Basic_006.jpg", answer: "deltoid", tip: [330, 170], base: [300, 155] },
   { id: "06_02_bursa", overlayFile: "006.jpg", basicFile: "Shoulder Basic_006.jpg", answer: "bursa", tip: [635, 285], base: [610, 275] },
   { id: "06_03_rotator_cuff", overlayFile: "006.jpg", basicFile: "Shoulder Basic_006.jpg", answer: "rotatorCuff", tip: [470, 365], base: [450, 360] },
   { id: "06_04_acromion", overlayFile: "006.jpg", basicFile: "Shoulder Basic_006.jpg", answer: "acromion", tip: [760, 225], base: [720, 225] },
   { id: "06_05_humerus", overlayFile: "006.jpg", basicFile: "Shoulder Basic_006.jpg", answer: "humerus", tip: [435, 535], base: [430, 520] },
-
   { id: "07_01_deltoid", overlayFile: "007.jpg", basicFile: "Shoulder Basic_007.jpg", answer: "deltoid", tip: [515, 150], base: [470, 145] },
   { id: "07_02_infraspinatus", overlayFile: "007.jpg", basicFile: "Shoulder Basic_007.jpg", answer: "infraspinatus", tip: [255, 370], base: [200, 370] },
   { id: "07_03_labrum", overlayFile: "007.jpg", basicFile: "Shoulder Basic_007.jpg", answer: "labrum", tip: [350, 510], base: [325, 500] },
   { id: "07_04_glenoid", overlayFile: "007.jpg", basicFile: "Shoulder Basic_007.jpg", answer: "glenoid", tip: [200, 635], base: [210, 630] },
   { id: "07_05_humerus", overlayFile: "007.jpg", basicFile: "Shoulder Basic_007.jpg", answer: "humerus", tip: [690, 560], base: [665, 535] },
-
   { id: "08_01_deltoid", overlayFile: "008.jpg", basicFile: "Shoulder Basic_008.jpg", answer: "deltoid", tip: [405, 170], base: [335, 180] },
   { id: "08_02_infraspinatus", overlayFile: "008.jpg", basicFile: "Shoulder Basic_008.jpg", answer: "infraspinatus", tip: [315, 335], base: [245, 340] },
   { id: "08_03_humerus", overlayFile: "008.jpg", basicFile: "Shoulder Basic_008.jpg", answer: "humerus", tip: [485, 500], base: [565, 515] }
@@ -122,8 +115,7 @@ function drawPixel(image, x, y, color, alpha = 1) {
 function drawCircle(image, centerX, centerY, radius, color, alpha = 1) {
   for (let y = Math.floor(centerY - radius); y <= Math.ceil(centerY + radius); y += 1) {
     for (let x = Math.floor(centerX - radius); x <= Math.ceil(centerX + radius); x += 1) {
-      const distance = Math.hypot(x - centerX, y - centerY);
-      if (distance <= radius) {
+      if (Math.hypot(x - centerX, y - centerY) <= radius) {
         drawPixel(image, x, y, color, alpha);
       }
     }
