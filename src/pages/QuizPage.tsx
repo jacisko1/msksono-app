@@ -876,7 +876,7 @@ export default function QuizPage() {
             </p>
             <div className={styles.inlineActions}>
               <button type="button" className={styles.startButton} onClick={openAuthorLibrary}>
-                {lang === "cs" ? "Otevřít tvorbu kvízů" : "Open quiz builder"}
+                {lang === "cs" ? "Otevřít kurzy" : "Open courses"}
               </button>
               <button type="button" className={styles.ghostButton} onClick={startNewAuthorQuiz}>
                 {lang === "cs" ? "Nový kvíz" : "New quiz"}
@@ -1069,25 +1069,6 @@ export default function QuizPage() {
             <section className={styles.authorSection}>
               <div className={styles.head}>
                 <div>
-                  <p className={styles.eyebrow}>{lang === "cs" ? "Autorský režim" : "Author mode"}</p>
-                  <h2 className={styles.heading}>{lang === "cs" ? "Vytvářet kvízy" : "Create quizzes"}</h2>
-                </div>
-              </div>
-              <p className={styles.copy}>
-                {lang === "cs"
-                  ? "Vytvoř nový kvíz typu Najdi strukturu, zakresli oblasti a ulož ho do knihovny."
-                  : "Create a new Find the structure quiz, draw its regions, and save it into your library."}
-              </p>
-              <div className={styles.inlineActions}>
-                <button type="button" className={styles.startButton} onClick={startNewAuthorQuiz}>
-                  {lang === "cs" ? "Nový kvíz" : "New quiz"}
-                </button>
-              </div>
-            </section>
-
-            <section className={styles.authorSection}>
-              <div className={styles.head}>
-                <div>
                   <p className={styles.eyebrow}>{lang === "cs" ? "Veřejné kurzy" : "Published courses"}</p>
                   <h2 className={styles.heading}>{lang === "cs" ? "Kurzy pro všechny uživatele" : "Courses for all users"}</h2>
                 </div>
@@ -1128,6 +1109,25 @@ export default function QuizPage() {
                   ))}
                 </div>
               )}
+            </section>
+
+            <section className={styles.authorSection}>
+              <div className={styles.head}>
+                <div>
+                  <p className={styles.eyebrow}>{lang === "cs" ? "Autorský režim" : "Author mode"}</p>
+                  <h2 className={styles.heading}>{lang === "cs" ? "Vytvářet kvízy" : "Create quizzes"}</h2>
+                </div>
+              </div>
+              <p className={styles.copy}>
+                {lang === "cs"
+                  ? "Vytvoř nový kvíz typu Najdi strukturu, zakresli oblasti a ulož ho do knihovny."
+                  : "Create a new Find the structure quiz, draw its regions, and save it into your library."}
+              </p>
+              <div className={styles.inlineActions}>
+                <button type="button" className={styles.startButton} onClick={startNewAuthorQuiz}>
+                  {lang === "cs" ? "Nový kvíz" : "New quiz"}
+                </button>
+              </div>
             </section>
 
             <section className={styles.authorSection}>
