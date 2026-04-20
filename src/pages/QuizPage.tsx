@@ -1256,30 +1256,43 @@ export default function QuizPage() {
               </div>
 
               <div className={styles.playGrid}>
-                <div>
-                  <div ref={playCanvasRef} className={styles.canvasFrame} onClick={handlePlayCanvasClick}>
-                    <img className={styles.canvasImage} src={playQuiz.imageSrc} alt={playQuiz.title} />
-                    <svg
-                      className={styles.canvasOverlay}
-                      viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
-                      preserveAspectRatio="none"
-                    >
-                      {playQuiz.areas.map((area) => {
-                        return renderAreaShape(
-                          area,
-                          area.id,
-                          playQuiz.imageWidth || 1000,
-                          playQuiz.imageHeight || 1000,
-                          styles.playRegion
-                        );
-                      })}
-                    </svg>
+                <div className={styles.playMediaColumn}>
+                  <div className={`${styles.playMediaGrid} ${playAnswered && currentPlayArea?.overlayImage ? styles.playMediaGridAnswered : ""}`}>
+                    <div>
+                      <div ref={playCanvasRef} className={`${styles.canvasFrame} ${styles.playCanvasFrame}`} onClick={handlePlayCanvasClick}>
+                        <img className={styles.canvasImage} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                        <svg
+                          className={styles.canvasOverlay}
+                          viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                          preserveAspectRatio="none"
+                        >
+                          {playQuiz.areas.map((area) => {
+                            return renderAreaShape(
+                              area,
+                              area.id,
+                              playQuiz.imageWidth || 1000,
+                              playQuiz.imageHeight || 1000,
+                              styles.playRegion
+                            );
+                          })}
+                        </svg>
+                      </div>
+                      <p className={styles.canvasHint}>
+                        {lang === "cs"
+                          ? "Klikni do některé uložené oblasti v obrázku."
+                          : "Click inside one of the saved regions in the image."}
+                      </p>
+                    </div>
+
+                    {playAnswered && currentPlayArea?.overlayImage ? (
+                      <div className={styles.explainerCard}>
+                        <strong>{lang === "cs" ? "Overlay / vysvětlení" : "Overlay / explanation"}</strong>
+                        <div className={styles.explainerFrame}>
+                          <img className={styles.overlayPreview} src={currentPlayArea.overlayImage} alt={currentPlayArea.label} />
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
-                  <p className={styles.canvasHint}>
-                    {lang === "cs"
-                      ? "Klikni do některé uložené oblasti v obrázku."
-                      : "Click inside one of the saved regions in the image."}
-                  </p>
                 </div>
 
                 <aside className={styles.sidePanel}>

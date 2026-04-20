@@ -20,6 +20,10 @@
   align-items: start;
 }
 
+.playGrid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(290px, 360px);
+}
+
 .card {
   display: grid;
   gap: 1rem;
@@ -36,15 +40,27 @@
 .startCard,
 .editorPanel,
 .editorCanvasColumn,
+.playMediaColumn,
 .sidePanel,
 .pendingCard,
 .areaCard,
 .libraryCard,
 .emptyState,
 .emptyCanvas,
-.infoBox {
+.infoBox,
+.explainerCard {
   display: grid;
   gap: 0.8rem;
+}
+
+.playMediaGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.playMediaGridAnswered {
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.95fr);
+  align-items: start;
 }
 
 .topBar,
@@ -141,7 +157,8 @@
 }
 
 .imageFrame,
-.canvasFrame {
+.canvasFrame,
+.explainerFrame {
   overflow: hidden;
   border-radius: 1rem;
   background: #0b0a11;
@@ -161,6 +178,17 @@
 .canvasFrame {
   position: relative;
   cursor: crosshair;
+}
+
+.playCanvasFrame {
+  min-height: 520px;
+}
+
+.explainerCard {
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: rgba(123, 63, 242, 0.05);
+  border: 1px solid rgba(123, 63, 242, 0.12);
 }
 
 .canvasOverlay {
@@ -439,7 +467,8 @@
   .menuGrid,
   .editorGrid,
   .playGrid,
-  .libraryCard {
+  .libraryCard,
+  .playMediaGridAnswered {
     grid-template-columns: 1fr;
   }
 
@@ -458,6 +487,10 @@
 @media (max-width: 720px) {
   .card {
     padding: 0.9rem;
+  }
+
+  .playCanvasFrame {
+    min-height: 0;
   }
 
   .options,
