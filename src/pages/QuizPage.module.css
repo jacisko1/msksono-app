@@ -62,10 +62,7 @@
 .playMediaGrid {
   display: grid;
   gap: 1rem;
-}
-
-.playMediaGridAnswered {
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.95fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: start;
 }
 
@@ -199,6 +196,18 @@
   border-radius: 1rem;
   background: rgba(123, 63, 242, 0.05);
   border: 1px solid rgba(123, 63, 242, 0.12);
+}
+
+.explainerPlaceholder {
+  display: grid;
+  place-items: center;
+  min-height: 520px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #0b0a11;
+  border: 1px solid rgba(123, 63, 242, 0.22);
+  color: #d3cde4;
+  text-align: center;
 }
 
 .canvasOverlay {
@@ -479,7 +488,7 @@
   .editorGrid,
   .playGrid,
   .libraryCard,
-  .playMediaGridAnswered {
+  .playMediaGrid {
     grid-template-columns: 1fr;
   }
 
@@ -501,6 +510,10 @@
   }
 
   .playCanvasFrame {
+    min-height: 0;
+  }
+
+  .explainerPlaceholder {
     min-height: 0;
   }
 

@@ -1348,7 +1348,7 @@ export default function QuizPage() {
 
               <div className={styles.playGrid}>
                 <div className={styles.playMediaColumn}>
-                  <div className={`${styles.playMediaGrid} ${playAnswered && currentPlayArea?.overlayImage ? styles.playMediaGridAnswered : ""}`}>
+                  <div className={styles.playMediaGrid}>
                     <div>
                       <div ref={playCanvasRef} className={`${styles.canvasFrame} ${styles.playCanvasFrame}`} onClick={handlePlayCanvasClick}>
                         <img className={styles.canvasImage} src={playQuiz.imageSrc} alt={playQuiz.title} />
@@ -1363,7 +1363,7 @@ export default function QuizPage() {
                               area.id,
                               playQuiz.imageWidth || 1000,
                               playQuiz.imageHeight || 1000,
-                              styles.playRegion
+                              playAnswered && currentPlayArea?.id === area.id ? styles.playRegionCorrect : styles.playRegion
                             );
                           })}
                         </svg>
@@ -1375,14 +1375,22 @@ export default function QuizPage() {
                       </p>
                     </div>
 
-                    {playAnswered && currentPlayArea?.overlayImage ? (
-                      <div className={styles.explainerCard}>
-                        <strong>{lang === "cs" ? "Overlay / vysvětlení" : "Overlay / explanation"}</strong>
+                    <div className={styles.explainerCard}>
+                      <strong>{lang === "cs" ? "Overlay / vysvětlení" : "Overlay / explanation"}</strong>
+                      {playAnswered && currentPlayArea?.overlayImage ? (
                         <div className={styles.explainerFrame}>
                           <img className={styles.overlayPreview} src={currentPlayArea.overlayImage} alt={currentPlayArea.label} />
                         </div>
-                      </div>
-                    ) : null}
+                      ) : (
+                        <div className={styles.explainerPlaceholder}>
+                          <span>
+                            {lang === "cs"
+                              ? "Po odpovědi se zde zobrazí vysvětlující obrázek."
+                              : "The explanatory image will appear here after you answer."}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
