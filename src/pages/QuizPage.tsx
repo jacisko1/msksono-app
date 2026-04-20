@@ -261,11 +261,19 @@ function loadImageDimensions(src: string) {
   });
 }
 
+function sanitizeFileName(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "quiz";
+}
+
 export default function QuizPage() {
   const { lang } = useLanguage();
   const locale = lang === "cs" ? "cs-CZ" : "en-US";
   const editorCanvasRef = useRef<HTMLDivElement | null>(null);
   const playCanvasRef = useRef<HTMLDivElement | null>(null);
+  const importInputRef = useRef<HTMLInputElement | null>(null);
 
   const [mode, setMode] = useState<QuizMode>("menu");
   const [authorView, setAuthorView] = useState<AuthorView>("library");
@@ -406,6 +414,51 @@ export default function QuizPage() {
   const saveCustomQuizzesAndSync = (nextQuizzes: CustomQuiz[]) => {
     writeCustomQuizzes(nextQuizzes);
     setCustomQuizzes(nextQuizzes);
+  };
+
+  const exportCustomQuiz = (quiz: CustomQuiz) => {
+    const payload = JSON.stringify(quiz, null, 2);
+    const blob = new Blob([payload], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${sanitizeFileName(quiz.title)}.mskquiz.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const importCustomQuizFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    try {
+      const raw = await file.text();
+      const parsed = JSON.parse(raw) as CustomQuiz;
+
+      if (!parsed || !parsed.title || !parsed.imageSrc || !Array.isArray(parsed.areas)) {
+        throw new Error("Invalid quiz file");
+      }
+
+      const importedQuiz: CustomQuiz = {
+        ...parsed,
+        id: createId("quiz"),
+        createdAt: parsed.createdAt ?? new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+
+      saveCustomQuizzesAndSync([importedQuiz, ...customQuizzes]);
+      setAuthorView("library");
+    } catch {
+      window.alert(
+        lang === "cs"
+          ? "Soubor kvízu se nepodařilo načíst."
+          : "The quiz file could not be imported."
+      );
+    } finally {
+      event.target.value = "";
+    }
   };
 
   const openQuizInEditor = (quiz: CustomQuiz) => {
@@ -756,21 +809,21 @@ export default function QuizPage() {
       {mode === "menu" ? (
         <div className={styles.menuGrid}>
           <article className={`${styles.card} ${styles.modeCard}`}>
-            <p className={styles.eyebrow}>{lang === "cs" ? "Studijní režim" : "Study mode"}</p>
-            <h2 className={styles.heading}>{lang === "cs" ? "Hotový kvíz: rameno" : "Ready-made quiz: shoulder"}</h2>
+            <p className={styles.eyebrow}>{lang === "cs" ? "Klasický kvíz" : "Classic quiz"}</p>
+            <h2 className={styles.heading}>{lang === "cs" ? "Kvíz se 4 možnostmi" : "Quiz with 4 options"}</h2>
             <p className={styles.copy}>
               {lang === "cs"
                 ? "Původní vícevýběrový kvíz zůstává zachovaný. Náhodně vybere 10 otázek a po odpovědi ukáže overlay s popisky."
                 : "The original multiple-choice quiz stays available. It picks 10 random questions and shows the labeled overlay after each answer."}
             </p>
             <button type="button" className={styles.startButton} onClick={startNewTest} disabled={!manifest}>
-              {lang === "cs" ? "Spustit shoulder kvíz" : "Start shoulder quiz"}
+              {lang === "cs" ? "Spustit kvíz se 4 možnostmi" : "Start 4-option quiz"}
             </button>
           </article>
 
           <article className={`${styles.card} ${styles.modeCard}`}>
-            <p className={styles.eyebrow}>{lang === "cs" ? "Autor" : "Author"}</p>
-            <h2 className={styles.heading}>{lang === "cs" ? "Vytvořit vlastní obrázkový kvíz" : "Create your own image quiz"}</h2>
+            <p className={styles.eyebrow}>{lang === "cs" ? "Obrázkový kvíz" : "Image quiz"}</p>
+            <h2 className={styles.heading}>{lang === "cs" ? "Najdi strukturu" : "Find the structure"}</h2>
             <p className={styles.copy}>
               {lang === "cs"
                 ? "Nahraj obrázek, ručně vyznač klikací oblasti jako obdélník, kruh nebo polygon, ulož je s názvem a později stejný kvíz znovu otevři nebo přehraj."
@@ -778,7 +831,7 @@ export default function QuizPage() {
             </p>
             <div className={styles.inlineActions}>
               <button type="button" className={styles.startButton} onClick={openAuthorLibrary}>
-                {lang === "cs" ? "Otevřít author režim" : "Open author mode"}
+                {lang === "cs" ? "Otevřít tvorbu kvízů" : "Open quiz builder"}
               </button>
               <button type="button" className={styles.ghostButton} onClick={startNewAuthorQuiz}>
                 {lang === "cs" ? "Nový kvíz" : "New quiz"}
@@ -946,69 +999,107 @@ export default function QuizPage() {
 
       {mode === "author" && authorView === "library" ? (
         <article className={styles.card}>
+          <input
+            ref={importInputRef}
+            className={styles.hiddenInput}
+            type="file"
+            accept=".json,.mskquiz.json,application/json"
+            onChange={importCustomQuizFile}
+          />
           <div className={styles.topBar}>
             <button type="button" className={styles.backButton} onClick={() => setMode("menu")}>
               {lang === "cs" ? "Zpět na výběr" : "Back to menu"}
             </button>
-            <button type="button" className={styles.startButton} onClick={startNewAuthorQuiz}>
-              {lang === "cs" ? "Nový autorský kvíz" : "New author quiz"}
-            </button>
-          </div>
-
-          <div className={styles.head}>
-            <div>
-              <p className={styles.eyebrow}>{lang === "cs" ? "Author mode" : "Author mode"}</p>
-              <h2 className={styles.heading}>{lang === "cs" ? "Uložené obrázkové kvízy" : "Saved image quizzes"}</h2>
+            <div className={styles.inlineActions}>
+              <button type="button" className={styles.ghostButton} onClick={() => importInputRef.current?.click()}>
+                {lang === "cs" ? "Importovat kvíz" : "Import quiz"}
+              </button>
+              <button type="button" className={styles.startButton} onClick={startNewAuthorQuiz}>
+                {lang === "cs" ? "Vytvářet kvízy" : "Create quizzes"}
+              </button>
             </div>
-            <strong className={styles.progress}>
-              {lang === "cs" ? `${customQuizzes.length} uložených` : `${customQuizzes.length} saved`}
-            </strong>
           </div>
 
-          <p className={styles.copy}>
-            {lang === "cs"
-              ? "Každý uložený kvíz můžeš znovu otevřít v editoru nebo rovnou přehrát jako klikací test nad stejným obrázkem."
-              : "Each saved quiz can be reopened in the editor or played immediately as a clickable image test."}
-          </p>
-
-          {customQuizzes.length === 0 ? (
-            <div className={styles.emptyState}>
-              <strong>{lang === "cs" ? "Zatím tu není žádný autorský kvíz." : "There are no author quizzes yet."}</strong>
-              <span>
+          <div className={styles.authorSections}>
+            <section className={styles.authorSection}>
+              <div className={styles.head}>
+                <div>
+                  <p className={styles.eyebrow}>{lang === "cs" ? "Autorský režim" : "Author mode"}</p>
+                  <h2 className={styles.heading}>{lang === "cs" ? "Vytvářet kvízy" : "Create quizzes"}</h2>
+                </div>
+              </div>
+              <p className={styles.copy}>
                 {lang === "cs"
-                  ? "Začni novým kvízem, nahraj obrázek a ulož první oblasti."
-                  : "Start a new quiz, upload an image, and save your first regions."}
-              </span>
-            </div>
-          ) : (
-            <div className={styles.libraryList}>
-              {customQuizzes.map((quiz) => (
-                <article key={quiz.id} className={styles.libraryCard}>
-                  <img className={styles.libraryThumb} src={quiz.imageSrc} alt={quiz.title} />
-                  <div className={styles.libraryBody}>
-                    <strong>{quiz.title}</strong>
-                    <span>
-                      {lang === "cs"
-                        ? `${quiz.areas.length} oblastí | upraveno ${formatDate(quiz.updatedAt, locale)}`
-                        : `${quiz.areas.length} regions | updated ${formatDate(quiz.updatedAt, locale)}`}
-                    </span>
-                    <span className={styles.mutedText}>{quiz.imageName}</span>
-                  </div>
-                  <div className={styles.libraryActions}>
-                    <button type="button" className={styles.ghostButton} onClick={() => openQuizInEditor(quiz)}>
-                      {lang === "cs" ? "Otevřít" : "Open"}
-                    </button>
-                    <button type="button" className={styles.ghostButton} onClick={() => startPlayQuiz(quiz)}>
-                      {lang === "cs" ? "Přehrát" : "Play"}
-                    </button>
-                    <button type="button" className={styles.dangerButton} onClick={() => deleteCustomQuiz(quiz.id)}>
-                      {lang === "cs" ? "Smazat" : "Delete"}
-                    </button>
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
+                  ? "Vytvoř nový kvíz typu Najdi strukturu, zakresli oblasti a ulož ho do knihovny."
+                  : "Create a new Find the structure quiz, draw its regions, and save it into your library."}
+              </p>
+              <div className={styles.inlineActions}>
+                <button type="button" className={styles.startButton} onClick={startNewAuthorQuiz}>
+                  {lang === "cs" ? "Nový kvíz" : "New quiz"}
+                </button>
+              </div>
+            </section>
+
+            <section className={styles.authorSection}>
+              <div className={styles.head}>
+                <div>
+                  <p className={styles.eyebrow}>{lang === "cs" ? "Knihovna" : "Library"}</p>
+                  <h2 className={styles.heading}>{lang === "cs" ? "Vytvořené kvízy" : "Created quizzes"}</h2>
+                </div>
+                <strong className={styles.progress}>
+                  {lang === "cs" ? `${customQuizzes.length} uložených` : `${customQuizzes.length} saved`}
+                </strong>
+              </div>
+
+              <p className={styles.copy}>
+                {lang === "cs"
+                  ? "Každý uložený kvíz můžeš znovu otevřít, přehrát nebo exportovat a importovat do stejné aplikace na jiném telefonu."
+                  : "Each saved quiz can be reopened, played, or exported and imported into the same app on another phone."}
+              </p>
+
+              {customQuizzes.length === 0 ? (
+                <div className={styles.emptyState}>
+                  <strong>{lang === "cs" ? "Zatím tu není žádný autorský kvíz." : "There are no author quizzes yet."}</strong>
+                  <span>
+                    {lang === "cs"
+                      ? "Začni novým kvízem, nahraj obrázek a ulož první oblasti."
+                      : "Start a new quiz, upload an image, and save your first regions."}
+                  </span>
+                </div>
+              ) : (
+                <div className={styles.libraryList}>
+                  {customQuizzes.map((quiz) => (
+                    <article key={quiz.id} className={styles.libraryCard}>
+                      <img className={styles.libraryThumb} src={quiz.imageSrc} alt={quiz.title} />
+                      <div className={styles.libraryBody}>
+                        <strong>{quiz.title}</strong>
+                        <span>
+                          {lang === "cs"
+                            ? `${quiz.areas.length} oblastí | upraveno ${formatDate(quiz.updatedAt, locale)}`
+                            : `${quiz.areas.length} regions | updated ${formatDate(quiz.updatedAt, locale)}`}
+                        </span>
+                        <span className={styles.mutedText}>{quiz.imageName}</span>
+                      </div>
+                      <div className={styles.libraryActions}>
+                        <button type="button" className={styles.ghostButton} onClick={() => openQuizInEditor(quiz)}>
+                          {lang === "cs" ? "Otevřít" : "Open"}
+                        </button>
+                        <button type="button" className={styles.ghostButton} onClick={() => startPlayQuiz(quiz)}>
+                          {lang === "cs" ? "Přehrát" : "Play"}
+                        </button>
+                        <button type="button" className={styles.ghostButton} onClick={() => exportCustomQuiz(quiz)}>
+                          {lang === "cs" ? "Export" : "Export"}
+                        </button>
+                        <button type="button" className={styles.dangerButton} onClick={() => deleteCustomQuiz(quiz.id)}>
+                          {lang === "cs" ? "Smazat" : "Delete"}
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
         </article>
       ) : null}
 

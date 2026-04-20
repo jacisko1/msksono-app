@@ -10,6 +10,12 @@
   gap: 1rem;
 }
 
+.authorSections,
+.authorSection {
+  display: grid;
+  gap: 1rem;
+}
+
 .menuGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -125,6 +131,10 @@
 .field {
   display: grid;
   gap: 0.35rem;
+}
+
+.hiddenInput {
+  display: none;
 }
 
 .input,
@@ -447,7 +457,8 @@
 .emptyCanvas,
 .infoBox,
 .pendingCard,
-.areaCard {
+.areaCard,
+.authorSection {
   padding: 1rem;
   border-radius: 1rem;
   background: rgba(123, 63, 242, 0.05);
