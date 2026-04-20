@@ -1350,12 +1350,17 @@ export default function QuizPage() {
                 <div className={styles.playMediaColumn}>
                   <div className={styles.playMediaGrid}>
                     <div>
-                      <div ref={playCanvasRef} className={`${styles.canvasFrame} ${styles.playCanvasFrame}`} onClick={handlePlayCanvasClick}>
-                        <img className={styles.canvasImage} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                      <div
+                        ref={playCanvasRef}
+                        className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame}`}
+                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                        onClick={handlePlayCanvasClick}
+                      >
+                        <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
                         <svg
                           className={styles.canvasOverlay}
                           viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
-                          preserveAspectRatio="none"
+                          preserveAspectRatio="xMidYMid meet"
                         >
                           {playQuiz.areas.map((area) => {
                             return renderAreaShape(
@@ -1378,11 +1383,21 @@ export default function QuizPage() {
                     <div className={styles.explainerCard}>
                       <strong>{lang === "cs" ? "Overlay / vysvětlení" : "Overlay / explanation"}</strong>
                       {playAnswered && currentPlayArea?.overlayImage ? (
-                        <div className={styles.explainerFrame}>
-                          <img className={styles.overlayPreview} src={currentPlayArea.overlayImage} alt={currentPlayArea.label} />
+                        <div
+                          className={`${styles.explainerFrame} ${styles.playSurfaceFrame}`}
+                          style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                        >
+                          <img
+                            className={`${styles.overlayPreview} ${styles.playSurfaceImage}`}
+                            src={currentPlayArea.overlayImage}
+                            alt={currentPlayArea.label}
+                          />
                         </div>
                       ) : (
-                        <div className={styles.explainerPlaceholder}>
+                        <div
+                          className={styles.explainerPlaceholder}
+                          style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                        >
                           <span>
                             {lang === "cs"
                               ? "Po odpovědi se zde zobrazí vysvětlující obrázek."
