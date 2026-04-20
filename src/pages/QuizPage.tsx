@@ -90,9 +90,20 @@ interface PlayAnswer {
   correct: boolean;
 }
 
+interface PublishedQuizDefinition {
+  id: string;
+  src: string;
+}
+
 const STANDARD_MANIFEST_URL = "/assets/quiz/shoulder/manifest.json";
 const CUSTOM_QUIZZES_STORAGE_KEY = "msksono-custom-quizzes";
 const OUTSIDE_SELECTION_ID = "__outside__";
+const PUBLISHED_QUIZ_DEFINITIONS: PublishedQuizDefinition[] = [
+  {
+    id: "kurzy-rameno",
+    src: "/assets/Kurzy/rameno.mskquiz%20(1).json"
+  }
+];
 
 function shuffle<T>(items: T[]) {
   const array = [...items];
@@ -287,6 +298,7 @@ export default function QuizPage() {
   const [finished, setFinished] = useState(false);
 
   const [customQuizzes, setCustomQuizzes] = useState<CustomQuiz[]>([]);
+  const [publishedQuizzes, setPublishedQuizzes] = useState<CustomQuiz[]>([]);
   const [editorDraft, setEditorDraft] = useState<CustomQuizDraft>(createEmptyDraft());
   const [currentTool, setCurrentTool] = useState<ShapeType>("rectangle");
   const [dragDraft, setDragDraft] = useState<DragDraft | null>(null);
@@ -337,6 +349,39 @@ export default function QuizPage() {
 
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadPublishedQuizzes = async () => {
+      try {
+        const loaded = await Promise.all(
+          PUBLISHED_QUIZ_DEFINITIONS.map(async (definition) => {
+            const response = await fetch(definition.src);
+            const quiz = (await response.json()) as CustomQuiz;
+            return {
+              ...quiz,
+              id: quiz.id || definition.id
+            };
+          })
+        );
+
+        if (!cancelled) {
+          setPublishedQuizzes(loaded);
+        }
+      } catch {
+        if (!cancelled) {
+          setPublishedQuizzes([]);
+        }
+      }
+    };
+
+    void loadPublishedQuizzes();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const startNewTest = () => {
@@ -1038,6 +1083,51 @@ export default function QuizPage() {
                   {lang === "cs" ? "Nový kvíz" : "New quiz"}
                 </button>
               </div>
+            </section>
+
+            <section className={styles.authorSection}>
+              <div className={styles.head}>
+                <div>
+                  <p className={styles.eyebrow}>{lang === "cs" ? "Veřejné kurzy" : "Published courses"}</p>
+                  <h2 className={styles.heading}>{lang === "cs" ? "Kurzy pro všechny uživatele" : "Courses for all users"}</h2>
+                </div>
+                <strong className={styles.progress}>
+                  {lang === "cs" ? `${publishedQuizzes.length} veřejných` : `${publishedQuizzes.length} published`}
+                </strong>
+              </div>
+
+              <p className={styles.copy}>
+                {lang === "cs"
+                  ? "Tyto kvízy jsou součástí aplikace a po nahrání na GitHub/Vercel je uvidí všichni uživatelé."
+                  : "These quizzes are bundled with the app and become visible to all users after deployment."}
+              </p>
+
+              {publishedQuizzes.length === 0 ? (
+                <div className={styles.emptyState}>
+                  <strong>{lang === "cs" ? "Zatím není načtený žádný veřejný kurz." : "No published course is loaded yet."}</strong>
+                </div>
+              ) : (
+                <div className={styles.libraryList}>
+                  {publishedQuizzes.map((quiz) => (
+                    <article key={quiz.id} className={styles.libraryCard}>
+                      <img className={styles.libraryThumb} src={quiz.imageSrc} alt={quiz.title} />
+                      <div className={styles.libraryBody}>
+                        <strong>{quiz.title}</strong>
+                        <span>
+                          {lang === "cs"
+                            ? `${quiz.areas.length} oblastí | veřejný kurz`
+                            : `${quiz.areas.length} regions | published course`}
+                        </span>
+                      </div>
+                      <div className={styles.libraryActions}>
+                        <button type="button" className={styles.startButton} onClick={() => startPlayQuiz(quiz)}>
+                          {lang === "cs" ? "Otevřít kurz" : "Open course"}
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
             </section>
 
             <section className={styles.authorSection}>
