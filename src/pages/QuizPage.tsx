@@ -92,6 +92,7 @@ interface PlayAnswer {
 
 const STANDARD_MANIFEST_URL = "/assets/quiz/shoulder/manifest.json";
 const CUSTOM_QUIZZES_STORAGE_KEY = "msksono-custom-quizzes";
+const OUTSIDE_SELECTION_ID = "__outside__";
 
 function shuffle<T>(items: T[]) {
   const array = [...items];
@@ -662,7 +663,10 @@ export default function QuizPage() {
 
     if (clickedArea) {
       submitPlayAnswer(clickedArea.id);
+      return;
     }
+
+    submitPlayAnswer(OUTSIDE_SELECTION_ID);
   };
 
   const nextPlayStep = () => {
@@ -1261,17 +1265,13 @@ export default function QuizPage() {
                       preserveAspectRatio="none"
                     >
                       {playQuiz.areas.map((area) => {
-                        const isCorrect = currentPlayArea?.id === area.id;
-                        const isSelected = selectedAreaId === area.id;
-                        const shapeClass = !playAnswered
-                          ? styles.playRegion
-                          : isCorrect
-                            ? styles.playRegionCorrect
-                            : isSelected
-                              ? styles.playRegionWrong
-                              : styles.playRegionMuted;
-
-                        return renderAreaShape(area, area.id, playQuiz.imageWidth || 1000, playQuiz.imageHeight || 1000, shapeClass);
+                        return renderAreaShape(
+                          area,
+                          area.id,
+                          playQuiz.imageWidth || 1000,
+                          playQuiz.imageHeight || 1000,
+                          styles.playRegion
+                        );
                       })}
                     </svg>
                   </div>
@@ -1300,15 +1300,16 @@ export default function QuizPage() {
                       <span className={styles.feedbackCorrect}>{lang === "cs" ? "Správně." : "Correct."}</span>
                     ) : (
                       <span className={styles.feedbackWrong}>
-                        {lang === "cs"
-                          ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
-                          : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
+                        {selectedAreaId === OUTSIDE_SELECTION_ID
+                          ? lang === "cs"
+                            ? "Nesprávně. Kliknutí bylo mimo označenou oblast."
+                            : "Incorrect. The click was outside the saved region."
+                          : lang === "cs"
+                            ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
+                            : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
                       </span>
                     )}
                     {playAnswered && currentPlayArea?.explanation ? <p className={styles.copy}>{currentPlayArea.explanation}</p> : null}
-                    {playAnswered && currentPlayArea?.overlayImage ? (
-                      <img className={styles.overlayPreview} src={currentPlayArea.overlayImage} alt={currentPlayArea.label} />
-                    ) : null}
                   </div>
 
                   <button type="button" className={styles.nextButton} onClick={nextPlayStep} disabled={!playAnswered}>

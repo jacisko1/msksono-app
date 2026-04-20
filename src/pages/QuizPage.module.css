@@ -192,8 +192,8 @@
 }
 
 .playRegion {
-  fill: rgba(123, 63, 242, 0.08);
-  stroke: rgba(123, 63, 242, 0.16);
+  fill: rgba(123, 63, 242, 0.001);
+  stroke: transparent;
 }
 
 .playRegionCorrect {
