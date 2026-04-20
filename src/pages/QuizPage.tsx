@@ -1368,7 +1368,11 @@ export default function QuizPage() {
                               area.id,
                               playQuiz.imageWidth || 1000,
                               playQuiz.imageHeight || 1000,
-                              playAnswered && currentPlayArea?.id === area.id ? styles.playRegionCorrect : styles.playRegion
+                              playAnswered && currentPlayArea?.id === area.id
+                                ? selectedAreaId === currentPlayArea?.id
+                                  ? styles.playRegionCorrect
+                                  : styles.playRegionWrong
+                                : styles.playRegion
                             );
                           })}
                         </svg>
@@ -1380,32 +1384,23 @@ export default function QuizPage() {
                       </p>
                     </div>
 
-                    <div className={styles.explainerCard}>
-                      <strong>{lang === "cs" ? "Overlay / vysvětlení" : "Overlay / explanation"}</strong>
-                      {playAnswered && currentPlayArea?.overlayImage ? (
-                        <div
-                          className={`${styles.explainerFrame} ${styles.playSurfaceFrame}`}
-                          style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                        >
-                          <img
-                            className={`${styles.overlayPreview} ${styles.playSurfaceImage}`}
-                            src={currentPlayArea.overlayImage}
-                            alt={currentPlayArea.label}
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={styles.explainerPlaceholder}
-                          style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                        >
-                          <span>
-                            {lang === "cs"
-                              ? "Po odpovědi se zde zobrazí vysvětlující obrázek."
-                              : "The explanatory image will appear here after you answer."}
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                    {playAnswered && currentPlayArea?.overlayImage ? (
+                      <div
+                        className={`${styles.explainerFrame} ${styles.playSurfaceFrame}`}
+                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                      >
+                        <img
+                          className={`${styles.overlayPreview} ${styles.playSurfaceImage}`}
+                          src={currentPlayArea.overlayImage}
+                          alt={currentPlayArea.label}
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className={styles.explainerEmpty}
+                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                      />
+                    )}
                   </div>
                 </div>
 

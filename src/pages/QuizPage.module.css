@@ -53,8 +53,7 @@
 .libraryCard,
 .emptyState,
 .emptyCanvas,
-.infoBox,
-.explainerCard {
+.infoBox {
   display: grid;
   gap: 0.8rem;
 }
@@ -187,13 +186,6 @@
   cursor: crosshair;
 }
 
-.explainerCard {
-  padding: 0.9rem;
-  border-radius: 1rem;
-  background: rgba(123, 63, 242, 0.05);
-  border: 1px solid rgba(123, 63, 242, 0.12);
-}
-
 .playSurfaceFrame {
   background: transparent;
 }
@@ -204,17 +196,8 @@
   object-fit: contain;
 }
 
-.explainerPlaceholder {
-  display: grid;
-  place-items: center;
-  min-height: 0;
-  aspect-ratio: 1 / 1;
-  padding: 1rem;
-  border-radius: 1rem;
-  background: rgba(123, 63, 242, 0.04);
-  border: 1px solid rgba(123, 63, 242, 0.22);
-  color: #524764;
-  text-align: center;
+.explainerEmpty {
+  visibility: hidden;
 }
 
 .canvasOverlay {
