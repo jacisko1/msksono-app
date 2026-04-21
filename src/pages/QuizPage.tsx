@@ -8,27 +8,7 @@ interface LocalizedText {
   en: string;
 }
 
-interface StandardQuizQuestion {
-  id: string;
-  image: string;
-  revealImage: string;
-  answer: LocalizedText;
-  options: LocalizedText[];
-}
-
-interface StandardQuizManifest {
-  title: LocalizedText;
-  questions: StandardQuizQuestion[];
-}
-
-interface StandardAnswerState {
-  questionId: string;
-  selected: string;
-  correct: string;
-  revealImage: string;
-}
-
-type QuizMode = "menu" | "standard" | "author";
+type QuizMode = "menu" | "author";
 type AuthorView = "library" | "editor" | "play";
 type ShapeType = "rectangle" | "circle" | "polygon";
 
@@ -95,7 +75,6 @@ interface PublishedQuizDefinition {
   src: string;
 }
 
-const STANDARD_MANIFEST_URL = "/assets/quiz/shoulder/manifest.json";
 const CUSTOM_QUIZZES_STORAGE_KEY = "msksono-custom-quizzes";
 const OUTSIDE_SELECTION_ID = "__outside__";
 const PUBLISHED_QUIZ_DEFINITIONS: PublishedQuizDefinition[] = [
@@ -289,14 +268,6 @@ export default function QuizPage() {
   const [mode, setMode] = useState<QuizMode>("menu");
   const [authorView, setAuthorView] = useState<AuthorView>("library");
 
-  const [manifest, setManifest] = useState<StandardQuizManifest | null>(null);
-  const [hasStarted, setHasStarted] = useState(false);
-  const [questions, setQuestions] = useState<StandardQuizQuestion[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [answers, setAnswers] = useState<StandardAnswerState[]>([]);
-  const [finished, setFinished] = useState(false);
-
   const [customQuizzes, setCustomQuizzes] = useState<CustomQuiz[]>([]);
   const [publishedQuizzes, setPublishedQuizzes] = useState<CustomQuiz[]>([]);
   const [editorDraft, setEditorDraft] = useState<CustomQuizDraft>(createEmptyDraft());
@@ -311,31 +282,6 @@ export default function QuizPage() {
   const [playAnswers, setPlayAnswers] = useState<PlayAnswer[]>([]);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [playFinished, setPlayFinished] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    const load = async () => {
-      try {
-        const response = await fetch(STANDARD_MANIFEST_URL);
-        const data = (await response.json()) as StandardQuizManifest;
-
-        if (!cancelled) {
-          setManifest(data);
-        }
-      } catch {
-        if (!cancelled) {
-          setManifest(null);
-        }
-      }
-    };
-
-    void load();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   useEffect(() => {
     const sync = () => setCustomQuizzes(readCustomQuizzes());
@@ -383,58 +329,6 @@ export default function QuizPage() {
       cancelled = true;
     };
   }, []);
-
-  const startNewTest = () => {
-    if (!manifest) {
-      return;
-    }
-
-    setMode("standard");
-    setHasStarted(true);
-    setQuestions(shuffle(manifest.questions).slice(0, 10));
-    setCurrentIndex(0);
-    setSelectedOption(null);
-    setAnswers([]);
-    setFinished(false);
-  };
-
-  const question = questions[currentIndex];
-  const correctAnswer = question?.answer[lang] ?? "";
-  const answered = selectedOption !== null;
-  const isLastQuestion = currentIndex === questions.length - 1;
-  const currentAnswer = answers.find((item) => item.questionId === question?.id);
-  const correctCount = useMemo(() => answers.filter((item) => item.selected === item.correct).length, [answers]);
-
-  const submitAnswer = (option: string) => {
-    if (!question || answered) {
-      return;
-    }
-
-    setSelectedOption(option);
-    setAnswers((prev) => [
-      ...prev,
-      {
-        questionId: question.id,
-        selected: option,
-        correct: correctAnswer,
-        revealImage: question.revealImage
-      }
-    ]);
-  };
-
-  const nextStep = () => {
-    if (!answered) {
-      return;
-    }
-
-    if (isLastQuestion) {
-      setFinished(true);
-      return;
-    }
-
-    setCurrentIndex((prev) => prev + 1);
-    setSelectedOption(null);
-  };
 
   const openAuthorLibrary = () => {
     setMode("author");
@@ -854,19 +748,6 @@ export default function QuizPage() {
       {mode === "menu" ? (
         <div className={styles.menuGrid}>
           <article className={`${styles.card} ${styles.modeCard}`}>
-            <p className={styles.eyebrow}>{lang === "cs" ? "Klasický kvíz" : "Classic quiz"}</p>
-            <h2 className={styles.heading}>{lang === "cs" ? "Kvíz se 4 možnostmi" : "Quiz with 4 options"}</h2>
-            <p className={styles.copy}>
-              {lang === "cs"
-                ? "Původní vícevýběrový kvíz zůstává zachovaný. Náhodně vybere 10 otázek a po odpovědi ukáže overlay s popisky."
-                : "The original multiple-choice quiz stays available. It picks 10 random questions and shows the labeled overlay after each answer."}
-            </p>
-            <button type="button" className={styles.startButton} onClick={startNewTest} disabled={!manifest}>
-              {lang === "cs" ? "Spustit kvíz se 4 možnostmi" : "Start 4-option quiz"}
-            </button>
-          </article>
-
-          <article className={`${styles.card} ${styles.modeCard}`}>
             <p className={styles.eyebrow}>{lang === "cs" ? "Obrázkový kvíz" : "Image quiz"}</p>
             <h2 className={styles.heading}>{lang === "cs" ? "Najdi strukturu" : "Find the structure"}</h2>
             <p className={styles.copy}>
@@ -884,162 +765,6 @@ export default function QuizPage() {
             </div>
           </article>
         </div>
-      ) : null}
-
-      {mode === "standard" ? (
-        !hasStarted ? (
-          <article className={`${styles.card} ${styles.startCard}`}>
-            <div className={styles.topBar}>
-              <button type="button" className={styles.backButton} onClick={() => setMode("menu")}>
-                {lang === "cs" ? "Zpět na výběr" : "Back to menu"}
-              </button>
-            </div>
-            <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
-            <h2 className={styles.heading}>
-              {lang === "cs" ? "Poznávání struktur z UZ obrazů" : "Identify structures from ultrasound images"}
-            </h2>
-            <p className={styles.copy}>
-              {lang === "cs"
-                ? "Kvíz obsahuje 10 náhodně vybraných otázek. V každé otázce šipka ukazuje na jednu strukturu a po odpovědi se zobrazí původní overlay."
-                : "The quiz contains 10 randomly selected questions. In each question the arrow points to one structure and the original overlay is shown after answering."}
-            </p>
-            <button type="button" className={styles.startButton} onClick={startNewTest} disabled={!manifest}>
-              {lang === "cs" ? "Zahájit kvíz" : "Start quiz"}
-            </button>
-          </article>
-        ) : !finished ? (
-          <article className={styles.card}>
-            <div className={styles.topBar}>
-              <button type="button" className={styles.backButton} onClick={() => setMode("menu")}>
-                {lang === "cs" ? "Zpět na výběr" : "Back to menu"}
-              </button>
-            </div>
-
-            <div className={styles.head}>
-              <div>
-                <p className={styles.eyebrow}>{manifest?.title[lang] ?? (lang === "cs" ? "Načítání..." : "Loading...")}</p>
-                <h2 className={styles.heading}>
-                  {lang === "cs" ? "Poznej označenou strukturu" : "Identify the marked structure"}
-                </h2>
-              </div>
-              <strong className={styles.progress}>
-                {questions.length ? (lang === "cs" ? `Otázka ${currentIndex + 1}/10` : `Question ${currentIndex + 1}/10`) : ""}
-              </strong>
-            </div>
-
-            <p className={styles.copy}>
-              {lang === "cs"
-                ? "Na každém obrázku šipka ukazuje na jednu strukturu. Po zodpovězení se zobrazí původní overlay."
-                : "In each image the arrow points to a single structure. After answering, the original labeled overlay is shown."}
-            </p>
-
-            {question ? (
-              <>
-                <div className={styles.imageFrame}>
-                  <img
-                    className={styles.image}
-                    src={answered ? question.revealImage : question.image}
-                    alt={answered ? (lang === "cs" ? "Overlay s popisky" : "Labeled overlay") : correctAnswer}
-                  />
-                </div>
-
-                <div className={styles.options}>
-                  {question.options.map((option, index) => {
-                    const optionText = option[lang];
-                    const isSelected = selectedOption === optionText;
-                    const isCorrect = optionText === correctAnswer;
-                    const stateClass = !answered
-                      ? ""
-                      : isCorrect
-                        ? styles.optionCorrect
-                        : isSelected
-                          ? styles.optionWrong
-                          : styles.optionIdle;
-
-                    return (
-                      <button
-                        key={`${question.id}-${optionText}`}
-                        type="button"
-                        className={`${styles.option} ${stateClass}`.trim()}
-                        onClick={() => submitAnswer(optionText)}
-                        disabled={answered}
-                      >
-                        <span className={styles.optionKey}>{String.fromCharCode(65 + index)}</span>
-                        <span>{optionText}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <div className={styles.footer}>
-                  <div className={styles.feedback}>
-                    {answered ? (
-                      <strong
-                        className={
-                          currentAnswer?.selected === currentAnswer?.correct ? styles.feedbackCorrect : styles.feedbackWrong
-                        }
-                      >
-                        {currentAnswer?.selected === currentAnswer?.correct
-                          ? lang === "cs"
-                            ? "Správně"
-                            : "Correct"
-                          : lang === "cs"
-                            ? `Nesprávně. Správná odpověď: ${correctAnswer}.`
-                            : `Incorrect. Correct answer: ${correctAnswer}.`}
-                      </strong>
-                    ) : (
-                      <span>{lang === "cs" ? "Vyber jednu možnost A-D." : "Choose one option A-D."}</span>
-                    )}
-                  </div>
-
-                  <button type="button" className={styles.nextButton} onClick={nextStep} disabled={!answered}>
-                    {isLastQuestion ? (lang === "cs" ? "Vyhodnotit test" : "Finish test") : lang === "cs" ? "Další otázka" : "Next question"}
-                  </button>
-                </div>
-              </>
-            ) : null}
-          </article>
-        ) : (
-          <article className={styles.card}>
-            <div className={styles.topBar}>
-              <button type="button" className={styles.backButton} onClick={() => setMode("menu")}>
-                {lang === "cs" ? "Zpět na výběr" : "Back to menu"}
-              </button>
-            </div>
-
-            <div className={styles.summaryHead}>
-              <p className={styles.eyebrow}>{manifest?.title[lang]}</p>
-              <h2 className={styles.heading}>{lang === "cs" ? "Vyhodnocení testu" : "Test results"}</h2>
-              <p className={styles.score}>
-                {lang === "cs" ? `Skóre ${correctCount} / ${answers.length}` : `Score ${correctCount} / ${answers.length}`}
-              </p>
-            </div>
-
-            <div className={styles.summaryList}>
-              {answers.map((item, index) => (
-                <article key={item.questionId} className={styles.reviewCard}>
-                  <img className={styles.reviewImage} src={item.revealImage} alt={item.correct} />
-                  <div className={styles.reviewBody}>
-                    <strong>{lang === "cs" ? `Otázka ${index + 1}` : `Question ${index + 1}`}</strong>
-                    <span className={item.selected === item.correct ? styles.feedbackCorrect : styles.feedbackWrong}>
-                      {item.selected === item.correct
-                        ? lang === "cs"
-                          ? `Správně: ${item.correct}`
-                          : `Correct: ${item.correct}`
-                        : lang === "cs"
-                          ? `Tvoje odpověď: ${item.selected} | Správně: ${item.correct}`
-                          : `Your answer: ${item.selected} | Correct: ${item.correct}`}
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <button type="button" className={styles.nextButton} onClick={startNewTest}>
-              {lang === "cs" ? "Spustit nový test" : "Start new test"}
-            </button>
-          </article>
-        )
       ) : null}
 
       {mode === "author" && authorView === "library" ? (
@@ -1580,3 +1305,4 @@ export default function QuizPage() {
     </section>
   );
 }
+
