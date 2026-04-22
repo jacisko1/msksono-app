@@ -1346,7 +1346,7 @@ export default function QuizPage() {
                   {!playAnswered ? (
                     <div
                       ref={playCanvasRef}
-                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playStageFrame}`}
+                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playStageFrame} ${styles.playTouchAssistFrame}`}
                       style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
                       onPointerDown={handlePlayCanvasPointerDown}
                       onPointerMove={handlePlayCanvasPointerMove}
@@ -1382,8 +1382,8 @@ export default function QuizPage() {
                           <div
                             className={styles.playTouchAssistLens}
                             style={{
-                              left: playTouchAssist.point.x > 0.58 ? `calc(${playTouchAssist.point.x * 100}% - 8.1rem)` : `calc(${playTouchAssist.point.x * 100}% + 1rem)`,
-                              top: playTouchAssist.point.y < 0.28 ? `calc(${playTouchAssist.point.y * 100}% + 1rem)` : `calc(${playTouchAssist.point.y * 100}% - 8.1rem)`
+                              left: `${playTouchAssist.point.x * 100}%`,
+                              top: `${playTouchAssist.point.y * 100}%`
                             }}
                           >
                             <img
