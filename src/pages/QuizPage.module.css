@@ -605,7 +605,10 @@
   }
 
   .playStageFrame {
-    width: 100%;
+    width: calc(100% + 1.8rem);
+    max-width: none;
+    margin-left: -0.9rem;
+    margin-right: -0.9rem;
   }
 
   .playStageFrame,
