@@ -571,11 +571,13 @@
 
 .playTouchAssistFrame {
   overflow: hidden;
+  touch-action: none;
 }
 
 .playTouchAssistShell {
   position: relative;
   overflow: visible;
+  touch-action: none;
 }
 
 @media (max-width: 980px) {

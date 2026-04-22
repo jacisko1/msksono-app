@@ -785,6 +785,14 @@ export default function QuizPage() {
     }
 
     const point = getPointFromPointer(event, playCanvasRef.current);
+
+    if (playTouchAssistTimeoutRef.current !== null) {
+      window.clearTimeout(playTouchAssistTimeoutRef.current);
+      playTouchAssistTimeoutRef.current = null;
+      setPlayTouchAssist({ visible: true, point });
+      return;
+    }
+
     setPlayTouchAssist((prev) => ({ visible: prev.visible, point }));
   };
 
