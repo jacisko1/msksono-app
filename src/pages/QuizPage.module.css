@@ -557,6 +557,11 @@
   color: #334155;
 }
 
+.playTouchAssistLens,
+.playTouchAssistAnchor {
+  display: none;
+}
+
 @media (max-width: 980px) {
   .menuGrid,
   .editorGrid,
@@ -601,5 +606,110 @@
 
   .playStageFrame {
     width: 100%;
+  }
+
+  .playStageFrame,
+  .playRevealWrap {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .playRevealBase img,
+  .playRevealOverlay img,
+  .playStageFrame .canvasImage {
+    border-radius: 0;
+  }
+
+  .playTouchAssistAnchor {
+    display: block;
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    border-radius: 999px;
+    border: 2px solid #fff;
+    background: rgba(220, 38, 38, 0.92);
+    box-shadow: 0 0 0 1px rgba(16, 24, 40, 0.18);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .playTouchAssistAnchor::before,
+  .playTouchAssistAnchor::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    transform: translate(-50%, -50%);
+  }
+
+  .playTouchAssistAnchor::before {
+    width: 2px;
+    height: 1.4rem;
+  }
+
+  .playTouchAssistAnchor::after {
+    width: 1.4rem;
+    height: 2px;
+  }
+
+  .playTouchAssistLens {
+    display: block;
+    position: absolute;
+    width: 7rem;
+    height: 7rem;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 3px solid rgba(255, 255, 255, 0.96);
+    background: rgba(15, 23, 42, 0.18);
+    box-shadow:
+      0 12px 24px rgba(15, 23, 42, 0.24),
+      0 0 0 1px rgba(15, 23, 42, 0.1);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .playTouchAssistImage {
+    position: absolute;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .playTouchAssistTarget {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: -0.55rem;
+    margin-top: -0.55rem;
+    border-radius: 999px;
+    border: 2px solid rgba(220, 38, 38, 0.98);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .playTouchAssistTarget::before,
+  .playTouchAssistTarget::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(220, 38, 38, 0.98);
+    transform: translate(-50%, -50%);
+  }
+
+  .playTouchAssistTarget::before {
+    width: 2px;
+    height: 2rem;
+  }
+
+  .playTouchAssistTarget::after {
+    width: 2rem;
+    height: 2px;
   }
 }

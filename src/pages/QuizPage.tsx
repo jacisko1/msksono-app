@@ -70,6 +70,11 @@ interface PlayAnswer {
   correct: boolean;
 }
 
+interface PlayTouchAssistState {
+  visible: boolean;
+  point: Point;
+}
+
 interface PublishedQuizDefinition {
   id: string;
   src: string;
@@ -265,6 +270,10 @@ export default function QuizPage() {
   const playCanvasRef = useRef<HTMLDivElement | null>(null);
   const playRevealRef = useRef<HTMLDivElement | null>(null);
   const importInputRef = useRef<HTMLInputElement | null>(null);
+  const playTouchAssistTimeoutRef = useRef<number | null>(null);
+  const playTouchSuppressClickTimeoutRef = useRef<number | null>(null);
+  const playTouchPointerIdRef = useRef<number | null>(null);
+  const suppressPlayCanvasClickRef = useRef(false);
 
   const [mode, setMode] = useState<QuizMode>("menu");
   const [authorView, setAuthorView] = useState<AuthorView>("library");
@@ -283,8 +292,12 @@ export default function QuizPage() {
   const [playAnswers, setPlayAnswers] = useState<PlayAnswer[]>([]);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [playFinished, setPlayFinished] = useState(false);
-  const [playRevealPosition, setPlayRevealPosition] = useState(10);
+  const [playRevealPosition, setPlayRevealPosition] = useState(90);
   const [isPlayRevealDragging, setIsPlayRevealDragging] = useState(false);
+  const [playTouchAssist, setPlayTouchAssist] = useState<PlayTouchAssistState>({
+    visible: false,
+    point: { x: 0.5, y: 0.5 }
+  });
 
   useEffect(() => {
     const sync = () => setCustomQuizzes(readCustomQuizzes());
@@ -298,6 +311,18 @@ export default function QuizPage() {
 
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (playTouchAssistTimeoutRef.current !== null) {
+        window.clearTimeout(playTouchAssistTimeoutRef.current);
+      }
+
+      if (playTouchSuppressClickTimeoutRef.current !== null) {
+        window.clearTimeout(playTouchSuppressClickTimeoutRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -341,6 +366,7 @@ export default function QuizPage() {
     setPlayAnswers([]);
     setPlayFinished(false);
     setSelectedAreaId(null);
+    setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
   const startNewAuthorQuiz = () => {
@@ -443,13 +469,38 @@ export default function QuizPage() {
     setPlayAnswers([]);
     setSelectedAreaId(null);
     setPlayFinished(false);
-    setPlayRevealPosition(10);
+    setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
+    setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
   const currentPlayArea = playQuestions[playIndex];
   const playAnswered = selectedAreaId !== null;
   const playCorrectCount = useMemo(() => playAnswers.filter((item) => item.correct).length, [playAnswers]);
+
+  const clearPlayTouchAssistTimer = () => {
+    if (playTouchAssistTimeoutRef.current !== null) {
+      window.clearTimeout(playTouchAssistTimeoutRef.current);
+      playTouchAssistTimeoutRef.current = null;
+    }
+  };
+
+  const hidePlayTouchAssist = () => {
+    clearPlayTouchAssistTimer();
+    playTouchPointerIdRef.current = null;
+    setPlayTouchAssist((prev) => (prev.visible ? { ...prev, visible: false } : prev));
+  };
+
+  const schedulePlayClickUnsuppress = () => {
+    if (playTouchSuppressClickTimeoutRef.current !== null) {
+      window.clearTimeout(playTouchSuppressClickTimeoutRef.current);
+    }
+
+    playTouchSuppressClickTimeoutRef.current = window.setTimeout(() => {
+      suppressPlayCanvasClickRef.current = false;
+      playTouchSuppressClickTimeoutRef.current = null;
+    }, 400);
+  };
   const handleBaseImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) {
@@ -638,6 +689,7 @@ export default function QuizPage() {
       return;
     }
 
+    hidePlayTouchAssist();
     setSelectedAreaId(areaId);
     setPlayAnswers((prev) => [
       ...prev,
@@ -649,20 +701,22 @@ export default function QuizPage() {
     ]);
   };
 
+  const submitPlayAnswerAtPoint = (point: Point) => {
+    if (!playQuiz || !currentPlayArea || playAnswered) {
+      return;
+    }
+
+    const clickedArea = playQuiz.areas.find((area) => isPointInsideArea(point, area));
+    submitPlayAnswer(clickedArea ? clickedArea.id : OUTSIDE_SELECTION_ID);
+  };
+
   const handlePlayCanvasClick = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (!playCanvasRef.current || !currentPlayArea || playAnswered || !playQuiz) {
+    if (!playCanvasRef.current || !currentPlayArea || playAnswered || !playQuiz || suppressPlayCanvasClickRef.current) {
       return;
     }
 
     const point = getPointFromPointer(event, playCanvasRef.current);
-    const clickedArea = playQuiz.areas.find((area) => isPointInsideArea(point, area));
-
-    if (clickedArea) {
-      submitPlayAnswer(clickedArea.id);
-      return;
-    }
-
-    submitPlayAnswer(OUTSIDE_SELECTION_ID);
+    submitPlayAnswerAtPoint(point);
   };
 
   const nextPlayStep = () => {
@@ -677,8 +731,70 @@ export default function QuizPage() {
 
     setPlayIndex((prev) => prev + 1);
     setSelectedAreaId(null);
-    setPlayRevealPosition(10);
+    setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
+    setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
+  };
+
+  const handlePlayCanvasPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!playCanvasRef.current || playAnswered || (event.pointerType !== "touch" && event.pointerType !== "pen")) {
+      return;
+    }
+
+    const point = getPointFromPointer(event, playCanvasRef.current);
+    playTouchPointerIdRef.current = event.pointerId;
+    setPlayTouchAssist({ visible: false, point });
+    clearPlayTouchAssistTimer();
+
+    playTouchAssistTimeoutRef.current = window.setTimeout(() => {
+      setPlayTouchAssist({ visible: true, point });
+      playTouchAssistTimeoutRef.current = null;
+    }, 160);
+
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePlayCanvasPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!playCanvasRef.current || playAnswered || playTouchPointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    const point = getPointFromPointer(event, playCanvasRef.current);
+    setPlayTouchAssist((prev) => ({ visible: prev.visible, point }));
+  };
+
+  const handlePlayCanvasPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!playCanvasRef.current || playAnswered || playTouchPointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    const point = getPointFromPointer(event, playCanvasRef.current);
+    const isTouchLike = event.pointerType === "touch" || event.pointerType === "pen";
+
+    if (isTouchLike) {
+      suppressPlayCanvasClickRef.current = true;
+      schedulePlayClickUnsuppress();
+      submitPlayAnswerAtPoint(point);
+      return;
+    }
+
+    hidePlayTouchAssist();
+  };
+
+  const handlePlayCanvasPointerCancel = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (playTouchPointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    hidePlayTouchAssist();
   };
 
   const updatePlayRevealPosition = (clientX: number) => {
@@ -1232,6 +1348,10 @@ export default function QuizPage() {
                       ref={playCanvasRef}
                       className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playStageFrame}`}
                       style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                      onPointerDown={handlePlayCanvasPointerDown}
+                      onPointerMove={handlePlayCanvasPointerMove}
+                      onPointerUp={handlePlayCanvasPointerUp}
+                      onPointerCancel={handlePlayCanvasPointerCancel}
                       onClick={handlePlayCanvasClick}
                     >
                       <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
@@ -1250,6 +1370,38 @@ export default function QuizPage() {
                           )
                         )}
                       </svg>
+                      {playTouchAssist.visible ? (
+                        <>
+                          <div
+                            className={styles.playTouchAssistAnchor}
+                            style={{
+                              left: `${playTouchAssist.point.x * 100}%`,
+                              top: `${playTouchAssist.point.y * 100}%`
+                            }}
+                          />
+                          <div
+                            className={styles.playTouchAssistLens}
+                            style={{
+                              left: playTouchAssist.point.x > 0.58 ? `calc(${playTouchAssist.point.x * 100}% - 8.1rem)` : `calc(${playTouchAssist.point.x * 100}% + 1rem)`,
+                              top: playTouchAssist.point.y < 0.28 ? `calc(${playTouchAssist.point.y * 100}% + 1rem)` : `calc(${playTouchAssist.point.y * 100}% - 8.1rem)`
+                            }}
+                          >
+                            <img
+                              className={styles.playTouchAssistImage}
+                              src={playQuiz.imageSrc}
+                              alt=""
+                              aria-hidden="true"
+                              style={{
+                                width: "260%",
+                                height: "260%",
+                                left: `${(0.5 - playTouchAssist.point.x * 2.6) * 100}%`,
+                                top: `${(0.5 - playTouchAssist.point.y * 2.6) * 100}%`
+                              }}
+                            />
+                            <span className={styles.playTouchAssistTarget} />
+                          </div>
+                        </>
+                      ) : null}
                     </div>
                   ) : currentPlayArea?.overlayImage ? (
                     <div className={styles.revealCard}>
@@ -1320,9 +1472,7 @@ export default function QuizPage() {
                       ? lang === "cs"
                         ? "Klikni do obrázku na strukturu, kterou hledáš."
                         : "Click inside the image on the structure you are looking for."
-                      : lang === "cs"
-                        ? "Po odpovědi se na stejném místě zobrazí slider s hledanou strukturou a verzí s popisky."
-                        : "After answering, the same area shows a slider with the target structure and the labeled version."}
+                      : ""}
                   </p>
 
                   <div className={styles.playFeedbackRow}>
