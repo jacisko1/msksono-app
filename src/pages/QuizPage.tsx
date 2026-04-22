@@ -489,14 +489,14 @@ export default function QuizPage() {
 
     const intervalId = window.setInterval(() => {
       setPlayRevealPosition((prev) => {
-        if (prev <= 10) {
+        if (prev <= 0) {
           window.clearInterval(intervalId);
-          return 10;
+          return 0;
         }
 
-        return Math.max(10, prev - 0.6);
+        return Math.max(0, prev - 1.1);
       });
-    }, 40);
+    }, 32);
 
     return () => window.clearInterval(intervalId);
   }, [playAnswered, currentPlayArea?.id, currentPlayArea?.overlayImage, isPlayRevealDragging, isPlayRevealAutoAnimating]);
