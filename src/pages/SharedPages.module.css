@@ -223,12 +223,34 @@
 }
 
 .imageZoomButton {
+  position: relative;
   padding: 0;
   border: 0;
   background: transparent;
   width: 100%;
   text-align: inherit;
   cursor: zoom-in;
+}
+
+.imageZoomBadge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(17, 24, 39, 0.82);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  pointer-events: none;
+}
+
+.imageZoomBadgeIcon {
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 500;
 }
 
 .imageZoomOverlay {

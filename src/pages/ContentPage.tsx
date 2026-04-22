@@ -3048,6 +3048,9 @@ function ResponsiveImage({
       {isZoomEnabled ? (
         <button type="button" className={styles.imageZoomButton} onClick={handleOpen} aria-label={alt}>
           {picture}
+          <span className={styles.imageZoomBadge} aria-hidden="true">
+            <span className={styles.imageZoomBadgeIcon}>+</span>
+          </span>
         </button>
       ) : (
         picture
