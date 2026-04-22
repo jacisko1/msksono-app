@@ -450,11 +450,6 @@ export default function QuizPage() {
   const currentPlayArea = playQuestions[playIndex];
   const playAnswered = selectedAreaId !== null;
   const playCorrectCount = useMemo(() => playAnswers.filter((item) => item.correct).length, [playAnswers]);
-  const selectedPlayArea = useMemo(
-    () => (selectedAreaId && selectedAreaId !== OUTSIDE_SELECTION_ID ? playQuiz?.areas.find((area) => area.id === selectedAreaId) ?? null : null),
-    [playQuiz, selectedAreaId]
-  );
-
   const handleBaseImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) {
@@ -1220,59 +1215,31 @@ export default function QuizPage() {
 
               <div className={styles.playGrid}>
                 <div className={styles.playStage}>
-                  <div
-                    ref={playCanvasRef}
-                    className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${playAnswered ? styles.playCanvasFrameAnswered : ""}`}
-                    style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                    onClick={handlePlayCanvasClick}
-                  >
-                    <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
-                    <svg
-                      className={styles.canvasOverlay}
-                      viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
-                      preserveAspectRatio="xMidYMid meet"
+                  {!playAnswered ? (
+                    <div
+                      ref={playCanvasRef}
+                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame}`}
+                      style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                      onClick={handlePlayCanvasClick}
                     >
-                      {playAnswered && selectedPlayArea && selectedPlayArea.id !== currentPlayArea?.id
-                        ? renderAreaShape(
-                            selectedPlayArea,
-                            `${selectedPlayArea.id}-selected`,
+                      <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                      <svg
+                        className={styles.canvasOverlay}
+                        viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                        preserveAspectRatio="xMidYMid meet"
+                      >
+                        {playQuiz.areas.map((area) =>
+                          renderAreaShape(
+                            area,
+                            area.id,
                             playQuiz.imageWidth || 1000,
                             playQuiz.imageHeight || 1000,
-                            styles.playRegionSelectedWrong
+                            styles.playRegion
                           )
-                        : null}
-                      {playAnswered && currentPlayArea
-                        ? renderAreaShape(
-                            currentPlayArea,
-                            `${currentPlayArea.id}-correct`,
-                            playQuiz.imageWidth || 1000,
-                            playQuiz.imageHeight || 1000,
-                            styles.playRegionCorrect
-                          )
-                        : null}
-                      {playQuiz.areas.map((area) =>
-                        renderAreaShape(
-                          area,
-                          area.id,
-                          playQuiz.imageWidth || 1000,
-                          playQuiz.imageHeight || 1000,
-                          styles.playRegion
-                        )
-                      )}
-                    </svg>
-                  </div>
-
-                  <p className={styles.canvasHint}>
-                    {!playAnswered
-                      ? lang === "cs"
-                        ? "Klikni do obrázku na strukturu, kterou hledáš."
-                        : "Click inside the image on the structure you are looking for."
-                      : lang === "cs"
-                        ? "Po odpovědi můžeš sliderem porovnat základní obrázek s verzí s popisky."
-                        : "After answering, use the slider to compare the base image with the labeled version."}
-                  </p>
-
-                  {playAnswered && currentPlayArea?.overlayImage ? (
+                        )}
+                      </svg>
+                    </div>
+                  ) : currentPlayArea?.overlayImage ? (
                     <div className={styles.revealCard}>
                       <div
                         ref={playRevealRef}
@@ -1286,6 +1253,19 @@ export default function QuizPage() {
                       >
                         <div className={styles.playRevealBase}>
                           <img className={`${styles.overlayPreview} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                          <svg
+                            className={styles.canvasOverlay}
+                            viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                            preserveAspectRatio="xMidYMid meet"
+                          >
+                            {renderAreaShape(
+                              currentPlayArea,
+                              `${currentPlayArea.id}-result`,
+                              playQuiz.imageWidth || 1000,
+                              playQuiz.imageHeight || 1000,
+                              selectedAreaId === currentPlayArea.id ? styles.playRegionCorrect : styles.playRegionWrong
+                            )}
+                          </svg>
                         </div>
                         <div className={styles.playRevealOverlay} style={{ clipPath: `inset(0 0 0 ${playRevealPosition}%)` }}>
                           <img
@@ -1310,7 +1290,39 @@ export default function QuizPage() {
                         aria-label={lang === "cs" ? "Slider pro obrázek s popisky" : "Labeled image slider"}
                       />
                     </div>
-                  ) : null}
+                  ) : (
+                    <div
+                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playCanvasFrameAnswered}`}
+                      style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                    >
+                      <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                      <svg
+                        className={styles.canvasOverlay}
+                        viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                        preserveAspectRatio="xMidYMid meet"
+                      >
+                        {currentPlayArea
+                          ? renderAreaShape(
+                              currentPlayArea,
+                              `${currentPlayArea.id}-fallback`,
+                              playQuiz.imageWidth || 1000,
+                              playQuiz.imageHeight || 1000,
+                              selectedAreaId === currentPlayArea.id ? styles.playRegionCorrect : styles.playRegionWrong
+                            )
+                          : null}
+                      </svg>
+                    </div>
+                  )}
+
+                  <p className={styles.canvasHint}>
+                    {!playAnswered
+                      ? lang === "cs"
+                        ? "Klikni do obrázku na strukturu, kterou hledáš."
+                        : "Click inside the image on the structure you are looking for."
+                      : lang === "cs"
+                        ? "Po odpovědi se na stejném místě zobrazí slider s hledanou strukturou a verzí s popisky."
+                        : "After answering, the same area shows a slider with the target structure and the labeled version."}
+                  </p>
 
                   <div className={styles.playFeedbackRow}>
                     <div className={styles.pendingCard}>
