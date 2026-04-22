@@ -172,6 +172,18 @@ function pointToSvg(point: Point, width: number, height: number) {
   };
 }
 
+function getTouchAssistViewBox(point: Point, width: number, height: number, zoom = 3) {
+  const cropSize = Math.min(width, height) / zoom;
+  const centerX = point.x * width;
+  const centerY = point.y * height;
+  const maxLeft = Math.max(0, width - cropSize);
+  const maxTop = Math.max(0, height - cropSize);
+  const left = clamp(centerX - cropSize / 2, 0, maxLeft);
+  const top = clamp(centerY - cropSize / 2, 0, maxTop);
+
+  return `${left} ${top} ${cropSize} ${cropSize}`;
+}
+
 function getRectanglePoints(start: Point, end: Point): Point[] {
   const left = Math.min(start.x, end.x);
   const right = Math.max(start.x, end.x);
@@ -1427,18 +1439,25 @@ export default function QuizPage() {
                               top: `${playTouchAssist.point.y * 100}%`
                             }}
                           >
-                            <img
-                              className={styles.playTouchAssistImage}
-                              src={playQuiz.imageSrc}
-                              alt=""
+                            <svg
+                              className={styles.playTouchAssistSvg}
+                              viewBox={getTouchAssistViewBox(
+                                playTouchAssist.point,
+                                playQuiz.imageWidth || 1000,
+                                playQuiz.imageHeight || 1000
+                              )}
+                              preserveAspectRatio="none"
                               aria-hidden="true"
-                              style={{
-                                width: "300%",
-                                height: "300%",
-                                left: `${(0.5 - playTouchAssist.point.x * 3) * 100}%`,
-                                top: `${(0.5 - playTouchAssist.point.y * 3) * 100}%`
-                              }}
-                            />
+                            >
+                              <image
+                                href={playQuiz.imageSrc}
+                                x="0"
+                                y="0"
+                                width={playQuiz.imageWidth || 1000}
+                                height={playQuiz.imageHeight || 1000}
+                                preserveAspectRatio="none"
+                              />
+                            </svg>
                             <span className={styles.playTouchAssistTarget} />
                           </div>
                         </>
