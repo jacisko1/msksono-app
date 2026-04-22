@@ -478,6 +478,27 @@ export default function QuizPage() {
   const playAnswered = selectedAreaId !== null;
   const playCorrectCount = useMemo(() => playAnswers.filter((item) => item.correct).length, [playAnswers]);
 
+  useEffect(() => {
+    if (!playAnswered || !currentPlayArea?.overlayImage || isPlayRevealDragging) {
+      return;
+    }
+
+    setPlayRevealPosition(90);
+
+    const intervalId = window.setInterval(() => {
+      setPlayRevealPosition((prev) => {
+        if (prev <= 10) {
+          window.clearInterval(intervalId);
+          return 10;
+        }
+
+        return Math.max(10, prev - 0.6);
+      });
+    }, 40);
+
+    return () => window.clearInterval(intervalId);
+  }, [playAnswered, currentPlayArea?.id, currentPlayArea?.overlayImage, isPlayRevealDragging]);
+
   const clearPlayTouchAssistTimer = () => {
     if (playTouchAssistTimeoutRef.current !== null) {
       window.clearTimeout(playTouchAssistTimeoutRef.current);
@@ -1467,32 +1488,26 @@ export default function QuizPage() {
                     </div>
                   )}
 
-                  <p className={styles.canvasHint}>
-                    {!playAnswered
-                      ? lang === "cs"
-                        ? "Klikni do obrázku na strukturu, kterou hledáš."
-                        : "Click inside the image on the structure you are looking for."
-                      : ""}
-                  </p>
-
                   <div className={styles.playFeedbackRow}>
                     <div className={styles.pendingCard}>
-                      <strong>{lang === "cs" ? "Výsledek" : "Result"}</strong>
-                      {!playAnswered ? (
-                        <span>{lang === "cs" ? "Zatím není vybraná žádná oblast." : "No region selected yet."}</span>
-                      ) : selectedAreaId === currentPlayArea?.id ? (
-                        <span className={styles.feedbackCorrect}>{lang === "cs" ? "Správně." : "Correct."}</span>
-                      ) : (
-                        <span className={styles.feedbackWrong}>
-                          {selectedAreaId === OUTSIDE_SELECTION_ID
-                            ? lang === "cs"
-                              ? "Nesprávně. Kliknutí bylo mimo označenou oblast."
-                              : "Incorrect. The click was outside the saved region."
-                            : lang === "cs"
-                              ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
-                              : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
-                        </span>
-                      )}
+                      <div className={styles.resultRow}>
+                        <strong>{lang === "cs" ? "Výsledek:" : "Result:"}</strong>
+                        {!playAnswered ? (
+                          <span>{lang === "cs" ? "Zatím není vybraná žádná oblast." : "No region selected yet."}</span>
+                        ) : selectedAreaId === currentPlayArea?.id ? (
+                          <span className={styles.feedbackCorrect}>{lang === "cs" ? "Správně." : "Correct."}</span>
+                        ) : (
+                          <span className={styles.feedbackWrong}>
+                            {selectedAreaId === OUTSIDE_SELECTION_ID
+                              ? lang === "cs"
+                                ? "Nesprávně. Kliknutí bylo mimo označenou oblast."
+                                : "Incorrect. The click was outside the saved region."
+                              : lang === "cs"
+                                ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
+                                : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
+                          </span>
+                        )}
+                      </div>
                       {playAnswered && currentPlayArea?.explanation ? <p className={styles.copy}>{currentPlayArea.explanation}</p> : null}
                     </div>
                   </div>

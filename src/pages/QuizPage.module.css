@@ -77,6 +77,13 @@
   justify-content: flex-end;
 }
 
+.resultRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
 .topBar,
 .head,
 .footer,
