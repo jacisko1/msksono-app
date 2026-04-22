@@ -273,6 +273,7 @@ export default function QuizPage() {
   const playTouchAssistTimeoutRef = useRef<number | null>(null);
   const playTouchSuppressClickTimeoutRef = useRef<number | null>(null);
   const playTouchPointerIdRef = useRef<number | null>(null);
+  const playTouchAssistPointRef = useRef<Point>({ x: 0.5, y: 0.5 });
   const suppressPlayCanvasClickRef = useRef(false);
 
   const [mode, setMode] = useState<QuizMode>("menu");
@@ -367,6 +368,7 @@ export default function QuizPage() {
     setPlayAnswers([]);
     setPlayFinished(false);
     setSelectedAreaId(null);
+    playTouchAssistPointRef.current = { x: 0.5, y: 0.5 };
     setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
@@ -473,6 +475,7 @@ export default function QuizPage() {
     setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
     setIsPlayRevealAutoAnimating(false);
+    playTouchAssistPointRef.current = { x: 0.5, y: 0.5 };
     setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
@@ -758,6 +761,7 @@ export default function QuizPage() {
     setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
     setIsPlayRevealAutoAnimating(false);
+    playTouchAssistPointRef.current = { x: 0.5, y: 0.5 };
     setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
@@ -768,11 +772,12 @@ export default function QuizPage() {
 
     const point = getPointFromPointer(event, playCanvasRef.current);
     playTouchPointerIdRef.current = event.pointerId;
+    playTouchAssistPointRef.current = point;
     setPlayTouchAssist({ visible: false, point });
     clearPlayTouchAssistTimer();
 
     playTouchAssistTimeoutRef.current = window.setTimeout(() => {
-      setPlayTouchAssist({ visible: true, point });
+      setPlayTouchAssist({ visible: true, point: playTouchAssistPointRef.current });
       playTouchAssistTimeoutRef.current = null;
     }, 160);
 
@@ -785,15 +790,16 @@ export default function QuizPage() {
     }
 
     const point = getPointFromPointer(event, playCanvasRef.current);
+    playTouchAssistPointRef.current = point;
 
     if (playTouchAssistTimeoutRef.current !== null) {
       window.clearTimeout(playTouchAssistTimeoutRef.current);
       playTouchAssistTimeoutRef.current = null;
-      setPlayTouchAssist({ visible: true, point });
+      setPlayTouchAssist({ visible: true, point: playTouchAssistPointRef.current });
       return;
     }
 
-    setPlayTouchAssist((prev) => ({ visible: prev.visible, point }));
+    setPlayTouchAssist((prev) => ({ visible: prev.visible, point: playTouchAssistPointRef.current }));
   };
 
   const handlePlayCanvasPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -805,13 +811,12 @@ export default function QuizPage() {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
 
-    const point = getPointFromPointer(event, playCanvasRef.current);
     const isTouchLike = event.pointerType === "touch" || event.pointerType === "pen";
 
     if (isTouchLike) {
       suppressPlayCanvasClickRef.current = true;
       schedulePlayClickUnsuppress();
-      submitPlayAnswerAtPoint(point);
+      submitPlayAnswerAtPoint(playTouchAssistPointRef.current);
       return;
     }
 
