@@ -283,7 +283,7 @@ export default function QuizPage() {
   const [playAnswers, setPlayAnswers] = useState<PlayAnswer[]>([]);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [playFinished, setPlayFinished] = useState(false);
-  const [playRevealPosition, setPlayRevealPosition] = useState(56);
+  const [playRevealPosition, setPlayRevealPosition] = useState(10);
   const [isPlayRevealDragging, setIsPlayRevealDragging] = useState(false);
 
   useEffect(() => {
@@ -443,7 +443,7 @@ export default function QuizPage() {
     setPlayAnswers([]);
     setSelectedAreaId(null);
     setPlayFinished(false);
-    setPlayRevealPosition(56);
+    setPlayRevealPosition(10);
     setIsPlayRevealDragging(false);
   };
 
@@ -677,7 +677,7 @@ export default function QuizPage() {
 
     setPlayIndex((prev) => prev + 1);
     setSelectedAreaId(null);
-    setPlayRevealPosition(56);
+    setPlayRevealPosition(10);
     setIsPlayRevealDragging(false);
   };
 
@@ -1215,10 +1215,22 @@ export default function QuizPage() {
 
               <div className={styles.playGrid}>
                 <div className={styles.playStage}>
+                  <div className={styles.playTopActions}>
+                    <button type="button" className={styles.nextButton} onClick={nextPlayStep} disabled={!playAnswered}>
+                      {playIndex === playQuestions.length - 1
+                        ? lang === "cs"
+                          ? "Vyhodnotit"
+                          : "Finish"
+                        : lang === "cs"
+                          ? "Další otázka"
+                          : "Next question"}
+                    </button>
+                  </div>
+
                   {!playAnswered ? (
                     <div
                       ref={playCanvasRef}
-                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame}`}
+                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playStageFrame}`}
                       style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
                       onClick={handlePlayCanvasClick}
                     >
@@ -1243,7 +1255,7 @@ export default function QuizPage() {
                     <div className={styles.revealCard}>
                       <div
                         ref={playRevealRef}
-                        className={styles.playRevealWrap}
+                        className={`${styles.playRevealWrap} ${styles.playStageFrame}`}
                         style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
                         onPointerDown={handlePlayRevealPointerDown}
                         onPointerMove={handlePlayRevealPointerMove}
@@ -1278,21 +1290,10 @@ export default function QuizPage() {
                           <span className={styles.playRevealHandle} />
                         </div>
                       </div>
-
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={playRevealPosition}
-                        onChange={(event) => setPlayRevealPosition(Number(event.target.value))}
-                        className={styles.playRevealRange}
-                        style={{ "--play-reveal-position": `${playRevealPosition}%` } as CSSProperties}
-                        aria-label={lang === "cs" ? "Slider pro obrázek s popisky" : "Labeled image slider"}
-                      />
                     </div>
                   ) : (
                     <div
-                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playCanvasFrameAnswered}`}
+                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playCanvasFrameAnswered} ${styles.playStageFrame}`}
                       style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
                     >
                       <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
@@ -1344,16 +1345,6 @@ export default function QuizPage() {
                       )}
                       {playAnswered && currentPlayArea?.explanation ? <p className={styles.copy}>{currentPlayArea.explanation}</p> : null}
                     </div>
-
-                    <button type="button" className={styles.nextButton} onClick={nextPlayStep} disabled={!playAnswered}>
-                      {playIndex === playQuestions.length - 1
-                        ? lang === "cs"
-                          ? "Vyhodnotit"
-                          : "Finish"
-                        : lang === "cs"
-                          ? "Další otázka"
-                          : "Next question"}
-                    </button>
                   </div>
                 </div>
               </div>
