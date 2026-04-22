@@ -1,4 +1,4 @@
-import { type ChangeEvent, type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, type ChangeEvent, type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from "react";
 import { PageHeader } from "../components/PageHeader";
 import { useLanguage } from "../data/language";
 import styles from "./QuizPage.module.css";
@@ -263,6 +263,7 @@ export default function QuizPage() {
   const locale = lang === "cs" ? "cs-CZ" : "en-US";
   const editorCanvasRef = useRef<HTMLDivElement | null>(null);
   const playCanvasRef = useRef<HTMLDivElement | null>(null);
+  const playRevealRef = useRef<HTMLDivElement | null>(null);
   const importInputRef = useRef<HTMLInputElement | null>(null);
 
   const [mode, setMode] = useState<QuizMode>("menu");
@@ -282,6 +283,8 @@ export default function QuizPage() {
   const [playAnswers, setPlayAnswers] = useState<PlayAnswer[]>([]);
   const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null);
   const [playFinished, setPlayFinished] = useState(false);
+  const [playRevealPosition, setPlayRevealPosition] = useState(56);
+  const [isPlayRevealDragging, setIsPlayRevealDragging] = useState(false);
 
   useEffect(() => {
     const sync = () => setCustomQuizzes(readCustomQuizzes());
@@ -440,11 +443,17 @@ export default function QuizPage() {
     setPlayAnswers([]);
     setSelectedAreaId(null);
     setPlayFinished(false);
+    setPlayRevealPosition(56);
+    setIsPlayRevealDragging(false);
   };
 
   const currentPlayArea = playQuestions[playIndex];
   const playAnswered = selectedAreaId !== null;
   const playCorrectCount = useMemo(() => playAnswers.filter((item) => item.correct).length, [playAnswers]);
+  const selectedPlayArea = useMemo(
+    () => (selectedAreaId && selectedAreaId !== OUTSIDE_SELECTION_ID ? playQuiz?.areas.find((area) => area.id === selectedAreaId) ?? null : null),
+    [playQuiz, selectedAreaId]
+  );
 
   const handleBaseImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -673,6 +682,54 @@ export default function QuizPage() {
 
     setPlayIndex((prev) => prev + 1);
     setSelectedAreaId(null);
+    setPlayRevealPosition(56);
+    setIsPlayRevealDragging(false);
+  };
+
+  const updatePlayRevealPosition = (clientX: number) => {
+    const container = playRevealRef.current;
+    if (!container) {
+      return;
+    }
+
+    const rect = container.getBoundingClientRect();
+    if (rect.width <= 0) {
+      return;
+    }
+
+    const nextPosition = ((clientX - rect.left) / rect.width) * 100;
+    setPlayRevealPosition(Math.min(100, Math.max(0, nextPosition)));
+  };
+
+  const handlePlayRevealPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    event.preventDefault();
+    setIsPlayRevealDragging(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+    updatePlayRevealPosition(event.clientX);
+  };
+
+  const handlePlayRevealPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isPlayRevealDragging) {
+      return;
+    }
+
+    updatePlayRevealPosition(event.clientX);
+  };
+
+  const handlePlayRevealPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    setIsPlayRevealDragging(false);
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  const handlePlayRevealLostPointerCapture = () => {
+    setIsPlayRevealDragging(false);
   };
 
   const renderAreaShape = (
@@ -1162,103 +1219,131 @@ export default function QuizPage() {
               </div>
 
               <div className={styles.playGrid}>
-                <div className={styles.playMediaColumn}>
-                  <div className={styles.playMediaGrid}>
-                    <div>
+                <div className={styles.playStage}>
+                  <div
+                    ref={playCanvasRef}
+                    className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${playAnswered ? styles.playCanvasFrameAnswered : ""}`}
+                    style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                    onClick={handlePlayCanvasClick}
+                  >
+                    <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                    <svg
+                      className={styles.canvasOverlay}
+                      viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      {playAnswered && selectedPlayArea && selectedPlayArea.id !== currentPlayArea?.id
+                        ? renderAreaShape(
+                            selectedPlayArea,
+                            `${selectedPlayArea.id}-selected`,
+                            playQuiz.imageWidth || 1000,
+                            playQuiz.imageHeight || 1000,
+                            styles.playRegionSelectedWrong
+                          )
+                        : null}
+                      {playAnswered && currentPlayArea
+                        ? renderAreaShape(
+                            currentPlayArea,
+                            `${currentPlayArea.id}-correct`,
+                            playQuiz.imageWidth || 1000,
+                            playQuiz.imageHeight || 1000,
+                            styles.playRegionCorrect
+                          )
+                        : null}
+                      {playQuiz.areas.map((area) =>
+                        renderAreaShape(
+                          area,
+                          area.id,
+                          playQuiz.imageWidth || 1000,
+                          playQuiz.imageHeight || 1000,
+                          styles.playRegion
+                        )
+                      )}
+                    </svg>
+                  </div>
+
+                  <p className={styles.canvasHint}>
+                    {!playAnswered
+                      ? lang === "cs"
+                        ? "Klikni do obrázku na strukturu, kterou hledáš."
+                        : "Click inside the image on the structure you are looking for."
+                      : lang === "cs"
+                        ? "Po odpovědi můžeš sliderem porovnat základní obrázek s verzí s popisky."
+                        : "After answering, use the slider to compare the base image with the labeled version."}
+                  </p>
+
+                  {playAnswered && currentPlayArea?.overlayImage ? (
+                    <div className={styles.revealCard}>
                       <div
-                        ref={playCanvasRef}
-                        className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame}`}
+                        ref={playRevealRef}
+                        className={styles.playRevealWrap}
                         style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                        onClick={handlePlayCanvasClick}
+                        onPointerDown={handlePlayRevealPointerDown}
+                        onPointerMove={handlePlayRevealPointerMove}
+                        onPointerUp={handlePlayRevealPointerUp}
+                        onPointerCancel={handlePlayRevealPointerUp}
+                        onLostPointerCapture={handlePlayRevealLostPointerCapture}
                       >
-                        <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
-                        <svg
-                          className={styles.canvasOverlay}
-                          viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
-                          preserveAspectRatio="xMidYMid meet"
-                        >
-                          {playQuiz.areas.map((area) => {
-                            return renderAreaShape(
-                              area,
-                              area.id,
-                              playQuiz.imageWidth || 1000,
-                              playQuiz.imageHeight || 1000,
-                              playAnswered && currentPlayArea?.id === area.id
-                                ? selectedAreaId === currentPlayArea?.id
-                                  ? styles.playRegionCorrect
-                                  : styles.playRegionWrong
-                                : styles.playRegion
-                            );
-                          })}
-                        </svg>
+                        <div className={styles.playRevealBase}>
+                          <img className={`${styles.overlayPreview} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                        </div>
+                        <div className={styles.playRevealOverlay} style={{ clipPath: `inset(0 0 0 ${playRevealPosition}%)` }}>
+                          <img
+                            className={`${styles.overlayPreview} ${styles.playSurfaceImage}`}
+                            src={currentPlayArea.overlayImage}
+                            alt={currentPlayArea.label}
+                          />
+                        </div>
+                        <div className={styles.playRevealDivider} style={{ left: `${playRevealPosition}%` }}>
+                          <span className={styles.playRevealHandle} />
+                        </div>
                       </div>
-                      <p className={styles.canvasHint}>
-                        {lang === "cs"
-                          ? "Klikni do některé uložené oblasti v obrázku."
-                          : "Click inside one of the saved regions in the image."}
-                      </p>
+
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={playRevealPosition}
+                        onChange={(event) => setPlayRevealPosition(Number(event.target.value))}
+                        className={styles.playRevealRange}
+                        style={{ "--play-reveal-position": `${playRevealPosition}%` } as CSSProperties}
+                        aria-label={lang === "cs" ? "Slider pro obrázek s popisky" : "Labeled image slider"}
+                      />
+                    </div>
+                  ) : null}
+
+                  <div className={styles.playFeedbackRow}>
+                    <div className={styles.pendingCard}>
+                      <strong>{lang === "cs" ? "Výsledek" : "Result"}</strong>
+                      {!playAnswered ? (
+                        <span>{lang === "cs" ? "Zatím není vybraná žádná oblast." : "No region selected yet."}</span>
+                      ) : selectedAreaId === currentPlayArea?.id ? (
+                        <span className={styles.feedbackCorrect}>{lang === "cs" ? "Správně." : "Correct."}</span>
+                      ) : (
+                        <span className={styles.feedbackWrong}>
+                          {selectedAreaId === OUTSIDE_SELECTION_ID
+                            ? lang === "cs"
+                              ? "Nesprávně. Kliknutí bylo mimo označenou oblast."
+                              : "Incorrect. The click was outside the saved region."
+                            : lang === "cs"
+                              ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
+                              : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
+                        </span>
+                      )}
+                      {playAnswered && currentPlayArea?.explanation ? <p className={styles.copy}>{currentPlayArea.explanation}</p> : null}
                     </div>
 
-                    {playAnswered && currentPlayArea?.overlayImage ? (
-                      <div
-                        className={`${styles.explainerFrame} ${styles.playSurfaceFrame}`}
-                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                      >
-                        <img
-                          className={`${styles.overlayPreview} ${styles.playSurfaceImage}`}
-                          src={currentPlayArea.overlayImage}
-                          alt={currentPlayArea.label}
-                        />
-                      </div>
-                    ) : (
-                      <div
-                        className={styles.explainerEmpty}
-                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                      />
-                    )}
+                    <button type="button" className={styles.nextButton} onClick={nextPlayStep} disabled={!playAnswered}>
+                      {playIndex === playQuestions.length - 1
+                        ? lang === "cs"
+                          ? "Vyhodnotit"
+                          : "Finish"
+                        : lang === "cs"
+                          ? "Další otázka"
+                          : "Next question"}
+                    </button>
                   </div>
                 </div>
-
-                <aside className={styles.sidePanel}>
-                  <div className={styles.infoBox}>
-                    <strong>{lang === "cs" ? "Instrukce" : "Instructions"}</strong>
-                    <span>
-                      {lang === "cs"
-                        ? "Otázka zobrazuje název struktury. Tvým úkolem je kliknout na správně uloženou oblast."
-                        : "The prompt shows the structure label. Your job is to click the matching saved region."}
-                    </span>
-                  </div>
-
-                  <div className={styles.pendingCard}>
-                    <strong>{lang === "cs" ? "Výsledek" : "Result"}</strong>
-                    {!playAnswered ? (
-                      <span>{lang === "cs" ? "Zatím není vybraná žádná oblast." : "No region selected yet."}</span>
-                    ) : selectedAreaId === currentPlayArea?.id ? (
-                      <span className={styles.feedbackCorrect}>{lang === "cs" ? "Správně." : "Correct."}</span>
-                    ) : (
-                      <span className={styles.feedbackWrong}>
-                        {selectedAreaId === OUTSIDE_SELECTION_ID
-                          ? lang === "cs"
-                            ? "Nesprávně. Kliknutí bylo mimo označenou oblast."
-                            : "Incorrect. The click was outside the saved region."
-                          : lang === "cs"
-                            ? `Nesprávně. Správná oblast je ${currentPlayArea?.label}.`
-                            : `Incorrect. The correct region is ${currentPlayArea?.label}.`}
-                      </span>
-                    )}
-                    {playAnswered && currentPlayArea?.explanation ? <p className={styles.copy}>{currentPlayArea.explanation}</p> : null}
-                  </div>
-
-                  <button type="button" className={styles.nextButton} onClick={nextPlayStep} disabled={!playAnswered}>
-                    {playIndex === playQuestions.length - 1
-                      ? lang === "cs"
-                        ? "Vyhodnotit"
-                        : "Finish"
-                      : lang === "cs"
-                        ? "Další otázka"
-                        : "Next question"}
-                  </button>
-                </aside>
               </div>
             </>
           ) : (
