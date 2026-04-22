@@ -3033,9 +3033,7 @@ function ResponsiveImage({
   const [isZoomed, setIsZoomed] = useState(false);
   const isZoomEnabled = Boolean(enableMobileZoom);
   const imgRef = useRef<HTMLImageElement | null>(null);
-  const pointerTimeoutRef = useRef<number | null>(null);
   const activePointerIdRef = useRef<number | null>(null);
-  const pointerStartRef = useRef<{ clientX: number; clientY: number } | null>(null);
   const suppressClickRef = useRef(false);
   const [pointerZoom, setPointerZoom] = useState<{
     visible: boolean;
@@ -3057,22 +3055,8 @@ function ResponsiveImage({
     backgroundPosition: "0px 0px"
   });
 
-  useEffect(() => {
-    return () => {
-      if (pointerTimeoutRef.current !== null) {
-        window.clearTimeout(pointerTimeoutRef.current);
-      }
-    };
-  }, []);
-
   const hidePointerZoom = () => {
-    if (pointerTimeoutRef.current !== null) {
-      window.clearTimeout(pointerTimeoutRef.current);
-      pointerTimeoutRef.current = null;
-    }
-
     activePointerIdRef.current = null;
-    pointerStartRef.current = null;
     setPointerZoom((prev) => (prev.visible ? { ...prev, visible: false } : prev));
   };
 
@@ -3132,22 +3116,11 @@ function ResponsiveImage({
     }
 
     activePointerIdRef.current = event.pointerId;
-    pointerStartRef.current = { clientX: event.clientX, clientY: event.clientY };
     suppressClickRef.current = false;
-    updatePointerZoom(event.clientX, event.clientY, false);
-
-    if (pointerTimeoutRef.current !== null) {
-      window.clearTimeout(pointerTimeoutRef.current);
-    }
-
-    pointerTimeoutRef.current = window.setTimeout(() => {
-      if (activePointerIdRef.current === event.pointerId) {
-        updatePointerZoom(event.clientX, event.clientY, true);
-      }
-      pointerTimeoutRef.current = null;
-    }, 140);
+    updatePointerZoom(event.clientX, event.clientY, true);
 
     event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
@@ -3155,18 +3128,7 @@ function ResponsiveImage({
       return;
     }
 
-    const start = pointerStartRef.current;
-    const movedEnough =
-      start !== null ? Math.hypot(event.clientX - start.clientX, event.clientY - start.clientY) > 4 : false;
-
-    if (pointerTimeoutRef.current !== null && movedEnough) {
-      window.clearTimeout(pointerTimeoutRef.current);
-      pointerTimeoutRef.current = null;
-      updatePointerZoom(event.clientX, event.clientY, true);
-      return;
-    }
-
-    updatePointerZoom(event.clientX, event.clientY, pointerZoom.visible);
+    updatePointerZoom(event.clientX, event.clientY, true);
   };
 
   const handlePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
@@ -3178,7 +3140,7 @@ function ResponsiveImage({
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
 
-    suppressClickRef.current = pointerTimeoutRef.current === null || pointerZoom.visible;
+    suppressClickRef.current = pointerZoom.visible;
     window.setTimeout(() => {
       suppressClickRef.current = false;
     }, 0);
@@ -3210,7 +3172,7 @@ function ResponsiveImage({
     <picture className={wrapClass}>
       <source media="(max-width: 640px)" srcSet={image.mobile} />
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
-      <img ref={imgRef} className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+      <img ref={imgRef} className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" draggable={false} />
     </picture>
   );
 
