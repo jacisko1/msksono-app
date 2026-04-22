@@ -1365,32 +1365,34 @@ export default function QuizPage() {
                   </div>
 
                   {!playAnswered ? (
-                    <div
-                      ref={playCanvasRef}
-                      className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playStageFrame} ${styles.playTouchAssistFrame}`}
-                      style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
-                      onPointerDown={handlePlayCanvasPointerDown}
-                      onPointerMove={handlePlayCanvasPointerMove}
-                      onPointerUp={handlePlayCanvasPointerUp}
-                      onPointerCancel={handlePlayCanvasPointerCancel}
-                      onClick={handlePlayCanvasClick}
-                    >
-                      <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
-                      <svg
-                        className={styles.canvasOverlay}
-                        viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
-                        preserveAspectRatio="xMidYMid meet"
+                    <div className={`${styles.playStageFrame} ${styles.playTouchAssistShell}`}>
+                      <div
+                        ref={playCanvasRef}
+                        className={`${styles.canvasFrame} ${styles.playCanvasFrame} ${styles.playSurfaceFrame} ${styles.playTouchAssistFrame}`}
+                        style={{ aspectRatio: `${playQuiz.imageWidth || 1000} / ${playQuiz.imageHeight || 1000}` }}
+                        onPointerDown={handlePlayCanvasPointerDown}
+                        onPointerMove={handlePlayCanvasPointerMove}
+                        onPointerUp={handlePlayCanvasPointerUp}
+                        onPointerCancel={handlePlayCanvasPointerCancel}
+                        onClick={handlePlayCanvasClick}
                       >
-                        {playQuiz.areas.map((area) =>
-                          renderAreaShape(
-                            area,
-                            area.id,
-                            playQuiz.imageWidth || 1000,
-                            playQuiz.imageHeight || 1000,
-                            styles.playRegion
-                          )
-                        )}
-                      </svg>
+                        <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
+                        <svg
+                          className={styles.canvasOverlay}
+                          viewBox={`0 0 ${playQuiz.imageWidth || 1000} ${playQuiz.imageHeight || 1000}`}
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          {playQuiz.areas.map((area) =>
+                            renderAreaShape(
+                              area,
+                              area.id,
+                              playQuiz.imageWidth || 1000,
+                              playQuiz.imageHeight || 1000,
+                              styles.playRegion
+                            )
+                          )}
+                        </svg>
+                      </div>
                       {playTouchAssist.visible ? (
                         <>
                           <div
@@ -1413,10 +1415,10 @@ export default function QuizPage() {
                               alt=""
                               aria-hidden="true"
                               style={{
-                                width: "260%",
-                                height: "260%",
-                                left: `${(0.5 - playTouchAssist.point.x * 2.6) * 100}%`,
-                                top: `${(0.5 - playTouchAssist.point.y * 2.6) * 100}%`
+                                width: "300%",
+                                height: "300%",
+                                left: `${(0.5 - playTouchAssist.point.x * 3) * 100}%`,
+                                top: `${(0.5 - playTouchAssist.point.y * 3) * 100}%`
                               }}
                             />
                             <span className={styles.playTouchAssistTarget} />
