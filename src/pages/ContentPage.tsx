@@ -17,6 +17,11 @@ interface ResponsiveImageSet {
   mobile: string;
 }
 
+interface Point {
+  x: number;
+  y: number;
+}
+
 interface ProbeSection {
   title: { cs: string; en: string };
   image: ResponsiveImageSet;
@@ -119,6 +124,10 @@ const ASSET_VERSION = "2026-04-04-nerve-intro-2";
 
 const assetPath = (folder: string, file: string) =>
   `/assets/${folder.split("/").map(encodeURIComponent).join("/")}/${encodeURIComponent(file)}?v=${ASSET_VERSION}`;
+
+function clamp(value: number, min = 0, max = 1) {
+  return Math.min(max, Math.max(min, value));
+}
 
 const makeResponsiveImage = (folder: string, baseName: string): ResponsiveImageSet => ({
   mobile: assetPath(folder, `${baseName}_mobile.webp`),
@@ -3023,6 +3032,84 @@ function ResponsiveImage({
   const wrapClass = wrapClassName ? `${styles.inlineImageWrap} ${wrapClassName}` : styles.inlineImageWrap;
   const [isZoomed, setIsZoomed] = useState(false);
   const isZoomEnabled = Boolean(enableMobileZoom);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const pointerTimeoutRef = useRef<number | null>(null);
+  const activePointerIdRef = useRef<number | null>(null);
+  const pointerStartRef = useRef<{ clientX: number; clientY: number } | null>(null);
+  const suppressClickRef = useRef(false);
+  const [pointerZoom, setPointerZoom] = useState<{
+    visible: boolean;
+    point: Point;
+    lensLeft: number;
+    lensTop: number;
+    placeBelow: boolean;
+    backgroundImage: string;
+    backgroundSize: string;
+    backgroundPosition: string;
+  }>({
+    visible: false,
+    point: { x: 0.5, y: 0.5 },
+    lensLeft: 0,
+    lensTop: 0,
+    placeBelow: false,
+    backgroundImage: "",
+    backgroundSize: "0px 0px",
+    backgroundPosition: "0px 0px"
+  });
+
+  useEffect(() => {
+    return () => {
+      if (pointerTimeoutRef.current !== null) {
+        window.clearTimeout(pointerTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const hidePointerZoom = () => {
+    if (pointerTimeoutRef.current !== null) {
+      window.clearTimeout(pointerTimeoutRef.current);
+      pointerTimeoutRef.current = null;
+    }
+
+    activePointerIdRef.current = null;
+    pointerStartRef.current = null;
+    setPointerZoom((prev) => (prev.visible ? { ...prev, visible: false } : prev));
+  };
+
+  const updatePointerZoom = (clientX: number, clientY: number, showImmediately = false) => {
+    const imageElement = imgRef.current;
+    if (!imageElement) {
+      return;
+    }
+
+    const rect = imageElement.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) {
+      return;
+    }
+
+    const x = clamp((clientX - rect.left) / rect.width);
+    const y = clamp((clientY - rect.top) / rect.height);
+    const lensSize = 170;
+    const zoomFactor = 2.6;
+    const lensHalf = lensSize / 2;
+    const viewportWidth = window.innerWidth;
+    const lensLeft = clamp(clientX, lensHalf + 12, viewportWidth - lensHalf - 12);
+    const placeBelow = clientY < 180;
+    const lensTop = placeBelow ? clientY + 18 : clientY - 18;
+
+    const nextState = {
+      visible: showImmediately || pointerZoom.visible,
+      point: { x, y },
+      lensLeft,
+      lensTop,
+      placeBelow,
+      backgroundImage: `url("${imageElement.currentSrc || imageElement.src}")`,
+      backgroundSize: `${rect.width * zoomFactor}px ${rect.height * zoomFactor}px`,
+      backgroundPosition: `${-(x * rect.width * zoomFactor - lensHalf)}px ${-(y * rect.height * zoomFactor - lensHalf)}px`
+    };
+
+    setPointerZoom(nextState);
+  };
 
   const handleOpen = () => {
     if (!isZoomEnabled) {
@@ -3035,22 +3122,140 @@ function ResponsiveImage({
     setIsZoomed(false);
   };
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!isZoomEnabled) {
+      return;
+    }
+
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    activePointerIdRef.current = event.pointerId;
+    pointerStartRef.current = { clientX: event.clientX, clientY: event.clientY };
+    suppressClickRef.current = false;
+    updatePointerZoom(event.clientX, event.clientY, false);
+
+    if (pointerTimeoutRef.current !== null) {
+      window.clearTimeout(pointerTimeoutRef.current);
+    }
+
+    pointerTimeoutRef.current = window.setTimeout(() => {
+      if (activePointerIdRef.current === event.pointerId) {
+        updatePointerZoom(event.clientX, event.clientY, true);
+      }
+      pointerTimeoutRef.current = null;
+    }, 140);
+
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (activePointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    const start = pointerStartRef.current;
+    const movedEnough =
+      start !== null ? Math.hypot(event.clientX - start.clientX, event.clientY - start.clientY) > 4 : false;
+
+    if (pointerTimeoutRef.current !== null && movedEnough) {
+      window.clearTimeout(pointerTimeoutRef.current);
+      pointerTimeoutRef.current = null;
+      updatePointerZoom(event.clientX, event.clientY, true);
+      return;
+    }
+
+    updatePointerZoom(event.clientX, event.clientY, pointerZoom.visible);
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (activePointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    suppressClickRef.current = pointerTimeoutRef.current === null || pointerZoom.visible;
+    window.setTimeout(() => {
+      suppressClickRef.current = false;
+    }, 0);
+    hidePointerZoom();
+  };
+
+  const handlePointerCancel = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (activePointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    hidePointerZoom();
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (suppressClickRef.current) {
+      event.preventDefault();
+      return;
+    }
+
+    handleOpen();
+  };
+
   const picture = (
     <picture className={wrapClass}>
       <source media="(max-width: 640px)" srcSet={image.mobile} />
       <source media="(max-width: 1024px)" srcSet={image.tablet} />
-      <img className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
+      <img ref={imgRef} className={styles.inlineImage} src={image.pc} alt={alt} loading="lazy" decoding="async" />
     </picture>
   );
 
   return (
     <>
       {isZoomEnabled ? (
-        <button type="button" className={styles.imageZoomButton} onClick={handleOpen} aria-label={alt}>
+        <button
+          type="button"
+          className={styles.imageZoomButton}
+          onClick={handleClick}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          aria-label={alt}
+        >
           {picture}
           <span className={styles.imageZoomBadge} aria-hidden="true">
             <span className={styles.imageZoomBadgeIcon}>+</span>
           </span>
+          {pointerZoom.visible ? (
+            <>
+              <span
+                className={styles.imagePointerZoomAnchor}
+                aria-hidden="true"
+                style={{
+                  left: `${pointerZoom.point.x * 100}%`,
+                  top: `${pointerZoom.point.y * 100}%`
+                }}
+              />
+              <span
+                className={`${styles.imagePointerZoomLens} ${pointerZoom.placeBelow ? styles.imagePointerZoomLensBelow : ""}`}
+                aria-hidden="true"
+                style={{
+                  left: `${pointerZoom.lensLeft}px`,
+                  top: `${pointerZoom.lensTop}px`,
+                  backgroundImage: pointerZoom.backgroundImage,
+                  backgroundSize: pointerZoom.backgroundSize,
+                  backgroundPosition: pointerZoom.backgroundPosition
+                }}
+              >
+                <span className={styles.imagePointerZoomTarget} />
+              </span>
+            </>
+          ) : null}
         </button>
       ) : (
         picture

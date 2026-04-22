@@ -253,6 +253,95 @@
   font-weight: 500;
 }
 
+.imagePointerZoomAnchor {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  background: rgba(220, 38, 38, 0.92);
+  box-shadow: 0 0 0 1px rgba(16, 24, 40, 0.18);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.imagePointerZoomAnchor::before,
+.imagePointerZoomAnchor::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translate(-50%, -50%);
+}
+
+.imagePointerZoomAnchor::before {
+  width: 2px;
+  height: 1.4rem;
+}
+
+.imagePointerZoomAnchor::after {
+  width: 1.4rem;
+  height: 2px;
+}
+
+.imagePointerZoomLens {
+  position: fixed;
+  width: 10.5rem;
+  height: 10.5rem;
+  transform: translate(-50%, calc(-100% - 0.6rem));
+  overflow: hidden;
+  border-radius: 999px;
+  border: 3px solid rgba(255, 255, 255, 0.96);
+  background-color: rgba(15, 23, 42, 0.18);
+  background-repeat: no-repeat;
+  box-shadow:
+    0 12px 24px rgba(15, 23, 42, 0.24),
+    0 0 0 1px rgba(15, 23, 42, 0.1);
+  pointer-events: none;
+  z-index: 1001;
+}
+
+.imagePointerZoomLensBelow {
+  transform: translate(-50%, 0.6rem);
+}
+
+.imagePointerZoomTarget {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: -0.55rem;
+  margin-top: -0.55rem;
+  border-radius: 999px;
+  border: 2px solid rgba(220, 38, 38, 0.98);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.imagePointerZoomTarget::before,
+.imagePointerZoomTarget::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: rgba(220, 38, 38, 0.98);
+  transform: translate(-50%, -50%);
+}
+
+.imagePointerZoomTarget::before {
+  width: 2px;
+  height: 2rem;
+}
+
+.imagePointerZoomTarget::after {
+  width: 2rem;
+  height: 2px;
+}
+
 .imageZoomOverlay {
   position: fixed;
   inset: 0;
