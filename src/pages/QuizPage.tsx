@@ -509,9 +509,9 @@ export default function QuizPage() {
           return 0;
         }
 
-        return Math.max(0, prev - 1.1);
+        return Math.max(0, prev - 1.8);
       });
-    }, 32);
+    }, 24);
 
     return () => window.clearInterval(intervalId);
   }, [playAnswered, currentPlayArea?.id, currentPlayArea?.overlayImage, isPlayRevealDragging, isPlayRevealAutoAnimating]);
@@ -1474,7 +1474,6 @@ export default function QuizPage() {
                         onPointerUp={handlePlayRevealPointerUp}
                         onPointerCancel={handlePlayRevealPointerUp}
                         onLostPointerCapture={handlePlayRevealLostPointerCapture}
-                        onClick={() => setIsPlayRevealAutoAnimating(false)}
                       >
                         <div className={styles.playRevealBase}>
                           <img className={`${styles.overlayPreview} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
