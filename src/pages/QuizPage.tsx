@@ -294,6 +294,7 @@ export default function QuizPage() {
   const [playFinished, setPlayFinished] = useState(false);
   const [playRevealPosition, setPlayRevealPosition] = useState(90);
   const [isPlayRevealDragging, setIsPlayRevealDragging] = useState(false);
+  const [isPlayRevealAutoAnimating, setIsPlayRevealAutoAnimating] = useState(false);
   const [playTouchAssist, setPlayTouchAssist] = useState<PlayTouchAssistState>({
     visible: false,
     point: { x: 0.5, y: 0.5 }
@@ -471,6 +472,7 @@ export default function QuizPage() {
     setPlayFinished(false);
     setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
+    setIsPlayRevealAutoAnimating(false);
     setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
@@ -479,7 +481,7 @@ export default function QuizPage() {
   const playCorrectCount = useMemo(() => playAnswers.filter((item) => item.correct).length, [playAnswers]);
 
   useEffect(() => {
-    if (!playAnswered || !currentPlayArea?.overlayImage || isPlayRevealDragging) {
+    if (!playAnswered || !currentPlayArea?.overlayImage || isPlayRevealDragging || !isPlayRevealAutoAnimating) {
       return;
     }
 
@@ -497,7 +499,7 @@ export default function QuizPage() {
     }, 40);
 
     return () => window.clearInterval(intervalId);
-  }, [playAnswered, currentPlayArea?.id, currentPlayArea?.overlayImage, isPlayRevealDragging]);
+  }, [playAnswered, currentPlayArea?.id, currentPlayArea?.overlayImage, isPlayRevealDragging, isPlayRevealAutoAnimating]);
 
   const clearPlayTouchAssistTimer = () => {
     if (playTouchAssistTimeoutRef.current !== null) {
@@ -711,6 +713,7 @@ export default function QuizPage() {
     }
 
     hidePlayTouchAssist();
+    setIsPlayRevealAutoAnimating(Boolean(currentPlayArea?.overlayImage));
     setSelectedAreaId(areaId);
     setPlayAnswers((prev) => [
       ...prev,
@@ -754,6 +757,7 @@ export default function QuizPage() {
     setSelectedAreaId(null);
     setPlayRevealPosition(90);
     setIsPlayRevealDragging(false);
+    setIsPlayRevealAutoAnimating(false);
     setPlayTouchAssist({ visible: false, point: { x: 0.5, y: 0.5 } });
   };
 
@@ -839,6 +843,7 @@ export default function QuizPage() {
     }
 
     event.preventDefault();
+    setIsPlayRevealAutoAnimating(false);
     setIsPlayRevealDragging(true);
     event.currentTarget.setPointerCapture(event.pointerId);
     updatePlayRevealPosition(event.clientX);
@@ -1437,6 +1442,7 @@ export default function QuizPage() {
                         onPointerUp={handlePlayRevealPointerUp}
                         onPointerCancel={handlePlayRevealPointerUp}
                         onLostPointerCapture={handlePlayRevealLostPointerCapture}
+                        onClick={() => setIsPlayRevealAutoAnimating(false)}
                       >
                         <div className={styles.playRevealBase}>
                           <img className={`${styles.overlayPreview} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />

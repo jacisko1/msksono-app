@@ -570,7 +570,7 @@
 }
 
 .playTouchAssistFrame {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .playTouchAssistShell {
