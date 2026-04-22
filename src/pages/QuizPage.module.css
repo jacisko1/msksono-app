@@ -618,6 +618,7 @@
   .playStageFrame,
   .playRevealWrap {
     border: 0;
+    border-radius: 1rem;
     background: transparent;
     box-shadow: none;
   }
@@ -630,6 +631,11 @@
 
   .playTouchAssistFrame .canvasOverlay {
     border-radius: 1rem;
+    clip-path: inset(0 round 1rem);
+  }
+
+  .playRevealWrap {
+    overflow: hidden;
   }
 
   .playTouchAssistAnchor {
