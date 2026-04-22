@@ -758,6 +758,10 @@ export default function QuizPage() {
     submitPlayAnswerAtPoint(point);
   };
 
+  const handlePlayCanvasContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
   const nextPlayStep = () => {
     if (!playAnswered) {
       return;
@@ -778,7 +782,11 @@ export default function QuizPage() {
   };
 
   const handlePlayCanvasPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (!playCanvasRef.current || playAnswered || (event.pointerType !== "touch" && event.pointerType !== "pen")) {
+    if (!playCanvasRef.current || playAnswered) {
+      return;
+    }
+
+    if (event.pointerType === "mouse" && event.button !== 0) {
       return;
     }
 
@@ -793,6 +801,7 @@ export default function QuizPage() {
       playTouchAssistTimeoutRef.current = null;
     }, 160);
 
+    event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
@@ -1404,6 +1413,7 @@ export default function QuizPage() {
                         onPointerMove={handlePlayCanvasPointerMove}
                         onPointerUp={handlePlayCanvasPointerUp}
                         onPointerCancel={handlePlayCanvasPointerCancel}
+                        onContextMenu={handlePlayCanvasContextMenu}
                         onClick={handlePlayCanvasClick}
                       >
                         <img className={`${styles.canvasImage} ${styles.playSurfaceImage}`} src={playQuiz.imageSrc} alt={playQuiz.title} />
