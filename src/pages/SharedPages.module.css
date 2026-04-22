@@ -228,6 +228,7 @@
   background: transparent;
   width: 100%;
   text-align: inherit;
+  cursor: zoom-in;
 }
 
 .imageZoomOverlay {
@@ -867,10 +868,6 @@
 
   .inlineImage {
     height: auto;
-  }
-
-  .imageZoomButton {
-    cursor: zoom-in;
   }
 
   .probeImageWrap {

@@ -3022,9 +3022,10 @@ function ResponsiveImage({
 }) {
   const wrapClass = wrapClassName ? `${styles.inlineImageWrap} ${wrapClassName}` : styles.inlineImageWrap;
   const [isZoomed, setIsZoomed] = useState(false);
+  const isZoomEnabled = Boolean(enableMobileZoom);
 
   const handleOpen = () => {
-    if (!enableMobileZoom) {
+    if (!isZoomEnabled) {
       return;
     }
     setIsZoomed(true);
@@ -3044,7 +3045,7 @@ function ResponsiveImage({
 
   return (
     <>
-      {enableMobileZoom ? (
+      {isZoomEnabled ? (
         <button type="button" className={styles.imageZoomButton} onClick={handleOpen} aria-label={alt}>
           {picture}
         </button>
